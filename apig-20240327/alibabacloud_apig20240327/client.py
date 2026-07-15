@@ -280,6 +280,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_gateway_security_group_rule_with_options_async(gateway_id, request, headers, runtime)
 
+    def batch_add_consumer_group_consumers_with_options(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchAddConsumerGroupConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchAddConsumerGroupConsumersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_ids):
+            body['consumerIds'] = request.consumer_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchAddConsumerGroupConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/consumers/batch-add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchAddConsumerGroupConsumersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_add_consumer_group_consumers_with_options_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchAddConsumerGroupConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchAddConsumerGroupConsumersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_ids):
+            body['consumerIds'] = request.consumer_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchAddConsumerGroupConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/consumers/batch-add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchAddConsumerGroupConsumersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_add_consumer_group_consumers(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchAddConsumerGroupConsumersRequest,
+    ) -> main_models.BatchAddConsumerGroupConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_add_consumer_group_consumers_with_options(consumer_group_id, request, headers, runtime)
+
+    async def batch_add_consumer_group_consumers_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchAddConsumerGroupConsumersRequest,
+    ) -> main_models.BatchAddConsumerGroupConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_add_consumer_group_consumers_with_options_async(consumer_group_id, request, headers, runtime)
+
     def batch_delete_consumer_authorization_rule_with_options(
         self,
         request: main_models.BatchDeleteConsumerAuthorizationRuleRequest,
@@ -355,6 +435,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.batch_delete_consumer_authorization_rule_with_options_async(request, headers, runtime)
+
+    def batch_remove_consumer_group_consumers_with_options(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchRemoveConsumerGroupConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchRemoveConsumerGroupConsumersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_ids):
+            body['consumerIds'] = request.consumer_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchRemoveConsumerGroupConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/consumers/batch-remove',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchRemoveConsumerGroupConsumersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_remove_consumer_group_consumers_with_options_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchRemoveConsumerGroupConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchRemoveConsumerGroupConsumersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_ids):
+            body['consumerIds'] = request.consumer_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchRemoveConsumerGroupConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/consumers/batch-remove',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchRemoveConsumerGroupConsumersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_remove_consumer_group_consumers(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchRemoveConsumerGroupConsumersRequest,
+    ) -> main_models.BatchRemoveConsumerGroupConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_remove_consumer_group_consumers_with_options(consumer_group_id, request, headers, runtime)
+
+    async def batch_remove_consumer_group_consumers_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.BatchRemoveConsumerGroupConsumersRequest,
+    ) -> main_models.BatchRemoveConsumerGroupConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_remove_consumer_group_consumers_with_options_async(consumer_group_id, request, headers, runtime)
 
     def change_resource_group_with_options(
         self,
@@ -443,6 +603,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
+
+    def create_ai_model_card_with_options(
+        self,
+        request: main_models.CreateAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAiModelCardResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.available_paths):
+            body['availablePaths'] = request.available_paths
+        if not DaraCore.is_null(request.credit):
+            body['credit'] = request.credit
+        if not DaraCore.is_null(request.features):
+            body['features'] = request.features
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.meta):
+            body['meta'] = request.meta
+        if not DaraCore.is_null(request.model_name):
+            body['modelName'] = request.model_name
+        if not DaraCore.is_null(request.model_provider):
+            body['modelProvider'] = request.model_provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAiModelCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ai_model_card_with_options_async(
+        self,
+        request: main_models.CreateAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAiModelCardResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.available_paths):
+            body['availablePaths'] = request.available_paths
+        if not DaraCore.is_null(request.credit):
+            body['credit'] = request.credit
+        if not DaraCore.is_null(request.features):
+            body['features'] = request.features
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.meta):
+            body['meta'] = request.meta
+        if not DaraCore.is_null(request.model_name):
+            body['modelName'] = request.model_name
+        if not DaraCore.is_null(request.model_provider):
+            body['modelProvider'] = request.model_provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAiModelCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ai_model_card(
+        self,
+        request: main_models.CreateAiModelCardRequest,
+    ) -> main_models.CreateAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_ai_model_card_with_options(request, headers, runtime)
+
+    async def create_ai_model_card_async(
+        self,
+        request: main_models.CreateAiModelCardRequest,
+    ) -> main_models.CreateAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_ai_model_card_with_options_async(request, headers, runtime)
 
     def create_ai_model_provider_with_options(
         self,
@@ -907,6 +1167,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_consumer_authorization_rules_with_options_async(request, headers, runtime)
+
+    def create_consumer_group_with_options(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConsumerGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_group_id):
+            body['consumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_consumer_group_with_options_async(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConsumerGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_group_id):
+            body['consumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_consumer_group(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+    ) -> main_models.CreateConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_consumer_group_with_options(request, headers, runtime)
+
+    async def create_consumer_group_async(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+    ) -> main_models.CreateConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_consumer_group_with_options_async(request, headers, runtime)
 
     def create_domain_with_options(
         self,
@@ -2472,6 +2820,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_source_with_options_async(request, headers, runtime)
 
+    def delete_ai_model_card_with_options(
+        self,
+        model_card_id: str,
+        request: main_models.DeleteAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAiModelCardResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards/{DaraURL.percent_encode(model_card_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAiModelCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ai_model_card_with_options_async(
+        self,
+        model_card_id: str,
+        request: main_models.DeleteAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAiModelCardResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards/{DaraURL.percent_encode(model_card_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAiModelCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ai_model_card(
+        self,
+        model_card_id: str,
+        request: main_models.DeleteAiModelCardRequest,
+    ) -> main_models.DeleteAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_ai_model_card_with_options(model_card_id, request, headers, runtime)
+
+    async def delete_ai_model_card_async(
+        self,
+        model_card_id: str,
+        request: main_models.DeleteAiModelCardRequest,
+    ) -> main_models.DeleteAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_ai_model_card_with_options_async(model_card_id, request, headers, runtime)
+
+    def delete_ai_model_provider_with_options(
+        self,
+        model_provider_id: str,
+        request: main_models.DeleteAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAiModelProviderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers/{DaraURL.percent_encode(model_provider_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAiModelProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ai_model_provider_with_options_async(
+        self,
+        model_provider_id: str,
+        request: main_models.DeleteAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAiModelProviderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers/{DaraURL.percent_encode(model_provider_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAiModelProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ai_model_provider(
+        self,
+        model_provider_id: str,
+        request: main_models.DeleteAiModelProviderRequest,
+    ) -> main_models.DeleteAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_ai_model_provider_with_options(model_provider_id, request, headers, runtime)
+
+    async def delete_ai_model_provider_async(
+        self,
+        model_provider_id: str,
+        request: main_models.DeleteAiModelProviderRequest,
+    ) -> main_models.DeleteAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_ai_model_provider_with_options_async(model_provider_id, request, headers, runtime)
+
     def delete_consumer_with_options(
         self,
         consumer_id: str,
@@ -2607,6 +3099,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_consumer_authorization_rule_with_options_async(consumer_authorization_rule_id, consumer_id, headers, runtime)
+
+    def delete_consumer_group_with_options(
+        self,
+        consumer_group_id: str,
+        request: main_models.DeleteConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_consumer_group_with_options_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.DeleteConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_consumer_group(
+        self,
+        consumer_group_id: str,
+        request: main_models.DeleteConsumerGroupRequest,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_consumer_group_with_options(consumer_group_id, request, headers, runtime)
+
+    async def delete_consumer_group_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.DeleteConsumerGroupRequest,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_consumer_group_with_options_async(consumer_group_id, request, headers, runtime)
 
     def delete_domain_with_options(
         self,
@@ -4094,6 +4658,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.export_http_api_with_options_async(http_api_id, request, headers, runtime)
 
+    def get_ai_model_card_with_options(
+        self,
+        model_card_id: str,
+        request: main_models.GetAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiModelCardResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards/{DaraURL.percent_encode(model_card_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiModelCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_model_card_with_options_async(
+        self,
+        model_card_id: str,
+        request: main_models.GetAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiModelCardResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards/{DaraURL.percent_encode(model_card_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiModelCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_model_card(
+        self,
+        model_card_id: str,
+        request: main_models.GetAiModelCardRequest,
+    ) -> main_models.GetAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_ai_model_card_with_options(model_card_id, request, headers, runtime)
+
+    async def get_ai_model_card_async(
+        self,
+        model_card_id: str,
+        request: main_models.GetAiModelCardRequest,
+    ) -> main_models.GetAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_ai_model_card_with_options_async(model_card_id, request, headers, runtime)
+
+    def get_ai_model_provider_with_options(
+        self,
+        model_provider_id: str,
+        request: main_models.GetAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiModelProviderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers/{DaraURL.percent_encode(model_provider_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiModelProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_model_provider_with_options_async(
+        self,
+        model_provider_id: str,
+        request: main_models.GetAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiModelProviderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers/{DaraURL.percent_encode(model_provider_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiModelProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_model_provider(
+        self,
+        model_provider_id: str,
+        request: main_models.GetAiModelProviderRequest,
+    ) -> main_models.GetAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_ai_model_provider_with_options(model_provider_id, request, headers, runtime)
+
+    async def get_ai_model_provider_async(
+        self,
+        model_provider_id: str,
+        request: main_models.GetAiModelProviderRequest,
+    ) -> main_models.GetAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_ai_model_provider_with_options_async(model_provider_id, request, headers, runtime)
+
     def get_consumer_with_options(
         self,
         consumer_id: str,
@@ -4229,6 +4937,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_consumer_authorization_rule_with_options_async(consumer_authorization_rule_id, consumer_id, headers, runtime)
+
+    def get_consumer_group_with_options(
+        self,
+        consumer_group_id: str,
+        request: main_models.GetConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConsumerGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_consumer_group_with_options_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.GetConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConsumerGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_consumer_group(
+        self,
+        consumer_group_id: str,
+        request: main_models.GetConsumerGroupRequest,
+    ) -> main_models.GetConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_consumer_group_with_options(consumer_group_id, request, headers, runtime)
+
+    async def get_consumer_group_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.GetConsumerGroupRequest,
+    ) -> main_models.GetConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_consumer_group_with_options_async(consumer_group_id, request, headers, runtime)
 
     def get_dashboard_with_options(
         self,
@@ -5934,6 +6714,182 @@ class Client(OpenApiClient):
         headers = {}
         return await self.install_plugin_with_options_async(request, headers, runtime)
 
+    def list_ai_model_cards_with_options(
+        self,
+        request: main_models.ListAiModelCardsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiModelCardsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiModelCards',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiModelCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ai_model_cards_with_options_async(
+        self,
+        request: main_models.ListAiModelCardsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiModelCardsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiModelCards',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiModelCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ai_model_cards(
+        self,
+        request: main_models.ListAiModelCardsRequest,
+    ) -> main_models.ListAiModelCardsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ai_model_cards_with_options(request, headers, runtime)
+
+    async def list_ai_model_cards_async(
+        self,
+        request: main_models.ListAiModelCardsRequest,
+    ) -> main_models.ListAiModelCardsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ai_model_cards_with_options_async(request, headers, runtime)
+
+    def list_ai_model_providers_with_options(
+        self,
+        request: main_models.ListAiModelProvidersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiModelProvidersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiModelProviders',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiModelProvidersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ai_model_providers_with_options_async(
+        self,
+        request: main_models.ListAiModelProvidersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiModelProvidersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiModelProviders',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiModelProvidersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ai_model_providers(
+        self,
+        request: main_models.ListAiModelProvidersRequest,
+    ) -> main_models.ListAiModelProvidersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ai_model_providers_with_options(request, headers, runtime)
+
+    async def list_ai_model_providers_async(
+        self,
+        request: main_models.ListAiModelProvidersRequest,
+    ) -> main_models.ListAiModelProvidersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ai_model_providers_with_options_async(request, headers, runtime)
+
     def list_consumer_authorization_rules_with_options(
         self,
         consumer_id: str,
@@ -6021,6 +6977,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_consumer_authorization_rules_with_options_async(consumer_id, request, headers, runtime)
+
+    def list_consumer_group_consumers_with_options(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerGroupConsumersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerGroupConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/consumers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerGroupConsumersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consumer_group_consumers_with_options_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerGroupConsumersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerGroupConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/consumers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerGroupConsumersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consumer_group_consumers(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupConsumersRequest,
+    ) -> main_models.ListConsumerGroupConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_consumer_group_consumers_with_options(consumer_group_id, request, headers, runtime)
+
+    async def list_consumer_group_consumers_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupConsumersRequest,
+    ) -> main_models.ListConsumerGroupConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_consumer_group_consumers_with_options_async(consumer_group_id, request, headers, runtime)
+
+    def list_consumer_groups_with_options(
+        self,
+        request: main_models.ListConsumerGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerGroups',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consumer_groups_with_options_async(
+        self,
+        request: main_models.ListConsumerGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerGroups',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consumer_groups(
+        self,
+        request: main_models.ListConsumerGroupsRequest,
+    ) -> main_models.ListConsumerGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_consumer_groups_with_options(request, headers, runtime)
+
+    async def list_consumer_groups_async(
+        self,
+        request: main_models.ListConsumerGroupsRequest,
+    ) -> main_models.ListConsumerGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_consumer_groups_with_options_async(request, headers, runtime)
 
     def list_consumer_quota_rules_with_options(
         self,
@@ -9216,6 +10348,190 @@ class Client(OpenApiClient):
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
 
+    def update_ai_model_card_with_options(
+        self,
+        model_card_id: str,
+        request: main_models.UpdateAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAiModelCardResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.available_paths):
+            body['availablePaths'] = request.available_paths
+        if not DaraCore.is_null(request.credit):
+            body['credit'] = request.credit
+        if not DaraCore.is_null(request.features):
+            body['features'] = request.features
+        if not DaraCore.is_null(request.meta):
+            body['meta'] = request.meta
+        if not DaraCore.is_null(request.model_name):
+            body['modelName'] = request.model_name
+        if not DaraCore.is_null(request.model_provider):
+            body['modelProvider'] = request.model_provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards/{DaraURL.percent_encode(model_card_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAiModelCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ai_model_card_with_options_async(
+        self,
+        model_card_id: str,
+        request: main_models.UpdateAiModelCardRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAiModelCardResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.available_paths):
+            body['availablePaths'] = request.available_paths
+        if not DaraCore.is_null(request.credit):
+            body['credit'] = request.credit
+        if not DaraCore.is_null(request.features):
+            body['features'] = request.features
+        if not DaraCore.is_null(request.meta):
+            body['meta'] = request.meta
+        if not DaraCore.is_null(request.model_name):
+            body['modelName'] = request.model_name
+        if not DaraCore.is_null(request.model_provider):
+            body['modelProvider'] = request.model_provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAiModelCard',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-cards/{DaraURL.percent_encode(model_card_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAiModelCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ai_model_card(
+        self,
+        model_card_id: str,
+        request: main_models.UpdateAiModelCardRequest,
+    ) -> main_models.UpdateAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_ai_model_card_with_options(model_card_id, request, headers, runtime)
+
+    async def update_ai_model_card_async(
+        self,
+        model_card_id: str,
+        request: main_models.UpdateAiModelCardRequest,
+    ) -> main_models.UpdateAiModelCardResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_ai_model_card_with_options_async(model_card_id, request, headers, runtime)
+
+    def update_ai_model_provider_with_options(
+        self,
+        model_provider_id: str,
+        request: main_models.UpdateAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAiModelProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.service_ids):
+            body['serviceIds'] = request.service_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers/{DaraURL.percent_encode(model_provider_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAiModelProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ai_model_provider_with_options_async(
+        self,
+        model_provider_id: str,
+        request: main_models.UpdateAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAiModelProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.service_ids):
+            body['serviceIds'] = request.service_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers/{DaraURL.percent_encode(model_provider_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAiModelProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ai_model_provider(
+        self,
+        model_provider_id: str,
+        request: main_models.UpdateAiModelProviderRequest,
+    ) -> main_models.UpdateAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_ai_model_provider_with_options(model_provider_id, request, headers, runtime)
+
+    async def update_ai_model_provider_async(
+        self,
+        model_provider_id: str,
+        request: main_models.UpdateAiModelProviderRequest,
+    ) -> main_models.UpdateAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_ai_model_provider_with_options_async(model_provider_id, request, headers, runtime)
+
     def update_and_attach_policy_with_options(
         self,
         policy_id: str,
@@ -9507,6 +10823,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_consumer_authorization_rule_with_options_async(consumer_id, consumer_authorization_rule_id, request, headers, runtime)
+
+    def update_consumer_group_with_options(
+        self,
+        consumer_group_id: str,
+        request: main_models.UpdateConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConsumerGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_consumer_group_with_options_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.UpdateConsumerGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConsumerGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConsumerGroup',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_consumer_group(
+        self,
+        consumer_group_id: str,
+        request: main_models.UpdateConsumerGroupRequest,
+    ) -> main_models.UpdateConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_consumer_group_with_options(consumer_group_id, request, headers, runtime)
+
+    async def update_consumer_group_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.UpdateConsumerGroupRequest,
+    ) -> main_models.UpdateConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_consumer_group_with_options_async(consumer_group_id, request, headers, runtime)
 
     def update_domain_with_options(
         self,

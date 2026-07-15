@@ -101,12 +101,21 @@ from ._add_gateway_quota_rule_response import AddGatewayQuotaRuleResponse
 from ._add_gateway_security_group_rule_request import AddGatewaySecurityGroupRuleRequest
 from ._add_gateway_security_group_rule_response_body import AddGatewaySecurityGroupRuleResponseBody
 from ._add_gateway_security_group_rule_response import AddGatewaySecurityGroupRuleResponse
+from ._batch_add_consumer_group_consumers_request import BatchAddConsumerGroupConsumersRequest
+from ._batch_add_consumer_group_consumers_response_body import BatchAddConsumerGroupConsumersResponseBody
+from ._batch_add_consumer_group_consumers_response import BatchAddConsumerGroupConsumersResponse
 from ._batch_delete_consumer_authorization_rule_request import BatchDeleteConsumerAuthorizationRuleRequest
 from ._batch_delete_consumer_authorization_rule_response_body import BatchDeleteConsumerAuthorizationRuleResponseBody
 from ._batch_delete_consumer_authorization_rule_response import BatchDeleteConsumerAuthorizationRuleResponse
+from ._batch_remove_consumer_group_consumers_request import BatchRemoveConsumerGroupConsumersRequest
+from ._batch_remove_consumer_group_consumers_response_body import BatchRemoveConsumerGroupConsumersResponseBody
+from ._batch_remove_consumer_group_consumers_response import BatchRemoveConsumerGroupConsumersResponse
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._create_ai_model_card_request import CreateAiModelCardRequest
+from ._create_ai_model_card_response_body import CreateAiModelCardResponseBody
+from ._create_ai_model_card_response import CreateAiModelCardResponse
 from ._create_ai_model_provider_request import CreateAiModelProviderRequest
 from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBody
 from ._create_ai_model_provider_response import CreateAiModelProviderResponse
@@ -122,6 +131,9 @@ from ._create_consumer_authorization_rule_response import CreateConsumerAuthoriz
 from ._create_consumer_authorization_rules_request import CreateConsumerAuthorizationRulesRequest
 from ._create_consumer_authorization_rules_response_body import CreateConsumerAuthorizationRulesResponseBody
 from ._create_consumer_authorization_rules_response import CreateConsumerAuthorizationRulesResponse
+from ._create_consumer_group_request import CreateConsumerGroupRequest
+from ._create_consumer_group_response_body import CreateConsumerGroupResponseBody
+from ._create_consumer_group_response import CreateConsumerGroupResponse
 from ._create_domain_request import CreateDomainRequest
 from ._create_domain_response_body import CreateDomainResponseBody
 from ._create_domain_response import CreateDomainResponse
@@ -167,10 +179,19 @@ from ._create_service_version_response import CreateServiceVersionResponse
 from ._create_source_request import CreateSourceRequest
 from ._create_source_response_body import CreateSourceResponseBody
 from ._create_source_response import CreateSourceResponse
+from ._delete_ai_model_card_request import DeleteAiModelCardRequest
+from ._delete_ai_model_card_response_body import DeleteAiModelCardResponseBody
+from ._delete_ai_model_card_response import DeleteAiModelCardResponse
+from ._delete_ai_model_provider_request import DeleteAiModelProviderRequest
+from ._delete_ai_model_provider_response_body import DeleteAiModelProviderResponseBody
+from ._delete_ai_model_provider_response import DeleteAiModelProviderResponse
 from ._delete_consumer_response_body import DeleteConsumerResponseBody
 from ._delete_consumer_response import DeleteConsumerResponse
 from ._delete_consumer_authorization_rule_response_body import DeleteConsumerAuthorizationRuleResponseBody
 from ._delete_consumer_authorization_rule_response import DeleteConsumerAuthorizationRuleResponse
+from ._delete_consumer_group_request import DeleteConsumerGroupRequest
+from ._delete_consumer_group_response_body import DeleteConsumerGroupResponseBody
+from ._delete_consumer_group_response import DeleteConsumerGroupResponse
 from ._delete_domain_response_body import DeleteDomainResponseBody
 from ._delete_domain_response import DeleteDomainResponse
 from ._delete_environment_response_body import DeleteEnvironmentResponseBody
@@ -219,10 +240,19 @@ from ._describe_regions_response import DescribeRegionsResponse
 from ._export_http_api_request import ExportHttpApiRequest
 from ._export_http_api_response_body import ExportHttpApiResponseBody
 from ._export_http_api_response import ExportHttpApiResponse
+from ._get_ai_model_card_request import GetAiModelCardRequest
+from ._get_ai_model_card_response_body import GetAiModelCardResponseBody
+from ._get_ai_model_card_response import GetAiModelCardResponse
+from ._get_ai_model_provider_request import GetAiModelProviderRequest
+from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBody
+from ._get_ai_model_provider_response import GetAiModelProviderResponse
 from ._get_consumer_response_body import GetConsumerResponseBody
 from ._get_consumer_response import GetConsumerResponse
 from ._get_consumer_authorization_rule_response_body import GetConsumerAuthorizationRuleResponseBody
 from ._get_consumer_authorization_rule_response import GetConsumerAuthorizationRuleResponse
+from ._get_consumer_group_request import GetConsumerGroupRequest
+from ._get_consumer_group_response_body import GetConsumerGroupResponseBody
+from ._get_consumer_group_response import GetConsumerGroupResponse
 from ._get_dashboard_request import GetDashboardRequest
 from ._get_dashboard_shrink_request import GetDashboardShrinkRequest
 from ._get_dashboard_response_body import GetDashboardResponseBody
@@ -278,9 +308,21 @@ from ._import_http_api_response import ImportHttpApiResponse
 from ._install_plugin_request import InstallPluginRequest
 from ._install_plugin_response_body import InstallPluginResponseBody
 from ._install_plugin_response import InstallPluginResponse
+from ._list_ai_model_cards_request import ListAiModelCardsRequest
+from ._list_ai_model_cards_response_body import ListAiModelCardsResponseBody
+from ._list_ai_model_cards_response import ListAiModelCardsResponse
+from ._list_ai_model_providers_request import ListAiModelProvidersRequest
+from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBody
+from ._list_ai_model_providers_response import ListAiModelProvidersResponse
 from ._list_consumer_authorization_rules_request import ListConsumerAuthorizationRulesRequest
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBody
 from ._list_consumer_authorization_rules_response import ListConsumerAuthorizationRulesResponse
+from ._list_consumer_group_consumers_request import ListConsumerGroupConsumersRequest
+from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBody
+from ._list_consumer_group_consumers_response import ListConsumerGroupConsumersResponse
+from ._list_consumer_groups_request import ListConsumerGroupsRequest
+from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBody
+from ._list_consumer_groups_response import ListConsumerGroupsResponse
 from ._list_consumer_quota_rules_request import ListConsumerQuotaRulesRequest
 from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBody
 from ._list_consumer_quota_rules_response import ListConsumerQuotaRulesResponse
@@ -378,6 +420,12 @@ from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_shrink_request import UntagResourcesShrinkRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_ai_model_card_request import UpdateAiModelCardRequest
+from ._update_ai_model_card_response_body import UpdateAiModelCardResponseBody
+from ._update_ai_model_card_response import UpdateAiModelCardResponse
+from ._update_ai_model_provider_request import UpdateAiModelProviderRequest
+from ._update_ai_model_provider_response_body import UpdateAiModelProviderResponseBody
+from ._update_ai_model_provider_response import UpdateAiModelProviderResponse
 from ._update_and_attach_policy_request import UpdateAndAttachPolicyRequest
 from ._update_and_attach_policy_response_body import UpdateAndAttachPolicyResponseBody
 from ._update_and_attach_policy_response import UpdateAndAttachPolicyResponse
@@ -387,6 +435,9 @@ from ._update_consumer_response import UpdateConsumerResponse
 from ._update_consumer_authorization_rule_request import UpdateConsumerAuthorizationRuleRequest
 from ._update_consumer_authorization_rule_response_body import UpdateConsumerAuthorizationRuleResponseBody
 from ._update_consumer_authorization_rule_response import UpdateConsumerAuthorizationRuleResponse
+from ._update_consumer_group_request import UpdateConsumerGroupRequest
+from ._update_consumer_group_response_body import UpdateConsumerGroupResponseBody
+from ._update_consumer_group_response import UpdateConsumerGroupResponse
 from ._update_domain_request import UpdateDomainRequest
 from ._update_domain_response_body import UpdateDomainResponseBody
 from ._update_domain_response import UpdateDomainResponse
@@ -539,6 +590,15 @@ from ._tls_cipher_suites_config import TlsCipherSuitesConfigTlsCipherSuite
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyDataConflictPreview
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyData
+from ._batch_add_consumer_group_consumers_response_body import BatchAddConsumerGroupConsumersResponseBodyData
+from ._batch_remove_consumer_group_consumers_response_body import BatchRemoveConsumerGroupConsumersResponseBodyData
+from ._create_ai_model_card_request import CreateAiModelCardRequestAvailablePaths
+from ._create_ai_model_card_request import CreateAiModelCardRequestCredit
+from ._create_ai_model_card_request import CreateAiModelCardRequestMeta
+from ._create_ai_model_card_response_body import CreateAiModelCardResponseBodyDataAvailablePaths
+from ._create_ai_model_card_response_body import CreateAiModelCardResponseBodyDataCredit
+from ._create_ai_model_card_response_body import CreateAiModelCardResponseBodyDataMeta
+from ._create_ai_model_card_response_body import CreateAiModelCardResponseBodyData
 from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths
 from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCardsCredit
 from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCardsMeta
@@ -550,6 +610,7 @@ from ._create_consumer_authorization_rule_response_body import CreateConsumerAut
 from ._create_consumer_authorization_rules_request import CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier
 from ._create_consumer_authorization_rules_request import CreateConsumerAuthorizationRulesRequestAuthorizationRules
 from ._create_consumer_authorization_rules_response_body import CreateConsumerAuthorizationRulesResponseBodyData
+from ._create_consumer_group_response_body import CreateConsumerGroupResponseBodyData
 from ._create_domain_response_body import CreateDomainResponseBodyData
 from ._create_environment_response_body import CreateEnvironmentResponseBodyData
 from ._create_gateway_request import CreateGatewayRequestLogConfigSls
@@ -597,8 +658,18 @@ from ._deploy_http_api_response_body import DeployHttpApiResponseBodyData
 from ._describe_regions_response_body import DescribeRegionsResponseBodyData
 from ._export_http_api_request import ExportHttpApiRequestExtensionConfig
 from ._export_http_api_response_body import ExportHttpApiResponseBodyData
+from ._get_ai_model_card_response_body import GetAiModelCardResponseBodyDataAvailablePaths
+from ._get_ai_model_card_response_body import GetAiModelCardResponseBodyDataCredit
+from ._get_ai_model_card_response_body import GetAiModelCardResponseBodyDataMeta
+from ._get_ai_model_card_response_body import GetAiModelCardResponseBodyData
+from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCardsAvailablePaths
+from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCardsCredit
+from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCardsMeta
+from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCards
+from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyData
 from ._get_consumer_response_body import GetConsumerResponseBodyDataConsumerGroups
 from ._get_consumer_response_body import GetConsumerResponseBodyData
+from ._get_consumer_group_response_body import GetConsumerGroupResponseBodyData
 from ._get_dashboard_request import GetDashboardRequestFilter
 from ._get_dashboard_response_body import GetDashboardResponseBodyData
 from ._get_domain_response_body import GetDomainResponseBodyDataStatisticsInfo
@@ -653,8 +724,23 @@ from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunI
 from ._import_http_api_response_body import ImportHttpApiResponseBodyData
 from ._install_plugin_response_body import InstallPluginResponseBodyDataInstallPluginResults
 from ._install_plugin_response_body import InstallPluginResponseBodyData
+from ._list_ai_model_cards_response_body import ListAiModelCardsResponseBodyDataItemsAvailablePaths
+from ._list_ai_model_cards_response_body import ListAiModelCardsResponseBodyDataItemsCredit
+from ._list_ai_model_cards_response_body import ListAiModelCardsResponseBodyDataItemsMeta
+from ._list_ai_model_cards_response_body import ListAiModelCardsResponseBodyDataItems
+from ._list_ai_model_cards_response_body import ListAiModelCardsResponseBodyData
+from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItemsModelCardsAvailablePaths
+from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItemsModelCardsCredit
+from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItemsModelCardsMeta
+from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItemsModelCards
+from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItems
+from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyData
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyDataItems
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyData
+from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBodyDataItems
+from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBodyData
+from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBodyDataItems
+from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBodyData
 from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBodyDataItems
 from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBodyData
 from ._list_consumers_response_body import ListConsumersResponseBodyDataItems
@@ -724,6 +810,18 @@ from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataFailed
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataSucceedMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyData
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_ai_model_card_request import UpdateAiModelCardRequestAvailablePaths
+from ._update_ai_model_card_request import UpdateAiModelCardRequestCredit
+from ._update_ai_model_card_request import UpdateAiModelCardRequestMeta
+from ._update_ai_model_card_response_body import UpdateAiModelCardResponseBodyDataAvailablePaths
+from ._update_ai_model_card_response_body import UpdateAiModelCardResponseBodyDataCredit
+from ._update_ai_model_card_response_body import UpdateAiModelCardResponseBodyDataMeta
+from ._update_ai_model_card_response_body import UpdateAiModelCardResponseBodyData
+from ._update_ai_model_provider_response_body import UpdateAiModelProviderResponseBodyDataModelCardsAvailablePaths
+from ._update_ai_model_provider_response_body import UpdateAiModelProviderResponseBodyDataModelCardsCredit
+from ._update_ai_model_provider_response_body import UpdateAiModelProviderResponseBodyDataModelCardsMeta
+from ._update_ai_model_provider_response_body import UpdateAiModelProviderResponseBodyDataModelCards
+from ._update_ai_model_provider_response_body import UpdateAiModelProviderResponseBodyData
 from ._update_domain_response_body import UpdateDomainResponseBodyData
 from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems
 from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBodyDataConflictPreview
@@ -844,12 +942,21 @@ __all__ = [
     AddGatewaySecurityGroupRuleRequest,
     AddGatewaySecurityGroupRuleResponseBody,
     AddGatewaySecurityGroupRuleResponse,
+    BatchAddConsumerGroupConsumersRequest,
+    BatchAddConsumerGroupConsumersResponseBody,
+    BatchAddConsumerGroupConsumersResponse,
     BatchDeleteConsumerAuthorizationRuleRequest,
     BatchDeleteConsumerAuthorizationRuleResponseBody,
     BatchDeleteConsumerAuthorizationRuleResponse,
+    BatchRemoveConsumerGroupConsumersRequest,
+    BatchRemoveConsumerGroupConsumersResponseBody,
+    BatchRemoveConsumerGroupConsumersResponse,
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
+    CreateAiModelCardRequest,
+    CreateAiModelCardResponseBody,
+    CreateAiModelCardResponse,
     CreateAiModelProviderRequest,
     CreateAiModelProviderResponseBody,
     CreateAiModelProviderResponse,
@@ -865,6 +972,9 @@ __all__ = [
     CreateConsumerAuthorizationRulesRequest,
     CreateConsumerAuthorizationRulesResponseBody,
     CreateConsumerAuthorizationRulesResponse,
+    CreateConsumerGroupRequest,
+    CreateConsumerGroupResponseBody,
+    CreateConsumerGroupResponse,
     CreateDomainRequest,
     CreateDomainResponseBody,
     CreateDomainResponse,
@@ -910,10 +1020,19 @@ __all__ = [
     CreateSourceRequest,
     CreateSourceResponseBody,
     CreateSourceResponse,
+    DeleteAiModelCardRequest,
+    DeleteAiModelCardResponseBody,
+    DeleteAiModelCardResponse,
+    DeleteAiModelProviderRequest,
+    DeleteAiModelProviderResponseBody,
+    DeleteAiModelProviderResponse,
     DeleteConsumerResponseBody,
     DeleteConsumerResponse,
     DeleteConsumerAuthorizationRuleResponseBody,
     DeleteConsumerAuthorizationRuleResponse,
+    DeleteConsumerGroupRequest,
+    DeleteConsumerGroupResponseBody,
+    DeleteConsumerGroupResponse,
     DeleteDomainResponseBody,
     DeleteDomainResponse,
     DeleteEnvironmentResponseBody,
@@ -962,10 +1081,19 @@ __all__ = [
     ExportHttpApiRequest,
     ExportHttpApiResponseBody,
     ExportHttpApiResponse,
+    GetAiModelCardRequest,
+    GetAiModelCardResponseBody,
+    GetAiModelCardResponse,
+    GetAiModelProviderRequest,
+    GetAiModelProviderResponseBody,
+    GetAiModelProviderResponse,
     GetConsumerResponseBody,
     GetConsumerResponse,
     GetConsumerAuthorizationRuleResponseBody,
     GetConsumerAuthorizationRuleResponse,
+    GetConsumerGroupRequest,
+    GetConsumerGroupResponseBody,
+    GetConsumerGroupResponse,
     GetDashboardRequest,
     GetDashboardShrinkRequest,
     GetDashboardResponseBody,
@@ -1021,9 +1149,21 @@ __all__ = [
     InstallPluginRequest,
     InstallPluginResponseBody,
     InstallPluginResponse,
+    ListAiModelCardsRequest,
+    ListAiModelCardsResponseBody,
+    ListAiModelCardsResponse,
+    ListAiModelProvidersRequest,
+    ListAiModelProvidersResponseBody,
+    ListAiModelProvidersResponse,
     ListConsumerAuthorizationRulesRequest,
     ListConsumerAuthorizationRulesResponseBody,
     ListConsumerAuthorizationRulesResponse,
+    ListConsumerGroupConsumersRequest,
+    ListConsumerGroupConsumersResponseBody,
+    ListConsumerGroupConsumersResponse,
+    ListConsumerGroupsRequest,
+    ListConsumerGroupsResponseBody,
+    ListConsumerGroupsResponse,
     ListConsumerQuotaRulesRequest,
     ListConsumerQuotaRulesResponseBody,
     ListConsumerQuotaRulesResponse,
@@ -1121,6 +1261,12 @@ __all__ = [
     UntagResourcesShrinkRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateAiModelCardRequest,
+    UpdateAiModelCardResponseBody,
+    UpdateAiModelCardResponse,
+    UpdateAiModelProviderRequest,
+    UpdateAiModelProviderResponseBody,
+    UpdateAiModelProviderResponse,
     UpdateAndAttachPolicyRequest,
     UpdateAndAttachPolicyResponseBody,
     UpdateAndAttachPolicyResponse,
@@ -1130,6 +1276,9 @@ __all__ = [
     UpdateConsumerAuthorizationRuleRequest,
     UpdateConsumerAuthorizationRuleResponseBody,
     UpdateConsumerAuthorizationRuleResponse,
+    UpdateConsumerGroupRequest,
+    UpdateConsumerGroupResponseBody,
+    UpdateConsumerGroupResponse,
     UpdateDomainRequest,
     UpdateDomainResponseBody,
     UpdateDomainResponse,
@@ -1282,6 +1431,15 @@ __all__ = [
     AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
     AddGatewayQuotaRuleResponseBodyDataConflictPreview,
     AddGatewayQuotaRuleResponseBodyData,
+    BatchAddConsumerGroupConsumersResponseBodyData,
+    BatchRemoveConsumerGroupConsumersResponseBodyData,
+    CreateAiModelCardRequestAvailablePaths,
+    CreateAiModelCardRequestCredit,
+    CreateAiModelCardRequestMeta,
+    CreateAiModelCardResponseBodyDataAvailablePaths,
+    CreateAiModelCardResponseBodyDataCredit,
+    CreateAiModelCardResponseBodyDataMeta,
+    CreateAiModelCardResponseBodyData,
     CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths,
     CreateAiModelProviderResponseBodyDataModelCardsCredit,
     CreateAiModelProviderResponseBodyDataModelCardsMeta,
@@ -1293,6 +1451,7 @@ __all__ = [
     CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier,
     CreateConsumerAuthorizationRulesRequestAuthorizationRules,
     CreateConsumerAuthorizationRulesResponseBodyData,
+    CreateConsumerGroupResponseBodyData,
     CreateDomainResponseBodyData,
     CreateEnvironmentResponseBodyData,
     CreateGatewayRequestLogConfigSls,
@@ -1340,8 +1499,18 @@ __all__ = [
     DescribeRegionsResponseBodyData,
     ExportHttpApiRequestExtensionConfig,
     ExportHttpApiResponseBodyData,
+    GetAiModelCardResponseBodyDataAvailablePaths,
+    GetAiModelCardResponseBodyDataCredit,
+    GetAiModelCardResponseBodyDataMeta,
+    GetAiModelCardResponseBodyData,
+    GetAiModelProviderResponseBodyDataModelCardsAvailablePaths,
+    GetAiModelProviderResponseBodyDataModelCardsCredit,
+    GetAiModelProviderResponseBodyDataModelCardsMeta,
+    GetAiModelProviderResponseBodyDataModelCards,
+    GetAiModelProviderResponseBodyData,
     GetConsumerResponseBodyDataConsumerGroups,
     GetConsumerResponseBodyData,
+    GetConsumerGroupResponseBodyData,
     GetDashboardRequestFilter,
     GetDashboardResponseBodyData,
     GetDomainResponseBodyDataStatisticsInfo,
@@ -1396,8 +1565,23 @@ __all__ = [
     ImportHttpApiResponseBodyData,
     InstallPluginResponseBodyDataInstallPluginResults,
     InstallPluginResponseBodyData,
+    ListAiModelCardsResponseBodyDataItemsAvailablePaths,
+    ListAiModelCardsResponseBodyDataItemsCredit,
+    ListAiModelCardsResponseBodyDataItemsMeta,
+    ListAiModelCardsResponseBodyDataItems,
+    ListAiModelCardsResponseBodyData,
+    ListAiModelProvidersResponseBodyDataItemsModelCardsAvailablePaths,
+    ListAiModelProvidersResponseBodyDataItemsModelCardsCredit,
+    ListAiModelProvidersResponseBodyDataItemsModelCardsMeta,
+    ListAiModelProvidersResponseBodyDataItemsModelCards,
+    ListAiModelProvidersResponseBodyDataItems,
+    ListAiModelProvidersResponseBodyData,
     ListConsumerAuthorizationRulesResponseBodyDataItems,
     ListConsumerAuthorizationRulesResponseBodyData,
+    ListConsumerGroupConsumersResponseBodyDataItems,
+    ListConsumerGroupConsumersResponseBodyData,
+    ListConsumerGroupsResponseBodyDataItems,
+    ListConsumerGroupsResponseBodyData,
     ListConsumerQuotaRulesResponseBodyDataItems,
     ListConsumerQuotaRulesResponseBodyData,
     ListConsumersResponseBodyDataItems,
@@ -1467,6 +1651,18 @@ __all__ = [
     SyncMCPServersResponseBodyDataSucceedMcpServers,
     SyncMCPServersResponseBodyData,
     TagResourcesRequestTag,
+    UpdateAiModelCardRequestAvailablePaths,
+    UpdateAiModelCardRequestCredit,
+    UpdateAiModelCardRequestMeta,
+    UpdateAiModelCardResponseBodyDataAvailablePaths,
+    UpdateAiModelCardResponseBodyDataCredit,
+    UpdateAiModelCardResponseBodyDataMeta,
+    UpdateAiModelCardResponseBodyData,
+    UpdateAiModelProviderResponseBodyDataModelCardsAvailablePaths,
+    UpdateAiModelProviderResponseBodyDataModelCardsCredit,
+    UpdateAiModelProviderResponseBodyDataModelCardsMeta,
+    UpdateAiModelProviderResponseBodyDataModelCards,
+    UpdateAiModelProviderResponseBodyData,
     UpdateDomainResponseBodyData,
     UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
     UpdateGatewayQuotaRuleResponseBodyDataConflictPreview,

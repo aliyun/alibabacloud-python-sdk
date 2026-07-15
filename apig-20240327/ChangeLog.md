@@ -1,3 +1,23 @@
+2026-07-15 Version: 10.1.0
+- Support API BatchAddConsumerGroupConsumers.
+- Support API BatchRemoveConsumerGroupConsumers.
+- Support API CreateAiModelCard.
+- Support API CreateConsumerGroup.
+- Support API DeleteAiModelCard.
+- Support API DeleteAiModelProvider.
+- Support API DeleteConsumerGroup.
+- Support API GetAiModelCard.
+- Support API GetAiModelProvider.
+- Support API GetConsumerGroup.
+- Support API ListAiModelCards.
+- Support API ListAiModelProviders.
+- Support API ListConsumerGroupConsumers.
+- Support API ListConsumerGroups.
+- Support API UpdateAiModelCard.
+- Support API UpdateAiModelProvider.
+- Support API UpdateConsumerGroup.
+
+
 2026-07-15 Version: 10.0.0
 - Support API DeletePluginClass.
 - Update API GetDomain: add response parameters Body.data.certDetailErrorCode.
