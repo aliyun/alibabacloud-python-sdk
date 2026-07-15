@@ -14,13 +14,13 @@ class ExecuteWorkflowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # If the request is successful, the ID of the workflow instance is returned.
+        # The data returned for a successful request. It contains the workflow instance ID.
         self.data = data
-        # The error message that is returned only if the corresponding error occurs.
+        # The error message. This parameter is returned only if the request fails.
         self.message = message
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -76,7 +76,7 @@ class ExecuteWorkflowResponseBodyData(DaraModel):
         self,
         wf_instance_id: int = None,
     ):
-        # The workflow instance ID.
+        # The ID of the workflow instance.
         self.wf_instance_id = wf_instance_id
 
     def validate(self):

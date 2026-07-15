@@ -16,25 +16,25 @@ class GetOverviewRequest(DaraModel):
         region_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value must be a UNIX timestamp (in seconds). If left empty, the current time is used.
+        # The end timestamp of the data, in seconds. Example: 1684166400. If this parameter is not specified, the current time is used by default.
         self.end_time = end_time
         # The application group ID.
         self.group_id = group_id
         # The metric type. Valid values:
         # 
-        # *   0: the basic job data.
-        # *   1: the job running data.
+        # - 0: basic task information.
+        # - 1: task execution information.
         # 
         # This parameter is required.
         self.metric_type = metric_type
-        # The unique identifier (UID) of the namespace.
+        # The namespace UID.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # The source of the namespace. This parameter is required only for special third-party integrations.
         self.namespace_source = namespace_source
-        # The query type. Valid values:
+        # The operation type. Valid values:
         # 
-        # *   query: queries data in a time range.
-        # *   query_range: queries time series data in a time range.
+        # - query: queries interval data.
+        # - query_range: queries interval time series data.
         # 
         # This parameter is required.
         self.operate = operate
@@ -42,7 +42,7 @@ class GetOverviewRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. The value must be a UNIX timestamp (in seconds).
+        # The start timestamp of the data, in seconds. Example: 1684166400.
         # 
         # This parameter is required.
         self.start_time = start_time

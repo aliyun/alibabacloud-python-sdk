@@ -15,21 +15,21 @@ class BatchDeleteJobsRequest(DaraModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
-        # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # The ID of the Application. You can find this ID on the **Application Management** page in the Console.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The job IDs. Separate multiple job IDs with commas (,).
+        # The IDs of the Jobs to delete.
         # 
         # This parameter is required.
         self.job_id_list = job_id_list
-        # The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # The ID of the Namespace that contains the Jobs. You can find this ID on the **Namespace** page in the Console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # This parameter is required only for specific third-party integrations.
         self.namespace_source = namespace_source
-        # The ID of the region to which the job belongs.
+        # The Region where the Jobs are located.
         # 
         # This parameter is required.
         self.region_id = region_id

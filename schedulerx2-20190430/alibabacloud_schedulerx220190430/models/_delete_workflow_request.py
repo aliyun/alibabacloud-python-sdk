@@ -13,13 +13,13 @@ class DeleteWorkflowRequest(DaraModel):
         region_id: str = None,
         workflow_id: int = None,
     ):
-        # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # The ID of the application group. You can find this ID on the **Application Management** page in the Console.
         self.group_id = group_id
-        # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # The ID of the namespace. You can find this ID on the **Namespace** page in the Console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # Required only for specific third-party scenarios.
         self.namespace_source = namespace_source
         # The region ID.
         # 

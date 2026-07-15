@@ -11,15 +11,15 @@ class GetAppGroupRequest(DaraModel):
         namespace: str = None,
         region_id: str = None,
     ):
-        # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # The App Group ID. You can obtain this ID on the **Application Management** page in the console.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the namespace. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # The namespace ID. You can obtain this ID on the **Namespaces** page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

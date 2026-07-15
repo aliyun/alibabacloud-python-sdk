@@ -14,18 +14,18 @@ class CreateJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
-        # The details of the job.
+        # The node details.
         self.data = data
-        # The additional information returned.
+        # The additional information.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # If you set JobType to k8s, this parameter is required. Valid values:
+        # Indicates whether the node was created successfully. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The node was created successfully.
+        # - **false**: The node failed to be created.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class CreateJobResponseBodyData(DaraModel):
         self,
         job_id: int = None,
     ):
-        # The job ID.
+        # The node ID.
         self.job_id = job_id
 
     def validate(self):

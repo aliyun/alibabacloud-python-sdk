@@ -32,6 +32,8 @@ class GetJobInstanceRequest(DaraModel):
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # Region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
 

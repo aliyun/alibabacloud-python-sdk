@@ -16,28 +16,31 @@ class ListJobsRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # The application ID. You can obtain the ID on the **Application Management** page in the console.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The name of the job.
+        # The node name.
         self.job_name = job_name
-        # The ID of the namespace. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+        # The namespace. You can obtain the namespace on the **Namespace** page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # Required only for special third-party users.
         self.namespace_source = namespace_source
+        # The page number.
         self.page_num = page_num
+        # The number of records per page.
         self.page_size = page_size
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to enable the job. Valid values:
+        # The node status.
         # 
-        # *   **0**: disables the job.
-        # *   **1**: enables the job.
+        # - **0**: disabled
+        # 
+        # - **1**: enabled
         self.status = status
 
     def validate(self):

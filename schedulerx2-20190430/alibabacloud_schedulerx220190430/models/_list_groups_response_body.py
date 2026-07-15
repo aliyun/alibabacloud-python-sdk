@@ -18,16 +18,17 @@ class ListGroupsResponseBody(DaraModel):
     ):
         # The HTTP status code.
         self.code = code
-        # The applications.
+        # The list of applications.
         self.data = data
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -81,7 +82,7 @@ class ListGroupsResponseBodyData(DaraModel):
         self,
         app_groups: List[main_models.ListGroupsResponseBodyDataAppGroups] = None,
     ):
-        # The applications and their details.
+        # The list of applications and their details.
         self.app_groups = app_groups
 
     def validate(self):
@@ -124,18 +125,23 @@ class ListGroupsResponseBodyDataAppGroups(DaraModel):
         group_id: str = None,
         namespace: str = None,
     ):
-        # The application group ID.
+        # The ID of the application group.
         self.app_group_id = app_group_id
-        # The AppKey for the application.
+        # The application key.
         self.app_key = app_key
         # The name of the application.
         self.app_name = app_name
-        # The application version. 1: Basic version, 2: Professional version.
+        # The application version. Valid values: 1 (Basic Edition) and 2 (Professional Edition).
         self.app_version = app_version
         # The description of the application.
         self.description = description
+        # Indicates whether logging is enabled.
+        # 
+        # - true: Logging is enabled.
+        # 
+        # - false: Logging is disabled.
         self.enable_log = enable_log
-        # The application ID.
+        # The ID of the application.
         self.group_id = group_id
         # The ID of the namespace.
         self.namespace = namespace

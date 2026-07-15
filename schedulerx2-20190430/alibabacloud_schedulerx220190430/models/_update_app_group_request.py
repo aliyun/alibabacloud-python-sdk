@@ -22,6 +22,7 @@ class UpdateAppGroupRequest(DaraModel):
         self.app_version = app_version
         # The description of the application.
         self.description = description
+        # Enable logging
         self.enable_log = enable_log
         # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
         # 
@@ -37,6 +38,7 @@ class UpdateAppGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.namespace = namespace
+        # Notification policy name
         self.notification_policy_name = notification_policy_name
         # The ID of the region.
         # 

@@ -14,7 +14,7 @@ class SetJobInstanceSuccessRequest(DaraModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
-        # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # The application group ID. You can obtain the application group ID on the Application Management page in the console.
         # 
         # This parameter is required.
         self.group_id = group_id
@@ -26,11 +26,11 @@ class SetJobInstanceSuccessRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_instance_id = job_instance_id
-        # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # The namespace ID. You can obtain the namespace ID on the Namespace page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # This parameter is required only for special third-party users.
         self.namespace_source = namespace_source
         # The region ID.
         # 

@@ -12,16 +12,17 @@ class BatchDeleteRouteStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The returned status code.
         self.code = code
-        # The additional information that is returned.
+        # The returned message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # true: The request was successful.
-        # false: The request failed.
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

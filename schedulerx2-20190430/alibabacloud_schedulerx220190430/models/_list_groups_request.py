@@ -14,13 +14,13 @@ class ListGroupsRequest(DaraModel):
     ):
         # The name of the application group.
         self.app_group_name = app_group_name
-        # The namespace ID. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+        # The namespace. You can obtain the ID of the namespace on the **Namespace** page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # This parameter is required only for specific third-party integrations.
         self.namespace_source = namespace_source
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

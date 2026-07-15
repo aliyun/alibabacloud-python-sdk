@@ -12,16 +12,17 @@ class DeleteWorkflowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The error message that is returned only if the corresponding error occurs.
+        # The error message. This parameter is returned only if the request fails.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the workflow was deleted. Valid values:
+        # Indicates whether the workflow was deleted successfully. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The workflow was deleted.
+        # 
+        # - **false**: The workflow was not deleted.
         self.success = success
 
     def validate(self):

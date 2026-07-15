@@ -14,17 +14,17 @@ class BatchDeleteRouteStrategyRequest(DaraModel):
         namespace: str = None,
         region_id: str = None,
     ):
-        # The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # The ID of the Application. You can find the ID on the **Application Management** page in the Console.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The IDs of the jobs.
+        # A list of Job IDs.
         self.job_id_list = job_id_list
-        # The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+        # The ID of the Namespace. You can find the ID on the **Namespaces** page in the Console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The ID of the region.
+        # The ID of the Region.
         # 
         # This parameter is required.
         self.region_id = region_id

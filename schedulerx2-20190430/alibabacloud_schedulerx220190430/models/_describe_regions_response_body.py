@@ -16,18 +16,19 @@ class DescribeRegionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
-        # The error message that was returned only if the corresponding error occurred.
+        # The error message. This parameter is returned only if the request fails.
         self.message = message
-        # The available regions.
+        # A list of available regions.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,11 +90,11 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # The display name of the region, which varies based on the current language.
+        # The display name of the region. This value varies based on the language specified in the request.
         self.local_name = local_name
-        # The endpoint of the region.
+        # The service endpoint for the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

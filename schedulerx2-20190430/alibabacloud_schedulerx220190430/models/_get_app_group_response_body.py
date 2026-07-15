@@ -14,17 +14,18 @@ class GetAppGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The returned status code.
         self.code = code
-        # The information about the application group.
+        # The details of the App Group.
         self.data = data
-        # The additional information that is returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
+        # 
         # - **false**: The request failed.
         self.success = success
 
@@ -90,31 +91,33 @@ class GetAppGroupResponseBodyData(DaraModel):
         namespace: str = None,
         notification_policy_name: str = None,
     ):
-        # The AppKey of the application.
+        # The application\\"s AppKey.
         self.app_key = app_key
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The application version. 1: Basic version, 2: Professional version.
+        # The application version. Valid values:
         self.app_version = app_version
-        # The number of jobs that are configured for the application group.
+        # The number of jobs currently configured for the App Group.
         self.cur_jobs = cur_jobs
-        # The description of the application.
+        # The application description.
         self.description = description
+        # Specifies whether to enable log collection. The default value is false.
         self.enable_log = enable_log
-        # The ID of the application.
+        # The App Group ID.
         self.group_id = group_id
-        # The maximum number of jobs that can be configured for the application group.
+        # The maximum number of jobs that can be configured for the App Group.
         self.max_jobs = max_jobs
-        # The alert notification configurations.
+        # The alarm notification configuration.
         # 
-        # >  For more information about this parameter, see the following **additional information about request parameters**.
+        # > For more information, see the **MonitorConfigJson** section below.
         self.monitor_config_json = monitor_config_json
-        # The alert contact configurations.
+        # The alarm contact configuration.
         # 
-        # >  For more information about this parameter, see the following **additional information about request parameters**.
+        # > For more information, see the **MonitorContactsJson** section below.
         self.monitor_contacts_json = monitor_contacts_json
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace = namespace
+        # The name of the notification policy.
         self.notification_policy_name = notification_policy_name
 
     def validate(self):

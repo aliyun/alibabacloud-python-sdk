@@ -12,16 +12,17 @@ class BatchDeleteJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response status code.
         self.code = code
-        # The additional information returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The unique Request ID.
         self.request_id = request_id
-        # Indicates whether multiple jobs were deleted at a time. Valid values:
+        # Indicates if the operation succeeded. Valid values:
         # 
-        # *   **true**: Multiple jobs were deleted at a time.
-        # *   **false**: Multiple jobs were not deleted at a time.
+        # - **true**: The operation succeeded.
+        # 
+        # - **false**: The operation failed.
         self.success = success
 
     def validate(self):

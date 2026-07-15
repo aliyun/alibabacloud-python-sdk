@@ -36,8 +36,9 @@ class ListWorkFlowsRequest(DaraModel):
         self.region_id = region_id
         # The job status.
         # 
-        # *   **0**: disables the job.
-        # *   **1**: enables the routing policy.
+        # - **0**: disables the job.
+        # 
+        # - **1**: enables the routing policy.
         self.status = status
         # The workflow name.
         self.workflow_name = workflow_name

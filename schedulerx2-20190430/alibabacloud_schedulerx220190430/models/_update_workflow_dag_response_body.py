@@ -12,16 +12,17 @@ class UpdateWorkflowDagResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The Return Code.
         self.code = code
-        # The returned error message.
+        # The Error Message returned on failure.
         self.message = message
-        # The request ID.
+        # The Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call succeeded. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The API call succeeded.
+        # 
+        # - false: The API call failed.
         self.success = success
 
     def validate(self):

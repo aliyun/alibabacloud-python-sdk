@@ -12,9 +12,9 @@ class UpdateJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The additional information returned only if an error occurs.
+        # The additional information. The error message is returned only when a fault occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id

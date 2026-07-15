@@ -25,7 +25,27 @@ class Client(OpenApiClient):
             'cn-beijing': 'schedulerx.cn-beijing.aliyuncs.com',
             'cn-hangzhou': 'schedulerx.cn-hangzhou.aliyuncs.com',
             'cn-shanghai': 'schedulerx.cn-shanghai.aliyuncs.com',
-            'cn-shenzhen': 'schedulerx.cn-shenzhen.aliyuncs.com'
+            'cn-shenzhen': 'schedulerx.cn-shenzhen.aliyuncs.com',
+            'us-west-1': 'schedulerx.aliyuncs.com',
+            'us-east-1': 'schedulerx.aliyuncs.com',
+            'public': 'schedulerx.aliyuncs.com',
+            'eu-west-1': 'schedulerx.aliyuncs.com',
+            'eu-central-1': 'schedulerx.aliyuncs.com',
+            'cn-zhangjiakou': 'schedulerx.aliyuncs.com',
+            'cn-wulanchabu': 'schedulerx.aliyuncs.com',
+            'cn-shanghai-finance-1': 'schedulerx.aliyuncs.com',
+            'cn-qingdao': 'schedulerx.aliyuncs.com',
+            'cn-huhehaote': 'schedulerx.aliyuncs.com',
+            'cn-hongkong': 'schedulerx.aliyuncs.com',
+            'cn-guangzhou': 'schedulerx.aliyuncs.com',
+            'cn-chengdu': 'schedulerx.aliyuncs.com',
+            'ap-southeast-8': 'schedulerx.aliyuncs.com',
+            'ap-southeast-7': 'schedulerx.aliyuncs.com',
+            'ap-southeast-6': 'schedulerx.aliyuncs.com',
+            'ap-southeast-5': 'schedulerx.aliyuncs.com',
+            'ap-southeast-3': 'schedulerx.aliyuncs.com',
+            'ap-southeast-1': 'schedulerx.aliyuncs.com',
+            'ap-northeast-1': 'schedulerx.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('schedulerx2', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -528,6 +548,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
         if not DaraCore.is_null(request.success_notice_enable):
@@ -630,6 +652,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
         if not DaraCore.is_null(request.success_notice_enable):
@@ -4706,6 +4730,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.success_notice_enable):
             body['SuccessNoticeEnable'] = request.success_notice_enable
         if not DaraCore.is_null(request.task_attempt_interval):
@@ -4810,6 +4836,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.success_notice_enable):
             body['SuccessNoticeEnable'] = request.success_notice_enable
         if not DaraCore.is_null(request.task_attempt_interval):
