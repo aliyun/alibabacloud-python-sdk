@@ -50,14 +50,16 @@ class GenerateOauthTokenResponseBodyTokenResponse(DaraModel):
         access_token: str = None,
         expires_at: int = None,
         expires_in: int = None,
+        issued_token_type: str = None,
         token_type: str = None,
     ):
         # Access Token。
         self.access_token = access_token
-        # The expiration time, in UNIX timestamp format. Unit: seconds.
+        # The expiration time, in UNIX timestamp format, in seconds.
         self.expires_at = expires_at
         # The validity period, in seconds.
         self.expires_in = expires_in
+        self.issued_token_type = issued_token_type
         # The token type. Currently, only Bearer is supported.
         self.token_type = token_type
 
@@ -78,6 +80,9 @@ class GenerateOauthTokenResponseBodyTokenResponse(DaraModel):
         if self.expires_in is not None:
             result['ExpiresIn'] = self.expires_in
 
+        if self.issued_token_type is not None:
+            result['IssuedTokenType'] = self.issued_token_type
+
         if self.token_type is not None:
             result['TokenType'] = self.token_type
 
@@ -93,6 +98,9 @@ class GenerateOauthTokenResponseBodyTokenResponse(DaraModel):
 
         if m.get('ExpiresIn') is not None:
             self.expires_in = m.get('ExpiresIn')
+
+        if m.get('IssuedTokenType') is not None:
+            self.issued_token_type = m.get('IssuedTokenType')
 
         if m.get('TokenType') is not None:
             self.token_type = m.get('TokenType')

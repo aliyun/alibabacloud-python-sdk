@@ -10905,10 +10905,18 @@ class Client(OpenApiClient):
             query['ApplicationId'] = request.application_id
         if not DaraCore.is_null(request.audience):
             query['Audience'] = request.audience
+        if not DaraCore.is_null(request.grant_type):
+            query['GrantType'] = request.grant_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.requested_token_type):
+            query['RequestedTokenType'] = request.requested_token_type
         if not DaraCore.is_null(request.scope_values):
             query['ScopeValues'] = request.scope_values
+        if not DaraCore.is_null(request.subject_token):
+            query['SubjectToken'] = request.subject_token
+        if not DaraCore.is_null(request.subject_token_type):
+            query['SubjectTokenType'] = request.subject_token_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10939,10 +10947,18 @@ class Client(OpenApiClient):
             query['ApplicationId'] = request.application_id
         if not DaraCore.is_null(request.audience):
             query['Audience'] = request.audience
+        if not DaraCore.is_null(request.grant_type):
+            query['GrantType'] = request.grant_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.requested_token_type):
+            query['RequestedTokenType'] = request.requested_token_type
         if not DaraCore.is_null(request.scope_values):
             query['ScopeValues'] = request.scope_values
+        if not DaraCore.is_null(request.subject_token):
+            query['SubjectToken'] = request.subject_token
+        if not DaraCore.is_null(request.subject_token_type):
+            query['SubjectTokenType'] = request.subject_token_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

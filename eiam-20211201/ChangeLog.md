@@ -1,3 +1,11 @@
+2026-07-15 Version: 2.17.3
+- Update API GenerateOauthToken: add request parameters GrantType.
+- Update API GenerateOauthToken: add request parameters RequestedTokenType.
+- Update API GenerateOauthToken: add request parameters SubjectToken.
+- Update API GenerateOauthToken: add request parameters SubjectTokenType.
+- Update API GenerateOauthToken: add response parameters Body.TokenResponse.IssuedTokenType.
+
+
 2026-07-10 Version: 2.17.2
 - Update API CreateApplicationFederatedCredential: add request parameters OidcVerificationConfig.
 - Update API CreateApplicationFederatedCredential: add request parameters Pkcs7VerificationConfig.
