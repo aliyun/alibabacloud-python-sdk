@@ -28,92 +28,129 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         snapshot_backup_type: str = None,
         src_region: str = None,
     ):
-        # The frequency at which high-frequency backup is created. Valid values:
+        # The high-frequency backup frequency. Valid values:
         # 
-        # *   **-1**: High-frequency backup is disabled.
-        # *   **15**: every 15 minutes.
-        # *   **30**: every 30 minutes.
-        # *   **60**: every hour.
-        # *   **120**: every 2 hours.
-        # *   **180**: every 3 hours.
-        # *   **240**: every 4 hours.
-        # *   **360**: every 6 hours.
-        # *   **480**: every 8 hours.
-        # *   **720**: every 12 hours.
+        # - **-1**: high-frequency backup is disabled.
+        # 
+        # - **15**: every 15 minutes.
+        # 
+        # - **30**: every 30 minutes.
+        # 
+        # - **60**: every 1 hour.
+        # 
+        # - **120**: every 2 hours.
+        # 
+        # - **180**: every 3 hours.
+        # 
+        # - **240**: every 4 hours.
+        # 
+        # - **360**: every 6 hours.
+        # 
+        # - **480**: every 8 hours.
+        # 
+        # - **720**: every 12 hours.
         self.backup_interval = backup_interval
-        # The retention period of the backup data. Unit: day.
+        # The backup retention period in days.
         self.backup_retention_period = backup_retention_period
-        # The backup retention policy configured for the instance. Valid values:
+        # The backup retention policy.
         # 
-        # 1.  0: All backup sets are immediately deleted when the instance is released.
-        # 2.  1: Automatic backup is performed and the backup set is retained for a long period of time when the instance is released.
-        # 3.  2: Automatic backup is performed and all backup sets are retained for a long period of time when the instance is released.
+        # 1. 0: All backup sets of the instance are immediately deleted when the instance is released
         # 
-        # For more information, see [Retain the backup files of an ApsaraDB for MongoDB instance for a long period of time](https://help.aliyun.com/document_detail/2779111.html).
+        # 2. 1: The instance is automatically backed up when it is released, and the backup set is retained for a long time
+        # 
+        # 3. 2: The instance is automatically backed up when it is released, and all backup sets of the cluster are retained for a long time
+        # 
+        # For more information, see [Long-term backup retention](https://help.aliyun.com/document_detail/2779111.html)
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
-        # The retention period of Cross-regional backup.
-        # Valid values:
+        # The geo-redundancy backup retention time.
         # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
+        # 1. Monday: Monday.
+        # 
+        # 2. Tuesday: Tuesday.
+        # 
+        # 3. Wednesday: Wednesday.
+        # 
+        # 4. Thursday: Thursday.
+        # 
+        # 5. Friday: Friday.
+        # 
+        # 6. Saturday: Saturday.
+        # 
+        # 7. Sunday: Sunday.
+        # 
+        # > Required for geo-redundancy backup
         self.cross_backup_period = cross_backup_period
-        # The retention type of Cross-regional  log backup.
+        # The geo-redundancy log backup retention type.
         # 
-        # - delay : retain the backup for a period of time.
-        # - never : retain the backup permanently.
+        # - delay: retained for a period of time
+        # 
+        # - never: never expires
         self.cross_log_retention_type = cross_log_retention_type
-        # The retention time of Cross-regional log backup.
+        # The geo-redundancy log backup retention period.
         self.cross_log_retention_value = cross_log_retention_value
-        # The retention type of Cross-regional backup.
+        # The geo-redundancy backup retention type.
         # 
-        # - delay : retain the backup for a period of time.
-        # - never : retain the backup permanently.
+        # - delay: retained for a period of time
+        # 
+        # - never: never expires
         self.cross_retention_type = cross_retention_type
-        # The retention time of Cross-regional backup.
+        # The geo-redundancy backup retention period.
         self.cross_retention_value = cross_retention_value
-        # The region ID of the cross-regional backup..
+        # The region where the geo-redundancy backup is located.
         self.dest_region = dest_region
-        # Indicates whether the log backup feature is enabled. Valid values:
+        # Indicates whether log backup is enabled. Valid values:
         # 
-        # *   **0** (default): The log backup feature is disabled.
-        # *   **1**: The log backup feature is enabled.
+        # - **0**: disabled (default).
+        # 
+        # - **1**: enabled.
         self.enable_backup_log = enable_backup_log
-        # Whether to turn on cross-regional log backup.
-        # - 1: turn on . Used for sharded cluster.
-        # - 0: turn off. Used for replicate set.
-        self.enable_cross_log_backup = enable_cross_log_backup
-        # The retention period of high-frequency backups. Unit: day.
-        self.high_frequency_backup_retention = high_frequency_backup_retention
-        # The number of days for which log backups are retained. Valid values: 7 to 730.
-        self.log_backup_retention_period = log_backup_retention_period
-        # The day of a week on which to back up data. Valid values:
+        # Indicates whether cross-region log backup is enabled.
         # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
+        # > Required for geo-redundancy backup
+        # >
+        # > - 1: enabled (must be 1 for sharded cluster instances)
+        # >
+        # > - 0: disabled (must be 0 for replica set instances)
+        self.enable_cross_log_backup = enable_cross_log_backup
+        # The high-frequency backup retention period in days.
+        self.high_frequency_backup_retention = high_frequency_backup_retention
+        # The log backup retention period in days. Valid values: 7 to 730.
+        self.log_backup_retention_period = log_backup_retention_period
+        # The backup cycle. Valid values:
+        # 
+        # - **Monday**: Monday.
+        # 
+        # - **Tuesday**: Tuesday.
+        # 
+        # - **Wednesday**: Wednesday.
+        # 
+        # - **Thursday**: Thursday.
+        # 
+        # - **Friday**: Friday.
+        # 
+        # - **Saturday**: Saturday.
+        # 
+        # - **Sunday**: Sunday.
         self.preferred_backup_period = preferred_backup_period
-        # The time range during which the backup was created. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
+        # The backup time in the format of *HH:mm*Z-*HH:mm*Z (UTC time).
         self.preferred_backup_time = preferred_backup_time
-        # The time of next standard backup.
+        # The next regular backup time in the format of *yyyy-mm-dd*t*hh:mm*z (UTC time).
         self.preferred_next_backup_time = preferred_next_backup_time
+        # Indicates whether sparse backup within an hour is enabled.
+        # 
+        # - true: When the backup frequency is at the minute level, all snapshots within 1 hour from the current time are retained. For snapshots that are more than 1 hour but within 24 hours from the current time, only the first snapshot after each hour is retained.
+        # 
+        # - false: Sparse backup within an hour is disabled: all snapshots within the high-frequency backup retention period are retained.
         self.preserve_one_each_hour = preserve_one_each_hour
         # The request ID.
         self.request_id = request_id
         # The snapshot backup type. Valid values:
         # 
-        # *   **Flash**: single-digit second backup
-        # *   **Standard** (default): standard backup
+        # - **Flash**: second-level backup.
+        # 
+        # - **Standard**: regular backup (default).
         self.snapshot_backup_type = snapshot_backup_type
-        # The region ID of the instance.
+        # The region where the source instance is located.
         self.src_region = src_region
 
     def validate(self):

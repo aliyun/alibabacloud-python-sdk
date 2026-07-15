@@ -25,7 +25,7 @@ class DescribeErrorLogRecordsRequest(DaraModel):
     ):
         # The ID of the instance.
         # 
-        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -37,12 +37,13 @@ class DescribeErrorLogRecordsRequest(DaraModel):
         self.end_time = end_time
         # The logical relationship between multiple keywords. Valid values:
         # 
-        # *   **or**
-        # *   **and** (default value)
+        # - **or**
+        # 
+        # - **and** (default value)
         self.logical_operator = logical_operator
         # The ID of the mongos node or shard node whose error logs you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
         # 
-        # >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
+        # > This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -58,10 +59,11 @@ class DescribeErrorLogRecordsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The role of the node whose error logs you want to query in the instance. Valid values:
         # 
-        # *   **primary**
-        # *   **secondary**
+        # - **primary**
         # 
-        # >  If you set the **NodeId** parameter to the ID of a mongos node, the RoleType parameter must be set to **primary**.
+        # - **secondary**
+        # 
+        # > If you set the **NodeId** parameter to the ID of a mongos node, the RoleType parameter must be set to **primary**.
         self.role_type = role_type
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 

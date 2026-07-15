@@ -19,17 +19,16 @@ class ModifyDBInstanceNetworkTypeRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The retention period of the original classic network address when you change the network type to VPC. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
+        # The retention period of the original classic network address when you switch the network type to VPC. Settings. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
         # 
-        # > This parameter is required when the **NetworkType** parameter is set to **VPC** and the **RetainClassic** parameter is set to **True**.
+        # > This parameter is required when the **NetworkType** parameter settings is set to **VPC** and the **RetainClassic** parameter settings is set to **True**.
         self.classic_expired_days = classic_expired_days
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type to switch to. Valid value:
-        # 
-        # *   **VPC**
+        # The target network type to which you want to switch the instance. Valid values:
+        # - **VPC**: switches the network type to VPC.
         # 
         # This parameter is required.
         self.network_type = network_type
@@ -37,26 +36,21 @@ class ModifyDBInstanceNetworkTypeRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to retain the original classic network address when you change the network type to VPC. Valid values:
+        # Specifies whether to retain the original classic network address when you switch the network type to VPC. Settings. Valid values:
+        # - **True**: retains the original classic network address.
+        # - **False**: does not retain the original classic network address.
         # 
-        # *   **True**: retains the original classic network address.
-        # *   **False**: does not retain the original classic network address.
-        # 
-        # > 
-        # 
-        # *   This parameter is required when the **NetworkType** parameter is set to **VPC**.
-        # 
-        # *   If you set this parameter to **True**, you must also specify the **ClassicExpiredDays** parameter.
+        # > - This parameter is required when the **NetworkType** parameter settings is set to **VPC**.
+        # > - If this parameter settings is set to **True**, you must also specify the **ClassicExpiredDays** parameter.
         self.retain_classic = retain_classic
-        # The ID of the vSwitch in the VPC.
-        # 
-        # > This parameter is required when the **NetworkType** parameter is set to **VPC**.
+        # The vSwitch ID in the VPC.
+        # > This parameter is required when the **NetworkType** parameter settings is set to **VPC**.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC ID.
         # 
-        # > This parameter is required when the **NetworkType** parameter is set to **VPC**.
+        # > This parameter is required when the **NetworkType** parameter settings is set to **VPC**.
         self.vpc_id = vpc_id
-        # 可用区ID，您可以通过调用[DescribeRegions](https://help.aliyun.com/document_detail/61933.html)接口查询可用区ID。
+        # The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
         # 
         # This parameter is required.
         self.zone_id = zone_id

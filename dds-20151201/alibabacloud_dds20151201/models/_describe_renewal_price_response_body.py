@@ -15,11 +15,13 @@ class DescribeRenewalPriceResponseBody(DaraModel):
         rules: main_models.DescribeRenewalPriceResponseBodyRules = None,
         sub_orders: main_models.DescribeRenewalPriceResponseBodySubOrders = None,
     ):
-        # The list of orders.
+        # The order details.
         self.order = order
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # Details of the available promotion rules.
         self.rules = rules
+        # The sub-order details.
         self.sub_orders = sub_orders
 
     def validate(self):
@@ -279,18 +281,17 @@ class DescribeRenewalPriceResponseBodyOrder(DaraModel):
         rule_ids: main_models.DescribeRenewalPriceResponseBodyOrderRuleIds = None,
         trade_amount: float = None,
     ):
+        # The coupon details.
         self.coupons = coupons
-        # The type of the currency. Valid values:
-        # 
-        # *   USD: United States dollar
-        # *   JPY: Japanese Yen
+        # The currency of the transaction.
         self.currency = currency
-        # The discount amount of the order.
+        # The total discount amount for the order.
         self.discount_amount = discount_amount
-        # The original price of the order.
+        # The original amount for the order.
         self.original_amount = original_amount
+        # The matched rule IDs.
         self.rule_ids = rule_ids
-        # The actual price of the order.
+        # The final trade amount for the order.
         self.trade_amount = trade_amount
 
     def validate(self):

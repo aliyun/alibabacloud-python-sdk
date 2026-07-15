@@ -64,8 +64,9 @@ class DescribeActiveOperationTaskTypeResponseBodyTypeList(DaraModel):
         self.count = count
         # The type of the task. Valid values:
         # 
-        # *   **rds_apsaradb_transfer**: data migration
-        # *   **rds_apsaradb_upgrade**: minor version update
+        # - **rds_apsaradb_transfer**: data migration
+        # 
+        # - **rds_apsaradb_upgrade**: minor version update
         self.task_type = task_type
         # The task type in English.
         self.task_type_info_en = task_type_info_en

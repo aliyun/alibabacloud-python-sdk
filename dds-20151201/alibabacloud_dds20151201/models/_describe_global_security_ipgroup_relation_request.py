@@ -20,7 +20,7 @@ class DescribeGlobalSecurityIPGroupRelationRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) to query the available regions.
         # 
         # This parameter is required.
         self.region_id = region_id

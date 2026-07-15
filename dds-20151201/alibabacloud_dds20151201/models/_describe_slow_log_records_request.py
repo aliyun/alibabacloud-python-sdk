@@ -33,18 +33,19 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         self.dbname = dbname
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
-        # > 
+        # >
         # 
-        # *   The end time must be later than the start time.
+        # - The end time must be later than the start time.
         # 
-        # *   The end time must be within 24 hours from the start time. Otherwise, the query fails.
+        # - The end time must be within 24 hours from the start time. Otherwise, the query fails.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The logical relationship among multiple keywords.
         # 
-        # *   **or**
-        # *   **and** (default value)
+        # - **or**
+        # 
+        # - **and** (default value)
         self.logical_operator = logical_operator
         # The ID of the shard node.
         # 
@@ -52,8 +53,9 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         self.node_id = node_id
         # The order of time in which the log entries to return are sorted. Valid values:
         # 
-        # *   asc: The log entries are sorted by time in ascending order.
-        # *   desc: The log entries are sorted by time in descending order.
+        # - asc: The log entries are sorted by time in ascending order.
+        # 
+        # - desc: The log entries are sorted by time in descending order.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -15,9 +15,11 @@ class DescribeReplicaSetRoleResponseBody(DaraModel):
         replica_sets: main_models.DescribeReplicaSetRoleResponseBodyReplicaSets = None,
         request_id: str = None,
     ):
+        # The domain name suffix for the connection string.
         self.connection_string_suffix = connection_string_suffix
         # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # Details of the replica set.
         self.replica_sets = replica_sets
         # The request ID.
         self.request_id = request_id

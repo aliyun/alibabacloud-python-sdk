@@ -17,9 +17,13 @@ class DescribeBinlogFilesResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.items = items
+        # The number of entries to return on each page.
         self.max_records_per_page = max_records_per_page
+        # The page number of the returned results.
         self.page_number = page_number
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of binlog files found.
         self.total_record_count = total_record_count
 
     def validate(self):

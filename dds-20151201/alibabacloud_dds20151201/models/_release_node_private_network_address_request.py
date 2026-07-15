@@ -16,27 +16,35 @@ class ReleaseNodePrivateNetworkAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The public endpoint type. Valid values:
+        # The type of the public endpoint. Valid values:
         # 
-        # *   **SRV**
-        # *   **Normal**
+        # - **SRV**
         # 
-        # >  This parameter is valid only when you want to release an SRV endpoint.
+        # - **Normal**
+        # 
+        # > This parameter is available only when the endpoint to be released is an SRV endpoint.
         self.connection_type = connection_type
         # The ID of the sharded cluster instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type of the internal endpoint. Valid values:
+        # The network type of the internal endpoint for the node. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC).
-        # *   **Classic**: classic network.
+        # - **VPC**: virtual private cloud.
         # 
-        # >  You can call the [DescribeShardingNetworkAddress](https://help.aliyun.com/document_detail/62135.html) operation to query the network type of the internal endpoint.
+        # - **Classic**: classic network.
+        # 
+        # > Call the [DescribeShardingNetworkAddress](https://help.aliyun.com/document_detail/62135.html) API to query the network type of the internal endpoint for the node.
         self.network_type = network_type
         # The ID of the shard or Configserver node.
         # 
-        # >  You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the ID of the shard or Configserver node.
+        # > Call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) API to query the ID of the shard or Configserver node.
+        # >
+        # > >Notice: 
+        # >
+        # > When you release an SRV address, enter the instance ID for this parameter.
+        # >
+        # >
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

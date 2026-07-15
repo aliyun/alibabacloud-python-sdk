@@ -16,6 +16,7 @@ class DescribeShardingNetworkAddressResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.compatible_connections = compatible_connections
+        # The suffix of the connection string.
         self.connection_string_suffix = connection_string_suffix
         self.network_addresses = network_addresses
         # The request ID.

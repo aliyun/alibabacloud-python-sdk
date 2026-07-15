@@ -16,7 +16,7 @@ class ListTagResourcesResponseBody(DaraModel):
     ):
         # The token used to start the next query.
         # 
-        # >  If not all results are returned in the first query, this parameter is returned. You can pass in the returned value of this parameter in the next query.
+        # > If not all results are returned in the first query, this parameter is returned. You can pass in the returned value of this parameter in the next query.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id

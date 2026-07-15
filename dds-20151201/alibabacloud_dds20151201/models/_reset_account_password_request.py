@@ -22,15 +22,17 @@ class ResetAccountPasswordRequest(DaraModel):
         self.account_name = account_name
         # The new password.
         # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-        # *   The password must be 8 to 32 characters in length.
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
+        # 
+        # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.account_password = account_password
         # The role of the instance.
         # 
-        # *   If the instance is a sharded cluster instance, this parameter is required. Valid values: db and cs.
-        # *   If the instance is a replica set instance, you can leave this parameter empty or set the parameter to normal.
+        # - If the instance is a sharded cluster instance, this parameter is required. Valid values: db and cs.
+        # 
+        # - If the instance is a replica set instance, you can leave this parameter empty or set the parameter to normal.
         self.character_type = character_type
         # The instance ID.
         # 

@@ -23,25 +23,45 @@ class ModifyDBInstanceTDERequest(DaraModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the custom key.
+        # Custom keys are supported only in the following regions. In other regions, the default key is used.
+        # 
+        # - Singapore (ap-southeast-1)
+        # 
+        # - Hangzhou (cn-hangzhou)
+        # 
+        # - Shanghai (cn-shanghai)
+        # 
+        # - Beijing (cn-beijing)
+        # 
+        # - Shenzhen (cn-shenzhen)
+        # 
+        # - Hong Kong (cn-hongkong)
+        # 
+        # - Malaysia (ap-southeast-3)
         self.encryption_key = encryption_key
         # The encryption method. Set the value to **aes-256-cbc**.
         # 
-        # > This parameter is valid only when the **TEDStatus** parameter is set to **enabled**.
+        # > This parameter is available only when **TDEStatus** is set to **enabled**.
         self.encryptor_name = encryptor_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role. The ARN is displayed in the `acs:ram::$accountID:role/$roleName` format.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role. The format is `acs:ram::$accountID:role/$roleName `.
         # 
-        # > *   `$accountID`: specifies the ID of the Alibaba Cloud account. To view the account ID, log on to the Alibaba Cloud Management Console, move your pointer over your profile picture in the upper-right corner, and then click Security Settings.
-        # 
-        # > *   `$roleName`: specifies the name of the RAM role. To view the RAM role name, log on to the RAM console. In the left-side navigation pane, choose Identities > Roles. On the Roles page, view the name of the RAM role.
+        # > - `$accountID`: The ID of your Alibaba Cloud account. To view the ID, log on to the Alibaba Cloud Management Console, move the pointer over your profile picture in the upper-right corner, and then click Security Settings.
+        # >
+        # > - `$roleName`: The name of the RAM role. To view the name, log on to the RAM console, click RAM Role Management in the navigation pane on the left, and then view the role name in the RAM Role Name list.
         self.role_arn = role_arn
-        self.switch_mode = switch_mode
-        # The TDE status. When the value of this parameter is set to **Enabled**, TDE is enabled.
+        # Specifies when to enable TDE. Valid values:
         # 
-        # > You cannot disable TDE after it is enabled. Proceed with caution.
+        # - 0: Enables TDE immediately.
+        # 
+        # - 1: Enables TDE during the maintenance window.
+        self.switch_mode = switch_mode
+        # The TDE status. Set the value to **enabled** to enable TDE.
+        # 
+        # > You cannot disable TDE after you enable it. Enable this feature with caution.
         # 
         # This parameter is required.
         self.tdestatus = tdestatus

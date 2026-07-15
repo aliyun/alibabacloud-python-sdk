@@ -21,13 +21,19 @@ class ModifyAuditLogFilterRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
         # 
-        # *   **admin**: O\\&M and management operations
-        # *   **slow**: slow query logs
-        # *   **query**: query operations
-        # *   **insert**: insert operations
-        # *   **update**: update operations
-        # *   **delete**: delete operations
-        # *   **command**: protocol commands such as the aggregate method
+        # - **admin**: O\\&M and management operations
+        # 
+        # - **slow**: slow query logs
+        # 
+        # - **query**: query operations
+        # 
+        # - **insert**: insert operations
+        # 
+        # - **update**: update operations
+        # 
+        # - **delete**: delete operations
+        # 
+        # - **command**: protocol commands such as the aggregate method
         # 
         # This parameter is required.
         self.filter = filter
@@ -37,8 +43,9 @@ class ModifyAuditLogFilterRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The role of the node in the instance. Valid values:
         # 
-        # *   **primary**
-        # *   **secondary**
+        # - **primary**
+        # 
+        # - **secondary**
         self.role_type = role_type
 
     def validate(self):

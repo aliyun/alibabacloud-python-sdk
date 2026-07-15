@@ -12,9 +12,13 @@ class DescribeDBInstanceSpecInfoResponseBody(DaraModel):
         memory: str = None,
         request_id: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The description of the instance type.
         self.description = description
+        # The memory size, in GB.
         self.memory = memory
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

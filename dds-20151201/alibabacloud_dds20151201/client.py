@@ -80,7 +80,22 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'mongodb.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'mongodb.aliyuncs.com',
             'eu-west-1-oxs': 'mongodb.aliyuncs.com',
-            'rus-west-1-pop': 'mongodb.aliyuncs.com'
+            'rus-west-1-pop': 'mongodb.aliyuncs.com',
+            'us-southeast-1': 'mongodb.us-southeast-1.aliyuncs.com',
+            'na-south-1': 'mongodb.na-south-1.aliyuncs.com',
+            'me-central-1': 'mongodb.me-central-1.aliyuncs.com',
+            'eu-west-2': 'mongodb.eu-west-2.aliyuncs.com',
+            'cn-zhongwei': 'mongodb.cn-zhongwei.aliyuncs.com',
+            'cn-zhengzhou-jva': 'mongodb.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'mongodb.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-wuhan-lr': 'mongodb.cn-wuhan-lr.aliyuncs.com',
+            'cn-nanjing': 'mongodb.cn-nanjing.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'mongodb.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-fuzhou': 'mongodb.cn-fuzhou.aliyuncs.com',
+            'ap-southeast-8': 'mongodb.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'mongodb.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'mongodb.ap-southeast-6.aliyuncs.com',
+            'ap-northeast-2': 'mongodb.ap-northeast-2.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dds', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1328,6 +1343,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.search_dbinstance_class):
+            query['SearchDBInstanceClass'] = request.search_dbinstance_class
+        if not DaraCore.is_null(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        if not DaraCore.is_null(request.search_storage):
+            query['SearchStorage'] = request.search_storage
         if not DaraCore.is_null(request.shard_direct):
             query['ShardDirect'] = request.shard_direct
         req = open_api_util_models.OpenApiRequest(
@@ -1386,6 +1407,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.search_dbinstance_class):
+            query['SearchDBInstanceClass'] = request.search_dbinstance_class
+        if not DaraCore.is_null(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        if not DaraCore.is_null(request.search_storage):
+            query['SearchStorage'] = request.search_storage
         if not DaraCore.is_null(request.shard_direct):
             query['ShardDirect'] = request.shard_direct
         req = open_api_util_models.OpenApiRequest(
@@ -4334,6 +4361,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.only_db_table_recovery):
+            query['OnlyDbTableRecovery'] = request.only_db_table_recovery
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -4376,6 +4405,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.only_db_table_recovery):
+            query['OnlyDbTableRecovery'] = request.only_db_table_recovery
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -6108,6 +6139,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.only_db_table_recovery):
+            query['OnlyDbTableRecovery'] = request.only_db_table_recovery
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -6152,6 +6185,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.only_db_table_recovery):
+            query['OnlyDbTableRecovery'] = request.only_db_table_recovery
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -12698,6 +12733,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.node_id):
             query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -12738,6 +12775,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.node_id):
             query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):

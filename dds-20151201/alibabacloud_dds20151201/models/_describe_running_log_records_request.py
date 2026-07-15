@@ -25,41 +25,39 @@ class DescribeRunningLogRecordsRequest(DaraModel):
         role_type: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If this parameter is set to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
-        # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time is in UTC.
         # 
-        # >  The end time must be later than the start time and within 24 hours from the start time. Otherwise, the query fails.
+        # > The end time can be up to 24 hours later than the start time. Otherwise, the call fails.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The logical relationship among multiple keywords.
-        # 
-        # *   **or**
-        # *   **and** (default value)
+        # The logical operator for the keyword-based query. Default value: `and`.
         self.logical_operator = logical_operator
-        # The ID of the mongos node or shard node whose operational logs you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
+        # The ID of a mongos node or shard node in a sharded cluster instance.
         # 
-        # >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
+        # > This parameter is available only when the **DBInstanceId** parameter is set to the ID of a sharded cluster instance.
         self.node_id = node_id
-        # The order of time in which the operational log entries to return are sorted. Valid values:
+        # The sort order of the running logs to return. Valid values:
         # 
-        # *   asc: The log entries are sorted by time in ascending order.
-        # *   desc: The log entries are sorted by time in descending order.
+        # - asc: ascending order
+        # 
+        # - desc: descending order
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: **30** to **100**.
         self.page_size = page_size
-        # The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
+        # The keywords for the query. You can specify up to 10 keywords. Separate multiple keywords with spaces.
         self.query_keywords = query_keywords
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -67,14 +65,15 @@ class DescribeRunningLogRecordsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The role ID of the node. You can call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/62134.html) operation to query the role ID.
         self.role_id = role_id
-        # The role of the node whose error logs you want to query in the instance. Valid values:
+        # The role of the node. Valid values:
         # 
-        # *   **primary**
-        # *   **secondary**
+        # - **primary**: The primary node.
         # 
-        # >  If you set the **NodeId** parameter to the ID of a mongos node, the **RoleType** parameter must be set to **primary**.
+        # - **secondary**: A secondary node.
+        # 
+        # > If the **NodeId** parameter is set to the ID of a mongos node, the **RoleType** parameter can only be set to **primary**.
         self.role_type = role_type
-        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time is in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

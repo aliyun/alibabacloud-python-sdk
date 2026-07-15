@@ -23,22 +23,33 @@ class CreateNodeBatchRequest(DaraModel):
         shard_direct: bool = None,
     ):
         # The username of the account. The username must meet the following requirements:
-        # - The username starts with a lowercase letter. 
-        # - The username contains lowercase letters, digits, and underscores (_). 
-        # - The username is 4 to 16 characters in length. 
         # 
-        # > - Keywords cannot be used as account usernames. 
-        # > - The permissions of this account are fixed at read-only. 
-        # > - The username and password are required to be set only when you apply for an endpoint for the shard node for the first time.
+        # - The username starts with a lowercase letter.
+        # 
+        # - The username contains lowercase letters, digits, and underscores (_).
+        # 
+        # - The username is 4 to 16 characters in length.
+        # 
+        # > * Keywords cannot be used as account usernames.
+        # >
+        # > * The permissions of this account are fixed at read-only.
+        # >
+        # > * The username and password are required to be set only when you apply for an endpoint for the shard node for the first time.
         self.account_name = account_name
         # The password of the account. The password must meet the following requirements:
-        # - The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. 
-        # - These special characters include ! @ # $ % ^ & * ( ) _ + - = 
-        # - The password is 8 to 32 characters in length. 
+        # 
+        # - The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters.
+        # 
+        # - These special characters include ! @ # $ % ^ & \\* ( ) _ + - =
+        # 
+        # - The password is 8 to 32 characters in length.
+        # 
         # > The account password of the shard node cannot be reset.
         self.account_password = account_password
         # Specifies whether to enable automatic payment. Default value: true. Valid values:
-        # - **true**: enables automatic payment. Make sure that you have sufficient balance within your account. 
+        # 
+        # - **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+        # 
         # - **false**: disables automatic payment. In this case, you must manually pay for the instance. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Orders**. On the Orders page, find the order and complete the payment.
         self.auto_pay = auto_pay
         # The business information.
@@ -47,18 +58,21 @@ class CreateNodeBatchRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to use coupons. Default value: null. Valid values:
         # 
-        # *   **default** or **null**: uses coupons.
-        # *   **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+        # - **default** or **null**: uses coupons.
+        # 
+        # - **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
         self.coupon_no = coupon_no
         # The ID of the instance for which you want to add nodes.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The source of the request. Valid values:
-        # - **OpenApi**: ApsaraDB for MongoDB API 
+        # 
+        # - **OpenApi**: ApsaraDB for MongoDB API
+        # 
         # - **mongo_buy**: ApsaraDB for MongoDB console
         self.from_app = from_app
-        # The specifications of the mongos or shard node that you want to add. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). 
+        # The specifications of the mongos or shard node that you want to add. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
         # 
         # > Up to 32 mongos or shard nodes are supported for each sharded cluster instance.
         # 
@@ -69,7 +83,9 @@ class CreateNodeBatchRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to apply for an endpoint for the shard node. Default value: false. Valid values:
-        # - **true**: applies for an endpoint for the shard node. 
+        # 
+        # - **true**: applies for an endpoint for the shard node.
+        # 
         # - **false**: does not apply for an endpoint for the shard node.
         self.shard_direct = shard_direct
 

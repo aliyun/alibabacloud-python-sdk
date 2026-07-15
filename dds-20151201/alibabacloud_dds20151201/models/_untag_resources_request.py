@@ -22,14 +22,15 @@ class UntagResourcesRequest(DaraModel):
     ):
         # Specifies whether to remove all tags from the instances. Valid values:
         # 
-        # *   **true**: removes all tags from the instances.
-        # *   **false**: does not remove all tags from the instances.
+        # - **true**: removes all tags from the instances.
         # 
-        # > 
+        # - **false**: does not remove all tags from the instances.
         # 
-        # *   Default value: **false**.
+        # >
         # 
-        # *   If you specify the **TagKey** parameter together with this parameter, this parameter does not take effect.
+        # - Default value: **false**.
+        # 
+        # - If you specify the **TagKey** parameter together with this parameter, this parameter does not take effect.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id

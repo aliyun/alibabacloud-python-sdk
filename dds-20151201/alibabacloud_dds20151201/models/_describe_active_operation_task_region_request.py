@@ -14,21 +14,23 @@ class DescribeActiveOperationTaskRegionRequest(DaraModel):
         resource_owner_id: int = None,
         task_type: str = None,
     ):
-        # Specifies whether to return the historical tasks. Default value: 0. Valid values:
+        # Specifies whether to return historical tasks. Valid values:
         # 
-        # - 0: returns the current task.
-        # - 1: returns the historical tasks.
+        # - 0: The default value. Returns current tasks.
+        # 
+        # - 1: Returns historical tasks.
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
-        # - rds_apsaradb_ha: master-replica switchover
-        # - rds_apsaradb_transfer: instance migration
-        # - rds_apsaradb_upgrade: minor version update
-        # - all: all types
+        # - rds_apsaradb_ha: a primary/secondary node switchover.
+        # 
+        # - rds_apsaradb_transfer: an instance migration.
+        # 
+        # - rds_apsaradb_upgrade: a minor version upgrade.
         # 
         # This parameter is required.
         self.task_type = task_type

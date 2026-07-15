@@ -19,12 +19,17 @@ class DescribeVpcsForMongoDBRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer greater than 0. The default value is **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. The value must be an integer greater than 0. The default value is **50**.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

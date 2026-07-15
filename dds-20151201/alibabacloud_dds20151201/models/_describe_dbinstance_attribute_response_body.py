@@ -14,7 +14,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.dbinstances = dbinstances
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -83,6 +83,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstances(DaraModel):
 class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
     def __init__(
         self,
+        aigateway_enabled: bool = None,
         bursting_enabled: bool = None,
         capacity_unit: str = None,
         charge_type: str = None,
@@ -130,6 +131,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         search_node_storage: int = None,
         secondary_zone_id: str = None,
         shard_list: main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList = None,
+        shard_search_nodes: main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes = None,
         storage_engine: str = None,
         storage_type: str = None,
         sync_percent: str = None,
@@ -141,6 +143,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         vpc_auth_mode: str = None,
         zone_id: str = None,
     ):
+        self.aigateway_enabled = aigateway_enabled
         self.bursting_enabled = bursting_enabled
         self.capacity_unit = capacity_unit
         self.charge_type = charge_type
@@ -188,6 +191,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         self.search_node_storage = search_node_storage
         self.secondary_zone_id = secondary_zone_id
         self.shard_list = shard_list
+        self.shard_search_nodes = shard_search_nodes
         self.storage_engine = storage_engine
         self.storage_type = storage_type
         self.sync_percent = sync_percent
@@ -208,6 +212,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
             self.replica_sets.validate()
         if self.shard_list:
             self.shard_list.validate()
+        if self.shard_search_nodes:
+            self.shard_search_nodes.validate()
         if self.tags:
             self.tags.validate()
 
@@ -216,6 +222,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aigateway_enabled is not None:
+            result['AIGatewayEnabled'] = self.aigateway_enabled
+
         if self.bursting_enabled is not None:
             result['BurstingEnabled'] = self.bursting_enabled
 
@@ -357,6 +366,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         if self.shard_list is not None:
             result['ShardList'] = self.shard_list.to_map()
 
+        if self.shard_search_nodes is not None:
+            result['ShardSearchNodes'] = self.shard_search_nodes.to_map()
+
         if self.storage_engine is not None:
             result['StorageEngine'] = self.storage_engine
 
@@ -391,6 +403,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AIGatewayEnabled') is not None:
+            self.aigateway_enabled = m.get('AIGatewayEnabled')
+
         if m.get('BurstingEnabled') is not None:
             self.bursting_enabled = m.get('BurstingEnabled')
 
@@ -536,6 +551,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
             temp_model = main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList()
             self.shard_list = temp_model.from_map(m.get('ShardList'))
 
+        if m.get('ShardSearchNodes') is not None:
+            temp_model = main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes()
+            self.shard_search_nodes = temp_model.from_map(m.get('ShardSearchNodes'))
+
         if m.get('StorageEngine') is not None:
             self.storage_engine = m.get('StorageEngine')
 
@@ -636,6 +655,100 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag(DaraMo
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes(DaraModel):
+    def __init__(
+        self,
+        shard_search_nodes: List[main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes] = None,
+    ):
+        self.shard_search_nodes = shard_search_nodes
+
+    def validate(self):
+        if self.shard_search_nodes:
+            for v1 in self.shard_search_nodes:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['ShardSearchNodes'] = []
+        if self.shard_search_nodes is not None:
+            for k1 in self.shard_search_nodes:
+                result['ShardSearchNodes'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.shard_search_nodes = []
+        if m.get('ShardSearchNodes') is not None:
+            for k1 in m.get('ShardSearchNodes'):
+                temp_model = main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes()
+                self.shard_search_nodes.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes(DaraModel):
+    def __init__(
+        self,
+        node_id: str = None,
+        search_node_class: str = None,
+        search_node_count: str = None,
+        search_node_id: str = None,
+        search_node_storage: str = None,
+    ):
+        self.node_id = node_id
+        self.search_node_class = search_node_class
+        self.search_node_count = search_node_count
+        self.search_node_id = search_node_id
+        self.search_node_storage = search_node_storage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+
+        if self.search_node_class is not None:
+            result['SearchNodeClass'] = self.search_node_class
+
+        if self.search_node_count is not None:
+            result['SearchNodeCount'] = self.search_node_count
+
+        if self.search_node_id is not None:
+            result['SearchNodeId'] = self.search_node_id
+
+        if self.search_node_storage is not None:
+            result['SearchNodeStorage'] = self.search_node_storage
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+
+        if m.get('SearchNodeClass') is not None:
+            self.search_node_class = m.get('SearchNodeClass')
+
+        if m.get('SearchNodeCount') is not None:
+            self.search_node_count = m.get('SearchNodeCount')
+
+        if m.get('SearchNodeId') is not None:
+            self.search_node_id = m.get('SearchNodeId')
+
+        if m.get('SearchNodeStorage') is not None:
+            self.search_node_storage = m.get('SearchNodeStorage')
 
         return self
 

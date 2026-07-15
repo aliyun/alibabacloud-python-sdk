@@ -26,8 +26,9 @@ class MigrateAvailableZoneRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The time when the instance is migrated to the destination zone. Valid values:
         # 
-        # *   **Immediately**: The instance is immediately migrated to the destination zone.
-        # *   **MaintainTime**: The instance is migrated to the destination zone during the maintenance window of the instance.
+        # - **Immediately**: The instance is immediately migrated to the destination zone.
+        # 
+        # - **MaintainTime**: The instance is migrated to the destination zone during the maintenance window of the instance.
         # 
         # Default value: **Immediately**.
         self.effective_time = effective_time
@@ -45,11 +46,11 @@ class MigrateAvailableZoneRequest(DaraModel):
         self.vswitch = vswitch
         # The ID of the destination zone.
         # 
-        # > 
+        # >
         # 
-        # *   The source zone and the destination zone belong to the same region.
+        # - The source zone and the destination zone belong to the same region.
         # 
-        # *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
+        # - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
         # 
         # This parameter is required.
         self.zone_id = zone_id

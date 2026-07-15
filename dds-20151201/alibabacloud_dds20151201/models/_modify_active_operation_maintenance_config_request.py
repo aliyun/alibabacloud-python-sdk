@@ -17,14 +17,31 @@ class ModifyActiveOperationMaintenanceConfigRequest(DaraModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
+        # The day of the cycle.
+        # 
+        # - If CycleType is set to Month, enter a number from 1 to 28 to specify the day of the month. Use a comma (,) to separate multiple days.
+        # 
+        # - If CycleType is set to Week, enter a number from 1 to 7 to specify the day of the week. Use a comma (,) to separate multiple days.
         self.cycle_time = cycle_time
+        # The cycle type.
+        # 
+        # - Month: monthly
+        # 
+        # - Week: weekly
         self.cycle_type = cycle_type
+        # The end time of the O\\&M window for the instance. The time is in the HH:mmZ format and is in UTC.
         self.maintain_end_time = maintain_end_time
+        # The start time of the O\\&M window for the instance. The time is in the HH:mmZ format and is in UTC.
         self.maintain_start_time = maintain_start_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether the configuration is enabled.
+        # 
+        # - 1: enabled
+        # 
+        # - 2: disabled
         self.status = status
 
     def validate(self):

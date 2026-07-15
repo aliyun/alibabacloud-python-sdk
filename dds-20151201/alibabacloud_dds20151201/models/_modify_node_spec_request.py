@@ -31,62 +31,91 @@ class ModifyNodeSpecRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true** (default): enables automatic payment. Make sure that you have sufficient balance within your account.
-        # *   **false**: disables automatic payment. In this case, you must manually pay for the instance.
+        # - **true** (default): Enables automatic payment. Make sure that your account has a sufficient balance.
+        # 
+        # - **false**: Disables automatic payment. You must manually pay for the order.
         self.auto_pay = auto_pay
         # The business information. This is an additional parameter.
         self.business_info = business_info
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+        # Specifies whether to use a coupon. Valid values:
+        # 
+        # - **default** or **null** (default): A coupon is used.
+        # 
+        # - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
         self.coupon_no = coupon_no
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The time when the changed configurations take effect. Valid values:
+        # The effective time of the configuration change. Valid values:
         # 
-        # *   **Immediately** (default): The new configurations immediately take effect
-        # *   **MaintainTime**: The new configurations take effect during the maintenance window of the instance.
+        # - **Immediately** (default): The change takes effect immediately.
+        # 
+        # - **MaintainTime**: The change takes effect during the O\\&M window of the instance.
         self.effective_time = effective_time
         # The source of the request. Valid values:
         # 
-        # *   **OpenApi**: the ApsaraDB for MongoDB API
-        # *   **mongo_buy**: the ApsaraDB for MongoDB console
-        self.from_app = from_app
-        # The specifications of the shard or mongos node. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
-        self.node_class = node_class
-        # The ID of the shard or mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
+        # - **OpenApi**: The request is from OpenAPI.
         # 
-        # > If you set this parameter to the ID of the shard node, you must also specify the **NodeStorage** parameter.
+        # - **mongo_buy**: The request is from the console.
+        self.from_app = from_app
+        # The instance type of the shard or Mongos node. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+        self.node_class = node_class
+        # The ID of the shard or Mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
+        # 
+        # > If you set this parameter to the ID of a shard node, you must also specify the **NodeStorage** parameter.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # The storage capacity of the shard node. Unit: GB.
+        # The storage space of the shard node. The step size is 10. Unit: GB.
         # 
-        # *   Valid values are **10** to **2000** if the instance uses local SSDs.
-        # *   Valid values are **20** to **16000** if the instance uses enhanced SSDs (ESSDs) at PL1.
+        # - SSD local disk: **10** to **2000**.
         # 
-        # > The value must be a multiple of 10.
+        # - ESSD PL1 disk: **20** to **16000**.
         self.node_storage = node_storage
         # The order type. Valid values:
         # 
-        # *   **UPGRADE**
-        # *   **DOWNGRADE**
+        # - **UPGRADE**: upgrades the instance configuration.
+        # 
+        # - **DOWNGRADE**: downgrades the instance configuration.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of read-only nodes in the shard node.
         # 
-        # Valid values: **0** to **5**. The value must be an integer. Default value: **0**.
+        # Valid values: **0** to **5**. The value must be an integer.
         self.readonly_replicas = readonly_replicas
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The execution time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The time when the configuration change takes effect. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # > This parameter is deprecated. Use the EffectiveTime parameter instead.
         self.switch_time = switch_time
+        # The hidden zone to which you want to migrate the instance.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is applicable only to instances that use disks.
         self.target_hidden_zone_id = target_hidden_zone_id
+        # The secondary zone to which you want to migrate the instance.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is applicable only to instances that use disks.
         self.target_secondary_zone_id = target_secondary_zone_id
+        # The ID of the vSwitch in the destination zone.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is applicable only to instances that use disks.
         self.target_vswitch_id = target_vswitch_id
+        # The primary zone to which you want to migrate the instance.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is applicable only to instances that use disks.
         self.target_zone_id = target_zone_id
 
     def validate(self):

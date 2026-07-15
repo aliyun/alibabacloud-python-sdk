@@ -120,10 +120,15 @@ class DescribeActiveOperationTaskResponseBodyItems(DaraModel):
         # The state of the task. Valid values:
         # 
         # - 2: The task is waiting for users to specify a switchover time.
+        # 
         # - 3: The task is waiting to be performed.
+        # 
         # - 4: The task is being performed. If the task is in this state, the ModifyActiveOperationTask operation cannot be called to modify the scheduled switchover time.
+        # 
         # - 5: The task is performed.
+        # 
         # - 6: The task fails.
+        # 
         # - 7: The task is canceled.
         self.status = status
         # The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
@@ -133,8 +138,11 @@ class DescribeActiveOperationTaskResponseBodyItems(DaraModel):
         # The type of the task. Valid values:
         # 
         # - rds_apsaradb_ha: master-replica switchover
+        # 
         # - rds_apsaradb_transfer: instance migration
+        # 
         # - rds_apsaradb_upgrade: minor version update
+        # 
         # - all: all types
         self.task_type = task_type
 

@@ -17,21 +17,23 @@ class ReleasePublicNetworkAddressRequest(DaraModel):
     ):
         # The public endpoint type. Valid values:
         # 
-        # *   **SRV**
-        # *   **Normal**
+        # - **SRV**
         # 
-        # >  This parameter is valid only when you want to release an SRV endpoint.
+        # - **Normal**
+        # 
+        # > This parameter is valid only when you want to release an SRV endpoint.
         self.connection_type = connection_type
         # The instance ID.
         # 
-        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the mongos, shard, or Configserver node in the sharded cluster instance.
         # 
-        # > *   This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
-        # > *   You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the ID of the mongos, shard, or Configserver node.
+        # > - This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # >
+        # > - You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the ID of the mongos, shard, or Configserver node.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

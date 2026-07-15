@@ -21,7 +21,7 @@ class ModifyInstanceVpcAuthModeRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The ID of the mongos node in the sharded cluster instance.
         # 
-        # >  This parameter can be used only when the instance type is sharded cluster.
+        # > This parameter can be used only when the instance type is sharded cluster.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

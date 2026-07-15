@@ -21,15 +21,17 @@ class RenewDBInstanceRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-        # *   **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses** and select **User Center** from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management** > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
+        # - **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+        # 
+        # - **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses** and select **User Center** from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management** > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
         # 
         # Default value: **true**.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         # 
         # Default value: **false**.
         self.auto_renew = auto_renew
@@ -39,8 +41,9 @@ class RenewDBInstanceRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to use coupons. Default value: null. Valid values:
         # 
-        # *   **default** or **null**: uses coupons.
-        # *   **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+        # - **default** or **null**: uses coupons.
+        # 
+        # - **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
         self.coupon_no = coupon_no
         # The instance ID.
         # 

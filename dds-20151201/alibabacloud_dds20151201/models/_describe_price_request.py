@@ -23,47 +23,59 @@ class DescribePriceRequest(DaraModel):
     ):
         # The business information. This is an additional parameter.
         self.business_info = business_info
-        # The code of the instance. Valid values:
+        # The commodity code of the instance. Valid values:
         # 
-        # *   **dds**: a replica set instance that uses the pay-as-you-go billing method
-        # *   **badds**: a replica set instance that uses the subscription billing method
-        # *   **dds_sharding**: a sharded cluster instance that uses the pay-as-you-go billing method
-        # *   **badds_sharding**: a sharded cluster instance that uses the subscription billing method
-        # *   **badds_sharding_intl**: a sharded cluster instance that uses the subscription billing method and is available on the International site (alibabacloud.com)
-        # *   **dds_sharding_intl**: a sharded cluster instance that uses the pay-as-you-go billing method and is available on the International site (alibabacloud.com)
-        # *   **badds_sharding_jp**: a sharded cluster instance that uses the subscription billing method and is available on the Japan site (jp.alibabacloud.com)
-        # *   **badds_intl**: a replica set instance that uses the subscription billing method and is available on the International site (alibabacloud.com)
-        # *   **dds_intl**: a replica set instance that uses the pay-as-you-go billing method and is available on the International site (alibabacloud.com)
+        # - **dds**: pay-as-you-go ReplicaSet instance.
+        # 
+        # - **badds**: subscription ReplicaSet instance.
+        # 
+        # - **dds_sharding**: pay-as-you-go sharded cluster instance.
+        # 
+        # - **badds_sharding**: subscription sharded cluster instance.
+        # 
+        # - **badds_sharding_intl**: subscription sharded cluster instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+        # 
+        # - **dds_sharding_intl**: pay-as-you-go sharded cluster instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+        # 
+        # - **badds_sharding_jp**: subscription sharded cluster instance on the Alibaba Cloud Japan Website.
+        # 
+        # - **badds_intl**: subscription ReplicaSet instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+        # 
+        # - **dds_intl**: pay-as-you-go ReplicaSet instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
         self.commodity_code = commodity_code
-        # Specifies whether to use coupons. Default value: null. Valid values:
+        # Specifies whether to use a coupon. Valid values:
         # 
-        # *   **default** or **null**: uses coupons.
-        # *   **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+        # - **default** or **null** (default): A coupon is used.
+        # 
+        # - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
         self.coupon_no = coupon_no
-        # A JSON string that contains the details of the instance. For more information about the parameter and sample JSON formats, see [DescribePrice](https://help.aliyun.com/document_detail/197291.html).
+        # A JSON string that contains information about the instance. For more information about the parameters and JSON examples, see [DBInstances parameter of the DescribePrice operation](https://help.aliyun.com/document_detail/197291.html).
         # 
         # This parameter is required.
         self.dbinstances = dbinstances
-        # Specifies whether to return the OrderParams parameter. Valid values:
+        # Specifies whether to return the order parameters. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false** (default): The order parameters are not returned.
+        # 
+        # - **true**: The order parameters are returned.
         self.order_param_out = order_param_out
         # The order type. Valid values:
         # 
-        # *   **BUY**
-        # *   **UPGRADE**
-        # *   **RENEW**
+        # - **BUY**: Creates an instance.
+        # 
+        # - **UPGRADE**: Changes the configuration of an instance.
+        # 
+        # - **RENEW**: Renews an instance.
         # 
         # This parameter is required.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The code of the service. Default value: **dds**.
+        # The product code. The default value is **dds**.
         self.product_code = product_code
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
         self.region_id = region_id
-        # The ID of the resource group. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The resource group ID. For more information about resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

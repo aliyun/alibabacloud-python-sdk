@@ -20,27 +20,35 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The current endpoint that is to be modified.
+        # The current connection address—the address to modify.
         self.current_connection_string = current_connection_string
-        # The instance ID.
+        # The ID of the instance.
         # 
-        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you specify the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.force_modify_suffix = force_modify_suffix
         self.network_type = network_type
-        # The new endpoint. It must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter.
+        # The new connection address. It must meet these requirements:
         # 
-        # > You need only to specify the prefix of the endpoint. The content other than the prefix cannot be modified.
+        # - Start with a lowercase letter.
+        # 
+        # - End with a lowercase letter or digit.
+        # 
+        # - Contain only lowercase letters, digits, and hyphens (-).
+        # 
+        # - Be 8 to 63 characters long.
+        # 
+        # > Specify only the prefix of the connection address. You cannot change any part beyond the prefix.
         self.new_connection_string = new_connection_string
-        # The new port number of the instance. The port number must be within the range from 1000 to 65535.
+        # The new port number. Valid values are from 1000 to 65535.
         # 
-        # >  This parameter is available only when you set the **DBInstanceId** parameter to the ID of an instance that uses cloud disks.
+        # > This parameter is valid only when **DBInstanceId** specifies the ID of a cloud disk instance.
         self.new_port = new_port
-        # The ID of the mongos in the specified sharded cluster instance. Only one mongos ID can be specified in each call.
+        # The ID of a Mongos node in a sharded cluster instance. You can specify only one Mongos node ID per call.
         # 
-        # > This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # > This parameter is valid only when **DBInstanceId** specifies the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

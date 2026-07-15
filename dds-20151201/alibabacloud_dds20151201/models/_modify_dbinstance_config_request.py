@@ -15,10 +15,16 @@ class ModifyDBInstanceConfigRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The configuration item name.
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # The configuration item value
+        # 
         # This parameter is required.
         self.config_value = config_value
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account

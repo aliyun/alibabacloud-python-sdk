@@ -13,29 +13,30 @@ class DescribeDBInstanceTDEInfoResponseBody(DaraModel):
         role_arn: str = None,
         tdestatus: str = None,
     ):
-        # 实例的自定义密钥。
+        # The custom key of the instance.
         # 
-        # 目前仅以下地域支持BYOK（Bring Your Own Key，用户可以自行管理和拥有加密密钥）：
-        # - 华东1（杭州）
-        # - 华东2（上海）
-        # - 华北2（北京）
-        # - 华南1（深圳）
-        # - 中国（香港）
-        # - 新加坡
-        # - 马来西亚（吉隆坡）
+        # Currently, only the following regions support Bring Your Own Key (BYOK), which allows you to manage and own encryption keys:
+        # - China (Hangzhou)
+        # - China (Shanghai)
+        # - China (Beijing)
+        # - China (Shenzhen)
+        # - Hong Kong (China)
+        # - Singapore
+        # - Malaysia (Kuala Lumpur)
         # 
-        # > 支持BYOK，用户可以管理且拥有密钥，系统将返回用户的自定义密钥；不支持BYOK，用户不可管理密钥，系统将返回字符串`NoActiveBYOK`。
+        # > If BYOK is supported, you can manage and own the key, and the system returns your custom key. If BYOK is not supported, you cannot manage the key, and the system returns the string `NoActiveBYOK`.
         self.encryption_key = encryption_key
-        # 加密算法。
+        # The encryption algorithm.
         self.encryptor_name = encryptor_name
         # The request ID.
         self.request_id = request_id
-        # 指定待授权角色的全局资源描述符ARN（Alibaba Cloud Resource Name）信息。
+        # The global resource descriptor ARN (Alibaba Cloud Resource Name) of the role pending authorization.
         self.role_arn = role_arn
-        # The TDE status. Valid values:
+        # The TDE enabling status. Valid values:
+        # - **enabled**: TDE is enabled.
+        # - **disabled**: TDE is disabled.
         # 
-        # *   **enabled**
-        # *   **disabled**
+        # > If the TDE status is disabled, the **RoleARN**, **EncryptionKey**, and **EncryptorName** parameters are not returned.
         self.tdestatus = tdestatus
 
     def validate(self):

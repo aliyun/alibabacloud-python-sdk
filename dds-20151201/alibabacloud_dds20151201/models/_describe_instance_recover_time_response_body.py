@@ -15,7 +15,7 @@ class DescribeInstanceRecoverTimeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The time ranges to which data can be restored. The time ranges include those used for point-in-time data restoration.
+        # The list of restorable time ranges. This list contains all time ranges available for point-in-time restoration.
         self.restore_ranges = restore_ranges
 
     def validate(self):
@@ -59,13 +59,12 @@ class DescribeInstanceRecoverTimeResponseBodyRestoreRanges(DaraModel):
         restore_end_time: str = None,
         restore_type: str = None,
     ):
-        # The beginning of the time range to which data can be restored.
+        # The beginning of the restorable time range.
         self.restore_begin_time = restore_begin_time
-        # The end of the time range to which data can be restored.
+        # The end of the restorable time range.
         self.restore_end_time = restore_end_time
-        # The method used to restore data. Valid value:
-        # 
-        # *   PointInTime (default): Data is restored to a point in time.
+        # The restoration method. Valid values:
+        # * PointInTime (default): point-in-time restoration.
         self.restore_type = restore_type
 
     def validate(self):

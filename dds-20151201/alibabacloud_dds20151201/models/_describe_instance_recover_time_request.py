@@ -9,6 +9,7 @@ class DescribeInstanceRecoverTimeRequest(DaraModel):
         self,
         dbinstance_id: str = None,
         dest_region: str = None,
+        only_db_table_recovery: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_group_id: str = None,
@@ -21,13 +22,21 @@ class DescribeInstanceRecoverTimeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region where the geo-redundancy backup set is stored.
+        # > 
+        # > - This parameter is required when you query geo-redundancy backups.
         self.dest_region = dest_region
+        self.only_db_table_recovery = only_db_table_recovery
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The area where the source instance of the geo-redundancy backup resides.
+        # > 
+        # > - This parameter is required when you query geo-redundancy backups.
         self.src_region = src_region
 
     def validate(self):
@@ -43,6 +52,9 @@ class DescribeInstanceRecoverTimeRequest(DaraModel):
 
         if self.dest_region is not None:
             result['DestRegion'] = self.dest_region
+
+        if self.only_db_table_recovery is not None:
+            result['OnlyDbTableRecovery'] = self.only_db_table_recovery
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -74,6 +86,9 @@ class DescribeInstanceRecoverTimeRequest(DaraModel):
 
         if m.get('DestRegion') is not None:
             self.dest_region = m.get('DestRegion')
+
+        if m.get('OnlyDbTableRecovery') is not None:
+            self.only_db_table_recovery = m.get('OnlyDbTableRecovery')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

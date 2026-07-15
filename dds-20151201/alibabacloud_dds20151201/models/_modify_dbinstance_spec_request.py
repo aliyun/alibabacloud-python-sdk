@@ -30,86 +30,139 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         target_vswitch_id: str = None,
         target_zone_id: str = None,
     ):
-        # Specifies whether to enable automatic payment. Valid values:
+        # Specifies whether to enable automatic payment for the instance. Valid values:
         # 
-        # *   **true** (default): enables automatic payment. Make sure that your Alibaba Cloud account has a sufficient balance.
-        # *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **User Center**. In the left-side navigation pane, choose **Order Management** > **Order**. On the **Orders for Services** tab, find the order and pay for the order.
+        # - **true**: enables automatic payment. Make sure that your account has a sufficient balance. This is the default value.
+        # 
+        # <props="china">
+        # 
+        # - **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console to pay for the instance. In the upper-right corner of the page, choose **Billing Management** > **Billing Management**. In the left-side navigation pane, choose **Orders** > **My Orders**. On the **Product Orders** tab, find the order and complete the payment.
+        # 
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console to pay for the instance. In the upper-right corner of the page, choose **Billing Management** > **Billing Management**. In the left-side navigation pane, click **Orders**. On the **Product Orders** page, find the order and complete the payment.
         self.auto_pay = auto_pay
         # The business information.
         self.business_info = business_info
-        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
-        self.coupon_no = coupon_no
-        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). You can also call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to view instance types.
+        # Specifies whether to use a coupon. Valid values:
         # 
-        # > You must specify at least one of the DBInstanceClass and **DBInstanceStorage** parameters.
+        # - **default** or **null** (default): A coupon is used.
+        # 
+        # - **youhuiquan_promotion_option_id_for_blank**: No coupon is used.
+        self.coupon_no = coupon_no
+        # The instance type. <props="intl">For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). You can also call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query instance types.<props="china">
+        # 
+        # - For a standalone instance or a replica set instance, this parameter specifies the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). You can also call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query the instance types of standalone and replica set instances.
+        # 
+        # - For a serverless instance, this parameter specifies the computing capacity of the instance. Valid values: 100 to 8000.
+        # 
+        # > You must configure one of the **DBInstanceStorage** and DBInstanceClass parameters.
         self.dbinstance_class = dbinstance_class
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the instance. Valid values: 10 to 3000. The value must be a multiple of 10. Unit: GB. The values that can be specified for this parameter are subject to the instance types. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+        # The storage capacity of the instance. <props="intl">The value must be an integer that is greater than or equal to 10. The value increases in increments of 10. Unit: GB. The values that can be specified for this parameter are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
         # 
-        # > 
+        # <props="china">
         # 
-        # *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass** parameters.
+        # - The storage capacity of a standalone instance or a replica set instance must be a multiple of 10. The valid values are 10 to 3000. Unit: GB. The values that can be specified for this parameter are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
         # 
-        # *   Storage capacity can be scaled down only for pay-as-you-go replica set instances. The new storage capacity you specify must be greater than the used storage capacity.
+        # - The storage capacity of a serverless instance must be a multiple of 1. The valid values are 1 to 100. Unit: GB.
+        # 
+        # 
+        # 
+        # > - You must configure one of the **DBInstanceClass** and DBInstanceStorage parameters.
+        # >
+        # > - You cannot decrease the storage capacity of an instance.
         self.dbinstance_storage = dbinstance_storage
-        # The time when the changed configurations take effect. Valid values:
+        # The effective time of the configuration change. Valid values:
         # 
-        # *   **Immediately** (default): The configurations immediately take effect.
-        # *   **MaintainTime**: The configurations take effect during the maintenance window of the instance.
+        # - **Immediately**: The configuration change immediately takes effect. This is the default value.
+        # 
+        # - **MaintainTime**: The configuration change takes effect during the maintenance window of the instance.
         self.effective_time = effective_time
-        # The additional parameter.
+        # Additional parameters. Valid values:
         # 
-        # Valid values:
+        # - **async**: The result is returned after the specification change order is created.
         # 
-        # *   async
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   sync
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # - **sync**: The result is returned after the instance specification change is delivered.
         self.extra_param = extra_param
-        # The type of the configuration change. Valid values:
+        # The specification change type. Valid values:
         # 
-        # *   **UPGRADE**
-        # *   **DOWNGRADE** (default)
+        # - **UPGRADE**: upgrades the specifications. This is the default value.
         # 
-        # >  This parameter can be configured only when the billing method of the instance is subscription.
+        # - **DOWNGRADE**: downgrades the specifications.
+        # 
+        # > This parameter is available only for subscription instances.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of read-only nodes. Valid values: **0** to **5**.
         # 
-        # If your instance has only **Classic Network** and **VPC** endpoints, you must apply for a public endpoint or release the classic network endpoint for the instance before you can change the **Read-only Nodes** value.
+        # If the network type of the instance is set to only **classic network** and **VPC**, you need to enable public access or release the classic network endpoint before you can change the **number of read-only nodes**.
         # 
-        # > You can go to the **Database Connections** page to view the types of networks that are enabled.
+        # > You can log on to the ApsaraDB for MongoDB console and go to the **Database Connections** page to view the network types that have been enabled.
         self.readonly_replicas = readonly_replicas
-        # The number of nodes in the instance.
+        # The number of nodes in the instance. Default value: 3.
         # 
-        # *   Valid values for replica set instances: **3**, **5**, and **7**
-        # *   Valid values for standalone instances: **1**
+        # - Valid values for replica set instances: **3**, **5**, and **7**.
         # 
-        # >  This parameter is not required for a serverless instance which is only available on the China site (aliyun.com).
+        # - The value for standalone instances is fixed at **1**.
+        # 
+        # - The value for replica set instances with shared storage (available only in the China site) is fixed at **2**.
+        # 
+        # > This parameter is not required for serverless instances (available only in the China site).
         self.replication_factor = replication_factor
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The specifications of the Search node to be changed.
         self.search_node_class = search_node_class
+        # The number of Search nodes to be changed.
         self.search_node_count = search_node_count
+        # The capacity of the Search node to be changed.
         self.search_node_storage = search_node_storage
+        # The destination zone for the hidden node when you change the specifications and migrate the instance across zones.
+        # >Notice: This parameter applies only to cloud disk instances.
+        # >Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetSecondaryZoneId parameter.
+        # 
+        # > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
+        # >
+        # > - This parameter is available only for multi-zone migration.
+        # >
+        # > - The destination zone and the current zone must be in the same region.
+        # >
+        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
         self.target_hidden_zone_id = target_hidden_zone_id
+        # The destination secondary zone for the secondary node when you change the specifications and migrate the instance across zones.
+        # >Notice: This parameter applies only to cloud disk instances.
+        # >Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetHiddenZoneId parameter.
+        # 
+        # > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
+        # >
+        # > - This parameter is available only for multi-zone migration.
+        # >
+        # > - The destination zone and the current zone must be in the same region.
+        # >
+        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
         self.target_secondary_zone_id = target_secondary_zone_id
+        # The destination vSwitch ID when you change the specifications and migrate the instance across zones.
+        # >Notice: This parameter applies only to cloud disk instances.
+        # 
+        # > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
         self.target_vswitch_id = target_vswitch_id
+        # The destination zone to which you want to migrate the instance when you change the specifications and migrate the instance across zones.
+        # >Notice: This parameter applies only to cloud disk instances.
+        # >Notice: The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.
+        # 
+        # > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
+        # >
+        # > - The destination zone and the current zone must be in the same region.
+        # >
+        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
         self.target_zone_id = target_zone_id
 
     def validate(self):

@@ -19,14 +19,17 @@ class DescribeParameterModificationHistoryRequest(DaraModel):
     ):
         # The role of the instance. Valid values:
         # 
-        # *   **db**: shard
-        # *   **cs**: Configserver
-        # *   **mongos**: mongos
-        # *   **logic**: sharded cluster instance
+        # - **db**: shard
+        # 
+        # - **cs**: Configserver
+        # 
+        # - **mongos**: mongos
+        # 
+        # - **logic**: sharded cluster instance
         self.character_type = character_type
         # The instance ID.
         # 
-        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -36,7 +39,7 @@ class DescribeParameterModificationHistoryRequest(DaraModel):
         self.end_time = end_time
         # The ID of the mongos node or shard node whose parameter modification records you want to query in the instance.
         # 
-        # >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
+        # > This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
