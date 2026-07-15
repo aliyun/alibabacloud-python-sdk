@@ -15,9 +15,13 @@ class MultiModalGuardForBase64ResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
         self.message = message
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -67,8 +71,11 @@ class MultiModalGuardForBase64ResponseBodyData(DaraModel):
         detail: List[main_models.MultiModalGuardForBase64ResponseBodyDataDetail] = None,
         suggestion: str = None,
     ):
+        # The data ID.
         self.data_id = data_id
+        # The details.
         self.detail = detail
+        # The suggested action.
         self.suggestion = suggestion
 
     def validate(self):
@@ -119,9 +126,13 @@ class MultiModalGuardForBase64ResponseBodyDataDetail(DaraModel):
         suggestion: str = None,
         type: str = None,
     ):
+        # The risk level.
         self.level = level
+        # The result.
         self.result = result
+        # The suggested action.
         self.suggestion = suggestion
+        # The category.
         self.type = type
 
     def validate(self):
@@ -179,10 +190,15 @@ class MultiModalGuardForBase64ResponseBodyDataDetailResult(DaraModel):
         label: str = None,
         level: str = None,
     ):
+        # The confidence level.
         self.confidence = confidence
+        # The description.
         self.description = description
+        # The extension information.
         self.ext = ext
+        # The label.
         self.label = label
+        # The risk level.
         self.level = level
 
     def validate(self):

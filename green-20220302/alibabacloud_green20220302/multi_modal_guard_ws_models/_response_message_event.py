@@ -59,11 +59,13 @@ class ResponseMessageEventData(DaraModel):
         suggestion: str = None,
         data_id: str = None,
         seq_list: List[str] = None,
+        processed_output: str = None,
     ):
         self.detail = detail
         self.suggestion = suggestion
         self.data_id = data_id
         self.seq_list = seq_list
+        self.processed_output = processed_output
 
     def validate(self):
         if self.detail:
@@ -90,6 +92,9 @@ class ResponseMessageEventData(DaraModel):
         if self.seq_list is not None:
             result['SeqList'] = self.seq_list
 
+        if self.processed_output is not None:
+            result['ProcessedOutput'] = self.processed_output
+
         return result
 
     def from_map(self, m: dict = None):
@@ -108,6 +113,9 @@ class ResponseMessageEventData(DaraModel):
 
         if m.get('SeqList') is not None:
             self.seq_list = m.get('SeqList')
+
+        if m.get('ProcessedOutput') is not None:
+            self.processed_output = m.get('ProcessedOutput')
 
         return self
 

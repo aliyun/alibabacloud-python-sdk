@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_green20220302 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -1151,6 +1153,166 @@ class Client(OpenApiClient):
     ) -> main_models.MultiModalAgentResponse:
         runtime = RuntimeOptions()
         return await self.multi_modal_agent_with_options_async(request, runtime)
+
+    def multi_modal_agent_ssewith_sse(
+        self,
+        request: main_models.MultiModalAgentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.MultiModalAgentSSEResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppID'] = request.app_id
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalAgentSSE',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.MultiModalAgentSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def multi_modal_agent_ssewith_sse_async(
+        self,
+        request: main_models.MultiModalAgentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.MultiModalAgentSSEResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppID'] = request.app_id
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalAgentSSE',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.MultiModalAgentSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def multi_modal_agent_ssewith_options(
+        self,
+        request: main_models.MultiModalAgentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalAgentSSEResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppID'] = request.app_id
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalAgentSSE',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalAgentSSEResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multi_modal_agent_ssewith_options_async(
+        self,
+        request: main_models.MultiModalAgentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalAgentSSEResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppID'] = request.app_id
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalAgentSSE',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalAgentSSEResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multi_modal_agent_sse(
+        self,
+        request: main_models.MultiModalAgentSSERequest,
+    ) -> main_models.MultiModalAgentSSEResponse:
+        runtime = RuntimeOptions()
+        return self.multi_modal_agent_ssewith_options(request, runtime)
+
+    async def multi_modal_agent_sse_async(
+        self,
+        request: main_models.MultiModalAgentSSERequest,
+    ) -> main_models.MultiModalAgentSSEResponse:
+        runtime = RuntimeOptions()
+        return await self.multi_modal_agent_ssewith_options_async(request, runtime)
 
     def multi_modal_guard_with_options(
         self,

@@ -1,3 +1,7 @@
+2026-07-15 Version: 3.5.0
+- Support API MultiModalAgentSSE.
+
+
 2026-07-07 Version: 3.4.1
 - Generated python 2022-03-02 for Green.
 
