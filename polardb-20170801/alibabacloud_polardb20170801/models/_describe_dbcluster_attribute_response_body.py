@@ -71,10 +71,12 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         source_dbcluster: str = None,
         source_region_id: str = None,
         standby_hamode: str = None,
+        storage_auto_scale: str = None,
         storage_max: int = None,
         storage_pay_type: str = None,
         storage_space: int = None,
         storage_type: str = None,
+        storage_upper_bound: int = None,
         storage_used: int = None,
         strict_consistency: str = None,
         sub_category: str = None,
@@ -84,7 +86,7 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         v_switch_id: str = None,
         zone_ids: str = None,
     ):
-        # The start time of the free AI trial.
+        # The start time of the free AI feature.
         self.ai_creating_time = ai_creating_time
         # The AI node type. Valid values:
         #      
@@ -97,8 +99,8 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.architecture = architecture
         # The minor version update method. Valid values:
         # 
-        # - Auto: automatic update.
-        # - Manual: manual update.
+        # - Auto: Automatic update.
+        # - Manual: Manual update.
         self.auto_upgrade_minor_version = auto_upgrade_minor_version
         # The maximum number of blktags in the file system.
         self.blktag_total = blktag_total
@@ -107,25 +109,25 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.branch = branch
         # Indicates whether I/O performance burst is enabled for the ESSD AutoPL cloud disk. Valid values:
         # 
-        # - **true**: enabled.
-        # - **false**: disabled.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.bursting_enabled = bursting_enabled
         # The [edition](https://help.aliyun.com/document_detail/183258.html) of the cluster. Valid values:
         # * **Normal**: Cluster Edition
         # * **Basic**: Single Node Edition
-        # * **Archive**: PolarDB X-Engine Edition
+        # * **Archive**: X-Engine Edition
         # * **NormalMultimaster**: Multi-master Cluster Edition
-        # * **SENormal**: PolarDB for MySQL Standard Edition
+        # * **SENormal**: Standard Edition
         # 
-        # > * PolarDB for PostgreSQL (PostgreSQL 11) does not support Single Node Edition.
-        # >* PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL (PostgreSQL 14) support PolarDB for MySQL Standard Edition.
-        # >* PolarDB for MySQL 8.0 supports PolarDB X-Engine Edition and Multi-master Cluster Edition.
+        # > * PolarDB for PostgreSQL 11 does not support Single Node Edition.
+        # >* PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL 14 support Standard Edition.
+        # >* PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster Edition.
         self.category = category
         # Indicates whether column store tables are enabled.
         self.column_table = column_table
         # Indicates whether storage compression is enabled. Valid values:
-        # - ON: enabled
-        # - OFF: disabled
+        # - ON: Enabled.
+        # - OFF: Disabled.
         self.compress_storage_mode = compress_storage_mode
         # The compressed storage data size.
         # >This parameter is returned only when the storage compression feature is enabled for the cluster.
@@ -142,19 +144,19 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.dbcluster_network_type = dbcluster_network_type
         # The cluster status. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
-        # The details of nodes.
+        # The node information.
         self.dbnodes = dbnodes
         # The database engine type.
         self.dbtype = dbtype
         # The database engine version.
         self.dbversion = dbversion
-        # The status of the current minor engine version. Valid values:
+        # The status of the current minor database version. Valid values:
         # * **Stable**: The current version is stable.
         # * **Old**: The current version is outdated. Upgrade to the latest version.
         # * **HighRisk**: The current version has critical defects. Upgrade to the latest version immediately.
         # * **Beta**: The current version is a beta version.
         # 
-        # > * For information about how to upgrade the minor engine version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
+        # > * For information about how to upgrade the minor database version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
         # > * This parameter is returned only when the database engine type (**DBType**) is **MySQL**.
         self.dbversion_status = dbversion_status
         # The total size of level-1 backups (snapshots), in bytes.
@@ -176,21 +178,21 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         # Indicates whether the cluster has expired.
         # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription).
         self.expired = expired
-        # Indicates whether resources are replenished for the new primary database after a cross-zone failover. Valid values:
+        # Indicates whether resources are replenished for the new primary node after a cross-zone failover. Valid values:
         # - **true**: Resources are replenished.
         # - **false**: Resources are not replenished.
         self.has_complete_standby_res = has_complete_standby_res
         # Indicates whether the Hot Standby Cluster (and standby compute nodes) is enabled. Valid values:
-        # - **StandbyClusterON**: The Hot Standby Cluster and standby compute nodes are enabled.
-        # - **StandbyClusterOFF**: The Hot Standby Cluster and standby compute nodes are disabled.
+        # - **StandbyClusterON**: The Hot Standby Cluster or both the Hot Standby Cluster and standby compute nodes are enabled. 
+        # - **StandbyClusterOFF**: The Hot Standby Cluster or both the Hot Standby Cluster and standby compute nodes are disabled.
         self.hot_standby_cluster = hot_standby_cluster
         # The automatic IMCI-based query acceleration feature. Valid values:
-        # - `ON`: enabled.
-        # - `OFF`: disabled.
+        # - `ON`: Enabled.
+        # - `OFF`: Disabled.
         self.imci_auto_index = imci_auto_index
         # The failover with hot replica feature. Valid values:
-        # - `true`: enabled.
-        # - `false`: disabled.
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.imperceptible_switch = imperceptible_switch
         # The maximum number of inodes in the file system.
         self.inode_total = inode_total
@@ -209,17 +211,17 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.is_proxy_latest_version = is_proxy_latest_version
         # The lock mode. Valid values: 
         # 
-        # - **Unlock**: not locked.
-        # - **ManualLock**: manually locked. 
-        # - **LockByExpiration**: automatically locked due to cluster expiration.
+        # - **Unlock**: Not locked.
+        # - **ManualLock**: Manually locked. 
+        # - **LockByExpiration**: Automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
-        # The maintenance window of the cluster, in the `HH:mmZ-HH:mmZ` format (UTC). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+08:00).
+        # The maintenance window of the cluster. The time is in the `HH:mmZ-HH:mmZ` format (UTC). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+08:00).
         self.maintain_time = maintain_time
         # The Orca feature. Valid values:
         # 
-        # - on: enabled.
+        # - on: Enabled.
         # 
-        # - off: disabled.
+        # - off: Disabled.
         self.orca = orca
         # The billing method. Valid values:
         # 
@@ -234,25 +236,25 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.proxy_cpu_cores = proxy_cpu_cores
         # The serverless type of the database proxy. Valid values:
         # - AgileServerless: agile serverless cluster.
-        # - SteadyServerless: steady serverless, which is a cluster with defined specifications (subscription or pay-as-you-go billing).
+        # - SteadyServerless: steady serverless, which is a cluster with defined specifications (billing method is subscription or pay-as-you-go).
         self.proxy_serverless_type = proxy_serverless_type
         # The number of CPU cores in the standard configuration of the database proxy.
         self.proxy_standard_cpu_cores = proxy_standard_cpu_cores
         # The status of the database proxy. Valid values:
         # 
-        # - **Creating**: being created.
-        # - **Running**: running.
-        # - **Deleting**: being released.
-        # - **Rebooting**: being restarted.
-        # - **DBNodeCreating**: adding a node.
-        # - **DBNodeDeleting**: deleting a node.
-        # - **ClassChanging**: changing node specifications.
-        # - **NetAddressCreating**: creating network connectivity.
-        # - **NetAddressDeleting**: deleting network connectivity.
-        # - **NetAddressModifying**: modifying network connectivity.
-        # - **Deleted**: released.
+        # - **Creating**: Being created.
+        # - **Running**: Running.
+        # - **Deleting**: Being released.
+        # - **Rebooting**: Being restarted.
+        # - **DBNodeCreating**: Increase node in progress.
+        # - **DBNodeDeleting**: Deleting a node.
+        # - **ClassChanging**: Changing node specifications.
+        # - **NetAddressCreating**: Creating network connectivity.
+        # - **NetAddressDeleting**: Deleting network connectivity.
+        # - **NetAddressModifying**: Modifying network connectivity.
+        # - **Deleted**: Released.
         self.proxy_status = proxy_status
-        # The type of the database proxy. Valid values:
+        # The database proxy type. Valid values:
         # 
         # - **Exclusive**: Dedicated Enterprise Edition
         # - **General**: Standard Enterprise Edition
@@ -263,18 +265,18 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # * If RestoreType is **RestoreByTime** or **RestoreByTimeOss**, this value indicates the point in time to which the cluster is restored.
+        # * If RestoreType is **RestoreByTime** or **RestoreByTimeOss**, this value indicates the point in time to which the cluster was restored.
         # * If RestoreType is **RestoreByBackupSet** or **RestoreByBackupSetOss**, this value indicates the backup set ID used for the restoration.
         # 
         # <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
         self.restore_data_point = restore_data_point
-        # The restoration method of the cluster. Valid values:
+        # The cluster restoration method. Valid values:
         # 
-        # * **RestoreByTime**: point-in-time restore based on a level-1 backup.
-        # * **RestoreByBackupSet**: restore from a level-1 backup set.
-        # * **RestoreByTimeOss**: point-in-time restore based on a level-2 backup.
-        # * **RestoreByBackupSetOss**: restore from a level-2 backup set.
-        # * **CloneFromSourceCluster**: clone from the source cluster.
+        # * **RestoreByTime**: Restored from a point in time based on a level-1 backup.
+        # * **RestoreByBackupSet**: Restored from a backup set based on a level-1 backup.
+        # * **RestoreByTimeOss**: Restored from a point in time based on a level-2 backup.
+        # * **RestoreByBackupSetOss**: Restored from a backup set based on a level-2 backup.
+        # * **CloneFromSourceCluster**: Cloned from the source cluster.
         # 
         # <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
         self.restore_type = restore_type
@@ -307,9 +309,10 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         # - **OFF**: Cross-zone disaster recovery is disabled.
         # - **0**: Customer drill mode.
         self.standby_hamode = standby_hamode
+        self.storage_auto_scale = storage_auto_scale
         # The maximum storage capacity for the current cluster specifications, in bytes.
         self.storage_max = storage_max
-        # The billing method for storage. Valid values:
+        # The storage billing type. Valid values:
         # 
         # - **Postpaid**: pay-by-capacity (pay-as-you-go).
         # - **Prepaid**: pay-by-space (subscription).
@@ -318,13 +321,14 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.storage_space = storage_space
         # The storage type. The value is fixed as **HighPerformance**.
         self.storage_type = storage_type
+        self.storage_upper_bound = storage_upper_bound
         # The storage usage, in bytes.
         self.storage_used = storage_used
-        # Indicates whether multi-zone strong data consistency is enabled for the cluster. Valid values:
+        # Indicates whether multi-zone data strong consistency is enabled for the cluster. Valid values:
         # 
-        # - **ON**: Multi-zone strong data consistency is enabled. This applies to PolarDB for MySQL Standard Edition with three-zone deployment.
+        # - **ON**: Multi-zone data strong consistency is enabled. This applies to Standard Edition clusters deployed across three zones.
         # 
-        # - **OFF**: Multi-zone strong data consistency is not enabled.
+        # - **OFF**: Multi-zone data strong consistency is not enabled.
         self.strict_consistency = strict_consistency
         # The specification type of compute nodes. Valid values:
         # * **Exclusive**: Dedicated
@@ -332,9 +336,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         # 
         # > This parameter is returned only for PolarDB for MySQL clusters of the Cluster Edition.
         self.sub_category = sub_category
-        # Indicates whether failover with hot replica is supported with IMCI compatibility.
+        # Indicates whether the failover with hot replica feature that is compatible with IMCI is supported.
         self.support_instant_switch_with_imci = support_instant_switch_with_imci
-        # The details of tags.
+        # The tag information.
         self.tags = tags
         # The VPC ID.
         self.vpcid = vpcid
@@ -545,6 +549,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         if self.standby_hamode is not None:
             result['StandbyHAMode'] = self.standby_hamode
 
+        if self.storage_auto_scale is not None:
+            result['StorageAutoScale'] = self.storage_auto_scale
+
         if self.storage_max is not None:
             result['StorageMax'] = self.storage_max
 
@@ -556,6 +563,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
 
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+
+        if self.storage_upper_bound is not None:
+            result['StorageUpperBound'] = self.storage_upper_bound
 
         if self.storage_used is not None:
             result['StorageUsed'] = self.storage_used
@@ -774,6 +784,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         if m.get('StandbyHAMode') is not None:
             self.standby_hamode = m.get('StandbyHAMode')
 
+        if m.get('StorageAutoScale') is not None:
+            self.storage_auto_scale = m.get('StorageAutoScale')
+
         if m.get('StorageMax') is not None:
             self.storage_max = m.get('StorageMax')
 
@@ -785,6 +798,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
 
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+
+        if m.get('StorageUpperBound') is not None:
+            self.storage_upper_bound = m.get('StorageUpperBound')
 
         if m.get('StorageUsed') is not None:
             self.storage_used = m.get('StorageUsed')
@@ -875,6 +891,9 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
         multi_master_local_standby: str = None,
         multi_master_primary_node: str = None,
         orca: str = None,
+        remote_memory_max: int = None,
+        remote_memory_min: int = None,
+        remote_memory_recommended: int = None,
         remote_memory_size: str = None,
         scc_mode: str = None,
         server_weight: str = None,
@@ -899,38 +918,38 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.dbnode_id = dbnode_id
         # The role of the node. Valid values: 
         # 
-        # - **Writer**: read/write node.
+        # - **Writer**: primary node.
         # - **Reader**: read-only node.
         self.dbnode_role = dbnode_role
         # The node status. Valid values:
-        # * **Creating**: being created.
-        # * **Running**: running.
-        # * **Deleting**: being deleted.
-        # * **Rebooting**: being restarted.
-        # * **DBNodeCreating**: adding a node.
-        # * **DBNodeDeleting**: deleting a node.
-        # * **ClassChanging**: changing node specifications.
-        # * **NetAddressCreating**: creating network connectivity.
-        # * **NetAddressDeleting**: deleting network connectivity.
-        # * **NetAddressModifying**: modifying network connectivity.
-        # * **MinorVersionUpgrading**: performing a minor engine version upgrade.
-        # * **Maintaining**: instance under maintenance.
-        # * **Switching**: being switched.
+        # * **Creating**: Being created. 
+        # * **Running**: Running. 
+        # * **Deleting**: Being deleted.  
+        # * **Rebooting**: Being restarted.  
+        # * **DBNodeCreating**: Increase node in progress.  
+        # * **DBNodeDeleting**: Deleting a node. 
+        # * **ClassChanging**: Changing node specifications.  
+        # * **NetAddressCreating**: Creating network connectivity.  
+        # * **NetAddressDeleting**: Deleting network connectivity.  
+        # * **NetAddressModifying**: Modifying network connectivity.
+        # * **MinorVersionUpgrading**: Upgrade of the minor version in progress.
+        # * **Maintaining**: Instance under maintenance.  
+        # * **Switching**: Switching over.
         self.dbnode_status = dbnode_status
         # The failover priority. Each node has a failover priority that determines the probability of the node being elected as the primary node during a failover. A higher value indicates a higher priority.
         # Valid values: 1 to 15.
         self.failover_priority = failover_priority
         # Indicates whether hot standby is enabled. Valid values:
         # 
-        # - **ON**: enabled.
+        # - **ON**: Enabled.
         # 
-        # - **OFF**: disabled.
+        # - **OFF**: Disabled.
         self.hot_replica_mode = hot_replica_mode
         # Indicates whether In-Memory Column Index (IMCI) is enabled. Valid values:
         # 
-        # - **ON**: enabled.
+        # - **ON**: Enabled.
         # 
-        # - **OFF**: disabled.
+        # - **OFF**: Disabled.
         self.imci_switch = imci_switch
         # The primary node ID of the Multi-master Cluster Edition.
         self.master_id = master_id
@@ -940,7 +959,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.max_iops = max_iops
         # The memory size of the node. Unit: MB.
         self.memory_size = memory_size
-        # The name of the hot replica compute node that corresponds to the node in the Hot Standby Cluster and compute architecture.
+        # The name of the hot replica that corresponds to this node in the hot standby storage and compute architecture.
         self.mirror_ins_name = mirror_ins_name
         # The multi-master local standby node.
         self.multi_master_local_standby = multi_master_local_standby
@@ -948,17 +967,20 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.multi_master_primary_node = multi_master_primary_node
         # The Orca feature. Valid values:
         # 
-        # - on: enabled.
+        # - on: Enabled.
         # 
-        # - off: disabled.
+        # - off: Disabled.
         self.orca = orca
+        self.remote_memory_max = remote_memory_max
+        self.remote_memory_min = remote_memory_min
+        self.remote_memory_recommended = remote_memory_recommended
         # The remote memory size. Unit: MB.
         self.remote_memory_size = remote_memory_size
         # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
         # 
-        # - **ON**: The feature is enabled.
+        # - **ON**: Enabled.
         # 
-        # - **OFF**: The feature is disabled.
+        # - **OFF**: Disabled.
         # 
         # This parameter is required.
         self.scc_mode = scc_mode
@@ -968,11 +990,11 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
         # The serverless type of the node. Valid values:
         # 
         # - AgileServerless: agile serverless node.
-        # - SteadyServerless: steady serverless node, which is a node with defined specifications that has the serverless capability enabled.
+        # - SteadyServerless: steady serverless node, which is a node in a cluster with defined specifications that has serverless capabilities enabled.
         # 
         # > This parameter is supported only for serverless clusters or clusters with defined specifications that have the serverless feature enabled. For more information, see [Serverless](https://help.aliyun.com/document_detail/452274.html).
         self.serverless_type = serverless_type
-        # Indicates whether the node is in the primary zone or the secondary zone. This parameter is mainly used for resource-equivalent deployments.
+        # Indicates whether the node is in the primary zone or secondary zone. This parameter is mainly used for resource-equivalent deployments.
         # Valid values:
         # - Primary: primary zone.
         # - Standby: secondary zone.
@@ -1049,6 +1071,15 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
 
         if self.orca is not None:
             result['Orca'] = self.orca
+
+        if self.remote_memory_max is not None:
+            result['RemoteMemoryMax'] = self.remote_memory_max
+
+        if self.remote_memory_min is not None:
+            result['RemoteMemoryMin'] = self.remote_memory_min
+
+        if self.remote_memory_recommended is not None:
+            result['RemoteMemoryRecommended'] = self.remote_memory_recommended
 
         if self.remote_memory_size is not None:
             result['RemoteMemorySize'] = self.remote_memory_size
@@ -1134,6 +1165,15 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
 
         if m.get('Orca') is not None:
             self.orca = m.get('Orca')
+
+        if m.get('RemoteMemoryMax') is not None:
+            self.remote_memory_max = m.get('RemoteMemoryMax')
+
+        if m.get('RemoteMemoryMin') is not None:
+            self.remote_memory_min = m.get('RemoteMemoryMin')
+
+        if m.get('RemoteMemoryRecommended') is not None:
+            self.remote_memory_recommended = m.get('RemoteMemoryRecommended')
 
         if m.get('RemoteMemorySize') is not None:
             self.remote_memory_size = m.get('RemoteMemorySize')

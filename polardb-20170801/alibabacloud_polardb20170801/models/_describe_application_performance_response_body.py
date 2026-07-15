@@ -13,6 +13,7 @@ class DescribeApplicationPerformanceResponseBody(DaraModel):
         application_id: str = None,
         application_type: str = None,
         end_time: str = None,
+        interval: str = None,
         performance_keys: main_models.DescribeApplicationPerformanceResponseBodyPerformanceKeys = None,
         request_id: str = None,
         start_time: str = None,
@@ -23,6 +24,7 @@ class DescribeApplicationPerformanceResponseBody(DaraModel):
         self.application_type = application_type
         # The end time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.end_time = end_time
+        self.interval = interval
         # The performance metrics.
         self.performance_keys = performance_keys
         # The request ID.
@@ -48,6 +50,9 @@ class DescribeApplicationPerformanceResponseBody(DaraModel):
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
+        if self.interval is not None:
+            result['Interval'] = self.interval
+
         if self.performance_keys is not None:
             result['PerformanceKeys'] = self.performance_keys.to_map()
 
@@ -69,6 +74,9 @@ class DescribeApplicationPerformanceResponseBody(DaraModel):
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
 
         if m.get('PerformanceKeys') is not None:
             temp_model = main_models.DescribeApplicationPerformanceResponseBodyPerformanceKeys()
@@ -216,9 +224,11 @@ class DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPo
 class DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue(DaraModel):
     def __init__(
         self,
+        step: int = None,
         timestamp: int = None,
         value: str = None,
     ):
+        self.step = step
         self.timestamp = timestamp
         self.value = value
 
@@ -230,6 +240,9 @@ class DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPo
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.step is not None:
+            result['Step'] = self.step
+
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
 
@@ -240,6 +253,9 @@ class DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPo
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
 

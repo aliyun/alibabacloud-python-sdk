@@ -4,15 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeApplicationLogsRequest(DaraModel):
+class DescribeApplicationSessionIdsRequest(DaraModel):
     def __init__(
         self,
         application_id: str = None,
-        component_name: str = None,
-        container_name: str = None,
         end_time: str = None,
-        keyword: str = None,
-        level: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -20,29 +16,20 @@ class DescribeApplicationLogsRequest(DaraModel):
         region_id: str = None,
         resource_owner_account: str = None,
         start_time: str = None,
-        type: str = None,
     ):
         # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The instance ID of the subcomponent.
-        self.component_name = component_name
-        # The container name.
-        self.container_name = container_name
-        # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+        # The end of the time range to query.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The search keyword. This parameter is used for PolarClaw instances.
-        self.keyword = keyword
-        # The log level. This parameter is used for PolarClaw instances.
-        self.level = level
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: 1.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: **30**. Valid values: 30 to 100.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         # 
@@ -53,8 +40,6 @@ class DescribeApplicationLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The log type. This parameter is used for PolarClaw instances. Currently, only gateway is supported.
-        self.type = type
 
     def validate(self):
         pass
@@ -67,20 +52,8 @@ class DescribeApplicationLogsRequest(DaraModel):
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
 
-        if self.component_name is not None:
-            result['ComponentName'] = self.component_name
-
-        if self.container_name is not None:
-            result['ContainerName'] = self.container_name
-
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-
-        if self.keyword is not None:
-            result['Keyword'] = self.keyword
-
-        if self.level is not None:
-            result['Level'] = self.level
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -103,9 +76,6 @@ class DescribeApplicationLogsRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
-        if self.type is not None:
-            result['Type'] = self.type
-
         return result
 
     def from_map(self, m: dict = None):
@@ -113,20 +83,8 @@ class DescribeApplicationLogsRequest(DaraModel):
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
 
-        if m.get('ComponentName') is not None:
-            self.component_name = m.get('ComponentName')
-
-        if m.get('ContainerName') is not None:
-            self.container_name = m.get('ContainerName')
-
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-
-        if m.get('Keyword') is not None:
-            self.keyword = m.get('Keyword')
-
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
@@ -148,9 +106,6 @@ class DescribeApplicationLogsRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
 
         return self
 

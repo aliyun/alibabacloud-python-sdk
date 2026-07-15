@@ -1,3 +1,20 @@
+2026-07-15 Version: 7.6.0
+- Support API DescribeApplicationSessionIds.
+- Update API DescribeApplicationLogs: add response parameters Body.Items.$.InsName.
+- Update API DescribeApplicationLogs: add response parameters Body.Items.$.Timestamp.
+- Update API DescribeApplicationPerformance: add request parameters Downsample.
+- Update API DescribeApplicationPerformance: add request parameters EndStep.
+- Update API DescribeApplicationPerformance: add request parameters MaxPoints.
+- Update API DescribeApplicationPerformance: add request parameters StartStep.
+- Update API DescribeApplicationPerformance: add response parameters Body.Interval.
+- Update API DescribeApplicationPerformance: add response parameters Body.PerformanceKeys.$.Points.$.Step.
+- Update API DescribeDBClusterAttribute: add response parameters Body.StorageAutoScale.
+- Update API DescribeDBClusterAttribute: add response parameters Body.StorageUpperBound.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryMax.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryMin.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryRecommended.
+
+
 2026-07-10 Version: 7.5.0
 - Support API DescribeDBClusterPrice.
 - Update API CreateAIDBClusterTask: add request parameters TuneArch.

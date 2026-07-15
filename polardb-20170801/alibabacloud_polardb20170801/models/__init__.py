@@ -463,6 +463,9 @@ from ._describe_application_prompts_response import DescribeApplicationPromptsRe
 from ._describe_application_serverless_conf_request import DescribeApplicationServerlessConfRequest
 from ._describe_application_serverless_conf_response_body import DescribeApplicationServerlessConfResponseBody
 from ._describe_application_serverless_conf_response import DescribeApplicationServerlessConfResponse
+from ._describe_application_session_ids_request import DescribeApplicationSessionIdsRequest
+from ._describe_application_session_ids_response_body import DescribeApplicationSessionIdsResponseBody
+from ._describe_application_session_ids_response import DescribeApplicationSessionIdsResponse
 from ._describe_applications_request import DescribeApplicationsRequest
 from ._describe_applications_response_body import DescribeApplicationsResponseBody
 from ._describe_applications_response import DescribeApplicationsResponse
@@ -1401,6 +1404,8 @@ from ._describe_application_performance_response_body import DescribeApplication
 from ._describe_application_performance_response_body import DescribeApplicationPerformanceResponseBodyPerformanceKeys
 from ._describe_application_prompts_response_body import DescribeApplicationPromptsResponseBodyItems
 from ._describe_application_serverless_conf_response_body import DescribeApplicationServerlessConfResponseBodyServerlessConfItems
+from ._describe_application_session_ids_response_body import DescribeApplicationSessionIdsResponseBodyItemsItems
+from ._describe_application_session_ids_response_body import DescribeApplicationSessionIdsResponseBodyItems
 from ._describe_applications_request import DescribeApplicationsRequestTag
 from ._describe_applications_response_body import DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint
 from ._describe_applications_response_body import DescribeApplicationsResponseBodyItemsApplicationsEndpoints
@@ -2153,6 +2158,9 @@ __all__ = [
     DescribeApplicationServerlessConfRequest,
     DescribeApplicationServerlessConfResponseBody,
     DescribeApplicationServerlessConfResponse,
+    DescribeApplicationSessionIdsRequest,
+    DescribeApplicationSessionIdsResponseBody,
+    DescribeApplicationSessionIdsResponse,
     DescribeApplicationsRequest,
     DescribeApplicationsResponseBody,
     DescribeApplicationsResponse,
@@ -3091,6 +3099,8 @@ __all__ = [
     DescribeApplicationPerformanceResponseBodyPerformanceKeys,
     DescribeApplicationPromptsResponseBodyItems,
     DescribeApplicationServerlessConfResponseBodyServerlessConfItems,
+    DescribeApplicationSessionIdsResponseBodyItemsItems,
+    DescribeApplicationSessionIdsResponseBodyItems,
     DescribeApplicationsRequestTag,
     DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint,
     DescribeApplicationsResponseBodyItemsApplicationsEndpoints,

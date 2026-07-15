@@ -14487,14 +14487,22 @@ class Client(OpenApiClient):
             query['Consumer'] = request.consumer
         if not DaraCore.is_null(request.consumer_group):
             query['ConsumerGroup'] = request.consumer_group
+        if not DaraCore.is_null(request.downsample):
+            query['Downsample'] = request.downsample
+        if not DaraCore.is_null(request.end_step):
+            query['EndStep'] = request.end_step
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.key):
             query['Key'] = request.key
+        if not DaraCore.is_null(request.max_points):
+            query['MaxPoints'] = request.max_points
         if not DaraCore.is_null(request.model_service):
             query['ModelService'] = request.model_service
+        if not DaraCore.is_null(request.start_step):
+            query['StartStep'] = request.start_step
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -14529,14 +14537,22 @@ class Client(OpenApiClient):
             query['Consumer'] = request.consumer
         if not DaraCore.is_null(request.consumer_group):
             query['ConsumerGroup'] = request.consumer_group
+        if not DaraCore.is_null(request.downsample):
+            query['Downsample'] = request.downsample
+        if not DaraCore.is_null(request.end_step):
+            query['EndStep'] = request.end_step
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.key):
             query['Key'] = request.key
+        if not DaraCore.is_null(request.max_points):
+            query['MaxPoints'] = request.max_points
         if not DaraCore.is_null(request.model_service):
             query['ModelService'] = request.model_service
+        if not DaraCore.is_null(request.start_step):
+            query['StartStep'] = request.start_step
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -14719,6 +14735,108 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeApplicationServerlessConfResponse:
         runtime = RuntimeOptions()
         return await self.describe_application_serverless_conf_with_options_async(request, runtime)
+
+    def describe_application_session_ids_with_options(
+        self,
+        request: main_models.DescribeApplicationSessionIdsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationSessionIdsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationSessionIds',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationSessionIdsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_session_ids_with_options_async(
+        self,
+        request: main_models.DescribeApplicationSessionIdsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationSessionIdsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationSessionIds',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationSessionIdsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_session_ids(
+        self,
+        request: main_models.DescribeApplicationSessionIdsRequest,
+    ) -> main_models.DescribeApplicationSessionIdsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_session_ids_with_options(request, runtime)
+
+    async def describe_application_session_ids_async(
+        self,
+        request: main_models.DescribeApplicationSessionIdsRequest,
+    ) -> main_models.DescribeApplicationSessionIdsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_session_ids_with_options_async(request, runtime)
 
     def describe_applications_with_options(
         self,
