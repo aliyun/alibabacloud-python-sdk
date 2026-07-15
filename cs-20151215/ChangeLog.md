@@ -1,3 +1,10 @@
+2026-07-15 Version: 7.0.3
+- Update API CreateClusterNodePool: add request parameters body.management.drift_enabled.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.management.drift_enabled.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.management.drift_enabled.
+- Update API ModifyClusterNodePool: add request parameters body.management.drift_enabled.
+
+
 2026-07-10 Version: 7.0.2
 - Update API CreateClusterNodePool: add request parameters body.eflo_node_group.auto_attach_enabled.
 - Update API CreateClusterNodePool: add request parameters body.eflo_node_group.worker_ram_role_name.
