@@ -12,9 +12,13 @@ class GetEdgeContainerResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The billing mode.
         self.billing_mode = billing_mode
+        # The plan instance ID.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
+        # The plan instance status.
         self.status = status
 
     def validate(self):

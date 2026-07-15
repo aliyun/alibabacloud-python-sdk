@@ -13,9 +13,9 @@ class ListWaitingRoomsResponseBody(DaraModel):
         request_id: str = None,
         waiting_rooms: List[main_models.ListWaitingRoomsResponseBodyWaitingRooms] = None,
     ):
-        # The request ID, which is used to trace a call.
+        # The request ID, which is used to trace API calls.
         self.request_id = request_id
-        # The waiting rooms.
+        # The list of waiting rooms.
         self.waiting_rooms = waiting_rooms
 
     def validate(self):
@@ -73,79 +73,66 @@ class ListWaitingRoomsResponseBodyWaitingRooms(DaraModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
-        # The name of the custom cookie.
+        # The custom cookie name.
         self.cookie_name = cookie_name
-        # The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+        # The HTML content or identifier of the custom queuing page. This parameter is valid only when WaitingRoomType is set to custom. The content must be URL-encoded.
         self.custom_page_html = custom_page_html
-        # The description of the waiting room.
+        # The waiting room description.
         self.description = description
-        # Indicates whether session renewal is disabled. Valid values:
-        # 
-        # - on
-        # 
-        # - off
+        # Specifies whether to disable session renewal. Valid values:
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.disable_session_renewal_enable = disable_session_renewal_enable
-        # Indicates whether the waiting room is enabled. Valid values:
+        # The enabled status. Valid values:
         # 
-        # - on
-        # 
-        # - off
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.enable = enable
-        # The hostname and path.
+        # The hostname and path configurations.
         self.host_name_and_path = host_name_and_path
-        # Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
         # 
-        # - on
-        # 
-        # - off
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.json_response_enable = json_response_enable
-        # The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+        # The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
         # 
-        # - enus: English.
-        # 
-        # - zhcn: Simplified Chinese.
-        # 
-        # - zhhk: Traditional Chinese.
+        # - **enus**: English.
+        # - **zhcn**: Simplified Chinese.
+        # - **zhhk**: Traditional Chinese.
         self.language = language
-        # The name of the waiting room.
+        # The waiting room name.
         self.name = name
-        # The maximum number of new users per minute.
+        # The number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
-        # Indicates whether all requests must be queued. Valid values:
+        # Specifies whether to queue all visitors. Valid values:
         # 
-        # - on
-        # 
-        # - off
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.queue_all_enable = queue_all_enable
         # The queuing method. Valid values:
         # 
-        # - random: Users gain access to the origin randomly, regardless of the arrival time.
-        # 
-        # - fifo: Users gain access to the origin in order of arrival.
-        # 
-        # - passthrough: Users pass through the waiting room and go straight to the origin.
-        # 
-        # - reject-all: Users are blocked from reaching the origin.
+        # - **random**: Random.
+        # - **fifo**: First in, first out.
+        # - **passthrough**: Passthrough.
+        # - **reject-all**: Reject all.
         self.queuing_method = queuing_method
-        # The HTTP status code to return while a user is in the queue. Valid values:
+        # The waiting room status code. Valid values:
         # 
-        # - 200
-        # 
-        # - 202
-        # 
-        # - 429
+        # - **200**
+        # - **202**
+        # - **429**
         self.queuing_status_code = queuing_status_code
-        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        # The session duration, in minutes.
         self.session_duration = session_duration
-        # The maximum number of active users.
+        # The total number of active users.
         self.total_active_users = total_active_users
-        # The unique ID of the waiting room.
+        # The waiting room ID, which uniquely identifies a waiting room.
         self.waiting_room_id = waiting_room_id
-        # The type of the waiting room. Valid values:
+        # The waiting room type. Valid values:
         # 
-        # - default
-        # 
-        # - custom
+        # - **default**: Default type.
+        # - **custom**: Custom type.
         self.waiting_room_type = waiting_room_type
 
     def validate(self):

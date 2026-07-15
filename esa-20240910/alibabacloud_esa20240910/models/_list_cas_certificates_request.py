@@ -12,8 +12,11 @@ class ListCasCertificatesRequest(DaraModel):
         search_keyword: str = None,
         security_token: str = None,
     ):
+        # The current page number. Default value: **1**.
         self.page_number = page_number
+        # The page size. Valid values: any integer from 1 to 1000.
         self.page_size = page_size
+        # The certificate name for fuzzy match.
         self.search_keyword = search_keyword
         self.security_token = security_token
 

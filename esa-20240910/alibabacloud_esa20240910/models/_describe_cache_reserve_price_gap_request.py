@@ -10,7 +10,9 @@ class DescribeCacheReservePriceGapRequest(DaraModel):
         instance_id: str = None,
         target_quota_gb: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The requested cache size. Unit: GB.
         self.target_quota_gb = target_quota_gb
 
     def validate(self):

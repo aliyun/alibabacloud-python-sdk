@@ -1,3 +1,8 @@
+2026-07-15 Version: 3.7.0
+- Support API AddUserBusinessForm.
+- Support API CheckSiteFeaturesMatchPlan.
+
+
 2026-07-07 Version: 3.6.0
 - Support API DescribeSiteWafTimeSeriesData.
 - Support API DescribeSiteWafTopData.

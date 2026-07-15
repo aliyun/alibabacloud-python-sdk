@@ -70,7 +70,7 @@ class UpdateWaitingRoomEventRequest(DaraModel):
         # The queuing method. Valid values:
         # 
         # - **random**: random.
-        # - **fifo**: first-in, first-out.
+        # - **fifo**: first-in-first-out.
         # - **passthrough**: passthrough.
         # - **reject-all**: reject all.
         self.queuing_method = queuing_method

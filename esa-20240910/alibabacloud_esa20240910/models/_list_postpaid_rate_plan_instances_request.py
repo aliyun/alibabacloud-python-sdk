@@ -22,21 +22,21 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
         # 
         # - false: Does not filter by this condition.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The instance ID. Use this parameter to query a specific instance.
+        # The instance ID. Specify this parameter to query a specific instance.
         self.instance_id = instance_id
-        # The page number for paging. The value must be greater than or equal to 1.
+        # The page number for paging queries. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page for paging. Valid values: 1 to 500.
+        # The number of entries per page for paging queries. Valid values: 1 to 500.
         self.page_size = page_size
         # The field by which to sort the results. Valid values:
         # 
-        # - CreateTime: sorts by creation time.
+        # - CreateTime: sorted by creation time
         self.sort_by = sort_by
         # The sort order. Valid values:
         # 
         #  * asc: ascending order
         # 
-        #  * desc: descending order.
+        #  * desc: descending order
         self.sort_order = sort_order
         # The instance status. Valid values:
         # 

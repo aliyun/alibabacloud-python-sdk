@@ -10,9 +10,9 @@ class CreateHttpResponseHeaderModificationRuleResponseBody(DaraModel):
         config_id: int = None,
         request_id: str = None,
     ):
-        # A unique identifier for the configuration.
+        # The configuration ID.
         self.config_id = config_id
-        # A unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

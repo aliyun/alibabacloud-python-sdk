@@ -10,9 +10,9 @@ class ListManagedRulesGroupsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Page number, used to specify the page number for pagination queries.
+        # The page number for the paged query.
         self.page_number = page_number
-        # Page size, used to specify the number of items per page for pagination queries.
+        # The number of entries per page for the paged query.
         self.page_size = page_size
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListCasCertificatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The certificate list.
         self.certificates = certificates
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,19 @@ class ListCasCertificatesResponseBodyCertificates(DaraModel):
         not_after: str = None,
         region: str = None,
     ):
+        # The common name of the certificate.
         self.common_name = common_name
+        # The certificate fingerprint.
         self.fingerprint = fingerprint
+        # The certificate ID.
         self.id = id
+        # The certificate issuer.
         self.issuer = issuer
+        # The certificate name.
         self.name = name
+        # The expiration time of the certificate.
         self.not_after = not_after
+        # The region where the certificate resides. Supported values: **cn-hangzhou** and **ap-southeast-1**.
         self.region = region
 
     def validate(self):

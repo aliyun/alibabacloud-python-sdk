@@ -25,10 +25,10 @@ class UpdateHttpResponseHeaderModificationRuleRequest(DaraModel):
         # The response header modifications. Three operation types are supported: add, delete, and modify.
         self.response_header_modification = response_header_modification
         # The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
-        # - Match all incoming requests: Set the value to true.
-        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+        # - Match all incoming requests: set the value to true.
+        # - Match specified requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
         # - on: enabled.
         # - off: disabled.
         self.rule_enable = rule_enable

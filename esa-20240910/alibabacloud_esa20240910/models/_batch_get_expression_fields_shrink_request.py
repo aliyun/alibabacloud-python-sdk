@@ -14,14 +14,17 @@ class BatchGetExpressionFieldsShrinkRequest(DaraModel):
         plan_name_en: str = None,
         site_id: int = None,
     ):
-        # A list of expression objects to process.
+        # The list of expressions.
         self.expressions_shrink = expressions_shrink
+        # The plan instance ID.
         self.instance_id = instance_id
+        # The type of the expression.
         self.kind = kind
         # The WAF phase.
         self.phase = phase
+        # The plan name (in English).
         self.plan_name_en = plan_name_en
-        # The ID of the site.
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):

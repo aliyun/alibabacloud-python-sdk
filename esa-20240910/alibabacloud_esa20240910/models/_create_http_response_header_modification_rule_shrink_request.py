@@ -15,31 +15,27 @@ class CreateHttpResponseHeaderModificationRuleShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # An array of objects that specify modifications to the response header. The supported operations are `add`, `del`, and `modify`.
+        # The response header modifications. Three operation types are supported: add, delete, and modify.
         # 
         # This parameter is required.
         self.response_header_modification_shrink = response_header_modification_shrink
-        # Specifies the conditional expression that an incoming request must match for the rule to apply. This parameter is not required when adding a Global Configuration. You can set the value in one of the following ways:
-        # 
-        # - To match all incoming requests, set the value to `true`.
-        # 
-        # - To match specific requests, set the value to a custom expression. For example: `(http.host eq "video.example.com")`
+        # The rule content, which uses conditional expressions to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Specifies whether to enable the rule. This parameter is not required when adding a Global Configuration. Valid values:
-        # 
-        # - `on`: Enables the rule.
-        # 
-        # - `off`: Disables the rule.
+        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The name of the rule. This parameter is not required when adding a Global Configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
-        # The rule\\"s execution order. A lower value indicates a higher priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The Site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the Site configuration. For sites with Configuration Version Management enabled, this parameter specifies the configuration version that the Rule applies to. If omitted, this parameter defaults to version 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

@@ -345,6 +345,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.activate_version_management_with_options_async(request, runtime)
 
+    def add_user_business_form_with_options(
+        self,
+        request: main_models.AddUserBusinessFormRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserBusinessFormResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company):
+            query['Company'] = request.company
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.website):
+            query['Website'] = request.website
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserBusinessForm',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserBusinessFormResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_user_business_form_with_options_async(
+        self,
+        request: main_models.AddUserBusinessFormRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserBusinessFormResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company):
+            query['Company'] = request.company
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.website):
+            query['Website'] = request.website
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserBusinessForm',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserBusinessFormResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_user_business_form(
+        self,
+        request: main_models.AddUserBusinessFormRequest,
+    ) -> main_models.AddUserBusinessFormResponse:
+        runtime = RuntimeOptions()
+        return self.add_user_business_form_with_options(request, runtime)
+
+    async def add_user_business_form_async(
+        self,
+        request: main_models.AddUserBusinessFormRequest,
+    ) -> main_models.AddUserBusinessFormResponse:
+        runtime = RuntimeOptions()
+        return await self.add_user_business_form_with_options_async(request, runtime)
+
     def apply_certificate_with_options(
         self,
         request: main_models.ApplyCertificateRequest,
@@ -1672,6 +1766,80 @@ class Client(OpenApiClient):
     async def check_assume_slr_role_async(self) -> main_models.CheckAssumeSlrRoleResponse:
         runtime = RuntimeOptions()
         return await self.check_assume_slr_role_with_options_async(runtime)
+
+    def check_site_features_match_plan_with_options(
+        self,
+        request: main_models.CheckSiteFeaturesMatchPlanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckSiteFeaturesMatchPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.new_instance_id):
+            query['NewInstanceId'] = request.new_instance_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckSiteFeaturesMatchPlan',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckSiteFeaturesMatchPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_site_features_match_plan_with_options_async(
+        self,
+        request: main_models.CheckSiteFeaturesMatchPlanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckSiteFeaturesMatchPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.new_instance_id):
+            query['NewInstanceId'] = request.new_instance_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckSiteFeaturesMatchPlan',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckSiteFeaturesMatchPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_site_features_match_plan(
+        self,
+        request: main_models.CheckSiteFeaturesMatchPlanRequest,
+    ) -> main_models.CheckSiteFeaturesMatchPlanResponse:
+        runtime = RuntimeOptions()
+        return self.check_site_features_match_plan_with_options(request, runtime)
+
+    async def check_site_features_match_plan_async(
+        self,
+        request: main_models.CheckSiteFeaturesMatchPlanRequest,
+    ) -> main_models.CheckSiteFeaturesMatchPlanResponse:
+        runtime = RuntimeOptions()
+        return await self.check_site_features_match_plan_with_options_async(request, runtime)
 
     def check_site_name_with_options(
         self,

@@ -16,13 +16,13 @@ class ListWafManagedRulesResponseBody(DaraModel):
         rules: List[main_models.ListWafManagedRulesResponseBodyRules] = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # An array of managed rules.
+        # The list of managed rules.
         self.rules = rules
         # The total number of rules after filtering.
         self.total_count = total_count
@@ -88,15 +88,15 @@ class ListWafManagedRulesResponseBodyRules(DaraModel):
         protection_level: int = None,
         status: str = None,
     ):
-        # The managed rule\\"s action.
+        # The protection action of the managed rule.
         self.action = action
         # The managed rule ID.
         self.id = id
         # The managed rule name.
         self.name = name
-        # The managed rule\\"s protection level.
+        # The protection level of the managed rule.
         self.protection_level = protection_level
-        # The managed rule\\"s status.
+        # The protection status of the managed rule.
         self.status = status
 
     def validate(self):

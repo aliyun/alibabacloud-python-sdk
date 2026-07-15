@@ -74,7 +74,7 @@ class UpdateWaitingRoomRequest(DaraModel):
         # - **passthrough**: passthrough.
         # - **reject-all**: reject all.
         self.queuing_method = queuing_method
-        # The HTTP status code returned by the waiting room. Valid values:
+        # The status code returned by the waiting room. Valid values:
         # 
         # - **200**
         # - **202**

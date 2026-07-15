@@ -18,31 +18,27 @@ class CreateHttpRequestHeaderModificationRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # An array of objects that define Request Header modifications. Supported operations include add, del, and modify.
+        # The request header modifications. Three operation types are supported: add, delete, and modify.
         # 
         # This parameter is required.
         self.request_header_modification = request_header_modification
-        # The content of the Rule, which uses a Conditional Expression to match user requests. This parameter is not required when you add a global configuration. Supports two Use Cases:
-        # 
-        # - To match all incoming requests, set the value to true.
-        # 
-        # - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
+        # The rule content, which uses conditional expressions to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Specifies whether to enable the Rule. This parameter is not required when you add a global configuration. Valid values are:
-        # 
-        # - on: Enables the Rule.
-        # 
-        # - off: Disables the Rule.
+        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The name of the Rule. This parameter is not required when you add a global configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
-        # The execution order of the Rule. A smaller value indicates a higher priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The ID of the Site. You can get this ID by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The Version of the Site configuration. For a Site with configuration versioning enabled, this parameter specifies the configuration\\"s target Version. The default value is 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):
@@ -117,27 +113,23 @@ class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Da
         type: str = None,
         value: str = None,
     ):
-        # The Request Header name.
+        # The request header name.
         # 
         # This parameter is required.
         self.name = name
-        # The operation to perform. Valid values are:
+        # The operation type. Valid values:
         # 
-        # - add: Adds a header.
-        # 
-        # - del: Deletes a header.
-        # 
-        # - modify: Modifies a header.
+        # - add: adds a request header.
+        # - del: deletes a request header.
+        # - modify: modifies a request header.
         # 
         # This parameter is required.
         self.operation = operation
-        # The type of the header value. Valid values are:
-        # 
-        # - static: Static value.
-        # 
-        # - dynamic: Dynamic value.
+        # The value type. Valid values:
+        # - static: static pattern.
+        # - dynamic: dynamic schema.
         self.type = type
-        # The Request Header value.
+        # The request header value.
         self.value = value
 
     def validate(self):

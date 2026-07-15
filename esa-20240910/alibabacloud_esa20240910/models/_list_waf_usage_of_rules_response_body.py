@@ -15,11 +15,13 @@ class ListWafUsageOfRulesResponseBody(DaraModel):
         request_id: str = None,
         sites: List[main_models.ListWafUsageOfRulesResponseBodySites] = None,
     ):
+        # The number of rules or rule sets for the specified phase under instance-level batch configuration.
         self.batch_config_usage = batch_config_usage
+        # The total number of rules or rule sets for the instance under the specified phase, including both site-level and instance-level rules.
         self.instance_usage = instance_usage
         # The request ID.
         self.request_id = request_id
-        # A list of sites and their respective WAF rule usage.
+        # The list of site usage.
         self.sites = sites
 
     def validate(self):
@@ -79,7 +81,7 @@ class ListWafUsageOfRulesResponseBodySites(DaraModel):
         self.id = id
         # The site name.
         self.name = name
-        # The number of WAF rules or rule sets used by the site.
+        # The number of WAF rules or WAF rule sets that have been used.
         self.usage = usage
 
     def validate(self):

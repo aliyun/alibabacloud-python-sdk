@@ -13,7 +13,9 @@ class DescribeCacheReservePriceGapResponseBody(DaraModel):
         price_model: main_models.DescribeCacheReservePriceGapResponseBodyPriceModel = None,
         request_id: str = None,
     ):
+        # The pricing information.
         self.price_model = price_model
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,11 +56,19 @@ class DescribeCacheReservePriceGapResponseBodyPriceModel(DaraModel):
         rule: main_models.DescribeCacheReservePriceGapResponseBodyPriceModelRule = None,
         total_price: float = None,
     ):
+        # The currency. Valid values:
+        # - JPY: Japanese Yen.
+        # - USD: US Dollar.
+        # - CNY: Chinese Yuan.
         self.currency = currency
+        # The discount amount of the order.
         self.discount_price = discount_price
+        # The instance ID.
         self.instance_id = instance_id
+        # The final order price, which is the actual transaction price.
         self.price = price
         self.rule = rule
+        # The original order price. Original order price = actual transaction price + discount amount.
         self.total_price = total_price
 
     def validate(self):

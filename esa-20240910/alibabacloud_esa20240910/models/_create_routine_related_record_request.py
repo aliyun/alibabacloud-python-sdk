@@ -11,7 +11,7 @@ class CreateRoutineRelatedRecordRequest(DaraModel):
         record_name: str = None,
         site_id: int = None,
     ):
-        # The name of the edge function Routine.
+        # The name of the Edge Routine function.
         # 
         # This parameter is required.
         self.name = name
