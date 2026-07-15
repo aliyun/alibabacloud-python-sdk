@@ -29,6 +29,7 @@ from ._free_resource_cluster_control_item import FreeResourceClusterControlItem
 from ._free_resource_detail import FreeResourceDetail
 from ._free_resource_item import FreeResourceItem
 from ._gpudetail import GPUDetail
+from ._hyper_node_scheduling_config import HyperNodeSchedulingConfig
 from ._hyper_node_spec import HyperNodeSpec
 from ._image_config import ImageConfig
 from ._image_item import ImageItem
@@ -63,6 +64,7 @@ from ._security_context import SecurityContext
 from ._security_context_capabilities import SecurityContextCapabilities
 from ._service_exposure import ServiceExposure
 from ._service_spec import ServiceSpec
+from ._signal_target import SignalTarget
 from ._smart_cache import SmartCache
 from ._spot_spec import SpotSpec
 from ._startup_dependency import StartupDependency
@@ -235,6 +237,7 @@ __all__ = [
     FreeResourceDetail,
     FreeResourceItem,
     GPUDetail,
+    HyperNodeSchedulingConfig,
     HyperNodeSpec,
     ImageConfig,
     ImageItem,
@@ -269,6 +272,7 @@ __all__ = [
     SecurityContextCapabilities,
     ServiceExposure,
     ServiceSpec,
+    SignalTarget,
     SmartCache,
     SpotSpec,
     StartupDependency,

@@ -14,8 +14,11 @@ class ListRayHistoryServersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of RayHistoryServer entries.
         self.ray_history_servers = ray_history_servers
+        # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
+        # The total number of entries that match the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -81,25 +84,50 @@ class ListRayHistoryServersResponseBodyRayHistoryServers(DaraModel):
         username: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the job. Valid values:
+        # - PUBLIC: visible to all users in the workspace.
+        # - PRIVATE (default): visible only to you and administrators in the workspace.
         self.accessibility = accessibility
+        # The display name of the job.
         self.display_name = display_name
+        # The hardware specifications of the public resource group. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for a detailed list of specifications.>Notice: Prices vary depending on the specifications..
         self.ecs_spec = ecs_spec
+        # The time when the job was created, in UTC.
         self.gmt_create_time = gmt_create_time
+        # The time when the job ended, in UTC.
         self.gmt_finish_time = gmt_finish_time
+        # The time when the job was last modified, in UTC.
         self.gmt_modify_time = gmt_modify_time
+        # The maximum runtime in minutes.
         self.max_runtime_minutes = max_runtime_minutes
+        # The ID of the created RayHistoryServer.
         self.ray_history_server_id = ray_history_server_id
         # Ray Dashboard URL。
         self.ray_history_server_url = ray_history_server_url
+        # The status detail code.
         self.reason_code = reason_code
+        # The status details.
         self.reason_message = reason_message
+        # The resource group ID. For information about how to query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
+        # The name of the resource on which the job runs.
         self.resource_name = resource_name
+        # The RayHistoryServer status. Valid values:
+        # - Creating: being created.
+        # - Running: running.
+        # - Stopped: stopped.
+        # - Succeeded: succeeded.
+        # - Failed: failed.
         self.status = status
+        # The storage path of Ray logs.
         self.storage_path = storage_path
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.username = username
+        # The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
         self.workspace_id = workspace_id
 
     def validate(self):

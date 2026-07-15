@@ -22,21 +22,33 @@ class CreateJobTemplateResponseBody(DaraModel):
         version: int = None,
         workspace_id: str = None,
     ):
+        # The default version number of the job template.
         self.default_version = default_version
+        # The description of the job template.
         self.description = description
+        # The creation time of the job template.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The last modification time of the job template.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
+        # User-defined key-value metadata.
         self.metadata = metadata
-        # 本次请求的 ID，用于诊断和答疑。
+        # The ID of the request, used for troubleshooting.
         self.request_id = request_id
-        # 此次调用创建的模板 ID。
+        # The unique ID of the job template.
         self.template_id = template_id
+        # The name of the job template.
         self.template_name = template_name
+        # The ID of the tenant that contains the job template.
         self.tenant_id = tenant_id
+        # The ID of the user who created the job template.
         self.user_id = user_id
+        # The version number of the created job template.
         self.version = version
+        # The ID of the workspace that contains the job template.
         self.workspace_id = workspace_id
 
     def validate(self):

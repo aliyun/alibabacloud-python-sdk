@@ -16,11 +16,13 @@ class JobSpec(DaraModel):
         ecs_spec: str = None,
         elastic_spot_specs: List[main_models.ElasticSpotSpec] = None,
         extra_pod_spec: main_models.ExtraPodSpec = None,
+        hyper_node_scheduling_config: main_models.HyperNodeSchedulingConfig = None,
         image: str = None,
         image_config: main_models.ImageConfig = None,
         is_cheif: bool = None,
         is_chief: bool = None,
         local_mount_specs: List[main_models.LocalMountSpec] = None,
+        oversold_type: str = None,
         pod_count: int = None,
         quota_id: str = None,
         resource_config: main_models.ResourceConfig = None,
@@ -32,52 +34,57 @@ class JobSpec(DaraModel):
         type: str = None,
         use_spot_instance: bool = None,
     ):
-        # The scheduling node configurations.
+        # The scheduling node assignment configuration.
         self.assign_node_spec = assign_node_spec
-        # The auto scaling configurations.
+        # The auto scaling configuration.
         self.auto_scaling_spec = auto_scaling_spec
+        # Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
         self.consider_in_success_policy = consider_in_success_policy
-        # The hardware specifications of the worker. For more information, see [Billing of DLC](https://help.aliyun.com/document_detail/171758.html) of PAI.
-        # 
-        # >  The price varies based on instance types.
+        # The hardware specifications of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed list of specifications.>Notice: Prices vary depending on the specifications.
         self.ecs_spec = ecs_spec
         self.elastic_spot_specs = elastic_spot_specs
-        # The additional pod configurations.
+        # The additional pod configuration.
         self.extra_pod_spec = extra_pod_spec
-        # The address of the image that is run by the worker node. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image provided by PAI. You can also specify a third-party public image.
+        self.hyper_node_scheduling_config = hyper_node_scheduling_config
+        # The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a third-party public image.
         self.image = image
-        # The configuration of the private image.
+        # The private image configuration.
         self.image_config = image_config
-        # Deprecated.
+        # Deprecated due to a spelling error.
         self.is_cheif = is_cheif
-        # Whether the role is a Chief role. Chief role must be unique.
+        # Indicates whether this role is the Chief role. Only one Chief role is allowed.
         self.is_chief = is_chief
         # The list of local mount configurations.
         self.local_mount_specs = local_mount_specs
+        self.oversold_type = oversold_type
         # The number of replicas.
         self.pod_count = pod_count
         self.quota_id = quota_id
-        # The resource configurations.
+        # The resource configuration.
         self.resource_config = resource_config
         # The restart policy. Valid values: Always, Never, OnFailure, and ExitCode.
         self.restart_policy = restart_policy
-        # The service configurations.
+        # The service configuration.
         self.service_spec = service_spec
-        # The configurations of the preemptible instance.
+        # The spot instance configuration.
         self.spot_spec = spot_spec
+        # The dependencies required before this role starts.
         self.startup_dependencies = startup_dependencies
         self.system_disk = system_disk
-        # The worker type, which is related to JobType. The valid values of this parameter vary based on the value of JobType.
+        # Type is closely related to Job Type. Different Job Types support different Worker Types.
         # 
-        # *   Valid values when JobType is set to **TFJob**: Chief, PS, Worker, Evaluator, and GraphLearn.
-        # *   Valid values when JobType is set to **PyTorchJob**: Worker and Master.
-        # *   Valid values when JobType is set to **XGBoostJob**: Worker and Master.
-        # *   Valid values when JobType is set to **OneFlowJob**: Worker and Master.
-        # *   Valid values when JobType is set to **ElasticBatch**: Worker and Master.
+        # - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
         # 
-        # The Master node in jobs of the PyTorchJob, XGBoostJob, OneFlowJob, or ElasticBatch type is optional. If you do not specify the Master node, the system automatically uses the first Worker node as the Master node.
+        # - **PyTorchJob**: Supports Worker and Master.
+        # 
+        # - **XGBoostJob**: Supports Worker and Master.
+        # - **OneFlowJob**: Supports Worker and Master.
+        # - **ElasticBatch**: Supports Worker and Master.
+        # - **RayJob**: Supports Head, Worker, and Worker[-xxx].
+        # 
+        # Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If Master is not specified, the system automatically designates the first Worker node as Master.
         self.type = type
-        # Whether to use preemptible instances.
+        # Specifies whether to use spot instances.
         self.use_spot_instance = use_spot_instance
 
     def validate(self):
@@ -91,6 +98,8 @@ class JobSpec(DaraModel):
                     v1.validate()
         if self.extra_pod_spec:
             self.extra_pod_spec.validate()
+        if self.hyper_node_scheduling_config:
+            self.hyper_node_scheduling_config.validate()
         if self.image_config:
             self.image_config.validate()
         if self.local_mount_specs:
@@ -135,6 +144,9 @@ class JobSpec(DaraModel):
         if self.extra_pod_spec is not None:
             result['ExtraPodSpec'] = self.extra_pod_spec.to_map()
 
+        if self.hyper_node_scheduling_config is not None:
+            result['HyperNodeSchedulingConfig'] = self.hyper_node_scheduling_config.to_map()
+
         if self.image is not None:
             result['Image'] = self.image
 
@@ -151,6 +163,9 @@ class JobSpec(DaraModel):
         if self.local_mount_specs is not None:
             for k1 in self.local_mount_specs:
                 result['LocalMountSpecs'].append(k1.to_map() if k1 else None)
+
+        if self.oversold_type is not None:
+            result['OversoldType'] = self.oversold_type
 
         if self.pod_count is not None:
             result['PodCount'] = self.pod_count
@@ -212,6 +227,10 @@ class JobSpec(DaraModel):
             temp_model = main_models.ExtraPodSpec()
             self.extra_pod_spec = temp_model.from_map(m.get('ExtraPodSpec'))
 
+        if m.get('HyperNodeSchedulingConfig') is not None:
+            temp_model = main_models.HyperNodeSchedulingConfig()
+            self.hyper_node_scheduling_config = temp_model.from_map(m.get('HyperNodeSchedulingConfig'))
+
         if m.get('Image') is not None:
             self.image = m.get('Image')
 
@@ -230,6 +249,9 @@ class JobSpec(DaraModel):
             for k1 in m.get('LocalMountSpecs'):
                 temp_model = main_models.LocalMountSpec()
                 self.local_mount_specs.append(temp_model.from_map(k1))
+
+        if m.get('OversoldType') is not None:
+            self.oversold_type = m.get('OversoldType')
 
         if m.get('PodCount') is not None:
             self.pod_count = m.get('PodCount')

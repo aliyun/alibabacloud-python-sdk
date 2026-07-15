@@ -10,7 +10,7 @@ class GetRayDashboardResponseBody(DaraModel):
         metrics_enabled: str = None,
         url: str = None,
     ):
-        # Indicates whether the dashboard has been integrated with CloudMonitor and supports ray metrics
+        # Indicates whether Cloud Monitor is enabled for this dashboard to display Ray metrics
         self.metrics_enabled = metrics_enabled
         # The Ray Dashboard URL
         self.url = url

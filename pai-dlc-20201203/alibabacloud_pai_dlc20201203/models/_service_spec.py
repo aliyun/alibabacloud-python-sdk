@@ -13,8 +13,11 @@ class ServiceSpec(DaraModel):
         extra_ports: List[int] = None,
         service_mode: str = None,
     ):
+        # The default port for the service.
         self.default_port = default_port
+        # The list of extra ports for the service.
         self.extra_ports = extra_ports
+        # The service pattern. Valid values are PerRole and PerPod. The default value is PerPod.
         self.service_mode = service_mode
 
     def validate(self):

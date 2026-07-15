@@ -12,9 +12,17 @@ class ElasticSpotSpec(DaraModel):
         spot_price_limit: float = None,
         spot_strategy: str = None,
     ):
+        # The spot instance type.
         self.instance_type = instance_type
+        # The maximum discount percentage for the spot instance. The system does not select an instance if its discount exceeds this limit. For example, if you set this parameter to `90`, the system considers only instances with a discount of 90% or less.
         self.spot_discount_limit = spot_discount_limit
+        # The maximum hourly price you are willing to pay for a spot instance. If omitted, the on-demand price is the default.
         self.spot_price_limit = spot_price_limit
+        # The strategy for allocating spot instances. Valid values:
+        # 
+        # - `LowestPrice`: Launches instances from the spot capacity pool offering the lowest price. This is the default strategy.
+        # 
+        # - `CapacityOptimized`: Launches instances from the spot capacity pool offering optimal capacity.
         self.spot_strategy = spot_strategy
 
     def validate(self):

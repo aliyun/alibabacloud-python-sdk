@@ -1,3 +1,7 @@
+2026-07-15 Version: 1.9.2
+- Update API ListRayHistoryServers: add request parameters StoragePath.
+
+
 2026-06-10 Version: 1.9.1
 - Generated python 2020-12-03 for pai-dlc.
 

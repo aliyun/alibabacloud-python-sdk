@@ -9,7 +9,7 @@ class GetJobRequest(DaraModel):
         self,
         need_detail: bool = None,
     ):
-        # Specifies whether to return the job details. Default value: true.
+        # Specifies whether to return job details. Default value: true.
         self.need_detail = need_detail
 
     def validate(self):

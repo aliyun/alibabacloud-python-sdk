@@ -18,15 +18,25 @@ class GetMetricsRequest(DaraModel):
         start_time: str = None,
         token: str = None,
     ):
+        # (Required) Request parameter.
         self.dimensions = dimensions
+        # The end time of the query. Default value: current time.
         self.end_time = end_time
+        # The job ID.
         self.job_id = job_id
+        # The number of records per query for paged queries. Default value: 1000.
         self.length = length
+        # Metric name. Not filled. Not in use.
         self.metric_name = metric_name
+        # The namespace for cloud service monitoring data. For more information about namespaces, see cloud service monitoring metrics.
         self.namespace = namespace
+        # The pagination cursor token. If you do not set this parameter, the first page of data is returned. When a NextToken value is returned, more data is available. Use the returned NextToken as a parameter in your next request to retrieve the next page. Repeat until NextToken returns null, which means all data has been retrieved.
         self.next_token = next_token
+        # The statistical period for monitoring data. Unit: seconds. Valid values: 15, 60, 900, and 3600.
         self.period = period
+        # The start time of the monitoring data query interval (UTC). Default value: one hour ago.
         self.start_time = start_time
+        # A temporary token used for authentication.
         self.token = token
 
     def validate(self):

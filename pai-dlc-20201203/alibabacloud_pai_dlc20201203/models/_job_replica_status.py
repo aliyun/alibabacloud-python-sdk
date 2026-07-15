@@ -17,13 +17,21 @@ class JobReplicaStatus(DaraModel):
         queuing: int = None,
         type: str = None,
     ):
+        # The number of active pods for this replica type.
         self.active = active
+        # The type of spot instance in use, if any.
         self.current_spot_instance_type = current_spot_instance_type
+        # The number of dequeued pods.
         self.dequeued = dequeued
+        # The estimated auto scaling specification.
         self.estimated_auto_scaling_spec = estimated_auto_scaling_spec
+        # The estimated number of pods for this replica type, used for auto scaling.
         self.estimated_pod_count = estimated_pod_count
+        # The estimated resource configuration.
         self.estimated_resource_config = estimated_resource_config
+        # The number of queued pods.
         self.queuing = queuing
+        # The type of the job replica.
         self.type = type
 
     def validate(self):

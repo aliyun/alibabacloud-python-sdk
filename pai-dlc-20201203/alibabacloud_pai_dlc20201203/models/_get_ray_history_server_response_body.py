@@ -27,25 +27,43 @@ class GetRayHistoryServerResponseBody(DaraModel):
         username: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the job.
         self.accessibility = accessibility
+        # The display name of the job.
         self.display_name = display_name
+        # The specifications of the public resource group. For a list of supported instance types, see [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html).>Notice: Pricing varies based on the specifications.
         self.ecs_spec = ecs_spec
+        # The time when the job was created. The time is in UTC.
         self.gmt_create_time = gmt_create_time
+        # The time when the job is complete. The time is in UTC.
         self.gmt_finish_time = gmt_finish_time
+        # The time when the job was last modified. The time is in UTC.
         self.gmt_modify_time = gmt_modify_time
+        # The maximum running time. Unit: minutes.
         self.max_runtime_minutes = max_runtime_minutes
+        # The ID of the Ray history server.
         self.ray_history_server_id = ray_history_server_id
-        # Ray Dashboard URL。
+        # The URL of the Ray dashboard.
         self.ray_history_server_url = ray_history_server_url
+        # The code of the job status.
         self.reason_code = reason_code
+        # The message that describes the job status.
         self.reason_message = reason_message
+        # The ID of the resource group to which the job belongs.
         self.resource_id = resource_id
+        # The name of the resource on which the job runs.
         self.resource_name = resource_name
+        # The status of the job.
         self.status = status
+        # The storage path of Ray logs.
         self.storage_path = storage_path
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The ID of the user who creates the job.
         self.user_id = user_id
+        # The username of the user who creates the job.
         self.username = username
+        # The ID of the workspace to which the job belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

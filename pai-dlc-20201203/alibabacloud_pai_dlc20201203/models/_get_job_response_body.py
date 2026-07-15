@@ -59,105 +59,105 @@ class GetJobResponseBody(DaraModel):
         workspace_name: str = None,
     ):
         # The visibility of the job. Valid values:
-        # 
-        # *   PUBLIC: The code is public in the workspace.
-        # *   PRIVATE: The workspace is visible only to you and the administrator of the workspace. This is the default value.
+        # - PUBLIC: Visible to all members in the workspace.
+        # - PRIVATE (default): Visible only to you and administrators in the workspace.
         self.accessibility = accessibility
         # The cluster ID.
         self.cluster_id = cluster_id
         # The code source.
         self.code_source = code_source
-        # The access credential configurations.
+        # The access credential configuration.
         self.credential_config = credential_config
         self.custom_envs = custom_envs
-        # The data sources.
+        # The list of data sources.
         self.data_sources = data_sources
         self.description = description
         # The job name.
         self.display_name = display_name
-        # The duration of the job (seconds).
+        # The job running duration, in seconds.
         self.duration = duration
         # The elastic job parameters.
         self.elastic_spec = elastic_spec
-        # Specifies whether to enable the debugger job.
+        # Indicates whether the debugger job is enabled.
         self.enabled_debugger = enabled_debugger
-        # The configurations of environment variables.
+        # The environment variable configuration.
         self.envs = envs
         # The time when the job was created (UTC).
         self.gmt_create_time = gmt_create_time
-        # The time of the job failed (UTC).
+        # The time when the job failed (UTC).
         self.gmt_failed_time = gmt_failed_time
-        # The time when the job ended (UTC).
+        # The time when the job finished (UTC).
         self.gmt_finish_time = gmt_finish_time
-        # The start time of the job (UTC).
+        # The time when the job started running (UTC).
         self.gmt_running_time = gmt_running_time
-        # The time when the job stopped (UTC).
+        # The time when the job was stopped (UTC).
         self.gmt_stopped_time = gmt_stopped_time
         # The time when the job was submitted to the cluster (UTC).
         self.gmt_submitted_time = gmt_submitted_time
-        # The time when the job succeeded (UTC).
+        # The time when the job completed successfully (UTC).
         self.gmt_successed_time = gmt_successed_time
         # The job ID.
         self.job_id = job_id
+        # The job replica statuses.
         self.job_replica_statuses = job_replica_statuses
-        # The node configuration of the job, which is **JobSpecs** in the CreateJob operation.
+        # The node configurations in the job. For more information, see the **JobSpecs** parameter in the CreateJob API.
         self.job_specs = job_specs
-        # The job type. Specified by the JobType parameter of the [CreateJob](https://help.aliyun.com/document_detail/459672.html) operation.
+        # The job type. Specified by the JobType parameter in the [CreateJob](https://help.aliyun.com/document_detail/459672.html) API.
         self.job_type = job_type
-        # All running nodes of the job.
+        # All nodes running in the job.
         self.pods = pods
         # The priority of the job. Valid values: 1 to 9.
         self.priority = priority
-        # The status detail code, which is a sub-status under the current status.
+        # The status detail code, which categorizes the sub-status under the current status (Status).
         self.reason_code = reason_code
-        # The description of the status detail code.
+        # The detailed description of the status.
         self.reason_message = reason_message
-        # The request ID, which can be used for troubleshooting.
+        # The request ID, used for diagnostics and troubleshooting.
         self.request_id = request_id
-        # The ID of the resource group to which the job belongs.
+        # The ID of the resource group in which the job runs.
         self.resource_id = resource_id
-        # The resource level that the job uses.
+        # The resource level used by the job at runtime.
         self.resource_level = resource_level
-        # The resource type. Valid values: ECS, Lingjun, and ACS.
+        # The resource type. Valid values: ECS, Lingjun, ACS.
         self.resource_type = resource_type
+        # The job restart records.
         self.restart_record = restart_record
-        # The number of retries and the maximum number of retries used by the job.
+        # The number of retries used and the maximum number of retries for the job.
         self.restart_times = restart_times
         self.role_system_envs = role_system_envs
         self.scheduling_strategy = scheduling_strategy
-        # The additional parameter configurations of the job.
+        # The additional parameter settings of the job.
         self.settings = settings
-        # The status of the job. Valid values:
-        # 
-        # *   Creating
-        # *   Queuing
-        # *   Bidding (Only for Lingjun preemptible jobs)
-        # *   EnvPreparing
-        # *   SanityChecking
-        # *   Running
-        # *   Restarting
-        # *   Stopping
-        # *   SucceededReserving
-        # *   FailedReserving
-        # *   Succeeded
-        # *   Failed
-        # *   Stopped
+        # The job running status. Valid values:
+        # - Creating
+        # - Queuing
+        # - Bidding (currently only for Lingjun spot jobs)
+        # - EnvPreparing
+        # - SanityChecking
+        # - Running
+        # - Restarting
+        # - Stopping
+        # - SucceededReserving
+        # - FailedReserving
+        # - Succeeded
+        # - Failed
+        # - Stopped
         self.status = status
-        # The status history.
+        # The historical statuses.
         self.status_history = status_history
-        # The sub-status of the job, such as its preemption status.
+        # The job sub-status, such as preemption retry status.
         self.sub_status = sub_status
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The directory that contains requirements.txt.
+        # The folder that contains the third-party library (requirements.txt) file.
         self.thirdparty_lib_dir = thirdparty_lib_dir
-        # The third-party Python libraries to be installed.
+        # The list of third-party Python libraries to install.
         self.thirdparty_libs = thirdparty_libs
-        # The command that is run to start each node.
+        # The startup command for each node.
         self.user_command = user_command
-        # The UID of the Alibaba Cloud account who submitted the job.
+        # The Alibaba Cloud UID of the job submitter.
         self.user_id = user_id
-        # The VPC of the user.
+        # The user VPC.
         self.user_vpc = user_vpc
         # The ID of the workspace to which the job belongs.
         self.workspace_id = workspace_id
@@ -546,17 +546,18 @@ class GetJobResponseBodyUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The default router. This parameter is valid only for general-purpose computing resources. Valid values:
+        # The default routing. This parameter is valid only for general computing resources. Valid values:
         # 
-        # eth0: The default network interface is used to access the Internet through the public gateway. eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway.
+        # eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
+        # eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
         self.default_route = default_route
-        # The extended CIDR block. Example: 192.168.0.1/24.
+        # The extended CIDR blocks, for example, 192.168.0.1/24.
         self.extended_cidrs = extended_cidrs
-        # The security group ID.
+        # The ID of the user security group.
         self.security_group_id = security_group_id
-        # The vSwitch ID.
+        # The ID of the user vSwitch.
         self.switch_id = switch_id
-        # The VPC ID.
+        # The ID of the user VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -617,15 +618,24 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         restart_status: str = None,
         trigger_id: str = None,
     ):
+        # The error message list.
         self.detail_error_info_list = detail_error_info_list
+        # The job restart count.
         self.job_restart_count = job_restart_count
+        # The phase in which the event occurred.
         self.occur_phase = occur_phase
+        # The time when the event occurred.
         self.occur_time = occur_time
+        # The reason.
         self.reason = reason
+        # The restart duration, in seconds.
         self.restart_duration_in_sec = restart_duration_in_sec
+        # The reason for the restart failure.
         self.restart_fail_reason = restart_fail_reason
         self.restart_level_type = restart_level_type
+        # The restart status.
         self.restart_status = restart_status
+        # TriggerID
         self.trigger_id = trigger_id
 
     def validate(self):
@@ -723,14 +733,23 @@ class GetJobResponseBodyRestartRecordDetailErrorInfoList(DaraModel):
         pod: str = None,
         trigger_restart: bool = None,
     ):
+        # The job blacklist.
         self.add_job_level_blacklist = add_job_level_blacklist
+        # The node blacklist.
         self.add_node_to_blacklist = add_node_to_blacklist
+        # The detailed error message.
         self.detail_error_msg = detail_error_msg
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The error source.
         self.error_source = error_source
+        # The node.
         self.node = node
+        # The instance.
         self.pod = pod
+        # Indicates whether a restart is triggered.
         self.trigger_restart = trigger_restart
 
     def validate(self):
@@ -819,39 +838,41 @@ class GetJobResponseBodyPods(DaraModel):
         sub_status: str = None,
         type: str = None,
     ):
+        # The pod running duration.
         self.duration = duration
-        # The time when the node was created (UTC).
+        # The pod creation time (UTC).
         self.gmt_create_time = gmt_create_time
-        # The end time of the node (UTC).
+        # The node finish time (UTC).
         self.gmt_finish_time = gmt_finish_time
-        # The start time of the node (UTC).
+        # The node start time (UTC).
         self.gmt_start_time = gmt_start_time
-        # The historical nodes.
+        # The historical pods.
         self.history_pods = history_pods
-        # The IP address of the node.
+        # The network IP address of the node.
         self.ip = ip
+        # The node name.
         self.node_name = node_name
-        # The node ID. It can be used in the GetPodLogs and GetPodEvents operations to obtain the detailed logs and events of the node.
+        # The node ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events for the node.
         self.pod_id = pod_id
+        # The IP addresses of the pod.
         self.pod_ips = pod_ips
-        # The UID of the node.
+        # Pod UID。
         self.pod_uid = pod_uid
-        # The resource type of the node.
+        # The pod resource usage type.
         self.resource_type = resource_type
-        # The status of the node. Valid values:
+        # The node status. Valid values:
         # 
-        # *   Pending
-        # *   Running
-        # *   Succeeded
-        # *   Failed
-        # *   Unknown
+        # - Pending
+        # - Running
+        # - Succeeded
+        # - Failed
+        # - Unknown
         self.status = status
-        # The sub-status of the node, such as its preemption status. Valid values:
-        # 
-        # *   Normal
-        # *   Evicted
+        # The pod sub-status, such as preemption status. Valid values:
+        # - Normal
+        # - Evicted
         self.sub_status = sub_status
-        # The node type, which corresponds to a specific JobSpec in JobSpecs of the CreateJob operation.
+        # The node type, which corresponds to a JobSpec in the JobSpecs parameter of the CreateJob API.
         self.type = type
 
     def validate(self):
@@ -986,31 +1007,33 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         sub_status: str = None,
         type: str = None,
     ):
+        # The pod running duration.
         self.duration = duration
-        # The time when the node was created (UTC).
+        # The pod creation time (UTC).
         self.gmt_create_time = gmt_create_time
-        # The end time of the node (UTC).
+        # The pod finish time (UTC).
         self.gmt_finish_time = gmt_finish_time
-        # The start time of the node (UTC).
+        # The pod start time (UTC).
         self.gmt_start_time = gmt_start_time
-        # The IP address of the node.
+        # Pod IP。
         self.ip = ip
+        # The node name.
         self.node_name = node_name
-        # The ID of the node.
+        # Pod ID。
         self.pod_id = pod_id
+        # The IP addresses of the pod.
         self.pod_ips = pod_ips
-        # The UID of the node.
+        # Pod UID。
         self.pod_uid = pod_uid
-        # The resource type of the node.
+        # The pod resource usage type.
         self.resource_type = resource_type
-        # The status of the node.
+        # The pod status.
         self.status = status
-        # The sub-status of the node, such as its preemption status. Valid values:
-        # 
-        # *   Normal
-        # *   Evicted
+        # The pod sub-status, such as preemption status. Valid values:
+        # - Normal
+        # - Evicted
         self.sub_status = sub_status
-        # The type of the node.
+        # The pod type.
         self.type = type
 
     def validate(self):
@@ -1122,9 +1145,9 @@ class GetJobResponseBodyDataSources(DaraModel):
     ):
         # The data source ID.
         self.data_source_id = data_source_id
-        # The local mount path. This parameter is optional. The default value is empty, which specifies that the mount path in the data source is used.
+        # The local mount path. This is an optional parameter. If left empty, the mount path specified in the data source is used.
         self.mount_path = mount_path
-        # The data source URL.
+        # The data source path.
         self.uri = uri
 
     def validate(self):
@@ -1214,7 +1237,7 @@ class GetJobResponseBodyCodeSource(DaraModel):
         self.branch = branch
         # The code source ID.
         self.code_source_id = code_source_id
-        # The code commit ID
+        # The code commit ID.
         self.commit = commit
         # The local mount path.
         self.mount_path = mount_path

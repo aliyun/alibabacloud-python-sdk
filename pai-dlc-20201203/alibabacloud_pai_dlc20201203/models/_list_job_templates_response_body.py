@@ -16,11 +16,15 @@ class ListJobTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of job templates.
         self.job_templates = job_templates
+        # The current page number.
         self.page_number = page_number
+        # The number of results on the current page.
         self.page_size = page_size
-        # 本次请求的 ID，用于诊断和答疑。
+        # The unique ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The total number of job templates that match the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -90,18 +94,31 @@ class ListJobTemplatesResponseBodyJobTemplates(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The default version number.
         self.default_version = default_version
+        # The description of the job template.
         self.description = description
+        # The creation time of the template, in UTC and ISO 8601 format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The modification time of the template, in UTC and ISO 8601 format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
+        # Custom metadata, represented as a collection of key-value pairs.
         self.metadata = metadata
+        # The ID of the modifier.
         self.modified_by = modified_by
+        # The ID of the job template.
         self.template_id = template_id
+        # The name of the job template.
         self.template_name = template_name
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The ID of the creator.
         self.user_id = user_id
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

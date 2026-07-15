@@ -32,68 +32,68 @@ class JobSettings(DaraModel):
         oversold_type: str = None,
         pipeline_id: str = None,
         sanity_check_args: str = None,
+        shell: str = None,
         tags: Dict[str, str] = None,
+        termination_grace_period_seconds: int = None,
     ):
-        # The additional advanced parameter configurations.
+        # The extra advanced parameter settings.
         self.advanced_settings = advanced_settings
-        # Whether to mount all RDMA network interface controllers
+        # Specifies whether to mount all RDMA network interfaces.
         self.allocate_all_rdmadevices = allocate_all_rdmadevices
         self.allow_unschedulable_nodes = allow_unschedulable_nodes
-        # The ID of the user associated with the job.
+        # The user ID associated with the job.
         self.business_user_id = business_user_id
         # The caller.
         self.caller = caller
+        # The DataJuicer task configuration.
         self.data_juicer_config = data_juicer_config
-        # Whether inventory check is skipped. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to skip the inventory check. Valid values:
+        # - true
+        # - false
         self.disable_ecs_stock_check = disable_ecs_stock_check
-        # The NVIDIA driver configurations.
+        # The NVIDIA driver configuration.
         self.driver = driver
-        # Whether the CPU affinity is enabled. This parameter takes effect only when you use subscription general computing resources.
+        # The CPU affinity setting. This setting takes effect only when general-purpose subscription computing resources are used.
         self.enable_cpuaffinity = enable_cpuaffinity
         self.enable_dswdev = enable_dswdev
-        # Whether fault tolerance monitoring is enabled for the job. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable fault tolerance monitoring for the job. Valid values:
+        # - true
+        # - false
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
-        # Whether data is written to Object Storage Service (OSS) in append mode. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether OSS append writes are allowed. Valid values:
+        # - true
+        # - false
         self.enable_oss_append = enable_oss_append
-        # Whether RDMA is enabled for the job. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the job is allowed to use RDMA. Valid values:
+        # - true
+        # - false
         self.enable_rdma = enable_rdma
-        # Whether sanity check is enabled for the job. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable computing power health check for the job. Valid values:
+        # - true
+        # - false
         self.enable_sanity_check = enable_sanity_check
-        # Whether tidal resources are allowed for the job. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the job is allowed to use tidal resources. Valid values:
+        # - true
+        # - false
         self.enable_tide_resource = enable_tide_resource
-        # The configuration parameters after you enable fault tolerance monitoring. For example, you can specify whether to enable log hang-based detection.
+        # The configuration parameters for fault tolerance monitoring after it is enabled. For example, you can specify whether to enable log hang-based detection.
         self.error_monitoring_args = error_monitoring_args
-        # The retention period after the job ends. Unit: minutes.
+        # The duration (in minutes) for which the job is retained after it ends.
         self.job_reserved_minutes = job_reserved_minutes
         # The retention policy after the job ends.
         self.job_reserved_policy = job_reserved_policy
+        # The output model configuration. This parameter currently takes effect only in federated training scenarios.
         self.model_config = model_config
-        # Whether the job accepts oversold resources. Valid values: ForbiddenQuotaOverSold, AcceptQuotaOverSold, and ForceQuotaOverSold.
+        # The oversold resource usage mode for the job (not accepted, acceptable, or only accepted).
         self.oversold_type = oversold_type
-        # The pipeline ID.
+        # The workflow ID.
         self.pipeline_id = pipeline_id
-        # The configuration parameters for sanity check.
+        # The configuration parameters for computing power health check.
         self.sanity_check_args = sanity_check_args
-        # The custom tag.
+        self.shell = shell
+        # The custom tags.
         self.tags = tags
+        self.termination_grace_period_seconds = termination_grace_period_seconds
 
     def validate(self):
         if self.data_juicer_config:
@@ -172,8 +172,14 @@ class JobSettings(DaraModel):
         if self.sanity_check_args is not None:
             result['SanityCheckArgs'] = self.sanity_check_args
 
+        if self.shell is not None:
+            result['Shell'] = self.shell
+
         if self.tags is not None:
             result['Tags'] = self.tags
+
+        if self.termination_grace_period_seconds is not None:
+            result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
 
         return result
 
@@ -247,8 +253,14 @@ class JobSettings(DaraModel):
         if m.get('SanityCheckArgs') is not None:
             self.sanity_check_args = m.get('SanityCheckArgs')
 
+        if m.get('Shell') is not None:
+            self.shell = m.get('Shell')
+
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+
+        if m.get('TerminationGracePeriodSeconds') is not None:
+            self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
 
         return self
 

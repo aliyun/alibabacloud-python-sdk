@@ -13,10 +13,15 @@ class StatusTransitionItem(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The end time of this status (UTC).
         self.end_time = end_time
+        # The reason code for this status.
         self.reason_code = reason_code
+        # The detailed message for this status.
         self.reason_message = reason_message
+        # The start time of this status (UTC).
         self.start_time = start_time
+        # The job status.
         self.status = status
 
     def validate(self):

@@ -28,23 +28,41 @@ class DownloadJobResult(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The display name of the download job.
         self.display_name = display_name
+        # The ID of the download job.
         self.download_job_id = download_job_id
+        # A temporary, pre-signed URL for downloading the result file.
         self.download_url = download_url
+        # The completion time of the download job, in UTC format.
         self.end_time = end_time
+        # The type of file to download, such as `logs` or `output`.
         self.file_type = file_type
+        # The creation time of the download job, in UTC format.
         self.gmt_created = gmt_created
+        # The last modification time of the download job, in UTC format.
         self.gmt_modified = gmt_modified
+        # The number of log entries included in the download.
         self.log_count = log_count
+        # The IDs of the pods for the source job.
         self.pod_ids = pod_ids
+        # The UIDs of the pods for the source job.
         self.pod_uids = pod_uids
+        # The ID of the source job whose results are downloaded.
         self.source_job_id = source_job_id
+        # The start time of the download job, in UTC format.
         self.start_time = start_time
+        # The status of the download job. Valid values: `Running`, `Succeeded`, and `Failed`.
         self.status = status
+        # The ID of the tenant that the job belongs to.
         self.tenant_id = tenant_id
+        # The type of the download job.
         self.type = type
+        # The time when the download URL expires, in UTC format.
         self.url_expire_time = url_expire_time
+        # The ID of the user who created the job.
         self.user_id = user_id
+        # The ID of the workspace where the job was created.
         self.workspace_id = workspace_id
 
     def validate(self):

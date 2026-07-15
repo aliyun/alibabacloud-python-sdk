@@ -12,15 +12,16 @@ class UpdateTensorboardRequest(DaraModel):
         priority: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the jobs. Valid values:
+        # Visibility of the task. Valid values:
         # 
-        # *   PUBLIC: The jobs are public in the workspace.
-        # *   PRIVATE: The jobs are visible only to you and the administrator of the workspace.
+        # - PUBLIC: Visible to all users in this workspace.
+        # 
+        # - PRIVATE: Visible only to you and administrators in this workspace.
         self.accessibility = accessibility
-        # The maximum running time. Unit: minutes.
+        # Maximum runtime. Unit: minutes.
         self.max_running_time_minutes = max_running_time_minutes
         self.priority = priority
-        # The workspace ID.
+        # Workspace ID. For more information about how to get a workspace ID, see [ListWorkspaces]().
         self.workspace_id = workspace_id
 
     def validate(self):

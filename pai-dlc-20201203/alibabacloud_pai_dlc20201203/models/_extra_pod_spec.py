@@ -18,18 +18,19 @@ class ExtraPodSpec(DaraModel):
         shared_volume_mount_paths: List[str] = None,
         side_car_containers: List[main_models.ContainerSpec] = None,
     ):
-        # The containers to be initialized.
+        # A list of init containers that run to completion before the main container starts.
         self.init_containers = init_containers
-        # The lifecycle object.
+        # Defines lifecycle hooks for the main container.
         self.lifecycle = lifecycle
+        # Defines the security context for the main container.
         self.main_container_security_context = main_container_security_context
-        # The pod annotations.
+        # Key-value pairs to apply to the pod as annotations. Use annotations to attach arbitrary, non-identifying metadata.
         self.pod_annotations = pod_annotations
-        # The pod labels.
+        # Key-value pairs to apply to the pod as labels. Use labels to organize and select pods.
         self.pod_labels = pod_labels
-        # The local paths shared between containers.
+        # A list of local directory paths to mount and share among all containers in the pod.
         self.shared_volume_mount_paths = shared_volume_mount_paths
-        # The sidecar containers.
+        # A list of sidecar containers.
         self.side_car_containers = side_car_containers
 
     def validate(self):

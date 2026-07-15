@@ -15,14 +15,28 @@ class CreateRayHistoryServerRequest(DaraModel):
         storage_path: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the job. Valid values:
+        # - PUBLIC: visible to all members in the workspace.
+        # - PRIVATE: visible only to you and administrators in the workspace.
         self.accessibility = accessibility
+        # The display name of the job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The hardware specifications of the public resource group. To access the detailed list of specifications, see [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html).>Notice: Prices vary depending on the specifications..
         self.ecs_spec = ecs_spec
+        # The maximum runtime in minutes.
         self.max_runtime_minutes = max_runtime_minutes
+        # The resource group ID. This parameter is optional.
+        # - If this parameter is left empty, the job is committed to the public resource group.
+        # - If the current workspace is attached to a resource quota, you can specify the corresponding resource quota ID. For details about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
+        # The storage path for Ray logs.
+        # 
         # This parameter is required.
         self.storage_path = storage_path
+        # The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

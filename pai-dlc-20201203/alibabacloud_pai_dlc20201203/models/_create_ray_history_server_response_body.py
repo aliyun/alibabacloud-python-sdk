@@ -10,7 +10,9 @@ class CreateRayHistoryServerResponseBody(DaraModel):
         ray_history_server_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the created Ray History Server.
         self.ray_history_server_id = ray_history_server_id
+        # The request ID of this call, used for diagnostics and troubleshooting.
         self.request_id = request_id
 
     def validate(self):
