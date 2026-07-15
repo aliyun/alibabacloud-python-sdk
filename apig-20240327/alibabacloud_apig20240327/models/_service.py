@@ -28,19 +28,21 @@ class Service(DaraModel):
         protocol: str = None,
         qualifier: str = None,
         resource_group_id: str = None,
+        runtime_detail_error_code: str = None,
+        runtime_detail_status: str = None,
         service_id: str = None,
         source_type: str = None,
         unhealthy_endpoints: List[str] = None,
         update_timestamp: int = None,
         versions: List[main_models.ServiceVersions] = None,
     ):
-        # The address information, including IP addresses or domain name lists.
+        # The address information, including IP addresses or domain names.
         self.addresses = addresses
         # The agent service configuration.
         self.agent_service_config = agent_service_config
         # The AI service configuration.
         self.ai_service_config = ai_service_config
-        # The creation time.
+        # The time when the service was created.
         self.create_timestamp = create_timestamp
         # The CloudFlow execution mode.
         self.express_type = express_type
@@ -50,7 +52,9 @@ class Service(DaraModel):
         self.group_name = group_name
         # The health check configuration.
         self.health_check = health_check
-        # The health check status. Valid values: Healthy and Unhealthy.
+        # The health check status. Valid values:
+        # - Healthy
+        # - Unhealthy
         self.health_status = health_status
         # The label information of the service.
         self.label_details = label_details
@@ -65,17 +69,19 @@ class Service(DaraModel):
         self.ports = ports
         # The service protocol.
         self.protocol = protocol
-        # The function qualifier.
+        # The qualifier of the function.
         self.qualifier = qualifier
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.runtime_detail_error_code = runtime_detail_error_code
+        self.runtime_detail_status = runtime_detail_status
         # The unique ID of the service.
         self.service_id = service_id
         # The source type of the service.
         self.source_type = source_type
         # The unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The update time.
+        # The time when the service was updated.
         self.update_timestamp = update_timestamp
         # The list of service versions.
         self.versions = versions
@@ -163,6 +169,12 @@ class Service(DaraModel):
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
 
+        if self.runtime_detail_error_code is not None:
+            result['runtimeDetailErrorCode'] = self.runtime_detail_error_code
+
+        if self.runtime_detail_status is not None:
+            result['runtimeDetailStatus'] = self.runtime_detail_status
+
         if self.service_id is not None:
             result['serviceId'] = self.service_id
 
@@ -246,6 +258,12 @@ class Service(DaraModel):
 
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+
+        if m.get('runtimeDetailErrorCode') is not None:
+            self.runtime_detail_error_code = m.get('runtimeDetailErrorCode')
+
+        if m.get('runtimeDetailStatus') is not None:
+            self.runtime_detail_status = m.get('runtimeDetailStatus')
 
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')

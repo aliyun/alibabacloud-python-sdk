@@ -83,7 +83,7 @@ class GetTraceConfigResponseBodyData(DaraModel):
         trace_type: str = None,
     ):
         # Indicates whether Tracing Analysis is enabled. Valid values:
-        # - true: Enabled.
+        # - true: enabled.
         # - false: shutdown.
         self.enable = enable
         # The sampling ratio.
@@ -96,7 +96,7 @@ class GetTraceConfigResponseBodyData(DaraModel):
         # - XTRACE
         # - SKYWALKING
         # - OPENTELEMETRY
-        # - OTSKYWALKING.
+        # - OTSKYWALKING
         self.trace_type = trace_type
 
     def validate(self):

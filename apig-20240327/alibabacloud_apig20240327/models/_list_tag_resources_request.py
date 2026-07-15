@@ -15,7 +15,7 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token that determines the start point of the next query.
+        # The token for the next query.
         self.next_token = next_token
         # The resource ID. You can specify up to 50 subkeys.
         self.resource_id = resource_id

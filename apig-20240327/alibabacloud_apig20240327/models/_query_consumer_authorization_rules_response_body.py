@@ -153,7 +153,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.api_info = api_info
         # The consumer authorization rule ID.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        # The consumer group ID. This field is returned for consumer group authorization rules.
         self.consumer_group_id = consumer_group_id
+        # The consumer group information. This field is returned for consumer group authorization rules.
         self.consumer_group_info = consumer_group_info
         # The consumer ID.
         self.consumer_id = consumer_id
@@ -175,6 +177,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.expire_timestamp = expire_timestamp
         # The gateway information.
         self.gateway_info = gateway_info
+        # The principal type. Valid values: Consumer or ConsumerGroup.
         self.principal_type = principal_type
         # The resource ID.
         self.resource_id = resource_id
@@ -330,7 +333,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
         operation_info: main_models.HttpApiOperationInfo = None,
         route: main_models.HttpRoute = None,
     ):
-        # The operation information.
+        # The API operation information.
         self.operation_info = operation_info
         # The routing rule.
         self.route = route

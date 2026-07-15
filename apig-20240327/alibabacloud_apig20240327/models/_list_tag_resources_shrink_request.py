@@ -12,7 +12,7 @@ class ListTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
-        # The token that determines the start point of the next query.
+        # The token for the next query.
         self.next_token = next_token
         # The resource ID. You can specify up to 50 subkeys.
         self.resource_id_shrink = resource_id_shrink

@@ -14,17 +14,17 @@ class HiMarketProductPublicationDetail(DaraModel):
         product_type: str = None,
         publication_id: str = None,
     ):
-        # The unique ID of the portal.
+        # The portal ID.
         self.portal_id = portal_id
-        # The name of the portal.
+        # The portal name.
         self.portal_name = portal_name
-        # The unique ID of the product.
+        # The product ID.
         self.product_id = product_id
-        # The name of the product.
+        # The product name.
         self.product_name = product_name
-        # The type of the product.
+        # The product type.
         self.product_type = product_type
-        # The unique ID of the product publication.
+        # The product publish ID.
         self.publication_id = publication_id
 
     def validate(self):

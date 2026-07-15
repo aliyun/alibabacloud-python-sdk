@@ -13,13 +13,13 @@ class HiMarketPortalDeployConfig(DaraModel):
         sae_config: main_models.HiMarketPortalDeployConfigSaeConfig = None,
         status: str = None,
     ):
-        # Additional information about the deployment status, such as error details.
+        # The deployment status message.
         self.message = message
-        # The target deployment platform. For example, set this to `SAE` to deploy on Serverless App Engine.
+        # The deployment platform type.
         self.platform = platform
-        # Configuration settings for deploying to Serverless App Engine (SAE). This object is required when the `platform` is `SAE`.
+        # The SAE (Serverless App Engine) deployment configuration.
         self.sae_config = sae_config
-        # The current status of the deployment. Possible values include `succeeded`, `failed`, and `in_progress`.
+        # The deployment status.
         self.status = status
 
     def validate(self):
@@ -74,21 +74,21 @@ class HiMarketPortalDeployConfigSaeConfig(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the application in Serverless App Engine.
+        # The SAE application ID.
         self.app_id = app_id
-        # The ID of the namespace that logically isolates the application.
+        # The SAE namespace ID.
         self.namespace_id = namespace_id
-        # The name of the OIDC role that grants permissions to the application.
+        # The OIDC role name used for SAE to access other cloud resources.
         self.oidc_role_name = oidc_role_name
-        # The ID of the region in which to deploy the application.
+        # The region ID of SAE.
         self.region_id = region_id
-        # The desired number of application replicas.
+        # The number of instance replicas.
         self.replicas = replicas
-        # The ID of the security group to apply to the application instances. A security group acts as a virtual firewall.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The ID of the vSwitch within the specified VPC. Serverless App Engine launches application instances in the vSwitch\\"s zone.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to connect the application to.
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):

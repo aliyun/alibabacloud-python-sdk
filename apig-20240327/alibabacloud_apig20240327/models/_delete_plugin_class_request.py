@@ -4,14 +4,9 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class HiMarketProductPublicationConifg(DaraModel):
-    def __init__(
-        self,
-        publication_id: str = None,
-    ):
-        # The publication ID.
-        self.publication_id = publication_id
-
+class DeletePluginClassRequest(DaraModel):
+    def __init__(self):
+        pass
     def validate(self):
         pass
 
@@ -20,15 +15,9 @@ class HiMarketProductPublicationConifg(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.publication_id is not None:
-            result['publicationId'] = self.publication_id
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('publicationId') is not None:
-            self.publication_id = m.get('publicationId')
-
         return self
 

@@ -3304,6 +3304,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_plugin_attachment_with_options_async(plugin_attachment_id, headers, runtime)
 
+    def delete_plugin_class_with_options(
+        self,
+        plugin_class_id: str,
+        request: main_models.DeletePluginClassRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePluginClassResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePluginClass',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes/{DaraURL.percent_encode(plugin_class_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePluginClassResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_plugin_class_with_options_async(
+        self,
+        plugin_class_id: str,
+        request: main_models.DeletePluginClassRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePluginClassResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePluginClass',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes/{DaraURL.percent_encode(plugin_class_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePluginClassResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_plugin_class(
+        self,
+        plugin_class_id: str,
+        request: main_models.DeletePluginClassRequest,
+    ) -> main_models.DeletePluginClassResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_plugin_class_with_options(plugin_class_id, request, headers, runtime)
+
+    async def delete_plugin_class_async(
+        self,
+        plugin_class_id: str,
+        request: main_models.DeletePluginClassRequest,
+    ) -> main_models.DeletePluginClassResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_plugin_class_with_options_async(plugin_class_id, request, headers, runtime)
+
     def delete_policy_with_options(
         self,
         policy_id: str,
@@ -8202,11 +8274,17 @@ class Client(OpenApiClient):
 
     def list_zones_with_options(
         self,
+        request: main_models.ListZonesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListZonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_edition):
+            query['gatewayEdition'] = request.gateway_edition
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ListZones',
@@ -8226,11 +8304,17 @@ class Client(OpenApiClient):
 
     async def list_zones_with_options_async(
         self,
+        request: main_models.ListZonesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListZonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_edition):
+            query['gatewayEdition'] = request.gateway_edition
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ListZones',
@@ -8248,15 +8332,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_zones(self) -> main_models.ListZonesResponse:
+    def list_zones(
+        self,
+        request: main_models.ListZonesRequest,
+    ) -> main_models.ListZonesResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_zones_with_options(headers, runtime)
+        return self.list_zones_with_options(request, headers, runtime)
 
-    async def list_zones_async(self) -> main_models.ListZonesResponse:
+    async def list_zones_async(
+        self,
+        request: main_models.ListZonesRequest,
+    ) -> main_models.ListZonesResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_zones_with_options_async(headers, runtime)
+        return await self.list_zones_with_options_async(request, headers, runtime)
 
     def query_consumer_authorization_rules_with_options(
         self,

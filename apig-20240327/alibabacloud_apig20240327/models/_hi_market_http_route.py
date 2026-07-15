@@ -15,13 +15,13 @@ class HiMarketHttpRoute(DaraModel):
         domains: List[main_models.HiMarketDomain] = None,
         match: main_models.HiMarketHttpRouteMatch = None,
     ):
-        # Indicates whether this is a system-defined route. Users cannot modify or delete built-in routes. Defaults to `false`.
+        # Indicates whether the route is a built-in route.
         self.builtin = builtin
-        # An optional description for the HTTP route. This field is for informational purposes only.
+        # The route description.
         self.description = description
-        # A list of hostnames to which this route applies. The request\\"s `Host` header must match one of the hostnames in this list.
+        # The list of associated domain names.
         self.domains = domains
-        # Defines the matching criteria for an incoming HTTP request. The request must meet all specified conditions for this route to apply.
+        # The route matching rule.
         self.match = match
 
     def validate(self):
@@ -82,15 +82,15 @@ class HiMarketHttpRouteMatch(DaraModel):
         path: main_models.HiMarketHttpRouteMatchPath = None,
         query_params: List[main_models.HiMarketHttpRouteMatchQueryParams] = None,
     ):
-        # A list of HTTP header match conditions. The request must match all of these conditions.
+        # The list of header matching rules.
         self.headers = headers
-        # A list of HTTP methods to match, such as `GET` or `POST`. If this field is not specified, the route matches requests with any HTTP method.
+        # The list of HTTP methods.
         self.methods = methods
-        # A list of conditions for matching against a data model. Use this to validate the request body or other structured data.
+        # The list of model matching rules (specific to Agent API).
         self.model_matches = model_matches
-        # Specifies the conditions for matching the request path.
+        # The path matching rule.
         self.path = path
-        # A list of URL query parameter match conditions. The request must match all of these conditions.
+        # The list of query parameter matching rules.
         self.query_params = query_params
 
     def validate(self):
@@ -174,13 +174,13 @@ class HiMarketHttpRouteMatchQueryParams(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Specifies whether the query parameter match is case-sensitive. Defaults to `true`.
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
-        # The name of the query parameter to match.
+        # The parameter name.
         self.name = name
-        # The type of query parameter match. Valid values are `Exact` and `RegularExpression`. Defaults to `Exact`.
+        # The matching type.
         self.type = type
-        # The value to match against the query parameter. The match `type` determines how this value is interpreted.
+        # The matching value.
         self.value = value
 
     def validate(self):
@@ -228,11 +228,11 @@ class HiMarketHttpRouteMatchPath(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Specifies whether the path match is case-sensitive. Defaults to `true`.
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
-        # The type of path match. Valid values are `Exact` and `Prefix`. Defaults to `Exact` if not specified.
+        # The matching type.
         self.type = type
-        # The path value to match. The specified `type` determines how this value is interpreted.
+        # The path value.
         self.value = value
 
     def validate(self):
@@ -275,13 +275,13 @@ class HiMarketHttpRouteMatchModelMatches(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Specifies whether the model field match is case-sensitive. Defaults to `true`.
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
-        # The name of the model field to match.
+        # The parameter name.
         self.name = name
-        # The type of match, such as `Exact`, `Pattern`, or `Range`.
+        # The matching type.
         self.type = type
-        # The value or pattern to match against the model field.
+        # The matching value.
         self.value = value
 
     def validate(self):
@@ -330,13 +330,13 @@ class HiMarketHttpRouteMatchHeaders(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Specifies whether the header match is case-sensitive. Defaults to `true`.
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
-        # The name of the HTTP header to match, such as `Content-Type`.
+        # The parameter name.
         self.name = name
-        # The type of header match. Valid values are `Exact` and `RegularExpression`. Defaults to `Exact`.
+        # The matching type.
         self.type = type
-        # The value to match against the header. The match `type` determines how this value is interpreted.
+        # The matching value.
         self.value = value
 
     def validate(self):

@@ -12,7 +12,7 @@ class HiMarketHmacConfig(DaraModel):
         self,
         credentials: List[main_models.HiMarketHmacConfigCredentials] = None,
     ):
-        # The authentication credentials.
+        # The list of credentials.
         self.credentials = credentials
 
     def validate(self):
@@ -50,11 +50,11 @@ class HiMarketHmacConfigCredentials(DaraModel):
         mode: str = None,
         sk: str = None,
     ):
-        # The AccessKey ID.
+        # Access Key ID
         self.ak = ak
-        # The HMAC mode.
+        # The generation mode.
         self.mode = mode
-        # The AccessKey Secret.
+        # Access Key Secret
         self.sk = sk
 
     def validate(self):

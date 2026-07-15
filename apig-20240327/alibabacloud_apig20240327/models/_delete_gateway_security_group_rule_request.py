@@ -9,7 +9,9 @@ class DeleteGatewaySecurityGroupRuleRequest(DaraModel):
         self,
         cascading_delete: bool = None,
     ):
-        # Indicates whether to cascade delete security group rules.
+        # Specifies whether to cascade delete security group rules is enabled. Valid values:
+        # - true: Cascade delete security group rules.
+        # - false: Do not cascade delete security group rules.
         self.cascading_delete = cascading_delete
 
     def validate(self):

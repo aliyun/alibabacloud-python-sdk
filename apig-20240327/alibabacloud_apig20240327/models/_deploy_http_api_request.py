@@ -148,7 +148,7 @@ class DeployHttpApiRequestRestApiConfigOperationDeployments(DaraModel):
         action: str = None,
         operation_id: str = None,
     ):
-        # The operation type.
+        # The action type.
         self.action = action
         # The unique identifier of the operation.
         self.operation_id = operation_id
@@ -193,7 +193,7 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         self.custom_domain_ids = custom_domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed.
+        # The existing service configurations. In the single-service scenario, only one entry is allowed. In scenarios such as by-ratio or by-content, multiple entries are allowed.
         self.service_configs = service_configs
 
     def validate(self):
@@ -264,7 +264,7 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         self.service_id = service_id
         # The service version.
         self.version = version
-        # The weight. Valid values: 1 to 100. This parameter takes effect only in the ratio-based scenario.
+        # The weight. Valid values: 1 to 100. This parameter takes effect only in the by-ratio scenario.
         self.weight = weight
 
     def validate(self):

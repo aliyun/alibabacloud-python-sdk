@@ -18,21 +18,38 @@ class CreatePluginClassRequest(DaraModel):
         wasm_language: str = None,
         wasm_url: str = None,
     ):
+        # The alias of the plugin.
         self.alias = alias
+        # The description of the plugin.
+        # 
         # This parameter is required.
         self.description = description
+        # The execution priority of the plugin.
         self.execute_priority = execute_priority
+        # The execution stage of the plugin.
+        # 
         # This parameter is required.
         self.execute_stage = execute_stage
+        # The name of the plugin class.
+        # 
         # This parameter is required.
         self.name = name
+        # The minimum gateway version that the plugin is compatible with.
         self.supported_min_gateway_version = supported_min_gateway_version
+        # The version number of the plugin.
+        # 
         # This parameter is required.
         self.version = version
+        # The description of the current version.
+        # 
         # This parameter is required.
         self.version_description = version_description
+        # The programming language used to develop the WASM plugin.
+        # 
         # This parameter is required.
         self.wasm_language = wasm_language
+        # The download URL of the WASM plugin binary file.
+        # 
         # This parameter is required.
         self.wasm_url = wasm_url
 

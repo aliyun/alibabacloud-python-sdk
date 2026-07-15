@@ -156,19 +156,19 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
     ):
         # The billing type. Valid values:
         # 
-        # - POSTPAY: Pay-as-you-go.
-        # - PREPAY: Subscription.
+        # - POSTPAY: pay-as-you-go.
+        # - PREPAY: subscription.
         self.charge_type = charge_type
         # The source from which the gateway was created. Valid values:
-        # - Console: The gateway was created from the console.
+        # - Console: the console.
         self.create_from = create_from
-        # The creation timestamp, in milliseconds.
+        # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The subscription expiration timestamp, in milliseconds.
+        # The subscription expiration timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
         # The gateway instance edition. Valid values:
         # 
-        # - Professional: Standard instance.
+        # - Professional: standard instance.
         # 
         # - Serverless: Serverless instance.
         self.gateway_edition = gateway_edition
@@ -176,7 +176,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.gateway_id = gateway_id
         # The gateway type.
         self.gateway_type = gateway_type
-        # Indicates whether the gateway instance was created before the AI gateway feature was launched.
+        # Indicates whether the gateway instance was created before the AI gateway feature was released.
         self.legacy = legacy
         # The list of gateway entry addresses.
         self.load_balancers = load_balancers
@@ -208,7 +208,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.tags = tags
         # The target version of the gateway. When this value differs from version, a version upgrade can be performed.
         self.target_version = target_version
-        # The update timestamp, in milliseconds.
+        # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
         # The vSwitch information.
         self.v_switch = v_switch
@@ -637,17 +637,17 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(DaraModel):
         # The load balancing instance ID.
         self.load_balancer_id = load_balancer_id
         # The load balancing provisioning pattern of the gateway. Valid values:
-        # - Managed: Managed by Cloud-native API Gateway.
+        # - Managed: managed by the cloud-native API gateway.
         self.mode = mode
         # The list of listening ports.
         self.ports = ports
         # The load balancing status. Valid values:
-        # - Ready: Active.
-        # - NotCreate: No associated instance.
+        # - Ready: active.
+        # - NotCreate: no associated instance.
         self.status = status
         # The load balancing type of the gateway. Valid values:
-        # - NLB: Network load balancing.
-        # - CLB: Classic load balancing.
+        # - NLB: Network Load Balancer (NLB).
+        # - CLB: Classic Load Balancer (CLB).
         self.type = type
 
     def validate(self):
@@ -747,8 +747,8 @@ class ListGatewaysResponseBodyDataItemsLoadBalancersPorts(DaraModel):
         # The port number.
         self.port = port
         # The protocol. Valid values:
-        # - TCP
-        # - UDP
+        # - TCP.
+        # - UDP.
         self.protocol = protocol
 
     def validate(self):

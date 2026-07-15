@@ -27,7 +27,7 @@ class HttpApiDeployConfig(DaraModel):
         service_configs: List[main_models.HttpApiDeployConfigServiceConfigs] = None,
         sub_domains: List[main_models.HttpApiDeployConfigSubDomains] = None,
     ):
-        # Specifies whether to automatically deploy.
+        # Indicates whether auto-deploy is enabled.
         self.auto_deploy = auto_deploy
         # The publishing scenario.
         self.backend_scene = backend_scene
@@ -35,11 +35,11 @@ class HttpApiDeployConfig(DaraModel):
         self.builtin_route_names = builtin_route_names
         # The list of custom domain name IDs.
         self.custom_domain_ids = custom_domain_ids
-        # The list of custom domain name details.
+        # The list of custom domain name information.
         self.custom_domain_infos = custom_domain_infos
-        # The list of environment domain name IDs. If this parameter is not specified, all environment domain names are associated. An empty array indicates that no environment domain names are associated.
+        # The list of environment domain name IDs. If this parameter is not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
         self.env_domain_ids = env_domain_ids
-        # The list of environment domain name details.
+        # The list of environment domain name information.
         self.env_domain_infos = env_domain_infos
         # The environment ID.
         self.environment_id = environment_id
@@ -57,7 +57,7 @@ class HttpApiDeployConfig(DaraModel):
         self.route_backend = route_backend
         # The list of service configurations.
         self.service_configs = service_configs
-        # The list of subdomain details.
+        # The list of subdomain information.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -309,7 +309,7 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         self.multi_service_route_strategy = multi_service_route_strategy
         # The service display name.
         self.name = name
-        # The observability metric routing configuration.
+        # The observability-based routing configuration.
         self.observability_route_config = observability_route_config
         # The service port number.
         self.port = port

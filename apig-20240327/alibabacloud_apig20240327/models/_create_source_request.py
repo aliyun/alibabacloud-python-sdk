@@ -18,15 +18,15 @@ class CreateSourceRequest(DaraModel):
     ):
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The container service source configuration.
+        # The Container Service source configuration.
         self.k_8s_source_config = k_8s_source_config
-        # The configuration of the MSE Nacos source.
+        # The MSE Nacos source configuration.
         self.nacos_source_config = nacos_source_config
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The source type. Valid values:
-        # - MSE_NACOS: MSE Nacos.
-        # - K8S: Container Service for Kubernetes (ACK).
+        # - MSE_NACOS: Microservices Engine (MSE) Nacos.
+        # - K8S: Container Service.
         self.type = type
 
     def validate(self):
@@ -114,7 +114,7 @@ class CreateSourceRequestK8sSourceConfig(DaraModel):
     ):
         # The list of gateway security group authorization rule configurations.
         self.authorize_security_group_rules = authorize_security_group_rules
-        # The container service cluster ID.
+        # The Container Service cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):

@@ -25,17 +25,17 @@ class CreateMcpServerRequest(DaraModel):
         protocol: str = None,
         type: str = None,
     ):
-        # The list of assembled sources. This parameter is required when type is set to AssemblyMCP.
+        # The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
         # The backend service configuration of the route.
         self.backend_config = backend_config
         # The creation source type. Valid values:
         # 
-        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
-        # - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
-        # - ApiGatewayAssembly: gateway MCP assembly.
-        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
-        # - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
+        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion
+        # - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy
+        # - ApiGatewayAssembly: gateway MCP assembly
+        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion
+        # - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy
         self.create_from_type = create_from_type
         # The description of the MCP server.
         self.description = description
@@ -63,7 +63,7 @@ class CreateMcpServerRequest(DaraModel):
         self.protocol = protocol
         # The type. Valid values:
         # 
-        # - RealMCP: standard MCP service.
+        # - RealMCP: standard MCP service
         # 
         # This parameter is required.
         self.type = type
@@ -446,8 +446,8 @@ class CreateMcpServerRequestBackendConfigServices(DaraModel):
         # The backend node port of the service.
         self.port = port
         # The service protocol. Valid values:
-        # - HTTP.
-        # - HTTPS.
+        # - HTTP
+        # - HTTPS
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id

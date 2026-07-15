@@ -79,22 +79,23 @@ class GetConsumerResponseBodyData(DaraModel):
         name: str = None,
         update_timestamp: int = None,
     ):
-        # The AccessKey pair authentication configuration.
+        # The AccessKey identity authentication configurations.
         self.ak_sk_identity_configs = ak_sk_identity_configs
-        # The API key authentication configuration.
+        # The API key identity authentication configuration.
         self.api_key_identity_config = api_key_identity_config
+        # The list of consumer groups to which the API consumer belongs.
         self.consumer_groups = consumer_groups
         # The API consumer ID.
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The publish status of the API in the current environment.
+        # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
         # The description.
         self.description = description
         # Indicates whether the API consumer is enabled.
         self.enable = enable
-        # The JWT authentication configuration.
+        # The JWT identity authentication configuration.
         self.jwt_identity_config = jwt_identity_config
         # The API consumer name.
         self.name = name
@@ -212,9 +213,13 @@ class GetConsumerResponseBodyDataConsumerGroups(DaraModel):
         join_timestamp: int = None,
         name: str = None,
     ):
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
+        # The consumer group description.
         self.description = description
+        # The time when the API consumer joined the consumer group. The value is a UNIX timestamp in milliseconds.
         self.join_timestamp = join_timestamp
+        # The consumer group name.
         self.name = name
 
     def validate(self):

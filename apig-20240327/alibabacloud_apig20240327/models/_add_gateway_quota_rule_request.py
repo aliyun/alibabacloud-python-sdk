@@ -22,31 +22,31 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The conflict snapshot hash used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dryRun=true call.
+        # The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dry run (dryRun=true).
         # 
-        # You do not need to specify this parameter in the following cases: no conflict exists, the request is a dry run (dryRun=true), or overwrite=false.
+        # This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
         # 
-        # When dryRun=false and overwrite=true, if this parameter is not specified or the value has expired, the backend returns accepted=false with a new conflict preview. Perform a dry run again to confirm the new conflict.
+        # If dryRun is set to false and overwrite is set to true but this parameter is not specified or the value has expired, the system returns accepted=false with a new conflict preview. Perform a new dry run to confirm the updated conflicts.
         self.conflict_hash = conflict_hash
         # The list of consumer group IDs. This parameter is not supported.
         self.consumer_group_ids = consumer_group_ids
-        # The list of consumer IDs to bind to the rule.
+        # The list of consumer IDs to bind to the rule. You can specify up to 1,000 consumers in a single request.
         self.consumer_ids = consumer_ids
-        # Specifies whether to perform only a dry run without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a daily calendar quota cannot have another daily calendar quota rule added.
+        # Specifies whether to perform only a dry run without applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a calendar-day quota rule cannot have another calendar-day quota rule added.
         self.dry_run = dry_run
-        # Specifies whether to allow overwriting on conflict. If overwriting is allowed, the conflicting principals (consumers) are unbound from the old rule and bound to the new rule.
+        # Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, the conflicting consumers are unbound from the old rule and bound to the new rule.
         self.overwrite = overwrite
-        # The period multiplier.
+        # The period multiplier, which specifies the number of periods after which the quota resets. This parameter is required for custom period rules. Minimum value: 1. Maximum value: 60.
         self.period_multiplier = period_multiplier
-        # The period type. Valid values: day (calendar day), week (calendar week), and month (calendar month).
+        # The period unit. For calendar periods, the value can be day, week, or month. For custom periods, only day is supported.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The quota dimension or throttling type. Currently, only token is supported.
+        # The quota dimension or throttling type. Valid values: token and credit. The credit quota applies only to dedicated instances of version 2.1.19 or later.
         # 
         # This parameter is required.
         self.quota_dimension = quota_dimension
-        # The total available quota per period.
+        # The total available quota per period (the limit).
         # 
         # This parameter is required.
         self.quota_limit = quota_limit
@@ -56,7 +56,10 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         self.rule_name = rule_name
         # The time zone for the calendar period, in UTC+x format.
         self.timezone = timezone
-        # The reset period alignment type. Currently, only calendar alignment is supported, which means windowAlignment="calendar".
+        # The reset period type. Valid values:
+        # 
+        # - calendar: calendar period. The period starts from the beginning of a calendar day, week, or month.
+        # - epoch: custom period. The period starts from the time the rule is applied. The custom period applies only to dedicated instances of version 2.1.19 or later.
         self.window_alignment = window_alignment
 
     def validate(self):

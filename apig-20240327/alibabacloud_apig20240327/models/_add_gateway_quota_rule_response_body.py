@@ -72,7 +72,7 @@ class AddGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
+        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
@@ -128,9 +128,9 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The conflict hash.
+        # The hash of the conflict snapshot.
         self.conflict_hash = conflict_hash
-        # The list of conflicting principals (consumers).
+        # The list of conflicting entities (consumers).
         self.items = items
         # The total number of conflicts.
         self.total_conflict_count = total_conflict_count
@@ -183,14 +183,9 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         consumer_id: str = None,
         consumer_name: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumer. Valid values:
-        # - day: The period of the existing conflicting rule is day.
-        # - week: The period of the existing conflicting rule is week.
-        # - month: The period of the existing conflicting rule is month.
+        # The period type of the existing conflicting rule on the consumer. A value of day, week, or month indicates that the conflicting rule uses a daily, weekly, or monthly period respectively.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumer. Valid values:
-        # - calendar: The existing conflicting rule uses a calendar period.
-        # - epoch: The existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the consumer. A value of calendar indicates that the conflicting rule uses a calendar period. A value of epoch indicates that the conflicting rule uses a custom period.
         self.conflict_type = conflict_type
         # The consumer ID.
         self.consumer_id = consumer_id

@@ -11,11 +11,11 @@ class HiMarketIdentityMapping(DaraModel):
         user_id_field: str = None,
         user_name_field: str = None,
     ):
-        # The identity provider attribute that maps to the user\\"s email address.
+        # The identity field name that corresponds to the mailbox.
         self.email_field = email_field
-        # The identity provider attribute that maps to the user\\"s unique ID.
+        # The identity field name that corresponds to the user ID.
         self.user_id_field = user_id_field
-        # The identity provider attribute that maps to the username.
+        # The identity field name that corresponds to the username.
         self.user_name_field = user_name_field
 
     def validate(self):

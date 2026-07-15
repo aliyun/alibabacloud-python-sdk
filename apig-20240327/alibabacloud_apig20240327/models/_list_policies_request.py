@@ -16,9 +16,10 @@ class ListPoliciesRequest(DaraModel):
     ):
         # The ID of the attachment point.
         self.attach_resource_id = attach_resource_id
-        # The type of attachment point supported by the policy.
+        # The type of the attachment point supported by the policy.
         # 
         # Valid values:
+        # 
         # - HttpApi: HTTP API.
         # - Operation: Operation of an HTTP API.
         # - GatewayRoute: Gateway route.

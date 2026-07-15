@@ -23,7 +23,7 @@ class CreateDomainRequest(DaraModel):
         tls_max: str = None,
         tls_min: str = None,
     ):
-        # The CA certificate identifier.
+        # The CA certificate identifier. This parameter is required for Dedicated+HTTPS.
         self.ca_cert_identifier = ca_cert_identifier
         # The certificate identifier.
         self.cert_identifier = cert_identifier
@@ -31,7 +31,7 @@ class CreateDomainRequest(DaraModel):
         self.client_cacert = client_cacert
         # The domain name scope.
         self.domain_scope = domain_scope
-        # Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
+        # Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless and for Dedicated+HTTPS. This parameter is not validated for Dedicated+HTTP.
         self.force_https = force_https
         # The gateway type.
         self.gateway_type = gateway_type
@@ -43,10 +43,7 @@ class CreateDomainRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The protocol type supported by the domain name. Valid values:
-        # 
-        # - HTTP: Only HTTP is supported.
-        # - HTTPS: Only HTTPS is supported.
+        # The protocol type supported by the domain name. This parameter is required for Dedicated and only allows HTTP or HTTPS. This parameter is not allowed for Serverless.
         self.protocol = protocol
         # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id

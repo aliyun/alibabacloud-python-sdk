@@ -12,7 +12,7 @@ class HiMarketModelConfig(DaraModel):
         self,
         model_apiconfig: main_models.HiMarketModelConfigModelAPIConfig = None,
     ):
-        # Configuration for the model API.
+        # The Model API configuration wrapper.
         self.model_apiconfig = model_apiconfig
 
     def validate(self):
@@ -44,11 +44,11 @@ class HiMarketModelConfigModelAPIConfig(DaraModel):
         model_category: str = None,
         routes: List[main_models.HiMarketHttpRoute] = None,
     ):
-        # The AI protocols supported by the model.
+        # The list of AI protocols.
         self.ai_protocols = ai_protocols
-        # The model category.
+        # The model categorization.
         self.model_category = model_category
-        # Route configurations for the model API.
+        # The list of routing configurations.
         self.routes = routes
 
     def validate(self):

@@ -105,7 +105,7 @@ class CreateServiceRequestServiceConfigs(DaraModel):
     ):
         # The list of domain names or fixed addresses.
         self.addresses = addresses
-        # The Agent service configuration. This parameter is required when `sourceType` is set to `AGENT`.
+        # The Agent service configuration. This parameter is required when sourceType is set to AGENT.
         self.agent_service_config = agent_service_config
         # The AI service configuration.
         self.ai_service_config = ai_service_config
@@ -115,10 +115,11 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         self.express_type = express_type
         # The service group name. This parameter is required when sourceType is set to MSE_NACOS.
         self.group_name = group_name
+        # The model provider ID.
         self.model_provider_id = model_provider_id
         # The service name.
         self.name = name
-        # The namespace of the service:
+        # The namespace of the service.
         # 
         # - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
         # - If sourceType is set to MSE_NACOS, this parameter specifies the namespace in Nacos.

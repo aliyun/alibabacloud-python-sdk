@@ -69,6 +69,9 @@ class GetDomainResponseBodyData(DaraModel):
         self,
         algorithm: str = None,
         ca_cert_identifier: str = None,
+        cert_detail_error_code: str = None,
+        cert_detail_error_message: str = None,
+        cert_detail_status: str = None,
         cert_identifier: str = None,
         cert_name: str = None,
         client_cacert: str = None,
@@ -97,6 +100,12 @@ class GetDomainResponseBodyData(DaraModel):
         self.algorithm = algorithm
         # The CA certificate identifier.
         self.ca_cert_identifier = ca_cert_identifier
+        # The certificate detail error code.
+        self.cert_detail_error_code = cert_detail_error_code
+        # The certificate detail error message.
+        self.cert_detail_error_message = cert_detail_error_message
+        # The certificate detail status.
+        self.cert_detail_status = cert_detail_status
         # The certificate identifier.
         self.cert_identifier = cert_identifier
         # The certificate name.
@@ -111,12 +120,13 @@ class GetDomainResponseBodyData(DaraModel):
         self.default = default
         # The domain name ID.
         self.domain_id = domain_id
+        # The domain name scope.
         self.domain_scope = domain_scope
-        # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
+        # Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
         self.force_https = force_https
         # The HTTP/2 setting.
         self.http_2option = http_2option
-        # The certification authority.
+        # The certificate issue authority.
         self.issuer = issuer
         # Indicates whether mutual TLS (mTLS) authentication is enabled.
         self.m_tlsenabled = m_tlsenabled
@@ -126,10 +136,10 @@ class GetDomainResponseBodyData(DaraModel):
         self.not_after_timstamp = not_after_timstamp
         # The certificate effective period.
         self.not_before_timestamp = not_before_timestamp
-        # The protocol type supported by the domain name.
+        # The protocol type supported by the domain name. Valid values:
         # 
-        # - HTTP: supports only the HTTP protocol.
-        # - HTTPS: supports only the HTTPS protocol.
+        # - HTTP: only HTTP is supported.
+        # - HTTPS: only HTTPS is supported.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -162,6 +172,15 @@ class GetDomainResponseBodyData(DaraModel):
 
         if self.ca_cert_identifier is not None:
             result['caCertIdentifier'] = self.ca_cert_identifier
+
+        if self.cert_detail_error_code is not None:
+            result['certDetailErrorCode'] = self.cert_detail_error_code
+
+        if self.cert_detail_error_message is not None:
+            result['certDetailErrorMessage'] = self.cert_detail_error_message
+
+        if self.cert_detail_status is not None:
+            result['certDetailStatus'] = self.cert_detail_status
 
         if self.cert_identifier is not None:
             result['certIdentifier'] = self.cert_identifier
@@ -241,6 +260,15 @@ class GetDomainResponseBodyData(DaraModel):
 
         if m.get('caCertIdentifier') is not None:
             self.ca_cert_identifier = m.get('caCertIdentifier')
+
+        if m.get('certDetailErrorCode') is not None:
+            self.cert_detail_error_code = m.get('certDetailErrorCode')
+
+        if m.get('certDetailErrorMessage') is not None:
+            self.cert_detail_error_message = m.get('certDetailErrorMessage')
+
+        if m.get('certDetailStatus') is not None:
+            self.cert_detail_status = m.get('certDetailStatus')
 
         if m.get('certIdentifier') is not None:
             self.cert_identifier = m.get('certIdentifier')

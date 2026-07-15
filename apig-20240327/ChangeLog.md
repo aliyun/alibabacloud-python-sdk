@@ -1,3 +1,12 @@
+2026-07-15 Version: 10.0.0
+- Support API DeletePluginClass.
+- Update API GetDomain: add response parameters Body.data.certDetailErrorCode.
+- Update API GetDomain: add response parameters Body.data.certDetailErrorMessage.
+- Update API GetDomain: add response parameters Body.data.certDetailStatus.
+- Update API ListZones: add request parameters gatewayEdition.
+- Update API ListZones: add request The number of query or body parameters has changed from zero to many.
+
+
 2026-07-03 Version: 9.3.0
 - Support API CreateAiModelProvider.
 - Support API CreatePluginClass.

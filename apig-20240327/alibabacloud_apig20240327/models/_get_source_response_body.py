@@ -77,7 +77,9 @@ class GetSourceResponseBodyData(DaraModel):
         type: str = None,
         update_timestamp: int = None,
     ):
+        # The reason for the association status
         self.association_reason = association_reason
+        # The association status of the source
         self.association_status = association_status
         # The creation timestamp.
         self.create_timestamp = create_timestamp

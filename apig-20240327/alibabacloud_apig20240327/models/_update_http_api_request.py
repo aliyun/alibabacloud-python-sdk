@@ -24,11 +24,11 @@ class UpdateHttpApiRequest(DaraModel):
         remove_base_path_on_forward: bool = None,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
-        # The list of Agent protocols.
+        # The list of agent protocols.
         self.agent_protocols = agent_protocols
         # The list of AI protocols.
         self.ai_protocols = ai_protocols
-        # The permission authentication configuration.
+        # The authentication configuration.
         self.auth_config = auth_config
         # The base path of the API. The value must start with a forward slash (/).
         # 
@@ -36,19 +36,19 @@ class UpdateHttpApiRequest(DaraModel):
         self.base_path = base_path
         # The list of API deployment configurations.
         self.deploy_configs = deploy_configs
-        # The API description.
+        # The description of the API.
         self.description = description
-        # Specifies whether to enable permission authentication.
+        # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
-        # The first byte timeout period.
+        # The first byte timeout period. Unit: seconds.
         self.first_byte_timeout = first_byte_timeout
         # The configuration of the HTTP Ingress API.
         self.ingress_config = ingress_config
-        # Specifies whether to only modify the configuration. A value of true indicates that only the configuration is modified without triggering redeployment.
+        # Specifies whether to only update the configuration without triggering a redeployment. Set this parameter to true to update the configuration only.
         self.only_change_config = only_change_config
         # The list of API access protocols.
         self.protocols = protocols
-        # Specifies whether to remove the base path during forwarding.
+        # Specifies whether to remove the base path when forwarding requests.
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # The API versioning configuration.
         self.version_config = version_config
@@ -173,9 +173,9 @@ class UpdateHttpApiRequestIngressConfig(DaraModel):
     ):
         # The environment ID.
         self.environment_id = environment_id
-        # The Ingress Class to listen on.
+        # The Ingress class to listen on.
         self.ingress_class = ingress_class
-        # Specifies whether to update the address in the Ingress Status.
+        # Specifies whether to update the address in the Ingress status.
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id

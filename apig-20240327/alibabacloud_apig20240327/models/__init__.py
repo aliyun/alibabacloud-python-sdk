@@ -193,6 +193,9 @@ from ._delete_mcp_server_response_body import DeleteMcpServerResponseBody
 from ._delete_mcp_server_response import DeleteMcpServerResponse
 from ._delete_plugin_attachment_response_body import DeletePluginAttachmentResponseBody
 from ._delete_plugin_attachment_response import DeletePluginAttachmentResponse
+from ._delete_plugin_class_request import DeletePluginClassRequest
+from ._delete_plugin_class_response_body import DeletePluginClassResponseBody
+from ._delete_plugin_class_response import DeletePluginClassResponse
 from ._delete_policy_response_body import DeletePolicyResponseBody
 from ._delete_policy_response import DeletePolicyResponse
 from ._delete_policy_attachment_response_body import DeletePolicyAttachmentResponseBody
@@ -345,6 +348,7 @@ from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_shrink_request import ListTagResourcesShrinkRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_zones_request import ListZonesRequest
 from ._list_zones_response_body import ListZonesResponseBody
 from ._list_zones_response import ListZonesResponse
 from ._query_consumer_authorization_rules_request import QueryConsumerAuthorizationRulesRequest
@@ -932,6 +936,9 @@ __all__ = [
     DeleteMcpServerResponse,
     DeletePluginAttachmentResponseBody,
     DeletePluginAttachmentResponse,
+    DeletePluginClassRequest,
+    DeletePluginClassResponseBody,
+    DeletePluginClassResponse,
     DeletePolicyResponseBody,
     DeletePolicyResponse,
     DeletePolicyAttachmentResponseBody,
@@ -1084,6 +1091,7 @@ __all__ = [
     ListTagResourcesShrinkRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListZonesRequest,
     ListZonesResponseBody,
     ListZonesResponse,
     QueryConsumerAuthorizationRulesRequest,

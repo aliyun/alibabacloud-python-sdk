@@ -23,6 +23,7 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
     ):
         # The API name.
         self.api_name_like = api_name_like
+        # The consumer group ID. If specified, the authorization rules of the consumer group are queried.
         self.consumer_group_id = consumer_group_id
         # The consumer ID.
         self.consumer_id = consumer_id
@@ -38,6 +39,7 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self.page_size = page_size
         # The parent resource ID.
         self.parent_resource_id = parent_resource_id
+        # The principal type. Valid values: Consumer or ConsumerGroup.
         self.principal_type = principal_type
         # The resource ID.
         self.resource_id = resource_id

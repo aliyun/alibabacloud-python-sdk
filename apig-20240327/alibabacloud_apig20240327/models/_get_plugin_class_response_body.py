@@ -13,8 +13,11 @@ class GetPluginClassResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -70,12 +73,19 @@ class GetPluginClassResponseBodyData(DaraModel):
         type: str = None,
         wasm_language: str = None,
     ):
+        # The plug-in alias.
         self.alias = alias
+        # The plug-in description.
         self.description = description
+        # The document key.
         self.document = document
+        # The plug-in name.
         self.name = name
+        # The publish status.
         self.publish_status = publish_status
+        # The plug-in type.
         self.type = type
+        # The Wasm plug-in programming language.
         self.wasm_language = wasm_language
 
     def validate(self):

@@ -160,11 +160,11 @@ class ListConsumerQuotaRulesResponseBodyDataItems(DaraModel):
         self.rule_name = rule_name
         # The rule status.
         self.rule_status = rule_status
-        # The time zone corresponding to the natural cycle, in UTC+x format.
+        # The time zone corresponding to the calendar cycle, in UTC+x format.
         self.timezone = timezone
         # The cycle type. Valid values:
-        # - calendar: Natural cycle.
-        # - epoch: Custom cycle.
+        # - calendar: calendar cycle.
+        # - epoch: custom cycle.
         self.window_alignment = window_alignment
 
     def validate(self):

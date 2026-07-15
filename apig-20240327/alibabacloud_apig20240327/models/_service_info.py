@@ -23,17 +23,29 @@ class ServiceInfo(DaraModel):
         status: str = None,
         versions: List[main_models.ServiceInfoVersions] = None,
     ):
+        # The service routing type.
         self.express_type = express_type
+        # The service group name.
         self.group_name = group_name
+        # The service name.
         self.name = name
+        # The service namespace.
         self.namespace = namespace
+        # The PAI workspace ID.
         self.pai_workspace_id = pai_workspace_id
+        # The PAI workspace name.
         self.pai_workspace_name = pai_workspace_name
+        # The list of service ports.
         self.ports = ports
+        # The service version qualifier.
         self.qualifier = qualifier
+        # The service ID.
         self.service_id = service_id
+        # The service source type.
         self.source_type = source_type
+        # The service status.
         self.status = status
+        # The list of service versions.
         self.versions = versions
 
     def validate(self):
@@ -145,7 +157,9 @@ class ServiceInfoVersions(DaraModel):
         labels: List[main_models.ServiceInfoVersionsLabels] = None,
         name: str = None,
     ):
+        # The list of version labels.
         self.labels = labels
+        # The version name.
         self.name = name
 
     def validate(self):
@@ -188,7 +202,9 @@ class ServiceInfoVersionsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -224,8 +240,11 @@ class ServiceInfoPorts(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The port name.
         self.name = name
+        # The port number.
         self.port = port
+        # The port protocol.
         self.protocol = protocol
 
     def validate(self):

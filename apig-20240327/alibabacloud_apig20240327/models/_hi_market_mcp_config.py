@@ -15,13 +15,13 @@ class HiMarketMcpConfig(DaraModel):
         meta: main_models.HiMarketMcpConfigMeta = None,
         tools: str = None,
     ):
-        # Configuration for the MCP server.
+        # The MCP Server configuration.
         self.mcp_server_config = mcp_server_config
-        # A unique name for the MCP server.
+        # The MCP Server name.
         self.mcp_server_name = mcp_server_name
-        # Metadata for the configuration.
+        # The metadata.
         self.meta = meta
-        # The tools associated with this configuration, typically provided as a JSON-formatted string.
+        # The MCP tool definitions.
         self.tools = tools
 
     def validate(self):
@@ -72,7 +72,7 @@ class HiMarketMcpConfigMeta(DaraModel):
         self,
         protocol: str = None,
     ):
-        # The communication protocol. Can be `http` or `https`.
+        # The MCP protocol type.
         self.protocol = protocol
 
     def validate(self):
@@ -101,9 +101,9 @@ class HiMarketMcpConfigMcpServerConfig(DaraModel):
         domains: List[main_models.HiMarketDomain] = None,
         path: str = None,
     ):
-        # The domains managed by the server.
+        # The list of associated domain names.
         self.domains = domains
-        # The base path for the service endpoint.
+        # The path exposed by the MCP server.
         self.path = path
 
     def validate(self):

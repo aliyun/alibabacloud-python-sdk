@@ -229,7 +229,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         self.model = model
         # The output token consumption.
         self.output_amount = output_amount
-        # The consumption (request) time.
+        # The consumption (request) time in the format of YYYY-MM-DD.
         self.start_time = start_time
         # The total consumption.
         self.used_amount = used_amount

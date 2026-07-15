@@ -97,9 +97,9 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self.rule_name = rule_name
         # The rule status.
         self.rule_status = rule_status
-        # The time zone corresponding to the calendar period, in UTC+x format.
+        # The time zone for the calendar period, in UTC+x format.
         self.timezone = timezone
-        # The reset period type. Currently, only calendar period is supported, which means windowAlignment="calendar".
+        # The reset period type.
         self.window_alignment = window_alignment
 
     def validate(self):
@@ -196,9 +196,9 @@ class GetGatewayQuotaRuleResponseBodyDataConsumers(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The principal (consumer) ID.
+        # The ID of the principal (consumer).
         self.id = id
-        # The principal (consumer) name.
+        # The name of the principal (consumer).
         self.name = name
 
     def validate(self):

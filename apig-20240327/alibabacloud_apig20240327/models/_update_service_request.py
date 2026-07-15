@@ -33,6 +33,7 @@ class UpdateServiceRequest(DaraModel):
         self.health_check_config = health_check_config
         # The health check threshold.
         self.healthy_panic_threshold = healthy_panic_threshold
+        # The model provider ID.
         self.model_provider_id = model_provider_id
         # The passive health check parameter settings.
         self.outlier_detection_config = outlier_detection_config
@@ -144,7 +145,7 @@ class UpdateServiceRequestPorts(DaraModel):
     ):
         # The port name.
         self.name = name
-        # The port number.
+        # The port.
         self.port = port
         # The protocol.
         self.protocol = protocol
@@ -190,13 +191,13 @@ class UpdateServiceRequestOutlierDetectionConfig(DaraModel):
         failure_percentage_threshold: int = None,
         interval: int = None,
     ):
-        # The base ejection time, which is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation time is calculated by using the following formula: k × base_ejection_time (the initial value of k is 1). Each ejection increases the isolation time (k is incremented by 1). If consecutive checks are healthy, the isolation time is gradually reduced (k is decremented by 1).
+        # The initial ejection duration. This is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation duration is calculated by using the formula: k × base_ejection_time (k starts at 1). Each ejection increases the isolation duration (k is incremented by 1). If consecutive checks are normal, the isolation duration is gradually reduced (k is decremented by 1).
         self.base_ejection_time = base_ejection_time
         # enable
         self.enable = enable
         # The panic threshold.
         # 
-        # When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally. Requests are sent only to healthy nodes and not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled. Requests are sent to all nodes, including ejected nodes.
+        # When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally and requests are sent only to healthy nodes, not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled and requests are sent to all nodes, including ejected nodes.
         self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
         # The failure percentage threshold. When the percentage of failed requests on a node reaches this threshold, the system triggers the ejection mechanism for the node.
         self.failure_percentage_threshold = failure_percentage_threshold
@@ -262,7 +263,7 @@ class UpdateServiceRequestHealthCheckConfig(DaraModel):
     ):
         # Specifies whether to enable health checks for the service.
         self.enable = enable
-        # The list of expected HTTP status codes that indicate a healthy response. This parameter is required when the protocol is HTTP.
+        # The list of expected normal status codes returned by requests. This parameter is required when the protocol is HTTP.
         self.expected_statuses = expected_statuses
         # The healthy threshold for health checks.
         self.healthy_threshold = healthy_threshold

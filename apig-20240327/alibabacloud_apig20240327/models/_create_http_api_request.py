@@ -30,32 +30,31 @@ class CreateHttpApiRequest(DaraModel):
         type: str = None,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
-        # The list of protocols supported by the agent.
+        # The list of protocols supported by the agent. This parameter is required when type is set to Agent. This parameter is not required for other types.
         self.agent_protocols = agent_protocols
-        # The AI API protocols. The following protocols are supported:
-        # - OpenAI/v1
+        # The AI API protocols. This parameter is required when type is set to LLM, and only one protocol can be specified. This parameter is required when type is set to Ai, and multiple protocols can be specified. This parameter is not required for other types.
         self.ai_protocols = ai_protocols
-        # The authentication configuration.
+        # The authentication configuration. This parameter is required when enableAuth is set to true.
         self.auth_config = auth_config
-        # The base path of the API. The value must start with a forward slash (/).
+        # The API base path. The path must start with a forward slash (/), cannot exceed 256 bytes in length, and cannot contain spaces. This parameter is required when type is set to Rest. When type is set to LLM, Ai, or Agent, this parameter is optional and defaults to /.
         self.base_path = base_path
         # The ID of the gateway to which the API belongs.
         self.belong_gateway_id = belong_gateway_id
-        # The API deployment configurations. Currently, only AI APIs support deployment configurations, and only a single deployment configuration can be specified.
+        # The API deployment configurations. This parameter is required when type is set to LLM or Ai, and only one deployment configuration can be specified. This parameter is not validated at the request level for other types.
         self.deploy_configs = deploy_configs
-        # The description of the API.
+        # The API description.
         self.description = description
-        # Specifies whether to perform a dry run without actually executing the operation.
+        # Specifies whether to perform a dry run without executing the operation.
         self.dry_run = dry_run
-        # Specifies whether to enable authentication.
+        # Specifies whether to enable authentication. This parameter is validated when type is set to LLM, Ai, or Agent. This parameter is not validated at the request level when type is set to Rest.
         self.enable_auth = enable_auth
         # The timeout period for waiting for the first byte from the backend.
         self.first_byte_timeout = first_byte_timeout
-        # The configuration of the HTTP Ingress API.
+        # The HTTP Ingress API configuration. This parameter is required and cannot be nil when type is set to HttpIngress. This parameter is not required for other types.
         self.ingress_config = ingress_config
-        # The model category.
+        # The model category. This parameter is optional when type is set to LLM or Ai. This parameter is not required for other types.
         self.model_category = model_category
-        # The name of the API.
+        # The API name.
         # 
         # This parameter is required.
         self.name = name
@@ -65,7 +64,7 @@ class CreateHttpApiRequest(DaraModel):
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The conflict merge strategy for the import.
+        # The conflict merge strategy for import.
         self.strategy = strategy
         # The type of the HTTP API. Valid values:
         # - Http
@@ -74,8 +73,10 @@ class CreateHttpApiRequest(DaraModel):
         # - HttpIngress
         # - LLM
         # - Agent
+        # 
+        # This parameter is required.
         self.type = type
-        # The versioning configuration of the API.
+        # The API versioning configuration.
         self.version_config = version_config
 
     def validate(self):
@@ -237,9 +238,9 @@ class CreateHttpApiRequestIngressConfig(DaraModel):
         self.cluster_id = cluster_id
         # The environment ID.
         self.environment_id = environment_id
-        # The Ingress class to listen on.
+        # The Ingress Class to listen on.
         self.ingress_class = ingress_class
-        # Specifies whether to update the address in the Ingress status.
+        # Specifies whether to update the address in the Ingress Status.
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id

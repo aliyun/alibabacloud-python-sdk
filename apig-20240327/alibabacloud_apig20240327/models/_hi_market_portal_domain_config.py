@@ -11,11 +11,11 @@ class HiMarketPortalDomainConfig(DaraModel):
         protocol: str = None,
         type: str = None,
     ):
-        # The domain name.
+        # The domain name address.
         self.domain = domain
-        # The domain protocol.
+        # The request protocol.
         self.protocol = protocol
-        # The domain type.
+        # The domain name type.
         self.type = type
 
     def validate(self):

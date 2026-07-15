@@ -13,8 +13,11 @@ class CreatePluginClassResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -64,6 +67,7 @@ class CreatePluginClassResponseBodyData(DaraModel):
         self,
         plugin_class_id: str = None,
     ):
+        # The plugin class ID.
         self.plugin_class_id = plugin_class_id
 
     def validate(self):

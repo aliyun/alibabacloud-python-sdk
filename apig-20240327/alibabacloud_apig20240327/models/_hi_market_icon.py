@@ -10,9 +10,9 @@ class HiMarketIcon(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Specifies the icon type. Example: `URL`.
+        # The icon type.
         self.type = type
-        # The value of the icon, based on the specified `type`. For example, if `type` is `URL`, this is the URL of the icon.
+        # The icon value.
         self.value = value
 
     def validate(self):

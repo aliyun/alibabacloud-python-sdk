@@ -14,7 +14,7 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token that determines the start point of the next query. An empty value of NextToken indicates that no more results exist.
+        # The token for the next query. An empty NextToken indicates that no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

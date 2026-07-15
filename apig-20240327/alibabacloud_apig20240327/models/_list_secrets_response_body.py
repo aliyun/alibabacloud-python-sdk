@@ -148,7 +148,7 @@ class ListSecretsResponseBodyDataItems(DaraModel):
         self.kms_config = kms_config
         # The key name.
         self.name = name
-        # The resource count of resources that reference the current key.
+        # The resource count that references the current key.
         self.reference_count = reference_count
         # The key ID.
         self.secret_id = secret_id

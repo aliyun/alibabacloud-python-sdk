@@ -19,13 +19,15 @@ class DomainInfo(DaraModel):
         protocol: str = None,
         resource_group_id: str = None,
         status: str = None,
+        tls_max: str = None,
+        tls_min: str = None,
         update_timestamp: int = None,
     ):
         # The SSL Certificates Service certificate identity.
         self.cert_identifier = cert_identifier
         # The client CA certificate.
         self.client_cacert = client_cacert
-        # The source from which the domain name is created.
+        # The source from which the domain name was created.
         self.create_from = create_from
         # The creation timestamp.
         self.create_timestamp = create_timestamp
@@ -35,19 +37,21 @@ class DomainInfo(DaraModel):
         self.domain_scope = domain_scope
         # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
         self.force_https = force_https
-        # Indicates whether MTLS mutual authentication is enabled.
+        # Specifies whether to enable mTLS mutual authentication.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         self.name = name
         # The protocol type supported by the domain name.
         # 
-        # - HTTP: Only the HTTP protocol is supported.
-        # - HTTP: Only the HTTPS protocol is supported.
+        # - HTTP: Only HTTP is supported.
+        # - HTTPS: Only HTTPS is supported.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The domain name status.
         self.status = status
+        self.tls_max = tls_max
+        self.tls_min = tls_min
         # The update timestamp.
         self.update_timestamp = update_timestamp
 
@@ -95,6 +99,12 @@ class DomainInfo(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.tls_max is not None:
+            result['tlsMax'] = self.tls_max
+
+        if self.tls_min is not None:
+            result['tlsMin'] = self.tls_min
+
         if self.update_timestamp is not None:
             result['updateTimestamp'] = self.update_timestamp
 
@@ -137,6 +147,12 @@ class DomainInfo(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('tlsMax') is not None:
+            self.tls_max = m.get('tlsMax')
+
+        if m.get('tlsMin') is not None:
+            self.tls_min = m.get('tlsMin')
 
         if m.get('updateTimestamp') is not None:
             self.update_timestamp = m.get('updateTimestamp')

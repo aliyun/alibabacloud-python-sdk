@@ -21,7 +21,7 @@ class ListGatewayQuotaRulesResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The maximum number of records to retrieve in a single request. This parameter is not supported.
+        # The maximum number of records to retrieve at a time. This parameter is not supported.
         self.max_results = max_results
         # The response message.
         self.message = message
@@ -169,9 +169,9 @@ class ListGatewayQuotaRulesResponseBodyDataItems(DaraModel):
         self.rule_name = rule_name
         # The rule status.
         self.rule_status = rule_status
-        # The time zone for the calendar period, in UTC+x format.
+        # The time zone for the natural period, in UTC+x format.
         self.timezone = timezone
-        # The reset period type. Only calendar periods are supported, which means windowAlignment="calendar".
+        # The reset period type.
         self.window_alignment = window_alignment
 
     def validate(self):

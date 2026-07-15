@@ -28,7 +28,7 @@ class ListGatewaysShrinkRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The resource group ID.
+        # The resource group.
         self.resource_group_id = resource_group_id
         # The list of tags.
         self.tag_shrink = tag_shrink

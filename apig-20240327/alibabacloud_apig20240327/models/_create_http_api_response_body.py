@@ -70,7 +70,7 @@ class CreateHttpApiResponseBodyData(DaraModel):
     ):
         # HTTP API ID。
         self.http_api_id = http_api_id
-        # The name of the API.
+        # The API name.
         self.name = name
 
     def validate(self):

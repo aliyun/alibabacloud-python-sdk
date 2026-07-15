@@ -13,23 +13,23 @@ class CreatePolicyAttachmentRequest(DaraModel):
         gateway_id: str = None,
         policy_id: str = None,
     ):
-        # Attached resource ID
+        # The ID of the resource to which the policy is attached.
         # 
         # This parameter is required.
         self.attach_resource_id = attach_resource_id
-        # Attached resource type, such as HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
+        # The type of the resource to which the policy is attached. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, and Domain.
         # 
         # This parameter is required.
         self.attach_resource_type = attach_resource_type
-        # Environment ID
+        # The environment ID.
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # Gateway instance ID
+        # The gateway instance ID.
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # Policy ID
+        # The policy ID.
         # 
         # This parameter is required.
         self.policy_id = policy_id
