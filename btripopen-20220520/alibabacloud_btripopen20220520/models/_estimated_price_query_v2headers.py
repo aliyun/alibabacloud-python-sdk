@@ -6,14 +6,13 @@ from typing import Dict
 
 from darabonba.model import DaraModel
 
-class CarApplyAddHeaders(DaraModel):
+class EstimatedPriceQueryV2Headers(DaraModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
         x_acs_btrip_so_corp_token: str = None,
     ):
         self.common_headers = common_headers
-        # A header parameter obtained from the "Enterprise Access Credential" operation (added in the header). In HTTP mode, you can use so_corp_token=value or dtb_corp_token=value in the URL as an alternative.
         self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
 
     def validate(self):

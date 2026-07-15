@@ -6215,6 +6215,112 @@ class Client(OpenApiClient):
         headers = main_models.EstimatedPriceQueryHeaders()
         return await self.estimated_price_query_with_options_async(request, headers, runtime)
 
+    def estimated_price_query_v2with_options(
+        self,
+        request: main_models.EstimatedPriceQueryV2Request,
+        headers: main_models.EstimatedPriceQueryV2Headers,
+        runtime: RuntimeOptions,
+    ) -> main_models.EstimatedPriceQueryV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['biz_type'] = request.biz_type
+        if not DaraCore.is_null(request.depart_date):
+            query['depart_date'] = request.depart_date
+        if not DaraCore.is_null(request.from_city):
+            query['from_city'] = request.from_city
+        if not DaraCore.is_null(request.leave_date):
+            query['leave_date'] = request.leave_date
+        if not DaraCore.is_null(request.to_city):
+            query['to_city'] = request.to_city
+        if not DaraCore.is_null(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EstimatedPriceQueryV2',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/costcenter/v3/estimated-price',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EstimatedPriceQueryV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def estimated_price_query_v2with_options_async(
+        self,
+        request: main_models.EstimatedPriceQueryV2Request,
+        headers: main_models.EstimatedPriceQueryV2Headers,
+        runtime: RuntimeOptions,
+    ) -> main_models.EstimatedPriceQueryV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['biz_type'] = request.biz_type
+        if not DaraCore.is_null(request.depart_date):
+            query['depart_date'] = request.depart_date
+        if not DaraCore.is_null(request.from_city):
+            query['from_city'] = request.from_city
+        if not DaraCore.is_null(request.leave_date):
+            query['leave_date'] = request.leave_date
+        if not DaraCore.is_null(request.to_city):
+            query['to_city'] = request.to_city
+        if not DaraCore.is_null(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EstimatedPriceQueryV2',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/costcenter/v3/estimated-price',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EstimatedPriceQueryV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def estimated_price_query_v2(
+        self,
+        request: main_models.EstimatedPriceQueryV2Request,
+    ) -> main_models.EstimatedPriceQueryV2Response:
+        runtime = RuntimeOptions()
+        headers = main_models.EstimatedPriceQueryV2Headers()
+        return self.estimated_price_query_v2with_options(request, headers, runtime)
+
+    async def estimated_price_query_v2_async(
+        self,
+        request: main_models.EstimatedPriceQueryV2Request,
+    ) -> main_models.EstimatedPriceQueryV2Response:
+        runtime = RuntimeOptions()
+        headers = main_models.EstimatedPriceQueryV2Headers()
+        return await self.estimated_price_query_v2with_options_async(request, headers, runtime)
+
     def exceed_apply_sync_with_options(
         self,
         request: main_models.ExceedApplySyncRequest,

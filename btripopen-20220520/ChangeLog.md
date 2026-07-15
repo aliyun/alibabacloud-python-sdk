@@ -1,3 +1,7 @@
+2026-07-15 Version: 5.3.0
+- Support API EstimatedPriceQueryV2.
+
+
 2026-07-13 Version: 5.2.1
 - Update API VatInvoiceScanQuery: add response parameters Body.module.items.$.changed.
 

@@ -30,17 +30,18 @@ class CarApplyAddShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.cause = cause
-        # The cities for car service. Separate multiple cities with Chinese commas (，).
-        # Note: A maximum of 10 cities are supported. The values in city and city_code_set must correspond one to one.
+        # The car service cities. Separate multiple cities with Chinese commas (，).
+        # Note: A maximum of 10 cities can be specified. The values in city and city_code_set must correspond one-to-one.
         self.city = city
-        # The city code set for intra-city car service. Separate multiple cities with Chinese commas (，).
+        # The set of city codes for intra-city car service. Separate multiple cities with Chinese commas (，).
         # Note: 1) Either city_code_set or city is required. If both are specified, city_code_set takes precedence.
-        # A maximum of 10 cities are supported.
+        # A maximum of 10 cities can be specified.
         self.city_code_set = city_code_set
-        # The car service time. This parameter is controlled on a daily basis. For example, a value of 2021-03-18 20:26:56 indicates that the car service is available on 2021-03-18. For multi-day scenarios, use this parameter together with the finished_date parameter. The time must be in the yyyy-MM-dd HH:mm:ss format.
+        # The car service date. Access is controlled on a daily basis. For example, a value of 2021-03-18 20:26:56 indicates that the car service is available on 2021-03-18. For cross-day scenarios, use this parameter together with the finished_date parameter. The time parameter must be in the yyyy-MM-dd HH:mm:ss string format.
         self.date = date
-        # The car service end time. This parameter is controlled on a daily basis. For example, if date is set to 2021-03-18 20:26:56 and finished_date is set to 2021-03-30 20:26:56, the car service is available from 2021-03-18 (inclusive) to 2021-03-30 (inclusive). If this parameter is not specified, the value of date is used as the end time. The time must be in the yyyy-MM-dd HH:mm:ss format.
+        # The car service end date. Access is controlled on a daily basis. For example, if date is set to 2021-03-18 20:26:56 and finished_date is set to 2021-03-30 20:26:56, the car service is available from 2021-03-18 (inclusive) to 2021-03-30 (inclusive). If this parameter is not specified, the value of date is used as the end date. The time parameter must be in the yyyy-MM-dd HH:mm:ss string format.
         self.finished_date = finished_date
+        # The intra-city car service itinerary.
         self.itinerary_list_shrink = itinerary_list_shrink
         # The project code associated with the approval form.
         self.project_code = project_code
@@ -55,20 +56,21 @@ class CarApplyAddShrinkRequest(DaraModel):
         # This parameter is required.
         self.third_part_apply_id = third_part_apply_id
         # The ID of the third-party cost center associated with the approval form.
-        # >Warning: This field is required. To make it optional, contact operations.
+        # >Warning: This field is required. To configure it as optional, contact operations.
         self.third_part_cost_center_id = third_part_cost_center_id
         # The ID of the third-party invoice header associated with the approval form.
         # 
-        # >Warning: This field is required. To make it optional, contact operations.
+        # >Warning: This field is required. To configure it as optional, contact operations.
         self.third_part_invoice_id = third_part_invoice_id
-        # The total number of times the approval form can be used.
+        # The total available count for the approval form.
         self.times_total = times_total
-        # The usage count type of the approval form. If the enterprise does not need to limit the number of times the approval form can be used, set this parameter to 1 (unlimited) and set both times_total and times_used to 0.
+        # The type of available usage count for the approval form. If the enterprise does not need to limit the number of times the approval form can be used, set this parameter to 1 (unlimited) and set both times_total and times_used to 0.
         # 
         # Valid values:
         # 
         # - 1: Unlimited.
         # - 2: User-specified count.
+        # - 3: Admin-limited count.
         self.times_type = times_type
         # The number of times the approval form has been used.
         self.times_used = times_used

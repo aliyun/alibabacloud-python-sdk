@@ -20,7 +20,7 @@ class CarApplyAddResponseBody(DaraModel):
         self.message = message
         # The internal approval form ID in the business travel system.
         self.module = module
-        # The unique request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

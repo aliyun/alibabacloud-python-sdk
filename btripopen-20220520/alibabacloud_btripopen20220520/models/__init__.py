@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from ._keyword_suggest_info import KeywordSuggestInfo
+from ._module_price_map_value import ModulePriceMapValue
 from ._module_flight_item_list_best_price_item_flight_rule_infos_value import ModuleFlightItemListBestPriceItemFlightRuleInfosValue
 from ._module_flight_item_list_best_price_item_shopping_item_map_value import ModuleFlightItemListBestPriceItemShoppingItemMapValue
 from ._module_flight_item_list_best_price_item_sub_item_position_map_value import ModuleFlightItemListBestPriceItemSubItemPositionMapValue
@@ -275,6 +276,10 @@ from ._estimated_price_query_headers import EstimatedPriceQueryHeaders
 from ._estimated_price_query_request import EstimatedPriceQueryRequest
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBody
 from ._estimated_price_query_response import EstimatedPriceQueryResponse
+from ._estimated_price_query_v2headers import EstimatedPriceQueryV2Headers
+from ._estimated_price_query_v2request import EstimatedPriceQueryV2Request
+from ._estimated_price_query_v2response_body import EstimatedPriceQueryV2ResponseBody
+from ._estimated_price_query_v2response import EstimatedPriceQueryV2Response
 from ._exceed_apply_sync_headers import ExceedApplySyncHeaders
 from ._exceed_apply_sync_request import ExceedApplySyncRequest
 from ._exceed_apply_sync_response_body import ExceedApplySyncResponseBody
@@ -1220,6 +1225,7 @@ from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBod
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBodyModuleTrafficFee
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBodyModule
+from ._estimated_price_query_v2response_body import EstimatedPriceQueryV2ResponseBodyModule
 from ._external_user_add_request import ExternalUserAddRequestCertRequestList
 from ._external_user_query_response_body import ExternalUserQueryResponseBodyModule
 from ._external_user_update_request import ExternalUserUpdateRequestCertRequestList
@@ -2136,6 +2142,7 @@ from ._wait_apply_invoice_task_detail_query_response_body import WaitApplyInvoic
 
 __all__ = [
     KeywordSuggestInfo,
+    ModulePriceMapValue,
     ModuleFlightItemListBestPriceItemFlightRuleInfosValue,
     ModuleFlightItemListBestPriceItemShoppingItemMapValue,
     ModuleFlightItemListBestPriceItemSubItemPositionMapValue,
@@ -2408,6 +2415,10 @@ __all__ = [
     EstimatedPriceQueryRequest,
     EstimatedPriceQueryResponseBody,
     EstimatedPriceQueryResponse,
+    EstimatedPriceQueryV2Headers,
+    EstimatedPriceQueryV2Request,
+    EstimatedPriceQueryV2ResponseBody,
+    EstimatedPriceQueryV2Response,
     ExceedApplySyncHeaders,
     ExceedApplySyncRequest,
     ExceedApplySyncResponseBody,
@@ -3353,6 +3364,7 @@ __all__ = [
     EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes,
     EstimatedPriceQueryResponseBodyModuleTrafficFee,
     EstimatedPriceQueryResponseBodyModule,
+    EstimatedPriceQueryV2ResponseBodyModule,
     ExternalUserAddRequestCertRequestList,
     ExternalUserQueryResponseBodyModule,
     ExternalUserUpdateRequestCertRequestList,
