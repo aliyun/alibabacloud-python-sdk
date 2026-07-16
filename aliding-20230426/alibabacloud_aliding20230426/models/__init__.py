@@ -487,6 +487,12 @@ from ._doc_update_content_request import DocUpdateContentRequest
 from ._doc_update_content_shrink_request import DocUpdateContentShrinkRequest
 from ._doc_update_content_response_body import DocUpdateContentResponseBody
 from ._doc_update_content_response import DocUpdateContentResponse
+from ._enable_scene_group_template_headers import EnableSceneGroupTemplateHeaders
+from ._enable_scene_group_template_shrink_headers import EnableSceneGroupTemplateShrinkHeaders
+from ._enable_scene_group_template_request import EnableSceneGroupTemplateRequest
+from ._enable_scene_group_template_shrink_request import EnableSceneGroupTemplateShrinkRequest
+from ._enable_scene_group_template_response_body import EnableSceneGroupTemplateResponseBody
+from ._enable_scene_group_template_response import EnableSceneGroupTemplateResponse
 from ._execute_batch_task_headers import ExecuteBatchTaskHeaders
 from ._execute_batch_task_shrink_headers import ExecuteBatchTaskShrinkHeaders
 from ._execute_batch_task_request import ExecuteBatchTaskRequest
@@ -1967,6 +1973,8 @@ from ._doc_blocks_query_request import DocBlocksQueryRequestTenantContext
 from ._doc_blocks_query_response_body import DocBlocksQueryResponseBodyResult
 from ._doc_update_content_headers import DocUpdateContentHeadersAccountContext
 from ._doc_update_content_request import DocUpdateContentRequestTenantContext
+from ._enable_scene_group_template_headers import EnableSceneGroupTemplateHeadersAccountContext
+from ._enable_scene_group_template_request import EnableSceneGroupTemplateRequestTenantContext
 from ._execute_batch_task_headers import ExecuteBatchTaskHeadersAccountContext
 from ._execute_platform_task_headers import ExecutePlatformTaskHeadersAccountContext
 from ._execute_task_headers import ExecuteTaskHeadersAccountContext
@@ -3238,6 +3246,12 @@ __all__ = [
     DocUpdateContentShrinkRequest,
     DocUpdateContentResponseBody,
     DocUpdateContentResponse,
+    EnableSceneGroupTemplateHeaders,
+    EnableSceneGroupTemplateShrinkHeaders,
+    EnableSceneGroupTemplateRequest,
+    EnableSceneGroupTemplateShrinkRequest,
+    EnableSceneGroupTemplateResponseBody,
+    EnableSceneGroupTemplateResponse,
     ExecuteBatchTaskHeaders,
     ExecuteBatchTaskShrinkHeaders,
     ExecuteBatchTaskRequest,
@@ -4718,6 +4732,8 @@ __all__ = [
     DocBlocksQueryResponseBodyResult,
     DocUpdateContentHeadersAccountContext,
     DocUpdateContentRequestTenantContext,
+    EnableSceneGroupTemplateHeadersAccountContext,
+    EnableSceneGroupTemplateRequestTenantContext,
     ExecuteBatchTaskHeadersAccountContext,
     ExecutePlatformTaskHeadersAccountContext,
     ExecuteTaskHeadersAccountContext,

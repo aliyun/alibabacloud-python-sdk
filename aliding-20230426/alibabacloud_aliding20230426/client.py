@@ -10112,6 +10112,116 @@ class Client(OpenApiClient):
         headers = main_models.DocUpdateContentHeaders()
         return await self.doc_update_content_with_options_async(request, headers, runtime)
 
+    def enable_scene_group_template_with_options(
+        self,
+        tmp_req: main_models.EnableSceneGroupTemplateRequest,
+        tmp_header: main_models.EnableSceneGroupTemplateHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableSceneGroupTemplateResponse:
+        tmp_req.validate()
+        request = main_models.EnableSceneGroupTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.EnableSceneGroupTemplateShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not DaraCore.is_null(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableSceneGroupTemplate',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/enableSceneGroupTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableSceneGroupTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_scene_group_template_with_options_async(
+        self,
+        tmp_req: main_models.EnableSceneGroupTemplateRequest,
+        tmp_header: main_models.EnableSceneGroupTemplateHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableSceneGroupTemplateResponse:
+        tmp_req.validate()
+        request = main_models.EnableSceneGroupTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.EnableSceneGroupTemplateShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not DaraCore.is_null(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableSceneGroupTemplate',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/enableSceneGroupTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableSceneGroupTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_scene_group_template(
+        self,
+        request: main_models.EnableSceneGroupTemplateRequest,
+    ) -> main_models.EnableSceneGroupTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.EnableSceneGroupTemplateHeaders()
+        return self.enable_scene_group_template_with_options(request, headers, runtime)
+
+    async def enable_scene_group_template_async(
+        self,
+        request: main_models.EnableSceneGroupTemplateRequest,
+    ) -> main_models.EnableSceneGroupTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.EnableSceneGroupTemplateHeaders()
+        return await self.enable_scene_group_template_with_options_async(request, headers, runtime)
+
     def execute_batch_task_with_options(
         self,
         request: main_models.ExecuteBatchTaskRequest,

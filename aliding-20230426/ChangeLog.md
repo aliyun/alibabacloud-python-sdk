@@ -1,3 +1,7 @@
+2026-07-16 Version: 2.56.0
+- Support API EnableSceneGroupTemplate.
+
+
 2026-07-06 Version: 2.55.0
 - Support API SignOutOrgAccount.
 
