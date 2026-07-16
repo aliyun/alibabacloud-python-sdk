@@ -182,6 +182,7 @@ class ListFileResponseBodyDataFileList(DaraModel):
         self.file_name = file_name
         # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, and gif.
         self.file_type = file_type
+        # The reason for parsing failure.
         self.parse_error_message = parse_error_message
         # The document parser. Valid values:
         # - DASHSCOPE_DOCMIND: Alibaba Cloud intelligent document parsing.
@@ -189,7 +190,7 @@ class ListFileResponseBodyDataFileList(DaraModel):
         # The file size in bytes.
         self.size_in_bytes = size_in_bytes
         # The file parsing status. Valid values:
-        # - INIT: Initialization state, waiting to be scheduled.
+        # - INIT: Initialization state. Waiting to be scheduled.
         # - PARSING: Parsing in progress.
         # - PARSE_SUCCESS: Parsing completed.
         # - PARSE_FAILED: Parsing failed.

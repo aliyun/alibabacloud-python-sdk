@@ -28,8 +28,8 @@ class ListIndexDocumentsResponseBody(DaraModel):
         # The status code returned by the operation.
         self.status = status
         # Indicates whether the operation was successful. Valid values:
-        # - true: The operation was successful.
-        # - false: The operation failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -93,7 +93,7 @@ class ListIndexDocumentsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of files in the knowledge base, sorted by file import time in descending order (consistent with the console).
+        # The list of files in the knowledge base, sorted by document import time in descending order (consistent with the console).
         self.documents = documents
         # The knowledge base ID.
         self.index_id = index_id
@@ -169,7 +169,7 @@ class ListIndexDocumentsResponseBodyDataDocuments(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # The error status code for the file import.
+        # The error status code for file import.
         self.code = code
         # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
         self.document_type = document_type
@@ -177,7 +177,7 @@ class ListIndexDocumentsResponseBodyDataDocuments(DaraModel):
         self.gmt_modified = gmt_modified
         # The file ID.
         self.id = id
-        # The error message for the file import.
+        # The error message for file import.
         self.message = message
         # The file name.
         self.name = name
@@ -185,28 +185,26 @@ class ListIndexDocumentsResponseBodyDataDocuments(DaraModel):
         self.size = size
         # <props="china">
         # 
-        # For document search or audio/video search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain the category ID by clicking the ID icon next to the category name on the Files tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+        # For document search or audio/video search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain it by clicking the ID icon next to the category name on the Files tab of [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center).
         # 
         # 
-        # For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain the data table ID by clicking the ID icon next to the data table name on the Tables tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+        # For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain it by clicking the ID icon next to the data table name on the Tables tab of [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center).
         # 
         # 
         # 
         # 
         # <props="intl">
         # 
-        # For document search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain the category ID by clicking the ID icon next to the category name on the Files tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+        # For document search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain it by clicking the ID icon next to the category name on the Files tab of [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center).
         # 
         # 
-        # For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain the data table ID by clicking the ID icon next to the data table name on the Tables tab of the [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) page.
-        # 
-        # .
+        # For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain it by clicking the ID icon next to the data table name on the Tables tab of [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
         self.source_id = source_id
         # The file import status. Valid values:
-        # - INSERT_ERROR: The file failed to be imported.
-        # - RUNNING: The file is being imported.
-        # - DELETED: The file has been deleted.
-        # - FINISH: The file was imported.
+        # - INSERT_ERROR: File import failed.
+        # - RUNNING: File import in progress.
+        # - DELETED: File deleted.
+        # - FINISH: File import succeeded.
         self.status = status
 
     def validate(self):

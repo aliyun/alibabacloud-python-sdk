@@ -20,6 +20,7 @@ class AddTableShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.table_columns_shrink = table_columns_shrink
+        # The table description.
         self.table_desc = table_desc
         # The table name.
         # 

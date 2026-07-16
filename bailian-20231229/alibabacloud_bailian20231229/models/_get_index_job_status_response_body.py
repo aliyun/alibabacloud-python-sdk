@@ -17,7 +17,7 @@ class GetIndexJobStatusResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error status code.
         self.code = code
         # The data field returned by the operation.
         self.data = data
@@ -25,11 +25,11 @@ class GetIndexJobStatusResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned by the operation.
+        # The status code returned by the operation.
         self.status = status
         # Indicates whether the operation was successful. Valid values:
-        # - true: The operation was successful.
-        # - false: The operation failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -96,10 +96,10 @@ class GetIndexJobStatusResponseBodyData(DaraModel):
         # The job ID.
         self.job_id = job_id
         # The current status of the knowledge base job. Valid values:
-        # - COMPLETED: The job succeeded.
-        # - FAILED: The job failed.
-        # - RUNNING: The job is running.
-        # - PENDING: The job is pending execution.
+        # - COMPLETED: Execution succeeded.
+        # - FAILED: Execution failed.
+        # - RUNNING: Execution in progress.
+        # - PENDING: Waiting for execution.
         self.status = status
 
     def validate(self):
@@ -152,7 +152,7 @@ class GetIndexJobStatusResponseBodyDataDocuments(DaraModel):
         message: str = None,
         status: str = None,
     ):
-        # The error code.
+        # The error status code.
         self.code = code
         # The file ID.
         self.doc_id = doc_id
@@ -162,10 +162,12 @@ class GetIndexJobStatusResponseBodyDataDocuments(DaraModel):
         # The error message.
         self.message = message
         # The file import status. Valid values:
-        # - INSERT_ERROR: The file import failed.
-        # - RUNNING: The file is being imported.
-        # - DELETED: The file has been deleted.
-        # - FINISH: The file was imported.
+        # - INSERT_ERROR: Failed to import into the index.
+        # - RUNNING: Index building in progress.
+        # - DELETED: Deleted.
+        # - FINISH: Index building succeeded.
+        # - PARSE_FAILED: Parsing failed.
+        # - DOC_PARSING: Parsing in progress.
         self.status = status
 
     def validate(self):

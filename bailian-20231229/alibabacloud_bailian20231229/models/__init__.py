@@ -5,6 +5,10 @@ from __future__ import annotations
 from ._add_category_request import AddCategoryRequest
 from ._add_category_response_body import AddCategoryResponseBody
 from ._add_category_response import AddCategoryResponse
+from ._add_chunk_request import AddChunkRequest
+from ._add_chunk_shrink_request import AddChunkShrinkRequest
+from ._add_chunk_response_body import AddChunkResponseBody
+from ._add_chunk_response import AddChunkResponse
 from ._add_connector_request import AddConnectorRequest
 from ._add_connector_shrink_request import AddConnectorShrinkRequest
 from ._add_connector_response_body import AddConnectorResponseBody
@@ -320,6 +324,10 @@ __all__ = [
     AddCategoryRequest,
     AddCategoryResponseBody,
     AddCategoryResponse,
+    AddChunkRequest,
+    AddChunkShrinkRequest,
+    AddChunkResponseBody,
+    AddChunkResponse,
     AddConnectorRequest,
     AddConnectorShrinkRequest,
     AddConnectorResponseBody,

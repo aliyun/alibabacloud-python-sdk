@@ -29,14 +29,14 @@ class ListFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.category_id = category_id
-        # The list of file IDs to query. A maximum of 20 files can be queried per request.
+        # The list of file IDs to query. A maximum of 20 files can be queried at a time.
         self.file_ids = file_ids
         # The file name (without extension). Only exact match is supported. Fuzzy search is not supported.
         self.file_name = file_name
         # The number of entries per page for paging. Valid values: 1 to 200.
         # 
         # Default value:
-        # If the value is not set or is less than 1, the default value is 20. If the value is greater than 200, the default value is 200.
+        # If no value is set or the value is less than 1, the default value is 20. If the value is set to greater than 200, the default value is 200.
         self.max_results = max_results
         # The pagination token. Set this to the NextToken value returned by the previous API call.
         self.next_token = next_token

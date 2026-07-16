@@ -20,78 +20,66 @@ class AddFileRequest(DaraModel):
     ):
         # <props="china">
         # 
-        # - If `CategoryType` is set to `UNSTRUCTURED`, you must specify the ID of the category to which the file belongs. This is the `CategoryId` returned by the **AddCategory** API. You can also obtain the category ID by navigating to the \\*\\*Application data\\*\\* > \\*\\*Files\\*\\* tab and clicking the ID icon next to the category name. You can specify `default` to use the default category.
+        # - When CategoryType is set to UNSTRUCTURED, set this parameter to the category ID of the uploaded file, which is the `CategoryId` returned by the **AddCategory** operation. You can also go to [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center), click the File tab, and then click the ID icon next to the category name to obtain the category ID. You can set this parameter to default to use the system-created default category.
         # 
-        # - If `CategoryType` is set to `SESSION_FILE`, specify `default`.
-        # 
+        # - When CategoryType is set to SESSION_FILE, set this parameter to "default".
         # 
         # 
         # <props="intl">
         # 
-        # The ID of the category to which the file belongs. This is the `CategoryId` returned by the **AddCategory** API. You can also obtain the category ID by navigating to the \\*\\*Application data\\*\\* > \\*\\*Files\\*\\* tab and clicking the ID icon next to the category name. You can specify `default` to use the default category.
+        # Set this parameter to the category ID of the uploaded file, which is the `CategoryId` returned by the **AddCategory** operation. You can also go to [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center), click the File tab, and then click the ID icon next to the category name to obtain the category ID. You can set this parameter to default to use the system-created default category.
         # 
         # This parameter is required.
         self.category_id = category_id
-        # The type of category. This parameter is optional. Default value: `UNSTRUCTURED`. Valid values:
-        # 
-        # - `UNSTRUCTURED`: A category used for building a knowledge base.
+        # The category type. This parameter is optional. Default value: UNSTRUCTURED. Valid values:
+        # - UNSTRUCTURED: category used for building knowledge base scenarios.
         # 
         # <props="china">
-        # 
-        # - `SESSION_FILE`: A file used for interactions within an agent [session](https://help.aliyun.com/zh/model-studio/user-guide/file-interaction).
-        #   > If you set this parameter to `SESSION_FILE`, you must also set the `CategoryType` parameter to `SESSION_FILE` when you call the ApplyFileUploadLease API.
-        #   > Files of this type are valid only for the current session and expire after the session is closed, with a maximum validity of 7 days. These files are not intended for long-term storage.
+        # - SESSION_FILE: file used for [session interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction) in agent applications.
+        # <note>When using `SESSION_FILE`, set the CategoryType parameter to `SESSION_FILE` when calling the ApplyFileUploadLease operation as well.</note>
+        # <note>The file is valid only for the current user session. After the user closes the session, the file expires. The maximum validity period is 7 days. Long-term storage is not supported.</note>
         self.category_type = category_type
-        # The upload lease ID. This value maps to the `FileUploadLeaseId` returned by the **ApplyFileUploadLease** API.
+        # The upload lease ID, which corresponds to the `FileUploadLeaseId` returned by the **ApplyFileUploadLease** operation.
         # 
         # This parameter is required.
         self.lease_id = lease_id
         # <props="china">
         # 
-        # The URL of the file. The system records this link when building a [document retrieval-based knowledge base](https://help.aliyun.com/document_detail/2807740.html). When you interact with an [agent](https://help.aliyun.com/document_detail/2842749.html) in the Alibaba Cloud Model Studio console, this URL is returned with the retrieval results for the file in the `docUrl` field.
+        # Specifies a URL for the file. The system records this URL when building a [document search knowledge base](https://help.aliyun.com/document_detail/2807740.html). When you use the Alibaba Cloud Model Studio console to interact with an [agent application](https://help.aliyun.com/document_detail/2842749.html), this URL is returned with the retrieval results of the file through the `docUrl` field.
         # 
-        # > For this parameter to take effect, the **knowledge base** feature must be enabled for the agent, and the **display the source of the answer** option must be enabled.
+        # > The agent application must have **Knowledge Base** enabled and the **Show answer sources** feature turned on. Otherwise, this parameter does not take effect.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # The URL of the file. The system records this link when building a [document retrieval-based knowledge base](https://help.aliyun.com/document_detail/2807740.html). When you interact with an [agent](https://help.aliyun.com/document_detail/2842749.html) in the Alibaba Cloud Model Studio console, this URL is returned with the retrieval results for the file in the `docUrl` field.
+        # Specifies a URL for the file. The system records this URL when building a [document search knowledge base](https://help.aliyun.com/document_detail/2807740.html). When you use the Alibaba Cloud Model Studio console to interact with an [agent application](https://help.aliyun.com/document_detail/2842749.html), this URL is returned with the retrieval results of the file through the `docUrl` field.
         # 
-        # > For this parameter to take effect, the **knowledge base** feature must be enabled for the agent, and the **display the source of the answer** option must be enabled.
+        # > The agent application must have **Knowledge Base** enabled and the **Show answer sources** feature turned on. Otherwise, this parameter does not take effect.
         self.original_file_url = original_file_url
-        # The type of parser. Valid values:
+        # The parser type. Valid values:
         # 
-        # - DOCMIND: Intelligent Document Parsing
-        # 
-        # - DOCMIND_DIGITAL: Digital Document Parsing
-        # 
-        # - DOCMIND_LLM_VERSION: Large Language Model-based Document Parsing
-        # 
-        # - DASH_QWEN_VL_PARSER: Qwen-VL Parsing
-        # 
-        # - DOCMIND_LLM_VERSION_MEDIA: Audio and Video Parsing
-        # 
-        # - AUTO_SELECT: Automatic Parser Selection
+        # - DOCMIND: intelligent document parsing
+        # - DOCMIND_DIGITAL: electronic document parsing
+        # - DOCMIND_LLM_VERSION: large language model document parsing
+        # - DASH_QWEN_VL_PARSER: Qwen VL parsing
+        # - DOCMIND_LLM_VERSION_MEDIA: audio and video parsing
+        # - AUTO_SELECT: automatic parser selection
         # 
         # <props="intl">
-        # 
-        # > The system uses the specified parser to parse the uploaded file. If you set this parameter to `AUTO_SELECT`, the parser configured for the category is used.
-        # 
+        # <note>The uploaded file is parsed by using the currently specified parser. If you set this parameter to AUTO_SELECT, the parser configured for the category is used.</note>
         # 
         # 
         # <props="china">
-        # 
-        # > If `CategoryType` is set to `UNSTRUCTURED`, the parser parses your uploaded file based on the category’s data parsing settings.
-        # > If `CategoryType` is set to `SESSION_FILE`, the system uses a default parsing method that cannot be changed.
+        # <note>When CategoryType is set to UNSTRUCTURED, the parser parses the uploaded file based on the data parsing settings of the current category.</note>
+        # <note>When CategoryType is set to SESSION_FILE, the system parses the file content by using the default method, which cannot be changed.</note>
         # 
         # This parameter is required.
         self.parser = parser
-        # The parser configuration. This parameter is required only if you set `Parser` to `DASH_QWEN_VL_PARSER`.
+        # The parser configuration. This parameter is required only when the parser type is set to Qwen VL parsing.
         self.parser_config = parser_config
-        # - A list of tags for the file. You can specify up to 100 tags. The total length of all tags cannot exceed 700 characters.
-        # 
-        # - If this parameter is not specified, no tags are added.
+        # - The list of tags associated with the file. You can specify up to 100 tags, and the total character length of all tags cannot exceed 700.
+        # - Default value: empty, which means no tags are set.
         self.tags = tags
 
     def validate(self):
@@ -160,7 +148,7 @@ class AddFileRequestParserConfig(DaraModel):
     ):
         # The model name.
         self.model_name = model_name
-        # The prompt to use when calling the Qwen-VL parser.
+        # The prompt used when calling Qwen VL parsing.
         self.model_prompt = model_prompt
 
     def validate(self):

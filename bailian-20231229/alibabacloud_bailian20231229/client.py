@@ -137,6 +137,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_category_with_options_async(workspace_id, request, headers, runtime)
 
+    def add_chunk_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.AddChunkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddChunkResponse:
+        tmp_req.validate()
+        request = main_models.AddChunkShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.field):
+            request.field_shrink = Utils.array_to_string_with_specified_style(tmp_req.field, 'field', 'json')
+        query = {}
+        if not DaraCore.is_null(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not DaraCore.is_null(request.data_id):
+            query['dataId'] = request.data_id
+        if not DaraCore.is_null(request.field_shrink):
+            query['field'] = request.field_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddChunk',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/chunk/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddChunkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_chunk_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.AddChunkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddChunkResponse:
+        tmp_req.validate()
+        request = main_models.AddChunkShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.field):
+            request.field_shrink = Utils.array_to_string_with_specified_style(tmp_req.field, 'field', 'json')
+        query = {}
+        if not DaraCore.is_null(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not DaraCore.is_null(request.data_id):
+            query['dataId'] = request.data_id
+        if not DaraCore.is_null(request.field_shrink):
+            query['field'] = request.field_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddChunk',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/chunk/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddChunkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_chunk(
+        self,
+        workspace_id: str,
+        request: main_models.AddChunkRequest,
+    ) -> main_models.AddChunkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_chunk_with_options(workspace_id, request, headers, runtime)
+
+    async def add_chunk_async(
+        self,
+        workspace_id: str,
+        request: main_models.AddChunkRequest,
+    ) -> main_models.AddChunkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_chunk_with_options_async(workspace_id, request, headers, runtime)
+
     def add_connector_with_options(
         self,
         workspace_id: str,

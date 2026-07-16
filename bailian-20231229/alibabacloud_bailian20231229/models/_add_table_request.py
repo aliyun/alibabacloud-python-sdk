@@ -23,6 +23,7 @@ class AddTableRequest(DaraModel):
         # 
         # This parameter is required.
         self.table_columns = table_columns
+        # The table description.
         self.table_desc = table_desc
         # The table name.
         # 

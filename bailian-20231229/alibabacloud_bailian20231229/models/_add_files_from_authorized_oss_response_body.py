@@ -17,19 +17,19 @@ class AddFilesFromAuthorizedOssResponseBody(DaraModel):
         status: str = None,
         success: str = None,
     ):
-        # Error status code.
+        # The error code.
         self.code = code
-        # Business data field returned by the operation.
+        # The data field returned by the operation.
         self.data = data
-        # Error information.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The status code returned by the operation.
         self.status = status
-        # Whether the operation call succeeded. Possible values:
-        # - true: Success.
-        # - false: Failure.
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -128,18 +128,18 @@ class AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList(DaraModel):
         oss_key: str = None,
         status: str = None,
     ):
-        # The file ID. Please keep this value safe, as it will be used for all subsequent API operations related to this file.
+        # The file ID. Keep this value safe because it is required for all subsequent API operations related to this file.
         self.file_id = file_id
-        # Error information returned when file import fails.
+        # The error message returned when the file import fails.
         self.msg = msg
-        # The key name (Key) of the imported file in the OSS Bucket.
+        # The key of the imported file in the OSS bucket.
         self.oss_key = oss_key
-        # File import status. Possible values:
+        # The file import status. Valid values:
         # 
-        # - SUCCESS: Import (application data) completed.
-        # - FAILED: Import (application data) failed.
+        # - SUCCESS: The import to application data is complete.
+        # - FAILED: The import to application data failed.
         # 
-        # > Only files with the SUCCESS status can be used to create or update knowledge bases.
+        # > Only files with a SUCCESS status can be used to create or update a knowledge base.
         # >
         self.status = status
 

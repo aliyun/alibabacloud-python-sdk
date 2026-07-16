@@ -2,14 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_bailian20231229 import models as main_models
 from darabonba.model import DaraModel
 
-class ChangeParseSettingResponseBody(DaraModel):
+class AddChunkResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.ChangeParseSettingResponseBodyData = None,
+        data: bool = None,
         message: str = None,
         request_id: str = None,
         status: str = None,
@@ -17,7 +16,7 @@ class ChangeParseSettingResponseBody(DaraModel):
     ):
         # The error status code.
         self.code = code
-        # The business data returned when the request is successful.
+        # The business data returned upon a successful request.
         self.data = data
         # The error message.
         self.message = message
@@ -25,14 +24,11 @@ class ChangeParseSettingResponseBody(DaraModel):
         self.request_id = request_id
         # The status code returned by the operation.
         self.status = status
-        # Indicates whether the call was successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
-        if self.data:
-            self.data.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -43,7 +39,7 @@ class ChangeParseSettingResponseBody(DaraModel):
             result['Code'] = self.code
 
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            result['Data'] = self.data
 
         if self.message is not None:
             result['Message'] = self.message
@@ -65,8 +61,7 @@ class ChangeParseSettingResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.ChangeParseSettingResponseBodyData()
-            self.data = temp_model.from_map(m.get('Data'))
+            self.data = m.get('Data')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
@@ -79,36 +74,6 @@ class ChangeParseSettingResponseBody(DaraModel):
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
-
-        return self
-
-class ChangeParseSettingResponseBodyData(DaraModel):
-    def __init__(
-        self,
-        change_result: bool = None,
-    ):
-        # Indicates whether the configuration was changed. Valid values:
-        # - true: The configuration was updated.
-        # - false: The configuration was not changed. The modification failed.
-        self.change_result = change_result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.change_result is not None:
-            result['ChangeResult'] = self.change_result
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChangeResult') is not None:
-            self.change_result = m.get('ChangeResult')
 
         return self
 

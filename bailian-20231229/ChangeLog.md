@@ -1,3 +1,7 @@
+2026-07-16 Version: 2.14.0
+- Support API AddChunk.
+
+
 2026-06-18 Version: 2.13.1
 - Update API AddTable: add request parameters TableDesc.
 - Update API DescribeFile: add response parameters Body.Data.ParseErrorMessage.

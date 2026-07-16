@@ -17,19 +17,17 @@ class AddFileResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The data returned for the request.
+        # The data field returned by the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code of the request.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the API call was successful. Valid values:
-        # 
-        # - `true`: The call was successful.
-        # 
-        # - `false`: The call failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -90,11 +88,10 @@ class AddFileResponseBodyData(DaraModel):
         file_id: str = None,
         parser: str = None,
     ):
-        # The ID of the file. Save this ID for use in subsequent API calls involving this file.
+        # The file ID. Keep this value safe because it is used in all subsequent API operations related to this file.
         self.file_id = file_id
-        # The parser that was used for the file. A possible value is:
-        # 
-        # - `DASHSCOPE_DOCMIND`: Alibaba Cloud Document Intelligence
+        # The parser type used to parse the file. Valid values:
+        # - DASHSCOPE_DOCMIND: Alibaba Cloud intelligent document parsing.
         self.parser = parser
 
     def validate(self):

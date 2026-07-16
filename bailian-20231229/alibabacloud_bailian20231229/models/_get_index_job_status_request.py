@@ -20,7 +20,7 @@ class GetIndexJobStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The **SubmitIndexJob** and **SubmitIndexAddDocumentsJob** operations support batch file import. This operation returns the overall knowledge base job status `Status` and the import status of each file `Document.Status`. If there are many files, use the `PageNumber` parameter for paging. Minimum value: 1. Default value: 1.
+        # Both the **SubmitIndexJob** and **SubmitIndexAddDocumentsJob** operations support batch file import. This operation returns the overall status of the knowledge base job (`Status`) and the import status of each file (`Document.Status`). If there are many files, use the `PageNumber` parameter for paged query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of file import tasks to display per page in a paged query. No maximum limit. Default value: 10.
         self.page_size = page_size
