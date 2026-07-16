@@ -10,9 +10,9 @@ class MultiModalGuardAsyncResultRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The moderation service to run.
+        # The moderation service type.
         self.service = service
-        # The parameters for the moderation service, provided as a JSON string.
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):

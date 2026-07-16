@@ -15,13 +15,13 @@ class MultiModalGuardAsyncResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code of the response.
+        # The error code.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
-        # The response message.
+        # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -74,23 +74,20 @@ class MultiModalGuardAsyncResultResponseBodyData(DaraModel):
         suggestion: str = None,
         task_id: str = None,
     ):
-        # The audio moderation result.
+        # The audio moderation segment results.
         self.audio_result = audio_result
-        # The value of the `dataId` parameter from the request. This field is omitted if `dataId` was not provided.
+        # The value of dataId passed in the API request. This field is not returned if dataId was not specified in the request.
         self.data_id = data_id
-        # The video frame moderation result.
+        # The list of video frame capture results.
         self.frame_result = frame_result
-        # The unique identifier for the live stream.
+        # The unique ID of the live stream.
         self.live_id = live_id
         # The recommended action. Valid values:
         # 
-        # - `block`: Block the content.
-        # 
-        # - `pass`: Pass the content.
-        # 
-        # - `watch`: The content requires review.
-        # 
-        # - `mask`: Mask the content.
+        # - block: Block the content.
+        # - pass: Allow the content.
+        # - watch: Manually review the content.
+        # - mask: Mask the content.
         self.suggestion = suggestion
         # The task ID.
         self.task_id = task_id
@@ -157,19 +154,16 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResult(DaraModel):
         slice_num: int = None,
         suggestion: str = None,
     ):
-        # The moderation results for video frames.
+        # The frame detection results.
         self.frames = frames
-        # The frame count.
+        # The number of segments.
         self.slice_num = slice_num
-        # The recommended action. Valid values:
+        # The moderation recommendation. Valid values:
         # 
-        # - `block`: Block the content.
-        # 
-        # - `pass`: Pass the content.
-        # 
-        # - `watch`: The content requires review.
-        # 
-        # - `mask`: Mask the content.
+        # - block: Block the content.
+        # - pass: Allow the content.
+        # - watch: Manually review the content.
+        # - mask: Mask the content.
         self.suggestion = suggestion
 
     def validate(self):
@@ -216,28 +210,29 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames(DaraModel):
     def __init__(
         self,
         detail: List[main_models.MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail] = None,
+        error_code: int = None,
+        error_msg: str = None,
         offset: float = None,
         suggestion: str = None,
         timestamp: int = None,
         url: str = None,
     ):
-        # A list of detection results.
+        # The list of detection results.
         self.detail = detail
-        # The time offset of the frame in the video, in seconds.
+        self.error_code = error_code
+        self.error_msg = error_msg
+        # The frame capture position.
         self.offset = offset
-        # The recommended action. Valid values:
+        # The moderation recommendation. Valid values:
         # 
-        # - `block`: Block the content.
-        # 
-        # - `pass`: Pass the content.
-        # 
-        # - `watch`: The content requires review.
-        # 
-        # - `mask`: Mask the content.
+        # - block: Block the content.
+        # - pass: Allow the content.
+        # - watch: Manually review the content.
+        # - mask: Mask the content.
         self.suggestion = suggestion
-        # The absolute timestamp of the frame, in milliseconds.
+        # The absolute timestamp, in milliseconds.
         self.timestamp = timestamp
-        # The temporary URL of the video frame.
+        # The temporary URL of the frame.
         self.url = url
 
     def validate(self):
@@ -255,6 +250,12 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames(DaraModel):
         if self.detail is not None:
             for k1 in self.detail:
                 result['Detail'].append(k1.to_map() if k1 else None)
+
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
 
         if self.offset is not None:
             result['Offset'] = self.offset
@@ -278,6 +279,12 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames(DaraModel):
                 temp_model = main_models.MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail()
                 self.detail.append(temp_model.from_map(k1))
 
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
 
@@ -300,39 +307,27 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail(DaraMode
         suggestion: str = None,
         type: str = None,
     ):
-        # The risk level. Valid values include:
-        # 
-        # - high: High risk. If a match is found in a custom dictionary, the risk level defaults to high.
-        # 
+        # The risk level. Valid values:
+        # - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
         # - medium: Medium risk.
-        # 
         # - low: Low risk.
-        # 
         # - none: No risk detected.
         self.level = level
-        # A list of detection results.
+        # The detection result.
         self.result = result
-        # Suggestion
+        # The moderation recommendation. Valid values:
         # 
-        # - block: A suggestion to block.
-        # 
-        # - pass: A suggestion to pass.
-        # 
-        # - watch: A suggestion to watch.
-        # 
-        # - mask: A suggestion to mask.
+        # - block: Block the content.
+        # - pass: Allow the content.
+        # - watch: Manually review the content.
+        # - mask: Mask the content.
         self.suggestion = suggestion
         # The detection type. Valid values:
-        # 
-        # - `contentModeration`: Content moderation.
-        # 
-        # - `promptAttack`: Prompt attack detection.
-        # 
-        # - `sensitiveData`: Sensitive data detection.
-        # 
-        # - `modelHallucination`: Model hallucination.
-        # 
-        # - `maliciousFile`: Malicious file detection.
+        # - contentModeration: content compliance detection
+        # - promptAttack: prompt attack detection
+        # - sensitiveData: sensitive content detection
+        # - modelHallucination: model hallucination detection
+        # - maliciousFile: malicious file detection
         self.type = type
 
     def validate(self):
@@ -390,23 +385,19 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult(Da
         label: str = None,
         level: str = None,
     ):
-        # The confidence score, ranging from 0 to 100, accurate to two decimal places.
+        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
-        # The description of the label.
+        # The label description.
         self.description = description
-        # Additional information about the detection result.
+        # The extended information of the detection result.
         self.ext = ext
-        # The label of the detection result.
+        # The label.
         self.label = label
         # The risk level. Valid values:
-        # 
-        # - `high`: High risk. If the content matches an entry in a custom keyword library, the risk level defaults to high.
-        # 
-        # - `medium`: Medium risk.
-        # 
-        # - `low`: Low risk.
-        # 
-        # - `none`: No risk detected.
+        # - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
+        # - medium: Medium risk.
+        # - low: Low risk.
+        # - none: No risk detected.
         self.level = level
 
     def validate(self):
@@ -460,11 +451,11 @@ class MultiModalGuardAsyncResultResponseBodyDataAudioResult(DaraModel):
         slice_num: int = None,
         suggestion: str = None,
     ):
-        # Details for each audio slice.
+        # The segment details.
         self.slice_details = slice_details
-        # The slice count.
+        # The number of segments.
         self.slice_num = slice_num
-        # The overall recommended action for the audio content.
+        # The recommended action.
         self.suggestion = suggestion
 
     def validate(self):
@@ -517,25 +508,22 @@ class MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails(DaraMode
         text: str = None,
         url: str = None,
     ):
-        # Detection details for the audio slice.
+        # The detection details.
         self.detail = detail
-        # The end time of the audio slice, in seconds.
+        # The end time of the segment, in seconds.
         self.end_time = end_time
-        # The start time of the audio slice, in seconds.
+        # The start time of the segment, in seconds.
         self.start_time = start_time
-        # The recommended action. Valid values:
+        # The moderation recommendation. Valid values:
         # 
-        # - `block`: Block the content.
-        # 
-        # - `pass`: Pass the content.
-        # 
-        # - `watch`: The content requires review.
-        # 
-        # - `mask`: Mask the content.
+        # - block: Block the content.
+        # - pass: Allow the content.
+        # - watch: Manually review the content.
+        # - mask: Mask the content.
         self.suggestion = suggestion
-        # The speech-to-text transcript of the audio slice.
+        # The transcribed text of the audio segment.
         self.text = text
-        # The temporary URL of the audio slice.
+        # The temporary URL of the audio segment file.
         self.url = url
 
     def validate(self):
@@ -605,38 +593,26 @@ class MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail(Da
         type: str = None,
     ):
         # The risk level. Valid values:
-        # 
-        # - `high`: High risk. If the content matches an entry in a custom keyword library, the risk level defaults to high.
-        # 
-        # - `medium`: Medium risk.
-        # 
-        # - `low`: Low risk.
-        # 
-        # - `none`: No risk detected.
+        # - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
+        # - medium: Medium risk.
+        # - low: Low risk.
+        # - none: No risk detected.
         self.level = level
-        # A list of detection results.
+        # The list of detection results.
         self.result = result
-        # The recommended action. Valid values:
+        # The moderation recommendation. Valid values:
         # 
-        # - `block`: Block the content.
-        # 
-        # - `pass`: Pass the content.
-        # 
-        # - `watch`: The content requires review.
-        # 
-        # - `mask`: Mask the content.
+        # - block: Block the content.
+        # - pass: Allow the content.
+        # - watch: Manually review the content.
+        # - mask: Mask the content.
         self.suggestion = suggestion
         # The detection type. Valid values:
-        # 
-        # - `contentModeration`: Content moderation.
-        # 
-        # - `promptAttack`: Prompt attack detection.
-        # 
-        # - `sensitiveData`: Sensitive data detection.
-        # 
-        # - `modelHallucination`: Model hallucination.
-        # 
-        # - `maliciousFile`: Malicious file detection.
+        # - contentModeration: content compliance detection
+        # - promptAttack: prompt attack detection
+        # - sensitiveData: sensitive content detection
+        # - modelHallucination: model hallucination detection
+        # - maliciousFile: malicious file detection
         self.type = type
 
     def validate(self):
@@ -694,23 +670,19 @@ class MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailRes
         label: str = None,
         level: str = None,
     ):
-        # The confidence score, ranging from 0 to 100, accurate to two decimal places.
+        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
-        # The description of the label.
+        # The label description.
         self.description = description
-        # Additional information about the detection result.
+        # The extended information of the detection result.
         self.ext = ext
-        # The label of the detection result.
+        # The label.
         self.label = label
         # The risk level. Valid values:
-        # 
-        # - `high`: High risk. If the content matches an entry in a custom keyword library, the risk level defaults to high.
-        # 
-        # - `medium`: Medium risk.
-        # 
-        # - `low`: Low risk.
-        # 
-        # - `none`: No risk detected.
+        # - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
+        # - medium: Medium risk.
+        # - low: Low risk.
+        # - none: No risk detected.
         self.level = level
 
     def validate(self):

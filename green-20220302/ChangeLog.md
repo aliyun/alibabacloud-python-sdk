@@ -1,3 +1,8 @@
+2026-07-16 Version: 3.5.1
+- Update API MultiModalGuardAsyncResult: add response parameters Body.Data.FrameResult.Frames.$.ErrorCode.
+- Update API MultiModalGuardAsyncResult: add response parameters Body.Data.FrameResult.Frames.$.ErrorMsg.
+
+
 2026-07-15 Version: 3.5.0
 - Support API MultiModalAgentSSE.
 
