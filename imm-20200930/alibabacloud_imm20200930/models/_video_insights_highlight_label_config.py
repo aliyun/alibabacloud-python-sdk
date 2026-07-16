@@ -13,7 +13,9 @@ class VideoInsightsHighlightLabelConfig(DaraModel):
         enable: bool = None,
         labels: List[main_models.InsightsLabel] = None,
     ):
+        # Specifies whether highlight labels are supported.
         self.enable = enable
+        # The list of labels.
         self.labels = labels
 
     def validate(self):

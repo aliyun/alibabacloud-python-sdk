@@ -9,6 +9,7 @@ class VideoInsightsMultiStreamConfig(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Specifies whether video multi-stream is supported.
         self.enable = enable
 
     def validate(self):

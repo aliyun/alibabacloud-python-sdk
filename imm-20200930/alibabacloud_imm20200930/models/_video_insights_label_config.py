@@ -12,8 +12,11 @@ class VideoInsightsLabelConfig(DaraModel):
         system: main_models.VideoInsightsSystemLabelConfig = None,
         user_defined: main_models.VideoInsightsUserDefinedLabelConfig = None,
     ):
+        # The highlight label configuration.
         self.highlight = highlight
+        # The system label configuration.
         self.system = system
+        # The custom label configuration.
         self.user_defined = user_defined
 
     def validate(self):

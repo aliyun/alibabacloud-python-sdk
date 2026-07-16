@@ -1,3 +1,7 @@
+2026-07-16 Version: 5.0.1
+- Update API GenerateVideoPlaylist: add request parameters Targets.$.Container.
+
+
 2026-07-02 Version: 5.0.0
 - Update API CreateDataset: delete request parameters DatasetConfig.
 - Update API CreateProject: delete request parameters DatasetConfig.

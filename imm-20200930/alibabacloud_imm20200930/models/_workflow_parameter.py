@@ -10,7 +10,9 @@ class WorkflowParameter(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The invalid parameter.
         self.name = name
+        # The invalid parameter.
         self.value = value
 
     def validate(self):

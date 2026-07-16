@@ -10,7 +10,9 @@ class InsightsLabel(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # The label description.
         self.description = description
+        # The label name.
         self.name = name
 
     def validate(self):

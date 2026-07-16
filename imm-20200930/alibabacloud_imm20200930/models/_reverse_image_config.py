@@ -11,7 +11,9 @@ class ReverseImageConfig(DaraModel):
         image: main_models.ImageReverseImageConfig = None,
         video: main_models.VideoReverseImageConfig = None,
     ):
+        # The image-to-image search configuration.
         self.image = image
+        # The image-to-video search configuration.
         self.video = video
 
     def validate(self):

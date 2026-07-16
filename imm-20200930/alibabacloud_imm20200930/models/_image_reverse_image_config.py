@@ -9,6 +9,7 @@ class ImageReverseImageConfig(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Specifies whether to enable the feature.
         self.enable = enable
 
     def validate(self):

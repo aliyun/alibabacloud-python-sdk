@@ -14,8 +14,11 @@ class VideoInsightsUserDefinedLabelConfig(DaraModel):
         labels: List[main_models.InsightsLabel] = None,
         mode: str = None,
     ):
+        # Specifies whether to enable custom labels.
         self.enable = enable
+        # The list of custom labels.
         self.labels = labels
+        # The custom label matching mode. The SDK passes this as an optional string.
         self.mode = mode
 
     def validate(self):

@@ -12,8 +12,11 @@ class VideoInsightsCaptionConfig(DaraModel):
         person_reference: main_models.PersonReferenceConfig = None,
         prompt: str = None,
     ):
+        # Specifies whether to enable video captioning.
         self.enable = enable
+        # The person reference configuration.
         self.person_reference = person_reference
+        # The custom prompt for video captioning.
         self.prompt = prompt
 
     def validate(self):

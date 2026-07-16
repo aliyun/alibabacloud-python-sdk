@@ -13,13 +13,13 @@ class DocumentReadOption(DaraModel):
         question: main_models.DocumentReadQuestionOption = None,
         summary: main_models.DocumentReadSummaryOption = None,
     ):
-        # Configuration for extracting keywords from the document.
+        # The document intensive reading keyword extraction options.
         self.keyword = keyword
-        # Configuration for the text-to-speech (TTS) narrator.
+        # The document intensive reading guide options.
         self.narrator = narrator
-        # Configuration for the question-answering (Q\\&A) feature, which answers questions based on the document\\"s content.
+        # The document intensive reading question guide options.
         self.question = question
-        # Configuration for generating a document summary.
+        # The document intensive reading summary options.
         self.summary = summary
 
     def validate(self):

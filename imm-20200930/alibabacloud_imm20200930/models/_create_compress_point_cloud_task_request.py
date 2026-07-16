@@ -23,7 +23,7 @@ class CreateCompressPointCloudTaskRequest(DaraModel):
         target_uri: str = None,
         user_data: str = None,
     ):
-        # The name of the compression algorithm. Valid values:
+        # The compression algorithm. Valid values:
         # 
         # - octree: octree
         # 
@@ -31,47 +31,48 @@ class CreateCompressPointCloudTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.compress_method = compress_method
-        # **If you do not have special requirements, leave this parameter empty.**
+        # **Leave this parameter empty unless you have special requirements.**
         # 
-        # The chained authorization configuration. This parameter is not required. For more information, see [Use chained authorization to access other entity resources](https://help.aliyun.com/document_detail/465340.html).
+        # The China authorization configuration. This parameter is optional. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # The parameters for K-d tree compression.
+        # The K-d tree compression parameters.
         self.kdtree_option = kdtree_option
-        # The notification configuration. For more information, click Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
+        # The message notification configuration. For more information, click Notification. For information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         # 
-        # > Intelligent Media Management API callbacks do not support specifying a webhook address. Use MNS instead.
+        # > Intelligent Media Management does not support specifying a callback URL for API call callbacks. Use Message Service (MNS) instead.
+        # >
         self.notification = notification
-        # The parameters for Octree compression.
+        # The octree compression parameters.
         self.octree_option = octree_option
-        # The PCD property fields to compress and the compression order. After compression, the data is decompressed in this order.
+        # The PCD attribute fields that participate in compression and the compression order. After compression, data is decompressed in this order.
         # 
-        # - If you use Octree compression from the Point Cloud Library (PCL), only ["xyz"] is supported.
+        # - If you use PCL library octree compression, ["xyz"] is supported.
         # 
-        # - If you use K-d tree compression from the Draco library, ["xyz"] or ["xyz", "intensity"] is supported.
+        # - If you use Draco library K-d tree compression, ["xyz"] or ["xyz", "intensity"] is supported.
         # 
         # This parameter is required.
         self.point_cloud_fields = point_cloud_fields
-        # The format of the point cloud file. Only the PCD format is supported. The default value is pcd.
+        # The point cloud file format. Only PCD format is supported. Default value: pcd.
         self.point_cloud_file_format = point_cloud_file_format
-        # The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
         # The OSS URI of the point cloud file.
         # 
-        # The URI must be in the format oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket in the same region as the project. ${Object} is the full path of the file, including the file name extension.
+        # The OSS URI follows the format oss://${Bucket}/${Object}, where `${Bucket}` is the name of an OSS bucket in the same region as the current project, and `${Object}` is the full path of the file including the file name extension.
         # 
         # This parameter is required.
         self.source_uri = source_uri
-        # Custom tags to search for and filter asynchronous tasks.
+        # The custom tags that are used to search for and filter asynchronous tasks.
         self.tags = tags
-        # The OSS URI of the output file after compression.
+        # The OSS URI of the compressed output file.
         # 
-        # The URI must be in the format oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket in the same region as the project. ${Object} is the full path of the file, including the file name extension.
+        # The OSS URI follows the format oss://${Bucket}/${Object}, where `${Bucket}` is the name of an OSS bucket in the same region as the current project, and `${Object}` is the full path of the file including the file name extension.
         # 
         # This parameter is required.
         self.target_uri = target_uri
-        # Custom information that is returned in the asynchronous notification message. You can use this information to associate notification messages in your system. The maximum length is 2048 bytes.
+        # The custom information, which is returned in asynchronous message notifications to help you associate message notifications within your system. Maximum length: 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):

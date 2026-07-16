@@ -10,7 +10,9 @@ class ImageInsightsCaptionConfig(DaraModel):
         enable: bool = None,
         prompt: str = None,
     ):
+        # Specifies whether to enable this feature.
         self.enable = enable
+        # The prompt.
         self.prompt = prompt
 
     def validate(self):

@@ -9,6 +9,7 @@ class VideoInsightsSystemLabelConfig(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Specifies whether system labels are supported.
         self.enable = enable
 
     def validate(self):

@@ -11,15 +11,15 @@ class DetectMediaMetaShrinkRequest(DaraModel):
         project_name: str = None,
         source_uri: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**
+        # **Leave this parameter empty unless you have special requirements.**
         # 
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The chain authorization configuration. This parameter is optional. For more information, see [Use chain authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # The name of the project.[](~~478153~~)
+        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         self.project_name = project_name
-        # The URI of the media object in Object Storage Service (OSS).
+        # The Object Storage Service (OSS) URI of the media file.
         # 
-        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # The OSS URI follows the format oss://${Bucket}/${Object}, where `${Bucket}` is the name of an OSS bucket in the same region as the current project, and `${Object}` is the full path of the file including the file name extension.
         self.source_uri = source_uri
 
     def validate(self):

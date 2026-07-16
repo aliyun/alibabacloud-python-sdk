@@ -10,6 +10,7 @@ class ImageInsightsConfig(DaraModel):
         self,
         caption: main_models.ImageInsightsCaptionConfig = None,
     ):
+        # The image content recognition Caption configuration.
         self.caption = caption
 
     def validate(self):

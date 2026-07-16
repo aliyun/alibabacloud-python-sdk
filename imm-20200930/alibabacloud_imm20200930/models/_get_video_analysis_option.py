@@ -16,21 +16,21 @@ class GetVideoAnalysisOption(DaraModel):
         transcript_chapter_summary: bool = None,
         transcript_summary: bool = None,
     ):
-        # Specifies whether to generate a chapter summary for each segment of the video.
+        # Specifies whether to retrieve the chapter-based summary of the video.
         self.chapter_summary = chapter_summary
-        # Specifies whether to extract relevant keywords from the video.
+        # Specifies whether to retrieve keywords.
         self.keyword = keyword
-        # Specifies whether to generate a presentation (PPT) file based on the video analysis.
+        # Specifies whether to retrieve the PPT from the video. Default value: false.
         self.ppt = ppt
-        # Specifies whether to generate potential questions about the video.
+        # Specifies whether to retrieve the generated questions and corresponding answers.
         self.question = question
-        # Specifies whether to generate a concise video summary.
+        # Specifies whether to retrieve the full-text summary.
         self.summary = summary
-        # Specifies whether to transcribe the spoken audio in the video to text.
+        # Specifies whether to retrieve the dialogue in the video. Default value: false.
         self.transcript = transcript
-        # Specifies whether to generate a chapter-based summary from the video transcript.
+        # Specifies whether to retrieve the segmented summary generated from the dialogue in the video. Default value: false.
         self.transcript_chapter_summary = transcript_chapter_summary
-        # Specifies whether to generate a summary of the video transcript.
+        # Specifies whether to retrieve the summary generated from the dialogue in the video. Default value: false.
         self.transcript_summary = transcript_summary
 
     def validate(self):

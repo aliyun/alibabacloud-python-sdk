@@ -20,21 +20,21 @@ class GetDecodeBlindWatermarkResultResponseBody(DaraModel):
         task_type: str = None,
         user_data: str = None,
     ):
-        # The error code of the task.
+        # The task error code.
         self.code = code
         # The watermark content.
         self.content = content
-        # The end time of the task.
+        # The time when the task ended. The time is in the ISO 8601 UTC timestamp format with millisecond precision.
         self.end_time = end_time
         # The event ID.
         self.event_id = event_id
-        # The error message of the task.
+        # The task error message.
         self.message = message
         # The project name.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id
-        # The start time of the task.
+        # The time when the task started. The time is in the ISO 8601 UTC timestamp format with millisecond precision.
         self.start_time = start_time
         # The task status.
         self.status = status
@@ -42,7 +42,7 @@ class GetDecodeBlindWatermarkResultResponseBody(DaraModel):
         self.task_id = task_id
         # The task type.
         self.task_type = task_type
-        # The user data of the task.
+        # The custom information.
         self.user_data = user_data
 
     def validate(self):

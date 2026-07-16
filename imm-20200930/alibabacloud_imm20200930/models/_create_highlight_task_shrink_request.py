@@ -19,7 +19,7 @@ class CreateHighlightTaskShrinkRequest(DaraModel):
         type: str = None,
         user_data: str = None,
     ):
-        # The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**.
+        # The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**
         self.credential_config_shrink = credential_config_shrink
         # The editing configuration.
         self.edit_shrink = edit_shrink
@@ -54,11 +54,11 @@ class CreateHighlightTaskShrinkRequest(DaraModel):
         # 
         # - Concat: video composition.
         # 
-        # - Compose: one-click video creation.
+        # - Compose: one-click video production.
         # 
         # This parameter is required.
         self.type = type
-        # The custom user data, which is returned in asynchronous message notifications.
+        # The custom information, which is returned in asynchronous message notifications.
         self.user_data = user_data
 
     def validate(self):

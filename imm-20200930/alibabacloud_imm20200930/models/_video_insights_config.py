@@ -14,7 +14,9 @@ class VideoInsightsConfig(DaraModel):
     ):
         # The video synopsis configuration.
         self.caption = caption
+        # The label configuration.
         self.label = label
+        # The video multi-stream configuration.
         self.multi_stream = multi_stream
 
     def validate(self):

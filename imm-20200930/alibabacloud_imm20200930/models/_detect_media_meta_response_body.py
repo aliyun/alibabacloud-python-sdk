@@ -35,9 +35,9 @@ class DetectMediaMetaResponseBody(DaraModel):
         video_streams: List[main_models.VideoStream] = None,
         video_width: int = None,
     ):
-        # The addresses.
+        # The geolocation detection results of the video.
         # 
-        # This parameter is returned only when address information is detected.
+        # This parameter has a value only when the video contains geolocation information.
         self.addresses = addresses
         # The album.
         self.album = album
@@ -45,45 +45,46 @@ class DetectMediaMetaResponseBody(DaraModel):
         self.album_artist = album_artist
         # The artist.
         self.artist = artist
-        # The audio streams.
+        # The array of audio streams.
         self.audio_streams = audio_streams
-        # The bitrate. Unit: bit/s.
+        # The bitrate of the media file, in bit/s.
         self.bitrate = bitrate
         # The composer.
         self.composer = composer
-        # The total duration of the video. Unit: seconds.
+        # The total duration of the video, in seconds.
         self.duration = duration
-        # The full format name.
+        # The full name of the format.
         self.format_long_name = format_long_name
-        # The abbreviated format name.
+        # The format name.
         self.format_name = format_name
-        # The language of the content. For more information, see the ISO 639-2 Alpha-3 codes for the representation of names of languages.
+        # The language used in the video. The value follows the ISO 639-2 standard.
         self.language = language
-        # The coordinate pair of the central point. The coordinate pair consists of latitude and longitude values. This parameter value must be in the "latitude,longitude" format. Valid values of the latitude: [-90,+90]. Valid values of the longitude: [-180,+180].
+        # The central geographic coordinate point, which is a latitude and longitude value.
+        # The format is latitude,longitude, with latitude first and longitude second. The latitude range is [-90,+90] and the longitude range is [-180,+180]. Example: 35.8,-45.91.
         self.lat_long = lat_long
         # The performer.
         self.performer = performer
-        # The time of recording. For more information about the time formats, see the RFC3339 Nano standard.
+        # The time when the video was recorded. The value follows the RFC 3339 Nano standard.
         self.produce_time = produce_time
         # The number of programs.
         self.program_count = program_count
         # The request ID.
         self.request_id = request_id
-        # The size of the media object. Unit: bytes.
+        # The size of the media file, in bytes.
         self.size = size
-        # The initial playback time.
+        # The start playback time of the media, in seconds.
         self.start_time = start_time
         # The number of media streams.
         self.stream_count = stream_count
-        # The subtitle streams.
+        # The array of subtitle streams.
         self.subtitles = subtitles
-        # The title of the media object.
+        # The title of the media file.
         self.title = title
-        # The video height in pixels.
+        # The height of the video frame in the media file, in pixels.
         self.video_height = video_height
-        # The video streams.
+        # The array of video streams.
         self.video_streams = video_streams
-        # The video width in pixels.
+        # The width of the video frame in the media file, in pixels.
         self.video_width = video_width
 
     def validate(self):
