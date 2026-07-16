@@ -1,3 +1,13 @@
+2026-07-16 Version: 2.5.0
+- Support API DeleteNormalizationSchema.
+- Support API UpdateDataConnector.
+- Update API ListIncidents: add request parameters IncidentStatusList.
+- Update API ListIncidents: add response parameters Body.Incidents.$.AlertInfos.
+- Update API ListIncidents: add response parameters Body.Incidents.$.AttckTactics.
+- Update API ListIncidents: add response parameters Body.Incidents.$.EntityInfos.
+- Update API ListIncidents: add response parameters Body.Incidents.$.IncidentDescription.
+
+
 2026-07-06 Version: 2.4.0
 - Support API ListDataConnectors.
 - Support API UpdateAlert.

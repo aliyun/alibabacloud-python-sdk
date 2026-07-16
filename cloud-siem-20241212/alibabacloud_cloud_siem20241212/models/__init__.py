@@ -67,6 +67,9 @@ from ._delete_normalization_rule_response import DeleteNormalizationRuleResponse
 from ._delete_normalization_rule_version_request import DeleteNormalizationRuleVersionRequest
 from ._delete_normalization_rule_version_response_body import DeleteNormalizationRuleVersionResponseBody
 from ._delete_normalization_rule_version_response import DeleteNormalizationRuleVersionResponse
+from ._delete_normalization_schema_request import DeleteNormalizationSchemaRequest
+from ._delete_normalization_schema_response_body import DeleteNormalizationSchemaResponseBody
+from ._delete_normalization_schema_response import DeleteNormalizationSchemaResponse
 from ._delete_product_request import DeleteProductRequest
 from ._delete_product_response_body import DeleteProductResponseBody
 from ._delete_product_response import DeleteProductResponse
@@ -252,6 +255,9 @@ from ._update_data_batch_ingestion_request import UpdateDataBatchIngestionReques
 from ._update_data_batch_ingestion_shrink_request import UpdateDataBatchIngestionShrinkRequest
 from ._update_data_batch_ingestion_response_body import UpdateDataBatchIngestionResponseBody
 from ._update_data_batch_ingestion_response import UpdateDataBatchIngestionResponse
+from ._update_data_connector_request import UpdateDataConnectorRequest
+from ._update_data_connector_response_body import UpdateDataConnectorResponseBody
+from ._update_data_connector_response import UpdateDataConnectorResponse
 from ._update_data_ingestion_request import UpdateDataIngestionRequest
 from ._update_data_ingestion_response_body import UpdateDataIngestionResponseBody
 from ._update_data_ingestion_response import UpdateDataIngestionResponse
@@ -446,6 +452,9 @@ __all__ = [
     DeleteNormalizationRuleVersionRequest,
     DeleteNormalizationRuleVersionResponseBody,
     DeleteNormalizationRuleVersionResponse,
+    DeleteNormalizationSchemaRequest,
+    DeleteNormalizationSchemaResponseBody,
+    DeleteNormalizationSchemaResponse,
     DeleteProductRequest,
     DeleteProductResponseBody,
     DeleteProductResponse,
@@ -631,6 +640,9 @@ __all__ = [
     UpdateDataBatchIngestionShrinkRequest,
     UpdateDataBatchIngestionResponseBody,
     UpdateDataBatchIngestionResponse,
+    UpdateDataConnectorRequest,
+    UpdateDataConnectorResponseBody,
+    UpdateDataConnectorResponse,
     UpdateDataIngestionRequest,
     UpdateDataIngestionResponseBody,
     UpdateDataIngestionResponse,

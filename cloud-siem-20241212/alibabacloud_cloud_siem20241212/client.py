@@ -2215,6 +2215,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_normalization_rule_version_with_options_async(request, runtime)
 
+    def delete_normalization_schema_with_options(
+        self,
+        request: main_models.DeleteNormalizationSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNormalizationSchemaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.normalization_schema_id):
+            body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_schema_type):
+            body['NormalizationSchemaType'] = request.normalization_schema_type
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNormalizationSchema',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNormalizationSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_normalization_schema_with_options_async(
+        self,
+        request: main_models.DeleteNormalizationSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNormalizationSchemaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.normalization_schema_id):
+            body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_schema_type):
+            body['NormalizationSchemaType'] = request.normalization_schema_type
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNormalizationSchema',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNormalizationSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_normalization_schema(
+        self,
+        request: main_models.DeleteNormalizationSchemaRequest,
+    ) -> main_models.DeleteNormalizationSchemaResponse:
+        runtime = RuntimeOptions()
+        return self.delete_normalization_schema_with_options(request, runtime)
+
+    async def delete_normalization_schema_async(
+        self,
+        request: main_models.DeleteNormalizationSchemaRequest,
+    ) -> main_models.DeleteNormalizationSchemaResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_normalization_schema_with_options_async(request, runtime)
+
     def delete_product_with_options(
         self,
         request: main_models.DeleteProductRequest,
@@ -5243,6 +5329,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not DaraCore.is_null(request.incident_status):
             body['IncidentStatus'] = request.incident_status
+        if not DaraCore.is_null(request.incident_status_list):
+            body['IncidentStatusList'] = request.incident_status_list
         if not DaraCore.is_null(request.incident_tags):
             body['IncidentTags'] = request.incident_tags
         if not DaraCore.is_null(request.lang):
@@ -5317,6 +5405,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not DaraCore.is_null(request.incident_status):
             body['IncidentStatus'] = request.incident_status
+        if not DaraCore.is_null(request.incident_status_list):
+            body['IncidentStatusList'] = request.incident_status_list
         if not DaraCore.is_null(request.incident_tags):
             body['IncidentTags'] = request.incident_tags
         if not DaraCore.is_null(request.lang):
@@ -7796,6 +7886,108 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataBatchIngestionResponse:
         runtime = RuntimeOptions()
         return await self.update_data_batch_ingestion_with_options_async(request, runtime)
+
+    def update_data_connector_with_options(
+        self,
+        request: main_models.UpdateDataConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auth_config_id):
+            body['AuthConfigId'] = request.auth_config_id
+        if not DaraCore.is_null(request.auth_config_product):
+            body['AuthConfigProduct'] = request.auth_config_product
+        if not DaraCore.is_null(request.auth_config_vendor):
+            body['AuthConfigVendor'] = request.auth_config_vendor
+        if not DaraCore.is_null(request.data_connector_config):
+            body['DataConnectorConfig'] = request.data_connector_config
+        if not DaraCore.is_null(request.data_connector_id):
+            body['DataConnectorId'] = request.data_connector_id
+        if not DaraCore.is_null(request.data_connector_status):
+            body['DataConnectorStatus'] = request.data_connector_status
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataConnector',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_connector_with_options_async(
+        self,
+        request: main_models.UpdateDataConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auth_config_id):
+            body['AuthConfigId'] = request.auth_config_id
+        if not DaraCore.is_null(request.auth_config_product):
+            body['AuthConfigProduct'] = request.auth_config_product
+        if not DaraCore.is_null(request.auth_config_vendor):
+            body['AuthConfigVendor'] = request.auth_config_vendor
+        if not DaraCore.is_null(request.data_connector_config):
+            body['DataConnectorConfig'] = request.data_connector_config
+        if not DaraCore.is_null(request.data_connector_id):
+            body['DataConnectorId'] = request.data_connector_id
+        if not DaraCore.is_null(request.data_connector_status):
+            body['DataConnectorStatus'] = request.data_connector_status
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataConnector',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_connector(
+        self,
+        request: main_models.UpdateDataConnectorRequest,
+    ) -> main_models.UpdateDataConnectorResponse:
+        runtime = RuntimeOptions()
+        return self.update_data_connector_with_options(request, runtime)
+
+    async def update_data_connector_async(
+        self,
+        request: main_models.UpdateDataConnectorRequest,
+    ) -> main_models.UpdateDataConnectorResponse:
+        runtime = RuntimeOptions()
+        return await self.update_data_connector_with_options_async(request, runtime)
 
     def update_data_ingestion_with_options(
         self,

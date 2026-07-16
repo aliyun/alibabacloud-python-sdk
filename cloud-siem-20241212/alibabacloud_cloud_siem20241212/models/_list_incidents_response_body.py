@@ -18,11 +18,11 @@ class ListIncidentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of incidents.
+        # The list of events.
         self.incidents = incidents
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -100,8 +100,12 @@ class ListIncidentsResponseBody(DaraModel):
 class ListIncidentsResponseBodyIncidents(DaraModel):
     def __init__(
         self,
+        alert_infos: str = None,
+        attck_tactics: str = None,
         create_time: int = None,
         detection_rule_id: str = None,
+        entity_infos: str = None,
+        incident_description: str = None,
         incident_name: str = None,
         incident_remark: str = None,
         incident_status: int = None,
@@ -114,38 +118,42 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         threat_level: str = None,
         update_time: int = None,
     ):
+        self.alert_infos = alert_infos
+        self.attck_tactics = attck_tactics
         # The creation time.
         self.create_time = create_time
-        # The ID of the detection rule.
+        # The detection rule ID.
         self.detection_rule_id = detection_rule_id
-        # The name of the incident.
+        self.entity_infos = entity_infos
+        self.incident_description = incident_description
+        # The event name.
         self.incident_name = incident_name
-        # The remarks of the incident.
+        # The event remark.
         self.incident_remark = incident_remark
-        # The status of the incident. Valid values:
-        # - 0: unhandled.
-        # - 1: handling.
-        # - 5: handling failed.
-        # - 10: handled.
+        # The event status. Valid values:
+        # - 0: Unhandled.
+        # - 1: Handling.
+        # - 5: Handling failed.
+        # - 10: Handled.
         self.incident_status = incident_status
-        # The tags of the incident.
+        # The event tags.
         self.incident_tags = incident_tags
-        # The UUID of the incident.
+        # The event UUID.
         self.incident_uuid = incident_uuid
-        # The UID of the account that owns the incident.
+        # The UID of the account responsible for the event.
         self.owner = owner
-        # The number of alerts associated with the incident.
+        # The number of alerts associated with the event.
         self.relate_alert_count = relate_alert_count
-        # The number of assets associated with the incident.
+        # The number of assets associated with the event.
         self.relate_asset_count = relate_asset_count
         # The response time, in milliseconds (ms).
         self.response_time = response_time
         # The threat level. Valid values:
-        # - 5: critical.
-        # - 4: high.
-        # - 3: medium.
-        # - 2: low.
-        # - 1: informational.
+        # - 5: Critical.
+        # - 4: High.
+        # - 3: Medium.
+        # - 2: Low.
+        # - 1: Informational.
         self.threat_level = threat_level
         # The update time.
         self.update_time = update_time
@@ -158,11 +166,23 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.alert_infos is not None:
+            result['AlertInfos'] = self.alert_infos
+
+        if self.attck_tactics is not None:
+            result['AttckTactics'] = self.attck_tactics
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
         if self.detection_rule_id is not None:
             result['DetectionRuleId'] = self.detection_rule_id
+
+        if self.entity_infos is not None:
+            result['EntityInfos'] = self.entity_infos
+
+        if self.incident_description is not None:
+            result['IncidentDescription'] = self.incident_description
 
         if self.incident_name is not None:
             result['IncidentName'] = self.incident_name
@@ -201,11 +221,23 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlertInfos') is not None:
+            self.alert_infos = m.get('AlertInfos')
+
+        if m.get('AttckTactics') is not None:
+            self.attck_tactics = m.get('AttckTactics')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
         if m.get('DetectionRuleId') is not None:
             self.detection_rule_id = m.get('DetectionRuleId')
+
+        if m.get('EntityInfos') is not None:
+            self.entity_infos = m.get('EntityInfos')
+
+        if m.get('IncidentDescription') is not None:
+            self.incident_description = m.get('IncidentDescription')
 
         if m.get('IncidentName') is not None:
             self.incident_name = m.get('IncidentName')

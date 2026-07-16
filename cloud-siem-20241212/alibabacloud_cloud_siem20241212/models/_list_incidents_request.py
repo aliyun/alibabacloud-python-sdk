@@ -13,6 +13,7 @@ class ListIncidentsRequest(DaraModel):
         end_time: int = None,
         incident_name: str = None,
         incident_status: int = None,
+        incident_status_list: List[str] = None,
         incident_tags: str = None,
         incident_uuids: List[str] = None,
         lang: str = None,
@@ -33,37 +34,38 @@ class ListIncidentsRequest(DaraModel):
     ):
         # The alert ID.
         self.alert_uuid = alert_uuid
-        # The end time as a timestamp in milliseconds (ms).
+        # The end time as a UNIX timestamp in milliseconds (ms).
         self.end_time = end_time
-        # The name of the incident.
+        # The event name.
         self.incident_name = incident_name
-        # The status of the incident. Valid values:
-        # - 0: unhandled.
-        # - 1: handling.
-        # - 5: handling failed.
-        # - 10: handled.
+        # The event status. Valid values:
+        # - 0: Unhandled.
+        # - 1: Handling.
+        # - 5: Handling failed.
+        # - 10: Handled.
         self.incident_status = incident_status
-        # The tags of the incident.
+        self.incident_status_list = incident_status_list
+        # The event tags.
         self.incident_tags = incident_tags
-        # The list of incident UUIDs, separated by commas (,).
+        # The list of event UUIDs, separated by commas (,).
         self.incident_uuids = incident_uuids
-        # The language of the response. Valid values:
+        # The language type of the response messages. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The sort direction. Valid values:
-        # - **desc** (default): descending order.
-        # - **asc**: ascending order.
+        # - **desc** (default): Descending order.
+        # - **asc**: Ascending order.
         self.order_direction = order_direction
-        # The field name used to sort the list. Valid values:
-        # - GmtModified: sorts by incident update time (default).
-        # - ThreatScore: sorts by threat score.
+        # The name of the field used to sort the list.
+        # - GmtModified: Event update time (default).
+        # - ThreatScore: Threat score.
         self.order_field_name = order_field_name
-        # The UID of the account that owns the incident.
+        # The UID of the account responsible for the event.
         self.owners = owners
         # The page number.
         # 
@@ -73,28 +75,28 @@ class ListIncidentsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside China.
+        # The region where the threat analysis data management center is located. Select the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets are located in the Chinese mainland.
+        # - ap-southeast-1: Your assets are located outside China.
         self.region_id = region_id
-        # The ID of the asset associated with the incident.
+        # The ID of the asset associated with the event.
         self.relate_asset_id = relate_asset_id
-        # The ID of the entity associated with the incident.
+        # The ID of the entity associated with the event.
         self.relate_entity_id = relate_entity_id
         # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
         # The view type. Valid values:
-        # - 0: the view of the current Alibaba Cloud account.
-        # - 1: the view of all accounts in the enterprise.
+        # - 0: The view of the current Alibaba Cloud account.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
-        # The start time as a timestamp in milliseconds (ms).
+        # The start time as a UNIX timestamp in milliseconds (ms).
         self.start_time = start_time
         # The threat level. Valid values:
-        # - 5: critical.
-        # - 4: high.
-        # - 3: medium.
-        # - 2: low.
-        # - 1: informational.
+        # - 5: Critical.
+        # - 4: High.
+        # - 3: Medium.
+        # - 2: Low.
+        # - 1: Informational.
         self.threat_level = threat_level
 
     def validate(self):
@@ -116,6 +118,9 @@ class ListIncidentsRequest(DaraModel):
 
         if self.incident_status is not None:
             result['IncidentStatus'] = self.incident_status
+
+        if self.incident_status_list is not None:
+            result['IncidentStatusList'] = self.incident_status_list
 
         if self.incident_tags is not None:
             result['IncidentTags'] = self.incident_tags
@@ -183,6 +188,9 @@ class ListIncidentsRequest(DaraModel):
 
         if m.get('IncidentStatus') is not None:
             self.incident_status = m.get('IncidentStatus')
+
+        if m.get('IncidentStatusList') is not None:
+            self.incident_status_list = m.get('IncidentStatusList')
 
         if m.get('IncidentTags') is not None:
             self.incident_tags = m.get('IncidentTags')
