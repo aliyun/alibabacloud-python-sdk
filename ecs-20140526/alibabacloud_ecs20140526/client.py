@@ -17854,6 +17854,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
+        if not DaraCore.is_null(request.usable):
+            query['Usable'] = request.usable
         if not DaraCore.is_null(request.usage):
             query['Usage'] = request.usage
         req = open_api_util_models.OpenApiRequest(
@@ -17934,6 +17936,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
+        if not DaraCore.is_null(request.usable):
+            query['Usable'] = request.usable
         if not DaraCore.is_null(request.usage):
             query['Usage'] = request.usage
         req = open_api_util_models.OpenApiRequest(

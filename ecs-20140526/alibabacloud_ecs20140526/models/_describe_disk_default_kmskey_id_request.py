@@ -12,7 +12,7 @@ class DescribeDiskDefaultKMSKeyIdRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The ID of the region. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -10,11 +10,13 @@ class DescribeDiskEncryptionByDefaultStatusResponseBody(DaraModel):
         encrypted: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether account-level default encryption of EBS resources is enabled in the region. Valid values:
+        # Indicates whether account-level default encryption is enabled for block storage.
         # 
-        # - true
+        # Valid values:
         # 
-        # - false
+        # - true: Enabled.
+        # 
+        # - false: Not enabled.
         # 
         # Default value: false.
         self.encrypted = encrypted

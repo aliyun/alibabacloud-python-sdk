@@ -11,9 +11,9 @@ class CreateDiskResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the disk.
+        # The disk ID.
         self.disk_id = disk_id
-        # The ID of the order.
+        # The order ID.
         # 
         # > An order ID is returned only when you create a subscription disk.
         self.order_id = order_id

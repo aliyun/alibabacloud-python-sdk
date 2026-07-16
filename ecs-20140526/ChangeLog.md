@@ -1,3 +1,8 @@
+2026-07-16 Version: 7.9.2
+- Update API DescribeImages: add request parameters Usable.
+- Update API DescribeImages: add response parameters Body.Images.$.Usable.
+
+
 2026-07-10 Version: 7.9.1
 - Generated python 2014-05-26 for Ecs.
 

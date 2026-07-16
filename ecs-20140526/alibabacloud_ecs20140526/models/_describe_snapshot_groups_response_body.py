@@ -14,11 +14,11 @@ class DescribeSnapshotGroupsResponseBody(DaraModel):
         request_id: str = None,
         snapshot_groups: main_models.DescribeSnapshotGroupsResponseBodySnapshotGroups = None,
     ):
-        # The token used to start the next query.
+        # The pagination token for the next query.
         # 
-        # > If the return value is empty, no more data exists.
+        # > If this parameter is empty, no more results are available.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.snapshot_groups = snapshot_groups
 
