@@ -1,3 +1,7 @@
+2026-07-16 Version: 2.17.4
+- Update API ListApplications: add request parameters ApplicationTemplateId.
+
+
 2026-07-15 Version: 2.17.3
 - Update API GenerateOauthToken: add request parameters GrantType.
 - Update API GenerateOauthToken: add request parameters RequestedTokenType.

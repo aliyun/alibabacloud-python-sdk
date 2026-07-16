@@ -15721,6 +15721,8 @@ class Client(OpenApiClient):
             query['ApplicationIds'] = request.application_ids
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
         if not DaraCore.is_null(request.authorization_type):
             query['AuthorizationType'] = request.authorization_type
         if not DaraCore.is_null(request.custom_fields):
@@ -15777,6 +15779,8 @@ class Client(OpenApiClient):
             query['ApplicationIds'] = request.application_ids
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
         if not DaraCore.is_null(request.authorization_type):
             query['AuthorizationType'] = request.authorization_type
         if not DaraCore.is_null(request.custom_fields):

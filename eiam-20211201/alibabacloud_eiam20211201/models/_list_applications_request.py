@@ -14,6 +14,7 @@ class ListApplicationsRequest(DaraModel):
         application_identity_type: str = None,
         application_ids: List[str] = None,
         application_name: str = None,
+        application_template_id: str = None,
         authorization_type: str = None,
         custom_fields: List[main_models.ListApplicationsRequestCustomFields] = None,
         instance_id: str = None,
@@ -34,6 +35,7 @@ class ListApplicationsRequest(DaraModel):
         self.application_ids = application_ids
         # The application name. Only left fuzzy match is supported.
         self.application_name = application_name
+        self.application_template_id = application_template_id
         # The application access authorization type. Valid values:
         # - authorize_required: Explicit authorization is required for access.
         # - default_all: All members have access permissions by default.
@@ -83,6 +85,9 @@ class ListApplicationsRequest(DaraModel):
 
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+
+        if self.application_template_id is not None:
+            result['ApplicationTemplateId'] = self.application_template_id
 
         if self.authorization_type is not None:
             result['AuthorizationType'] = self.authorization_type
@@ -134,6 +139,9 @@ class ListApplicationsRequest(DaraModel):
 
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+
+        if m.get('ApplicationTemplateId') is not None:
+            self.application_template_id = m.get('ApplicationTemplateId')
 
         if m.get('AuthorizationType') is not None:
             self.authorization_type = m.get('AuthorizationType')

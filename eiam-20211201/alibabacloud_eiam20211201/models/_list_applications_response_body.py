@@ -101,7 +101,7 @@ class ListApplicationsResponseBodyApplications(DaraModel):
         self.application_template_id = application_template_id
         # The client ID of the application.
         self.client_id = client_id
-        # The time when the application was created, in UNIX timestamp format. Unit: milliseconds.
+        # The application creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The application description.
         self.description = description
@@ -128,7 +128,7 @@ class ListApplicationsResponseBodyApplications(DaraModel):
         self.resource_server_status = resource_server_status
         # Indicates whether the application template is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
-        # The single sign-on (SSO) logon protocol. Valid values:
+        # The single sign-on protocol. Valid values:
         # - saml2: SAML 2.0 protocol.
         # - oidc: OpenID Connect protocol.
         # - oauth2/m2m: OAuth 2.0 protocol.
