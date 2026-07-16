@@ -78,6 +78,9 @@ from ._create_rpl_inspection_task_response import CreateRplInspectionTaskRespons
 from ._create_sqlevaluate_task_request import CreateSQLEvaluateTaskRequest
 from ._create_sqlevaluate_task_response_body import CreateSQLEvaluateTaskResponseBody
 from ._create_sqlevaluate_task_response import CreateSQLEvaluateTaskResponse
+from ._create_service_account_request import CreateServiceAccountRequest
+from ._create_service_account_response_body import CreateServiceAccountResponseBody
+from ._create_service_account_response import CreateServiceAccountResponse
 from ._create_storage_pool_request import CreateStoragePoolRequest
 from ._create_storage_pool_response_body import CreateStoragePoolResponseBody
 from ._create_storage_pool_response import CreateStoragePoolResponse
@@ -120,6 +123,9 @@ from ._delete_mem_0response import DeleteMem0Response
 from ._delete_polardbx_supabase_instance_request import DeletePolardbxSupabaseInstanceRequest
 from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBody
 from ._delete_polardbx_supabase_instance_response import DeletePolardbxSupabaseInstanceResponse
+from ._delete_service_account_request import DeleteServiceAccountRequest
+from ._delete_service_account_response_body import DeleteServiceAccountResponseBody
+from ._delete_service_account_response import DeleteServiceAccountResponse
 from ._delete_sub_cninstance_request import DeleteSubCNInstanceRequest
 from ._delete_sub_cninstance_response_body import DeleteSubCNInstanceResponseBody
 from ._delete_sub_cninstance_response import DeleteSubCNInstanceResponse
@@ -278,6 +284,9 @@ from ._describe_scale_out_migrate_task_list_response import DescribeScaleOutMigr
 from ._describe_security_ips_request import DescribeSecurityIpsRequest
 from ._describe_security_ips_response_body import DescribeSecurityIpsResponseBody
 from ._describe_security_ips_response import DescribeSecurityIpsResponse
+from ._describe_service_account_request import DescribeServiceAccountRequest
+from ._describe_service_account_response_body import DescribeServiceAccountResponseBody
+from ._describe_service_account_response import DescribeServiceAccountResponse
 from ._describe_show_storage_info_request import DescribeShowStorageInfoRequest
 from ._describe_show_storage_info_response_body import DescribeShowStorageInfoResponseBody
 from ._describe_show_storage_info_response import DescribeShowStorageInfoResponse
@@ -332,6 +341,9 @@ from ._enable_rights_separation_response import EnableRightsSeparationResponse
 from ._enable_sql_audit_request import EnableSqlAuditRequest
 from ._enable_sql_audit_response_body import EnableSqlAuditResponseBody
 from ._enable_sql_audit_response import EnableSqlAuditResponse
+from ._execute_meta_query_request import ExecuteMetaQueryRequest
+from ._execute_meta_query_response_body import ExecuteMetaQueryResponseBody
+from ._execute_meta_query_response import ExecuteMetaQueryResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -499,6 +511,8 @@ from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupa
 from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupabaseInstanceResponseBodyData
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBodyData
 from ._create_sqlevaluate_task_response_body import CreateSQLEvaluateTaskResponseBodyData
+from ._create_service_account_response_body import CreateServiceAccountResponseBodyAccessDeniedDetail
+from ._create_service_account_response_body import CreateServiceAccountResponseBodyData
 from ._create_structure_import_task_response_body import CreateStructureImportTaskResponseBodyData
 from ._create_sub_cninstance_response_body import CreateSubCNInstanceResponseBodyData
 from ._create_supabase_net_type_response_body import CreateSupabaseNetTypeResponseBodyAccessDeniedDetail
@@ -508,6 +522,8 @@ from ._delete_mem_0response_body import DeleteMem0ResponseBodyAccessDeniedDetail
 from ._delete_mem_0response_body import DeleteMem0ResponseBodyData
 from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail
 from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBodyData
+from ._delete_service_account_response_body import DeleteServiceAccountResponseBodyAccessDeniedDetail
+from ._delete_service_account_response_body import DeleteServiceAccountResponseBodyData
 from ._delete_sub_cninstance_response_body import DeleteSubCNInstanceResponseBodyData
 from ._delete_supabase_net_type_response_body import DeleteSupabaseNetTypeResponseBodyAccessDeniedDetail
 from ._delete_supabase_net_type_response_body import DeleteSupabaseNetTypeResponseBodyData
@@ -612,6 +628,9 @@ from ._describe_rpl_inspection_task_response_body import DescribeRplInspectionTa
 from ._describe_rpl_inspection_task_response_body import DescribeRplInspectionTaskResponseBodyData
 from ._describe_security_ips_response_body import DescribeSecurityIpsResponseBodyDataGroupItems
 from ._describe_security_ips_response_body import DescribeSecurityIpsResponseBodyData
+from ._describe_service_account_response_body import DescribeServiceAccountResponseBodyAccessDeniedDetail
+from ._describe_service_account_response_body import DescribeServiceAccountResponseBodyDataServiceAccounts
+from ._describe_service_account_response_body import DescribeServiceAccountResponseBodyData
 from ._describe_show_storage_info_response_body import DescribeShowStorageInfoResponseBodyDataStorageInfos
 from ._describe_show_storage_info_response_body import DescribeShowStorageInfoResponseBodyData
 from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBodyItems
@@ -638,6 +657,8 @@ from ._describe_tags_response_body import DescribeTagsResponseBodyTagInfos
 from ._describe_tasks_response_body import DescribeTasksResponseBodyItems
 from ._describe_transform_status_response_body import DescribeTransformStatusResponseBodyData
 from ._describe_user_encryption_key_list_response_body import DescribeUserEncryptionKeyListResponseBodyData
+from ._execute_meta_query_response_body import ExecuteMetaQueryResponseBodyAccessDeniedDetail
+from ._execute_meta_query_response_body import ExecuteMetaQueryResponseBodyData
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -750,6 +771,9 @@ __all__ = [
     CreateSQLEvaluateTaskRequest,
     CreateSQLEvaluateTaskResponseBody,
     CreateSQLEvaluateTaskResponse,
+    CreateServiceAccountRequest,
+    CreateServiceAccountResponseBody,
+    CreateServiceAccountResponse,
     CreateStoragePoolRequest,
     CreateStoragePoolResponseBody,
     CreateStoragePoolResponse,
@@ -792,6 +816,9 @@ __all__ = [
     DeletePolardbxSupabaseInstanceRequest,
     DeletePolardbxSupabaseInstanceResponseBody,
     DeletePolardbxSupabaseInstanceResponse,
+    DeleteServiceAccountRequest,
+    DeleteServiceAccountResponseBody,
+    DeleteServiceAccountResponse,
     DeleteSubCNInstanceRequest,
     DeleteSubCNInstanceResponseBody,
     DeleteSubCNInstanceResponse,
@@ -950,6 +977,9 @@ __all__ = [
     DescribeSecurityIpsRequest,
     DescribeSecurityIpsResponseBody,
     DescribeSecurityIpsResponse,
+    DescribeServiceAccountRequest,
+    DescribeServiceAccountResponseBody,
+    DescribeServiceAccountResponse,
     DescribeShowStorageInfoRequest,
     DescribeShowStorageInfoResponseBody,
     DescribeShowStorageInfoResponse,
@@ -1004,6 +1034,9 @@ __all__ = [
     EnableSqlAuditRequest,
     EnableSqlAuditResponseBody,
     EnableSqlAuditResponse,
+    ExecuteMetaQueryRequest,
+    ExecuteMetaQueryResponseBody,
+    ExecuteMetaQueryResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -1171,6 +1204,8 @@ __all__ = [
     CreatePolardbxSupabaseInstanceResponseBodyData,
     CreateRplInspectionTaskResponseBodyData,
     CreateSQLEvaluateTaskResponseBodyData,
+    CreateServiceAccountResponseBodyAccessDeniedDetail,
+    CreateServiceAccountResponseBodyData,
     CreateStructureImportTaskResponseBodyData,
     CreateSubCNInstanceResponseBodyData,
     CreateSupabaseNetTypeResponseBodyAccessDeniedDetail,
@@ -1180,6 +1215,8 @@ __all__ = [
     DeleteMem0ResponseBodyData,
     DeletePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail,
     DeletePolardbxSupabaseInstanceResponseBodyData,
+    DeleteServiceAccountResponseBodyAccessDeniedDetail,
+    DeleteServiceAccountResponseBodyData,
     DeleteSubCNInstanceResponseBodyData,
     DeleteSupabaseNetTypeResponseBodyAccessDeniedDetail,
     DeleteSupabaseNetTypeResponseBodyData,
@@ -1284,6 +1321,9 @@ __all__ = [
     DescribeRplInspectionTaskResponseBodyData,
     DescribeSecurityIpsResponseBodyDataGroupItems,
     DescribeSecurityIpsResponseBodyData,
+    DescribeServiceAccountResponseBodyAccessDeniedDetail,
+    DescribeServiceAccountResponseBodyDataServiceAccounts,
+    DescribeServiceAccountResponseBodyData,
     DescribeShowStorageInfoResponseBodyDataStorageInfos,
     DescribeShowStorageInfoResponseBodyData,
     DescribeSlowLogRecordsResponseBodyItems,
@@ -1310,6 +1350,8 @@ __all__ = [
     DescribeTasksResponseBodyItems,
     DescribeTransformStatusResponseBodyData,
     DescribeUserEncryptionKeyListResponseBodyData,
+    ExecuteMetaQueryResponseBodyAccessDeniedDetail,
+    ExecuteMetaQueryResponseBodyData,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,

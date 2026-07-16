@@ -12,6 +12,7 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
         dashboard_password: str = None,
         db_instance_description: str = None,
         db_password: str = None,
+        node_spec: str = None,
         pay_type: str = None,
         period: str = None,
         region_id: str = None,
@@ -36,6 +37,8 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_password = db_password
+        # The node specifications.
+        self.node_spec = node_spec
         # The billing type. Valid values:
         # - PREPAY: subscription.
         # - POSTPAY: pay-as-you-go.
@@ -93,6 +96,9 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
         if self.db_password is not None:
             result['DbPassword'] = self.db_password
 
+        if self.node_spec is not None:
+            result['NodeSpec'] = self.node_spec
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -138,6 +144,9 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
 
         if m.get('DbPassword') is not None:
             self.db_password = m.get('DbPassword')
+
+        if m.get('NodeSpec') is not None:
+            self.node_spec = m.get('NodeSpec')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')

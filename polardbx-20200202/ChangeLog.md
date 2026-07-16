@@ -1,3 +1,11 @@
+2026-07-16 Version: 3.9.0
+- Support API CreateServiceAccount.
+- Support API DeleteServiceAccount.
+- Support API DescribeServiceAccount.
+- Support API ExecuteMetaQuery.
+- Update API CreatePolardbxSupabaseInstance: add request parameters NodeSpec.
+
+
 2026-07-03 Version: 3.8.0
 - Support API CheckHealth.
 - Support API CreatePolardbxSupabaseInstance.

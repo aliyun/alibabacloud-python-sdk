@@ -2,22 +2,30 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List, Dict, Any
+
 from alibabacloud_polardbx20200202 import models as main_models
 from darabonba.model import DaraModel
 
-class CreatePolardbxSupabaseInstanceResponseBody(DaraModel):
+class ExecuteMetaQueryResponseBody(DaraModel):
     def __init__(
         self,
-        access_denied_detail: main_models.CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail = None,
-        data: main_models.CreatePolardbxSupabaseInstanceResponseBodyData = None,
+        access_denied_detail: main_models.ExecuteMetaQueryResponseBodyAccessDeniedDetail = None,
+        data: main_models.ExecuteMetaQueryResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
-        # The details of the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The creation result.
+        # The instance details.
         self.data = data
-        # The request ID.
+        # The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+        self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        self.success = success
 
     def validate(self):
         if self.access_denied_detail:
@@ -36,42 +44,51 @@ class CreatePolardbxSupabaseInstanceResponseBody(DaraModel):
         if self.data is not None:
             result['Data'] = self.data.to_map()
 
+        if self.message is not None:
+            result['Message'] = self.message
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
-            temp_model = main_models.CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail()
+            temp_model = main_models.ExecuteMetaQueryResponseBodyAccessDeniedDetail()
             self.access_denied_detail = temp_model.from_map(m.get('AccessDeniedDetail'))
 
         if m.get('Data') is not None:
-            temp_model = main_models.CreatePolardbxSupabaseInstanceResponseBodyData()
+            temp_model = main_models.ExecuteMetaQueryResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
         return self
 
-class CreatePolardbxSupabaseInstanceResponseBodyData(DaraModel):
+class ExecuteMetaQueryResponseBodyData(DaraModel):
     def __init__(
         self,
-        connection_string: str = None,
-        dbinstance_id: str = None,
-        order_id: int = None,
-        port: int = None,
+        columns: List[str] = None,
+        row_count: int = None,
+        rows: List[Dict[str, Any]] = None,
     ):
-        # The endpoint.
-        self.connection_string = connection_string
-        # The instance ID.
-        self.dbinstance_id = dbinstance_id
-        # The order ID.
-        self.order_id = order_id
-        # The port.
-        self.port = port
+        # The column names.
+        self.columns = columns
+        # The total number of data rows.
+        self.row_count = row_count
+        # The number of affected or returned rows. This field is available only for compute nodes (CNs).
+        self.rows = rows
 
     def validate(self):
         pass
@@ -81,60 +98,48 @@ class CreatePolardbxSupabaseInstanceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.connection_string is not None:
-            result['ConnectionString'] = self.connection_string
+        if self.columns is not None:
+            result['Columns'] = self.columns
 
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
 
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
-        if self.port is not None:
-            result['Port'] = self.port
+        if self.rows is not None:
+            result['Rows'] = self.rows
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConnectionString') is not None:
-            self.connection_string = m.get('ConnectionString')
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
 
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
 
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
+        if m.get('Rows') is not None:
+            self.rows = m.get('Rows')
 
         return self
 
-class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
+class ExecuteMetaQueryResponseBodyAccessDeniedDetail(DaraModel):
     def __init__(
         self,
         auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
         auth_principal_type: str = None,
         encoded_diagnostic_message: str = None,
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authentication action.
+        # The description is the same as above.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
-        self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
-        self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The description is the same as above.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # NoPermissionType
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # PolicyType
         self.policy_type = policy_type
 
     def validate(self):
@@ -147,12 +152,6 @@ class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
             result = _map
         if self.auth_action is not None:
             result['AuthAction'] = self.auth_action
-
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
 
         if self.auth_principal_type is not None:
             result['AuthPrincipalType'] = self.auth_principal_type
@@ -172,12 +171,6 @@ class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
         m = m or dict()
         if m.get('AuthAction') is not None:
             self.auth_action = m.get('AuthAction')
-
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
 
         if m.get('AuthPrincipalType') is not None:
             self.auth_principal_type = m.get('AuthPrincipalType')

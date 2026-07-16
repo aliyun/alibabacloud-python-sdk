@@ -2146,6 +2146,8 @@ class Client(OpenApiClient):
             query['DbInstanceDescription'] = request.db_instance_description
         if not DaraCore.is_null(request.db_password):
             query['DbPassword'] = request.db_password
+        if not DaraCore.is_null(request.node_spec):
+            query['NodeSpec'] = request.node_spec
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -2200,6 +2202,8 @@ class Client(OpenApiClient):
             query['DbInstanceDescription'] = request.db_instance_description
         if not DaraCore.is_null(request.db_password):
             query['DbPassword'] = request.db_password
+        if not DaraCore.is_null(request.node_spec):
+            query['NodeSpec'] = request.node_spec
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -2466,6 +2470,84 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSQLEvaluateTaskResponse:
         runtime = RuntimeOptions()
         return await self.create_sqlevaluate_task_with_options_async(request, runtime)
+
+    def create_service_account_with_options(
+        self,
+        request: main_models.CreateServiceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_account_type):
+            query['ServiceAccountType'] = request.service_account_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_account_with_options_async(
+        self,
+        request: main_models.CreateServiceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_account_type):
+            query['ServiceAccountType'] = request.service_account_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_account(
+        self,
+        request: main_models.CreateServiceAccountRequest,
+    ) -> main_models.CreateServiceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.create_service_account_with_options(request, runtime)
+
+    async def create_service_account_async(
+        self,
+        request: main_models.CreateServiceAccountRequest,
+    ) -> main_models.CreateServiceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.create_service_account_with_options_async(request, runtime)
 
     def create_storage_pool_with_options(
         self,
@@ -3574,6 +3656,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePolardbxSupabaseInstanceResponse:
         runtime = RuntimeOptions()
         return await self.delete_polardbx_supabase_instance_with_options_async(request, runtime)
+
+    def delete_service_account_with_options(
+        self,
+        request: main_models.DeleteServiceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_account_type):
+            query['ServiceAccountType'] = request.service_account_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_account_with_options_async(
+        self,
+        request: main_models.DeleteServiceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_account_type):
+            query['ServiceAccountType'] = request.service_account_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_account(
+        self,
+        request: main_models.DeleteServiceAccountRequest,
+    ) -> main_models.DeleteServiceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.delete_service_account_with_options(request, runtime)
+
+    async def delete_service_account_async(
+        self,
+        request: main_models.DeleteServiceAccountRequest,
+    ) -> main_models.DeleteServiceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_service_account_with_options_async(request, runtime)
 
     def delete_sub_cninstance_with_options(
         self,
@@ -7701,6 +7861,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_security_ips_with_options_async(request, runtime)
 
+    def describe_service_account_with_options(
+        self,
+        request: main_models.DescribeServiceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeServiceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeServiceAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeServiceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_account_with_options_async(
+        self,
+        request: main_models.DescribeServiceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeServiceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeServiceAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeServiceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_account(
+        self,
+        request: main_models.DescribeServiceAccountRequest,
+    ) -> main_models.DescribeServiceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.describe_service_account_with_options(request, runtime)
+
+    async def describe_service_account_async(
+        self,
+        request: main_models.DescribeServiceAccountRequest,
+    ) -> main_models.DescribeServiceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_service_account_with_options_async(request, runtime)
+
     def describe_show_storage_info_with_options(
         self,
         request: main_models.DescribeShowStorageInfoRequest,
@@ -9192,6 +9426,88 @@ class Client(OpenApiClient):
     ) -> main_models.EnableSqlAuditResponse:
         runtime = RuntimeOptions()
         return await self.enable_sql_audit_with_options_async(request, runtime)
+
+    def execute_meta_query_with_options(
+        self,
+        request: main_models.ExecuteMetaQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteMetaQueryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['Sql'] = request.sql
+        if not DaraCore.is_null(request.storage_inst_id):
+            query['StorageInstId'] = request.storage_inst_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteMetaQuery',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteMetaQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_meta_query_with_options_async(
+        self,
+        request: main_models.ExecuteMetaQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteMetaQueryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['Sql'] = request.sql
+        if not DaraCore.is_null(request.storage_inst_id):
+            query['StorageInstId'] = request.storage_inst_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteMetaQuery',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteMetaQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_meta_query(
+        self,
+        request: main_models.ExecuteMetaQueryRequest,
+    ) -> main_models.ExecuteMetaQueryResponse:
+        runtime = RuntimeOptions()
+        return self.execute_meta_query_with_options(request, runtime)
+
+    async def execute_meta_query_async(
+        self,
+        request: main_models.ExecuteMetaQueryRequest,
+    ) -> main_models.ExecuteMetaQueryResponse:
+        runtime = RuntimeOptions()
+        return await self.execute_meta_query_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,

@@ -5,19 +5,25 @@ from __future__ import annotations
 from alibabacloud_polardbx20200202 import models as main_models
 from darabonba.model import DaraModel
 
-class CreatePolardbxSupabaseInstanceResponseBody(DaraModel):
+class DeleteServiceAccountResponseBody(DaraModel):
     def __init__(
         self,
-        access_denied_detail: main_models.CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail = None,
-        data: main_models.CreatePolardbxSupabaseInstanceResponseBodyData = None,
+        access_denied_detail: main_models.DeleteServiceAccountResponseBodyAccessDeniedDetail = None,
+        data: main_models.DeleteServiceAccountResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The creation result.
+        # The data struct.
         self.data = data
+        # The error message. This parameter is empty if the request is successful.
+        self.message = message
         # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        self.success = success
 
     def validate(self):
         if self.access_denied_detail:
@@ -36,42 +42,60 @@ class CreatePolardbxSupabaseInstanceResponseBody(DaraModel):
         if self.data is not None:
             result['Data'] = self.data.to_map()
 
+        if self.message is not None:
+            result['Message'] = self.message
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
-            temp_model = main_models.CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail()
+            temp_model = main_models.DeleteServiceAccountResponseBodyAccessDeniedDetail()
             self.access_denied_detail = temp_model.from_map(m.get('AccessDeniedDetail'))
 
         if m.get('Data') is not None:
-            temp_model = main_models.CreatePolardbxSupabaseInstanceResponseBodyData()
+            temp_model = main_models.DeleteServiceAccountResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
         return self
 
-class CreatePolardbxSupabaseInstanceResponseBodyData(DaraModel):
+class DeleteServiceAccountResponseBodyData(DaraModel):
     def __init__(
         self,
-        connection_string: str = None,
-        dbinstance_id: str = None,
-        order_id: int = None,
-        port: int = None,
+        account_name: str = None,
+        deleted: bool = None,
+        request_id: str = None,
+        service_account_type: str = None,
+        status: str = None,
+        task_id: int = None,
     ):
-        # The endpoint.
-        self.connection_string = connection_string
-        # The instance ID.
-        self.dbinstance_id = dbinstance_id
-        # The order ID.
-        self.order_id = order_id
-        # The port.
-        self.port = port
+        # The account name.
+        self.account_name = account_name
+        # Indicates whether the import task is successful.
+        self.deleted = deleted
+        # The request ID.
+        self.request_id = request_id
+        # The service account type.
+        self.service_account_type = service_account_type
+        # The instance status.
+        self.status = status
+        # The task ID.
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -81,42 +105,52 @@ class CreatePolardbxSupabaseInstanceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.connection_string is not None:
-            result['ConnectionString'] = self.connection_string
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
 
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
 
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
 
-        if self.port is not None:
-            result['Port'] = self.port
+        if self.service_account_type is not None:
+            result['ServiceAccountType'] = self.service_account_type
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConnectionString') is not None:
-            self.connection_string = m.get('ConnectionString')
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
 
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
 
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
 
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
+        if m.get('ServiceAccountType') is not None:
+            self.service_account_type = m.get('ServiceAccountType')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
 
         return self
 
-class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
+class DeleteServiceAccountResponseBodyAccessDeniedDetail(DaraModel):
     def __init__(
         self,
         auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
         auth_principal_type: str = None,
         encoded_diagnostic_message: str = None,
         no_permission_type: str = None,
@@ -124,15 +158,11 @@ class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
-        self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
-        self.auth_principal_owner_id = auth_principal_owner_id
         # The authentication principal type.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The type of missing permission.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type
@@ -147,12 +177,6 @@ class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
             result = _map
         if self.auth_action is not None:
             result['AuthAction'] = self.auth_action
-
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
 
         if self.auth_principal_type is not None:
             result['AuthPrincipalType'] = self.auth_principal_type
@@ -172,12 +196,6 @@ class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
         m = m or dict()
         if m.get('AuthAction') is not None:
             self.auth_action = m.get('AuthAction')
-
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
 
         if m.get('AuthPrincipalType') is not None:
             self.auth_principal_type = m.get('AuthPrincipalType')
