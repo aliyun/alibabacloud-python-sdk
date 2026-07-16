@@ -1,3 +1,34 @@
+2026-07-16 Version: 3.8.0
+- Support API CloneVersion.
+- Support API CreateEnvironment.
+- Support API DeleteEnvironment.
+- Support API DeleteVersion.
+- Support API DescribeConditionIPBInfo.
+- Support API DescribeRuleMetadata.
+- Support API ExportRecordCnames.
+- Support API GetCacheReserve.
+- Support API GetMainDomainName.
+- Support API GetMatchSite.
+- Support API GetPageShield.
+- Support API GetSiteTrafficSequence.
+- Support API GetWaitingRoomPreviewPage.
+- Support API ListAWSRegionInfos.
+- Support API ListAsyncTasks.
+- Support API ListEnvironments.
+- Support API ListPostpaidSitePlans.
+- Support API ListSiteFunctions.
+- Support API ListVersions.
+- Support API RecoverSite.
+- Support API RollbackEnvironmentVersion.
+- Support API StopSite.
+- Support API UpdateCacheReserve.
+- Support API UpdateConfigSequence.
+- Support API UpdateEnvironment.
+- Support API UpdateEnvironmentVersion.
+- Support API UpdateVersionDesc.
+- Support API UpgradeEnvironmentVersion.
+
+
 2026-07-15 Version: 3.7.0
 - Support API AddUserBusinessForm.
 - Support API CheckSiteFeaturesMatchPlan.

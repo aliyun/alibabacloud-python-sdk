@@ -12,19 +12,19 @@ class CreateEdgeContainerAppVersionShrinkRequest(DaraModel):
         name: str = None,
         remarks: str = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The container group to be deployed for this version, which contains information about images.<br> The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+        # The container group to deploy for this version, including specific image information. The image information consists of the image address, startup commands, parameters, environment variables, and probe rules. Multiple images are supported. This parameter is a JSON array.
         # 
         # This parameter is required.
         self.containers_shrink = containers_shrink
-        # The version name, which must be 6 to 128 characters in length.
+        # The version name. The name must be **6 to 128** characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The description of the version.
+        # The remarks.
         self.remarks = remarks
 
     def validate(self):

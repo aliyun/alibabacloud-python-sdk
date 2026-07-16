@@ -15,19 +15,19 @@ class CreateEdgeContainerAppVersionRequest(DaraModel):
         name: str = None,
         remarks: str = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The container group to be deployed for this version, which contains information about images.<br> The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+        # The container group to deploy for this version, including specific image information. The image information consists of the image address, startup commands, parameters, environment variables, and probe rules. Multiple images are supported. This parameter is a JSON array.
         # 
         # This parameter is required.
         self.containers = containers
-        # The version name, which must be 6 to 128 characters in length.
+        # The version name. The name must be **6 to 128** characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The description of the version.
+        # The remarks.
         self.remarks = remarks
 
     def validate(self):
@@ -93,45 +93,42 @@ class CreateEdgeContainerAppVersionRequestContainers(DaraModel):
         spec: str = None,
         storage: str = None,
     ):
-        # The information about the Container Registry image.
+        # The ACR image information.
         self.acrimage_info = acrimage_info
-        # The arguments that are passed to the container startup command. Separate the parameters with spaces.
+        # The startup parameters. Separate multiple parameters with spaces.
         self.args = args
-        # The command that is used to start the container. Separate the arguments with spaces.
+        # The startup command. Separate multiple commands with spaces.
         self.command = command
-        # The environment variables. Separate the environment variables with commas (,).
+        # The environment variables, in the format of key1=val1,key2=val2.
         self.env_variables = env_variables
-        # The address of the image.
+        # The image address.
         # 
         # This parameter is required.
         self.image = image
-        # Specifies whether the image is a Container Registry image.
+        # Specifies whether the image is an Alibaba Cloud Container Registry (ACR) image.
         # 
         # This parameter is required.
         self.is_acrimage = is_acrimage
-        # The name of the container. The name must be unique in the same container group.
+        # The container name. The name must be unique within the same container group.
         # 
         # This parameter is required.
         self.name = name
-        # The command that is run before the container is started. Separate the arguments with spaces.
+        # The command to run before the container starts. Separate multiple commands with spaces. This command runs before the service starts and is typically used for initialization operations.
         self.post_start = post_start
-        # The command that is run before the container is stopped. Separate the arguments with spaces.
+        # The command to run before the container stops. Separate multiple commands with spaces. This command runs before the service exits and is typically used for cleanup operations.
         self.pre_stop = pre_stop
-        # The content of the container health probe.
+        # The container health probe content.
         # 
         # This parameter is required.
         self.probe_content = probe_content
-        # The type of the probe. Valid values:
-        # 
-        # - exec: the command type.
-        # 
-        # - tcpSocket: the TCP probe type.
-        # 
-        # - httpGet: the HTTP access type.
+        # The probe type. Valid values:
+        # - **exec**: command-based.
+        # - **tcpSocket**: TCP-based.
+        # - **httpGet**: HTTP-based.
         # 
         # This parameter is required.
         self.probe_type = probe_type
-        # The compute specification of the container. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+        # The container specifications. This parameter specifies the computing specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
         # 
         # This parameter is required.
         self.spec = spec
@@ -252,27 +249,27 @@ class CreateEdgeContainerAppVersionRequestContainersProbeContent(DaraModel):
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
-        # The command of the exec type probe.
+        # The probe command for the exec probe type.
         self.command = command
-        # The number of consecutive failed health checks required for a container to be considered as unhealthy.
+        # The number of consecutive failed health checks required.
         self.failure_threshold = failure_threshold
-        # The domain name that is used for health checks.
+        # The domain name for the health check.
         self.host = host
-        # The request headers that are included in the container health check request.
+        # The HTTP request headers.
         self.http_headers = http_headers
-        # The latency for container probe initialization.
+        # The initial delay before the container probe starts, in seconds.
         self.initial_delay_seconds = initial_delay_seconds
-        # The health check path.
+        # The path for the container health check.
         self.path = path
-        # The interval between container health checks.
+        # The interval between container health checks, in seconds.
         self.period_seconds = period_seconds
-        # The health check port.
+        # The port for the container health check.
         self.port = port
-        # The protocol that the container health check request uses.
+        # The request protocol for the health check.
         self.scheme = scheme
-        # The number of consecutive successful health checks required for a container to be considered as healthy.
+        # The number of consecutive successful health checks required.
         self.success_threshold = success_threshold
-        # The timeout period of the container health check.
+        # The timeout period for the container health check, in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -368,23 +365,23 @@ class CreateEdgeContainerAppVersionRequestContainersACRImageInfo(DaraModel):
         tag: str = None,
         tag_url: str = None,
     ):
-        # The domain name of the Container Registry image.
+        # The ACR image domain name.
         self.domain = domain
-        # The ID of the Container Registry instance.
+        # The ACR instance ID.
         self.instance_id = instance_id
-        # Specifies whether the image is an enterprise-level Container Registry image.
+        # Specifies whether the image is an enterprise-level image.
         self.is_enterprise_registry = is_enterprise_registry
-        # The regions in which the Container Registry instance resides.
+        # The list of regions for the ACR instance.
         self.region_id = region_id
-        # The ID of the image repository.
+        # The repository ID of the image.
         self.repo_id = repo_id
-        # The name of the image repository.
+        # The image repository name.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
+        # The namespace of the image repository.
         self.repo_namespace = repo_namespace
-        # The tag of the Container Registry image.
+        # The ACR image tag.
         self.tag = tag
-        # The URL of the Container Registry image tag.
+        # The ACR image tag URL.
         self.tag_url = tag_url
 
     def validate(self):

@@ -81,6 +81,9 @@ from ._check_site_project_name_response import CheckSiteProjectNameResponse
 from ._check_user_project_name_request import CheckUserProjectNameRequest
 from ._check_user_project_name_response_body import CheckUserProjectNameResponseBody
 from ._check_user_project_name_response import CheckUserProjectNameResponse
+from ._clone_version_request import CloneVersionRequest
+from ._clone_version_response_body import CloneVersionResponseBody
+from ._clone_version_response import CloneVersionResponse
 from ._commit_routine_staging_code_request import CommitRoutineStagingCodeRequest
 from ._commit_routine_staging_code_response_body import CommitRoutineStagingCodeResponseBody
 from ._commit_routine_staging_code_response import CommitRoutineStagingCodeResponse
@@ -115,6 +118,9 @@ from ._create_edge_container_app_version_request import CreateEdgeContainerAppVe
 from ._create_edge_container_app_version_shrink_request import CreateEdgeContainerAppVersionShrinkRequest
 from ._create_edge_container_app_version_response_body import CreateEdgeContainerAppVersionResponseBody
 from ._create_edge_container_app_version_response import CreateEdgeContainerAppVersionResponse
+from ._create_environment_request import CreateEnvironmentRequest
+from ._create_environment_response_body import CreateEnvironmentResponseBody
+from ._create_environment_response import CreateEnvironmentResponse
 from ._create_http_incoming_request_header_modification_rule_request import CreateHttpIncomingRequestHeaderModificationRuleRequest
 from ._create_http_incoming_request_header_modification_rule_shrink_request import CreateHttpIncomingRequestHeaderModificationRuleShrinkRequest
 from ._create_http_incoming_request_header_modification_rule_response_body import CreateHttpIncomingRequestHeaderModificationRuleResponseBody
@@ -289,6 +295,9 @@ from ._delete_edge_container_app_record_response import DeleteEdgeContainerAppRe
 from ._delete_edge_container_app_version_request import DeleteEdgeContainerAppVersionRequest
 from ._delete_edge_container_app_version_response_body import DeleteEdgeContainerAppVersionResponseBody
 from ._delete_edge_container_app_version_response import DeleteEdgeContainerAppVersionResponse
+from ._delete_environment_request import DeleteEnvironmentRequest
+from ._delete_environment_response_body import DeleteEnvironmentResponseBody
+from ._delete_environment_response import DeleteEnvironmentResponse
 from ._delete_http_ddo_sintelligent_rule_request import DeleteHttpDDoSIntelligentRuleRequest
 from ._delete_http_ddo_sintelligent_rule_response_body import DeleteHttpDDoSIntelligentRuleResponseBody
 from ._delete_http_ddo_sintelligent_rule_response import DeleteHttpDDoSIntelligentRuleResponse
@@ -397,6 +406,9 @@ from ._delete_user_delivery_task_response import DeleteUserDeliveryTaskResponse
 from ._delete_user_waf_ruleset_request import DeleteUserWafRulesetRequest
 from ._delete_user_waf_ruleset_response_body import DeleteUserWafRulesetResponseBody
 from ._delete_user_waf_ruleset_response import DeleteUserWafRulesetResponse
+from ._delete_version_request import DeleteVersionRequest
+from ._delete_version_response_body import DeleteVersionResponseBody
+from ._delete_version_response import DeleteVersionResponse
 from ._delete_video_processing_request import DeleteVideoProcessingRequest
 from ._delete_video_processing_response_body import DeleteVideoProcessingResponseBody
 from ._delete_video_processing_response import DeleteVideoProcessingResponse
@@ -424,6 +436,9 @@ from ._describe_cache_reserve_price_response import DescribeCacheReservePriceRes
 from ._describe_cache_reserve_price_gap_request import DescribeCacheReservePriceGapRequest
 from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBody
 from ._describe_cache_reserve_price_gap_response import DescribeCacheReservePriceGapResponse
+from ._describe_condition_ipbinfo_request import DescribeConditionIPBInfoRequest
+from ._describe_condition_ipbinfo_response_body import DescribeConditionIPBInfoResponseBody
+from ._describe_condition_ipbinfo_response import DescribeConditionIPBInfoResponse
 from ._describe_custom_scene_policies_request import DescribeCustomScenePoliciesRequest
 from ._describe_custom_scene_policies_response_body import DescribeCustomScenePoliciesResponseBody
 from ._describe_custom_scene_policies_response import DescribeCustomScenePoliciesResponse
@@ -483,6 +498,9 @@ from ._describe_rate_plan_price_response import DescribeRatePlanPriceResponse
 from ._describe_rate_plan_price_gap_request import DescribeRatePlanPriceGapRequest
 from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBody
 from ._describe_rate_plan_price_gap_response import DescribeRatePlanPriceGapResponse
+from ._describe_rule_metadata_request import DescribeRuleMetadataRequest
+from ._describe_rule_metadata_response_body import DescribeRuleMetadataResponseBody
+from ._describe_rule_metadata_response import DescribeRuleMetadataResponse
 from ._describe_site_logs_request import DescribeSiteLogsRequest
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBody
 from ._describe_site_logs_response import DescribeSiteLogsResponse
@@ -521,6 +539,9 @@ from ._edit_site_waf_settings_response import EditSiteWafSettingsResponse
 from ._enable_custom_scene_policy_request import EnableCustomScenePolicyRequest
 from ._enable_custom_scene_policy_response_body import EnableCustomScenePolicyResponseBody
 from ._enable_custom_scene_policy_response import EnableCustomScenePolicyResponse
+from ._export_record_cnames_request import ExportRecordCnamesRequest
+from ._export_record_cnames_response_body import ExportRecordCnamesResponseBody
+from ._export_record_cnames_response import ExportRecordCnamesResponse
 from ._export_records_request import ExportRecordsRequest
 from ._export_records_response_body import ExportRecordsResponseBody
 from ._export_records_response import ExportRecordsResponse
@@ -533,6 +554,9 @@ from ._get_api_schema_usage_response import GetApiSchemaUsageResponse
 from ._get_automatic_frequency_control_config_request import GetAutomaticFrequencyControlConfigRequest
 from ._get_automatic_frequency_control_config_response_body import GetAutomaticFrequencyControlConfigResponseBody
 from ._get_automatic_frequency_control_config_response import GetAutomaticFrequencyControlConfigResponse
+from ._get_cache_reserve_request import GetCacheReserveRequest
+from ._get_cache_reserve_response_body import GetCacheReserveResponseBody
+from ._get_cache_reserve_response import GetCacheReserveResponse
 from ._get_cache_reserve_specification_response_body import GetCacheReserveSpecificationResponseBody
 from ._get_cache_reserve_specification_response import GetCacheReserveSpecificationResponse
 from ._get_cache_rule_request import GetCacheRuleRequest
@@ -666,9 +690,15 @@ from ._get_list_response import GetListResponse
 from ._get_load_balancer_request import GetLoadBalancerRequest
 from ._get_load_balancer_response_body import GetLoadBalancerResponseBody
 from ._get_load_balancer_response import GetLoadBalancerResponse
+from ._get_main_domain_name_request import GetMainDomainNameRequest
+from ._get_main_domain_name_response_body import GetMainDomainNameResponseBody
+from ._get_main_domain_name_response import GetMainDomainNameResponse
 from ._get_managed_transform_request import GetManagedTransformRequest
 from ._get_managed_transform_response_body import GetManagedTransformResponseBody
 from ._get_managed_transform_response import GetManagedTransformResponse
+from ._get_match_site_request import GetMatchSiteRequest
+from ._get_match_site_response_body import GetMatchSiteResponseBody
+from ._get_match_site_response import GetMatchSiteResponse
 from ._get_network_optimization_request import GetNetworkOptimizationRequest
 from ._get_network_optimization_response_body import GetNetworkOptimizationResponseBody
 from ._get_network_optimization_response import GetNetworkOptimizationResponse
@@ -693,6 +723,9 @@ from ._get_origin_rule_response import GetOriginRuleResponse
 from ._get_page_request import GetPageRequest
 from ._get_page_response_body import GetPageResponseBody
 from ._get_page_response import GetPageResponse
+from ._get_page_shield_request import GetPageShieldRequest
+from ._get_page_shield_response_body import GetPageShieldResponseBody
+from ._get_page_shield_response import GetPageShieldResponse
 from ._get_performance_data_collection_request import GetPerformanceDataCollectionRequest
 from ._get_performance_data_collection_response_body import GetPerformanceDataCollectionResponseBody
 from ._get_performance_data_collection_response import GetPerformanceDataCollectionResponse
@@ -763,6 +796,9 @@ from ._get_site_origin_client_certificate_response import GetSiteOriginClientCer
 from ._get_site_pause_request import GetSitePauseRequest
 from ._get_site_pause_response_body import GetSitePauseResponseBody
 from ._get_site_pause_response import GetSitePauseResponse
+from ._get_site_traffic_sequence_request import GetSiteTrafficSequenceRequest
+from ._get_site_traffic_sequence_response_body import GetSiteTrafficSequenceResponseBody
+from ._get_site_traffic_sequence_response import GetSiteTrafficSequenceResponse
 from ._get_site_waf_settings_request import GetSiteWafSettingsRequest
 from ._get_site_waf_settings_response_body import GetSiteWafSettingsResponseBody
 from ._get_site_waf_settings_response import GetSiteWafSettingsResponse
@@ -801,6 +837,15 @@ from ._get_waf_rule_response import GetWafRuleResponse
 from ._get_waf_ruleset_request import GetWafRulesetRequest
 from ._get_waf_ruleset_response_body import GetWafRulesetResponseBody
 from ._get_waf_ruleset_response import GetWafRulesetResponse
+from ._get_waiting_room_preview_page_request import GetWaitingRoomPreviewPageRequest
+from ._get_waiting_room_preview_page_response_body import GetWaitingRoomPreviewPageResponseBody
+from ._get_waiting_room_preview_page_response import GetWaitingRoomPreviewPageResponse
+from ._list_awsregion_infos_request import ListAWSRegionInfosRequest
+from ._list_awsregion_infos_response_body import ListAWSRegionInfosResponseBody
+from ._list_awsregion_infos_response import ListAWSRegionInfosResponse
+from ._list_async_tasks_request import ListAsyncTasksRequest
+from ._list_async_tasks_response_body import ListAsyncTasksResponseBody
+from ._list_async_tasks_response import ListAsyncTasksResponse
 from ._list_cache_reserve_instances_request import ListCacheReserveInstancesRequest
 from ._list_cache_reserve_instances_response_body import ListCacheReserveInstancesResponseBody
 from ._list_cache_reserve_instances_response import ListCacheReserveInstancesResponse
@@ -860,6 +905,9 @@ from ._list_edge_routine_plans_response import ListEdgeRoutinePlansResponse
 from ._list_edge_routine_records_request import ListEdgeRoutineRecordsRequest
 from ._list_edge_routine_records_response_body import ListEdgeRoutineRecordsResponseBody
 from ._list_edge_routine_records_response import ListEdgeRoutineRecordsResponse
+from ._list_environments_request import ListEnvironmentsRequest
+from ._list_environments_response_body import ListEnvironmentsResponseBody
+from ._list_environments_response import ListEnvironmentsResponse
 from ._list_http_incoming_request_header_modification_rules_request import ListHttpIncomingRequestHeaderModificationRulesRequest
 from ._list_http_incoming_request_header_modification_rules_response_body import ListHttpIncomingRequestHeaderModificationRulesResponseBody
 from ._list_http_incoming_request_header_modification_rules_response import ListHttpIncomingRequestHeaderModificationRulesResponse
@@ -931,6 +979,9 @@ from ._list_pages_response import ListPagesResponse
 from ._list_postpaid_rate_plan_instances_request import ListPostpaidRatePlanInstancesRequest
 from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBody
 from ._list_postpaid_rate_plan_instances_response import ListPostpaidRatePlanInstancesResponse
+from ._list_postpaid_site_plans_request import ListPostpaidSitePlansRequest
+from ._list_postpaid_site_plans_response_body import ListPostpaidSitePlansResponseBody
+from ._list_postpaid_site_plans_response import ListPostpaidSitePlansResponse
 from ._list_records_request import ListRecordsRequest
 from ._list_records_response_body import ListRecordsResponseBody
 from ._list_records_response import ListRecordsResponse
@@ -960,6 +1011,9 @@ from ._list_scheduled_preload_jobs_response import ListScheduledPreloadJobsRespo
 from ._list_site_delivery_tasks_request import ListSiteDeliveryTasksRequest
 from ._list_site_delivery_tasks_response_body import ListSiteDeliveryTasksResponseBody
 from ._list_site_delivery_tasks_response import ListSiteDeliveryTasksResponse
+from ._list_site_functions_request import ListSiteFunctionsRequest
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBody
+from ._list_site_functions_response import ListSiteFunctionsResponse
 from ._list_site_origin_client_certificates_request import ListSiteOriginClientCertificatesRequest
 from ._list_site_origin_client_certificates_response_body import ListSiteOriginClientCertificatesResponseBody
 from ._list_site_origin_client_certificates_response import ListSiteOriginClientCertificatesResponse
@@ -998,6 +1052,9 @@ from ._list_user_waf_rulesets_request import ListUserWafRulesetsRequest
 from ._list_user_waf_rulesets_shrink_request import ListUserWafRulesetsShrinkRequest
 from ._list_user_waf_rulesets_response_body import ListUserWafRulesetsResponseBody
 from ._list_user_waf_rulesets_response import ListUserWafRulesetsResponse
+from ._list_versions_request import ListVersionsRequest
+from ._list_versions_response_body import ListVersionsResponseBody
+from ._list_versions_response import ListVersionsResponse
 from ._list_video_processings_request import ListVideoProcessingsRequest
 from ._list_video_processings_response_body import ListVideoProcessingsResponseBody
 from ._list_video_processings_response import ListVideoProcessingsResponse
@@ -1072,6 +1129,9 @@ from ._put_kv_with_high_capacity_response import PutKvWithHighCapacityResponse
 from ._rebuild_edge_container_app_staging_env_request import RebuildEdgeContainerAppStagingEnvRequest
 from ._rebuild_edge_container_app_staging_env_response_body import RebuildEdgeContainerAppStagingEnvResponseBody
 from ._rebuild_edge_container_app_staging_env_response import RebuildEdgeContainerAppStagingEnvResponse
+from ._recover_site_request import RecoverSiteRequest
+from ._recover_site_response_body import RecoverSiteResponseBody
+from ._recover_site_response import RecoverSiteResponse
 from ._release_instance_request import ReleaseInstanceRequest
 from ._release_instance_response_body import ReleaseInstanceResponseBody
 from ._release_instance_response import ReleaseInstanceResponse
@@ -1084,6 +1144,9 @@ from ._revoke_client_certificate_response import RevokeClientCertificateResponse
 from ._rollback_edge_container_app_version_request import RollbackEdgeContainerAppVersionRequest
 from ._rollback_edge_container_app_version_response_body import RollbackEdgeContainerAppVersionResponseBody
 from ._rollback_edge_container_app_version_response import RollbackEdgeContainerAppVersionResponse
+from ._rollback_environment_version_request import RollbackEnvironmentVersionRequest
+from ._rollback_environment_version_response_body import RollbackEnvironmentVersionResponseBody
+from ._rollback_environment_version_response import RollbackEnvironmentVersionResponse
 from ._set_automatic_frequency_control_config_request import SetAutomaticFrequencyControlConfigRequest
 from ._set_automatic_frequency_control_config_response_body import SetAutomaticFrequencyControlConfigResponseBody
 from ._set_automatic_frequency_control_config_response import SetAutomaticFrequencyControlConfigResponse
@@ -1126,6 +1189,9 @@ from ._start_scheduled_preload_execution_response import StartScheduledPreloadEx
 from ._stop_scheduled_preload_execution_request import StopScheduledPreloadExecutionRequest
 from ._stop_scheduled_preload_execution_response_body import StopScheduledPreloadExecutionResponseBody
 from ._stop_scheduled_preload_execution_response import StopScheduledPreloadExecutionResponse
+from ._stop_site_request import StopSiteRequest
+from ._stop_site_response_body import StopSiteResponseBody
+from ._stop_site_response import StopSiteResponse
 from ._submit_upload_task_request import SubmitUploadTaskRequest
 from ._submit_upload_task_response_body import SubmitUploadTaskResponseBody
 from ._submit_upload_task_response import SubmitUploadTaskResponse
@@ -1135,6 +1201,9 @@ from ._tag_resources_response import TagResourcesResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_cache_reserve_request import UpdateCacheReserveRequest
+from ._update_cache_reserve_response_body import UpdateCacheReserveResponseBody
+from ._update_cache_reserve_response import UpdateCacheReserveResponse
 from ._update_cache_reserve_spec_request import UpdateCacheReserveSpecRequest
 from ._update_cache_reserve_spec_response_body import UpdateCacheReserveSpecResponseBody
 from ._update_cache_reserve_spec_response import UpdateCacheReserveSpecResponse
@@ -1150,6 +1219,9 @@ from ._update_cname_flattening_response import UpdateCnameFlatteningResponse
 from ._update_compression_rule_request import UpdateCompressionRuleRequest
 from ._update_compression_rule_response_body import UpdateCompressionRuleResponseBody
 from ._update_compression_rule_response import UpdateCompressionRuleResponse
+from ._update_config_sequence_request import UpdateConfigSequenceRequest
+from ._update_config_sequence_response_body import UpdateConfigSequenceResponseBody
+from ._update_config_sequence_response import UpdateConfigSequenceResponse
 from ._update_cross_border_optimization_request import UpdateCrossBorderOptimizationRequest
 from ._update_cross_border_optimization_response_body import UpdateCrossBorderOptimizationResponseBody
 from ._update_cross_border_optimization_response import UpdateCrossBorderOptimizationResponse
@@ -1172,6 +1244,12 @@ from ._update_edge_container_app_resource_reserve_request import UpdateEdgeConta
 from ._update_edge_container_app_resource_reserve_shrink_request import UpdateEdgeContainerAppResourceReserveShrinkRequest
 from ._update_edge_container_app_resource_reserve_response_body import UpdateEdgeContainerAppResourceReserveResponseBody
 from ._update_edge_container_app_resource_reserve_response import UpdateEdgeContainerAppResourceReserveResponse
+from ._update_environment_request import UpdateEnvironmentRequest
+from ._update_environment_response_body import UpdateEnvironmentResponseBody
+from ._update_environment_response import UpdateEnvironmentResponse
+from ._update_environment_version_request import UpdateEnvironmentVersionRequest
+from ._update_environment_version_response_body import UpdateEnvironmentVersionResponseBody
+from ._update_environment_version_response import UpdateEnvironmentVersionResponse
 from ._update_http_incoming_request_header_modification_rule_request import UpdateHttpIncomingRequestHeaderModificationRuleRequest
 from ._update_http_incoming_request_header_modification_rule_shrink_request import UpdateHttpIncomingRequestHeaderModificationRuleShrinkRequest
 from ._update_http_incoming_request_header_modification_rule_response_body import UpdateHttpIncomingRequestHeaderModificationRuleResponseBody
@@ -1304,6 +1382,9 @@ from ._update_user_waf_ruleset_request import UpdateUserWafRulesetRequest
 from ._update_user_waf_ruleset_shrink_request import UpdateUserWafRulesetShrinkRequest
 from ._update_user_waf_ruleset_response_body import UpdateUserWafRulesetResponseBody
 from ._update_user_waf_ruleset_response import UpdateUserWafRulesetResponse
+from ._update_version_desc_request import UpdateVersionDescRequest
+from ._update_version_desc_response_body import UpdateVersionDescResponseBody
+from ._update_version_desc_response import UpdateVersionDescResponse
 from ._update_video_processing_request import UpdateVideoProcessingRequest
 from ._update_video_processing_response_body import UpdateVideoProcessingResponseBody
 from ._update_video_processing_response import UpdateVideoProcessingResponse
@@ -1324,6 +1405,9 @@ from ._update_waiting_room_event_response import UpdateWaitingRoomEventResponse
 from ._update_waiting_room_rule_request import UpdateWaitingRoomRuleRequest
 from ._update_waiting_room_rule_response_body import UpdateWaitingRoomRuleResponseBody
 from ._update_waiting_room_rule_response import UpdateWaitingRoomRuleResponse
+from ._upgrade_environment_version_request import UpgradeEnvironmentVersionRequest
+from ._upgrade_environment_version_response_body import UpgradeEnvironmentVersionResponseBody
+from ._upgrade_environment_version_response import UpgradeEnvironmentVersionResponse
 from ._upload_client_ca_certificate_request import UploadClientCaCertificateRequest
 from ._upload_client_ca_certificate_response_body import UploadClientCaCertificateResponseBody
 from ._upload_client_ca_certificate_response import UploadClientCaCertificateResponse
@@ -1443,6 +1527,7 @@ from ._describe_cache_reserve_price_response_body import DescribeCacheReservePri
 from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBodyPriceModelRuleRuleList
 from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBodyPriceModelRule
 from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBodyPriceModel
+from ._describe_condition_ipbinfo_response_body import DescribeConditionIPBInfoResponseBodyDatas
 from ._describe_custom_scene_policies_response_body import DescribeCustomScenePoliciesResponseBodyDataModule
 from ._describe_ddo_sall_event_list_response_body import DescribeDDoSAllEventListResponseBodyDataList
 from ._describe_ddo_sbps_list_response_body import DescribeDDoSBpsListResponseBodyDataModule
@@ -1461,6 +1546,8 @@ from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceRespon
 from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBodyPriceModelRuleRuleList
 from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBodyPriceModelRule
 from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBodyPriceModel
+from ._describe_rule_metadata_response_body import DescribeRuleMetadataResponseBodyDatasChildren
+from ._describe_rule_metadata_response_body import DescribeRuleMetadataResponseBodyDatas
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetailsLogInfos
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetailsPageInfos
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetails
@@ -1552,6 +1639,9 @@ from ._get_routine_user_info_response_body import GetRoutineUserInfoResponseBody
 from ._get_site_response_body import GetSiteResponseBodySiteModel
 from ._get_site_custom_log_response_body import GetSiteCustomLogResponseBodyLogCustomField
 from ._get_site_origin_client_certificate_response_body import GetSiteOriginClientCertificateResponseBodyResult
+from ._get_site_traffic_sequence_response_body import GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionListConfigs
+from ._get_site_traffic_sequence_response_body import GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionList
+from ._get_site_traffic_sequence_response_body import GetSiteTrafficSequenceResponseBodyTrafficSequences
 from ._get_transport_layer_application_response_body import GetTransportLayerApplicationResponseBodyRules
 from ._get_transport_layer_application_response_body import GetTransportLayerApplicationResponseBodyStaticIpV4List
 from ._get_user_waf_ruleset_response_body import GetUserWafRulesetResponseBodyRulesetRules
@@ -1569,6 +1659,8 @@ from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaPage
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaScenePolicy
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaSliderCaptchaPage
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuota
+from ._list_awsregion_infos_response_body import ListAWSRegionInfosResponseBodyRegions
+from ._list_async_tasks_response_body import ListAsyncTasksResponseBodyAsyncTasks
 from ._list_cache_reserve_instances_response_body import ListCacheReserveInstancesResponseBodyInstanceInfo
 from ._list_cache_rules_response_body import ListCacheRulesResponseBodyConfigs
 from ._list_cas_certificates_response_body import ListCasCertificatesResponseBodyCertificates
@@ -1593,6 +1685,7 @@ from ._list_edge_container_apps_response_body import ListEdgeContainerAppsRespon
 from ._list_edge_container_records_response_body import ListEdgeContainerRecordsResponseBodyRecords
 from ._list_edge_routine_plans_response_body import ListEdgeRoutinePlansResponseBodyPlanInfo
 from ._list_edge_routine_records_response_body import ListEdgeRoutineRecordsResponseBodyRecords
+from ._list_environments_response_body import ListEnvironmentsResponseBodyEnvironmentList
 from ._list_http_incoming_request_header_modification_rules_response_body import ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification
 from ._list_http_incoming_request_header_modification_rules_response_body import ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigs
 from ._list_http_incoming_response_header_modification_rules_response_body import ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification
@@ -1636,6 +1729,7 @@ from ._list_pages_request import ListPagesRequestQueryArgs
 from ._list_pages_response_body import ListPagesResponseBodyPages
 from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites
 from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfo
+from ._list_postpaid_site_plans_response_body import ListPostpaidSitePlansResponseBodyPlanInfo
 from ._list_records_response_body import ListRecordsResponseBodyRecordsAuthConf
 from ._list_records_response_body import ListRecordsResponseBodyRecordsData
 from ._list_records_response_body import ListRecordsResponseBodyRecords
@@ -1648,6 +1742,39 @@ from ._list_routine_routes_response_body import ListRoutineRoutesResponseBodyCon
 from ._list_scheduled_preload_executions_response_body import ListScheduledPreloadExecutionsResponseBodyExecutions
 from ._list_scheduled_preload_jobs_response_body import ListScheduledPreloadJobsResponseBodyJobs
 from ._list_site_delivery_tasks_response_body import ListSiteDeliveryTasksResponseBodyTasks
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsCacheReserve
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsCacheRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsCacheTags
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsCnameFlattening
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsCompressionRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsCustomResponseCode
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsDevelopmentMode
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsErrorPagesRedirectsErrorPagesRedirect
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsErrorPagesRedirects
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRulesRequestHeaderModification
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationRulesResponseHeaderModification
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsImageTransform
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsIpv6
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsManagedTransforms
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsNetworkOptimization
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsOriginRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsRedirectRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsRewriteUrlRules
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsSeoBypass
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsSiteNameExclusive
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsSitePause
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsTieredCache
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsVideoProcessing
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigs
 from ._list_site_origin_client_certificates_response_body import ListSiteOriginClientCertificatesResponseBodyResult
 from ._list_site_routes_response_body import ListSiteRoutesResponseBodyConfigs
 from ._list_sites_request import ListSitesRequestTagFilter
@@ -1666,6 +1793,7 @@ from ._list_user_rate_plan_instances_response_body import ListUserRatePlanInstan
 from ._list_user_routines_response_body import ListUserRoutinesResponseBodyRoutines
 from ._list_user_waf_rulesets_request import ListUserWafRulesetsRequestQueryArgs
 from ._list_user_waf_rulesets_response_body import ListUserWafRulesetsResponseBodyRulesets
+from ._list_versions_response_body import ListVersionsResponseBodySiteVersionList
 from ._list_video_processings_response_body import ListVideoProcessingsResponseBodyConfigs
 from ._list_waf_managed_rules_request import ListWafManagedRulesRequestManagedRulesetManagedRules
 from ._list_waf_managed_rules_request import ListWafManagedRulesRequestManagedRuleset
@@ -1785,6 +1913,9 @@ __all__ = [
     CheckUserProjectNameRequest,
     CheckUserProjectNameResponseBody,
     CheckUserProjectNameResponse,
+    CloneVersionRequest,
+    CloneVersionResponseBody,
+    CloneVersionResponse,
     CommitRoutineStagingCodeRequest,
     CommitRoutineStagingCodeResponseBody,
     CommitRoutineStagingCodeResponse,
@@ -1819,6 +1950,9 @@ __all__ = [
     CreateEdgeContainerAppVersionShrinkRequest,
     CreateEdgeContainerAppVersionResponseBody,
     CreateEdgeContainerAppVersionResponse,
+    CreateEnvironmentRequest,
+    CreateEnvironmentResponseBody,
+    CreateEnvironmentResponse,
     CreateHttpIncomingRequestHeaderModificationRuleRequest,
     CreateHttpIncomingRequestHeaderModificationRuleShrinkRequest,
     CreateHttpIncomingRequestHeaderModificationRuleResponseBody,
@@ -1993,6 +2127,9 @@ __all__ = [
     DeleteEdgeContainerAppVersionRequest,
     DeleteEdgeContainerAppVersionResponseBody,
     DeleteEdgeContainerAppVersionResponse,
+    DeleteEnvironmentRequest,
+    DeleteEnvironmentResponseBody,
+    DeleteEnvironmentResponse,
     DeleteHttpDDoSIntelligentRuleRequest,
     DeleteHttpDDoSIntelligentRuleResponseBody,
     DeleteHttpDDoSIntelligentRuleResponse,
@@ -2101,6 +2238,9 @@ __all__ = [
     DeleteUserWafRulesetRequest,
     DeleteUserWafRulesetResponseBody,
     DeleteUserWafRulesetResponse,
+    DeleteVersionRequest,
+    DeleteVersionResponseBody,
+    DeleteVersionResponse,
     DeleteVideoProcessingRequest,
     DeleteVideoProcessingResponseBody,
     DeleteVideoProcessingResponse,
@@ -2128,6 +2268,9 @@ __all__ = [
     DescribeCacheReservePriceGapRequest,
     DescribeCacheReservePriceGapResponseBody,
     DescribeCacheReservePriceGapResponse,
+    DescribeConditionIPBInfoRequest,
+    DescribeConditionIPBInfoResponseBody,
+    DescribeConditionIPBInfoResponse,
     DescribeCustomScenePoliciesRequest,
     DescribeCustomScenePoliciesResponseBody,
     DescribeCustomScenePoliciesResponse,
@@ -2187,6 +2330,9 @@ __all__ = [
     DescribeRatePlanPriceGapRequest,
     DescribeRatePlanPriceGapResponseBody,
     DescribeRatePlanPriceGapResponse,
+    DescribeRuleMetadataRequest,
+    DescribeRuleMetadataResponseBody,
+    DescribeRuleMetadataResponse,
     DescribeSiteLogsRequest,
     DescribeSiteLogsResponseBody,
     DescribeSiteLogsResponse,
@@ -2225,6 +2371,9 @@ __all__ = [
     EnableCustomScenePolicyRequest,
     EnableCustomScenePolicyResponseBody,
     EnableCustomScenePolicyResponse,
+    ExportRecordCnamesRequest,
+    ExportRecordCnamesResponseBody,
+    ExportRecordCnamesResponse,
     ExportRecordsRequest,
     ExportRecordsResponseBody,
     ExportRecordsResponse,
@@ -2237,6 +2386,9 @@ __all__ = [
     GetAutomaticFrequencyControlConfigRequest,
     GetAutomaticFrequencyControlConfigResponseBody,
     GetAutomaticFrequencyControlConfigResponse,
+    GetCacheReserveRequest,
+    GetCacheReserveResponseBody,
+    GetCacheReserveResponse,
     GetCacheReserveSpecificationResponseBody,
     GetCacheReserveSpecificationResponse,
     GetCacheRuleRequest,
@@ -2370,9 +2522,15 @@ __all__ = [
     GetLoadBalancerRequest,
     GetLoadBalancerResponseBody,
     GetLoadBalancerResponse,
+    GetMainDomainNameRequest,
+    GetMainDomainNameResponseBody,
+    GetMainDomainNameResponse,
     GetManagedTransformRequest,
     GetManagedTransformResponseBody,
     GetManagedTransformResponse,
+    GetMatchSiteRequest,
+    GetMatchSiteResponseBody,
+    GetMatchSiteResponse,
     GetNetworkOptimizationRequest,
     GetNetworkOptimizationResponseBody,
     GetNetworkOptimizationResponse,
@@ -2397,6 +2555,9 @@ __all__ = [
     GetPageRequest,
     GetPageResponseBody,
     GetPageResponse,
+    GetPageShieldRequest,
+    GetPageShieldResponseBody,
+    GetPageShieldResponse,
     GetPerformanceDataCollectionRequest,
     GetPerformanceDataCollectionResponseBody,
     GetPerformanceDataCollectionResponse,
@@ -2467,6 +2628,9 @@ __all__ = [
     GetSitePauseRequest,
     GetSitePauseResponseBody,
     GetSitePauseResponse,
+    GetSiteTrafficSequenceRequest,
+    GetSiteTrafficSequenceResponseBody,
+    GetSiteTrafficSequenceResponse,
     GetSiteWafSettingsRequest,
     GetSiteWafSettingsResponseBody,
     GetSiteWafSettingsResponse,
@@ -2505,6 +2669,15 @@ __all__ = [
     GetWafRulesetRequest,
     GetWafRulesetResponseBody,
     GetWafRulesetResponse,
+    GetWaitingRoomPreviewPageRequest,
+    GetWaitingRoomPreviewPageResponseBody,
+    GetWaitingRoomPreviewPageResponse,
+    ListAWSRegionInfosRequest,
+    ListAWSRegionInfosResponseBody,
+    ListAWSRegionInfosResponse,
+    ListAsyncTasksRequest,
+    ListAsyncTasksResponseBody,
+    ListAsyncTasksResponse,
     ListCacheReserveInstancesRequest,
     ListCacheReserveInstancesResponseBody,
     ListCacheReserveInstancesResponse,
@@ -2564,6 +2737,9 @@ __all__ = [
     ListEdgeRoutineRecordsRequest,
     ListEdgeRoutineRecordsResponseBody,
     ListEdgeRoutineRecordsResponse,
+    ListEnvironmentsRequest,
+    ListEnvironmentsResponseBody,
+    ListEnvironmentsResponse,
     ListHttpIncomingRequestHeaderModificationRulesRequest,
     ListHttpIncomingRequestHeaderModificationRulesResponseBody,
     ListHttpIncomingRequestHeaderModificationRulesResponse,
@@ -2635,6 +2811,9 @@ __all__ = [
     ListPostpaidRatePlanInstancesRequest,
     ListPostpaidRatePlanInstancesResponseBody,
     ListPostpaidRatePlanInstancesResponse,
+    ListPostpaidSitePlansRequest,
+    ListPostpaidSitePlansResponseBody,
+    ListPostpaidSitePlansResponse,
     ListRecordsRequest,
     ListRecordsResponseBody,
     ListRecordsResponse,
@@ -2664,6 +2843,9 @@ __all__ = [
     ListSiteDeliveryTasksRequest,
     ListSiteDeliveryTasksResponseBody,
     ListSiteDeliveryTasksResponse,
+    ListSiteFunctionsRequest,
+    ListSiteFunctionsResponseBody,
+    ListSiteFunctionsResponse,
     ListSiteOriginClientCertificatesRequest,
     ListSiteOriginClientCertificatesResponseBody,
     ListSiteOriginClientCertificatesResponse,
@@ -2702,6 +2884,9 @@ __all__ = [
     ListUserWafRulesetsShrinkRequest,
     ListUserWafRulesetsResponseBody,
     ListUserWafRulesetsResponse,
+    ListVersionsRequest,
+    ListVersionsResponseBody,
+    ListVersionsResponse,
     ListVideoProcessingsRequest,
     ListVideoProcessingsResponseBody,
     ListVideoProcessingsResponse,
@@ -2776,6 +2961,9 @@ __all__ = [
     RebuildEdgeContainerAppStagingEnvRequest,
     RebuildEdgeContainerAppStagingEnvResponseBody,
     RebuildEdgeContainerAppStagingEnvResponse,
+    RecoverSiteRequest,
+    RecoverSiteResponseBody,
+    RecoverSiteResponse,
     ReleaseInstanceRequest,
     ReleaseInstanceResponseBody,
     ReleaseInstanceResponse,
@@ -2788,6 +2976,9 @@ __all__ = [
     RollbackEdgeContainerAppVersionRequest,
     RollbackEdgeContainerAppVersionResponseBody,
     RollbackEdgeContainerAppVersionResponse,
+    RollbackEnvironmentVersionRequest,
+    RollbackEnvironmentVersionResponseBody,
+    RollbackEnvironmentVersionResponse,
     SetAutomaticFrequencyControlConfigRequest,
     SetAutomaticFrequencyControlConfigResponseBody,
     SetAutomaticFrequencyControlConfigResponse,
@@ -2830,6 +3021,9 @@ __all__ = [
     StopScheduledPreloadExecutionRequest,
     StopScheduledPreloadExecutionResponseBody,
     StopScheduledPreloadExecutionResponse,
+    StopSiteRequest,
+    StopSiteResponseBody,
+    StopSiteResponse,
     SubmitUploadTaskRequest,
     SubmitUploadTaskResponseBody,
     SubmitUploadTaskResponse,
@@ -2839,6 +3033,9 @@ __all__ = [
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateCacheReserveRequest,
+    UpdateCacheReserveResponseBody,
+    UpdateCacheReserveResponse,
     UpdateCacheReserveSpecRequest,
     UpdateCacheReserveSpecResponseBody,
     UpdateCacheReserveSpecResponse,
@@ -2854,6 +3051,9 @@ __all__ = [
     UpdateCompressionRuleRequest,
     UpdateCompressionRuleResponseBody,
     UpdateCompressionRuleResponse,
+    UpdateConfigSequenceRequest,
+    UpdateConfigSequenceResponseBody,
+    UpdateConfigSequenceResponse,
     UpdateCrossBorderOptimizationRequest,
     UpdateCrossBorderOptimizationResponseBody,
     UpdateCrossBorderOptimizationResponse,
@@ -2876,6 +3076,12 @@ __all__ = [
     UpdateEdgeContainerAppResourceReserveShrinkRequest,
     UpdateEdgeContainerAppResourceReserveResponseBody,
     UpdateEdgeContainerAppResourceReserveResponse,
+    UpdateEnvironmentRequest,
+    UpdateEnvironmentResponseBody,
+    UpdateEnvironmentResponse,
+    UpdateEnvironmentVersionRequest,
+    UpdateEnvironmentVersionResponseBody,
+    UpdateEnvironmentVersionResponse,
     UpdateHttpIncomingRequestHeaderModificationRuleRequest,
     UpdateHttpIncomingRequestHeaderModificationRuleShrinkRequest,
     UpdateHttpIncomingRequestHeaderModificationRuleResponseBody,
@@ -3008,6 +3214,9 @@ __all__ = [
     UpdateUserWafRulesetShrinkRequest,
     UpdateUserWafRulesetResponseBody,
     UpdateUserWafRulesetResponse,
+    UpdateVersionDescRequest,
+    UpdateVersionDescResponseBody,
+    UpdateVersionDescResponse,
     UpdateVideoProcessingRequest,
     UpdateVideoProcessingResponseBody,
     UpdateVideoProcessingResponse,
@@ -3028,6 +3237,9 @@ __all__ = [
     UpdateWaitingRoomRuleRequest,
     UpdateWaitingRoomRuleResponseBody,
     UpdateWaitingRoomRuleResponse,
+    UpgradeEnvironmentVersionRequest,
+    UpgradeEnvironmentVersionResponseBody,
+    UpgradeEnvironmentVersionResponse,
     UploadClientCaCertificateRequest,
     UploadClientCaCertificateResponseBody,
     UploadClientCaCertificateResponse,
@@ -3147,6 +3359,7 @@ __all__ = [
     DescribeCacheReservePriceGapResponseBodyPriceModelRuleRuleList,
     DescribeCacheReservePriceGapResponseBodyPriceModelRule,
     DescribeCacheReservePriceGapResponseBodyPriceModel,
+    DescribeConditionIPBInfoResponseBodyDatas,
     DescribeCustomScenePoliciesResponseBodyDataModule,
     DescribeDDoSAllEventListResponseBodyDataList,
     DescribeDDoSBpsListResponseBodyDataModule,
@@ -3165,6 +3378,8 @@ __all__ = [
     DescribeRatePlanPriceGapResponseBodyPriceModelRuleRuleList,
     DescribeRatePlanPriceGapResponseBodyPriceModelRule,
     DescribeRatePlanPriceGapResponseBodyPriceModel,
+    DescribeRuleMetadataResponseBodyDatasChildren,
+    DescribeRuleMetadataResponseBodyDatas,
     DescribeSiteLogsResponseBodySiteLogDetailsLogInfos,
     DescribeSiteLogsResponseBodySiteLogDetailsPageInfos,
     DescribeSiteLogsResponseBodySiteLogDetails,
@@ -3256,6 +3471,9 @@ __all__ = [
     GetSiteResponseBodySiteModel,
     GetSiteCustomLogResponseBodyLogCustomField,
     GetSiteOriginClientCertificateResponseBodyResult,
+    GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionListConfigs,
+    GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionList,
+    GetSiteTrafficSequenceResponseBodyTrafficSequences,
     GetTransportLayerApplicationResponseBodyRules,
     GetTransportLayerApplicationResponseBodyStaticIpV4List,
     GetUserWafRulesetResponseBodyRulesetRules,
@@ -3273,6 +3491,8 @@ __all__ = [
     GetWafQuotaResponseBodyQuotaScenePolicy,
     GetWafQuotaResponseBodyQuotaSliderCaptchaPage,
     GetWafQuotaResponseBodyQuota,
+    ListAWSRegionInfosResponseBodyRegions,
+    ListAsyncTasksResponseBodyAsyncTasks,
     ListCacheReserveInstancesResponseBodyInstanceInfo,
     ListCacheRulesResponseBodyConfigs,
     ListCasCertificatesResponseBodyCertificates,
@@ -3297,6 +3517,7 @@ __all__ = [
     ListEdgeContainerRecordsResponseBodyRecords,
     ListEdgeRoutinePlansResponseBodyPlanInfo,
     ListEdgeRoutineRecordsResponseBodyRecords,
+    ListEnvironmentsResponseBodyEnvironmentList,
     ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification,
     ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigs,
     ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification,
@@ -3340,6 +3561,7 @@ __all__ = [
     ListPagesResponseBodyPages,
     ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites,
     ListPostpaidRatePlanInstancesResponseBodyInstanceInfo,
+    ListPostpaidSitePlansResponseBodyPlanInfo,
     ListRecordsResponseBodyRecordsAuthConf,
     ListRecordsResponseBodyRecordsData,
     ListRecordsResponseBodyRecords,
@@ -3352,6 +3574,39 @@ __all__ = [
     ListScheduledPreloadExecutionsResponseBodyExecutions,
     ListScheduledPreloadJobsResponseBodyJobs,
     ListSiteDeliveryTasksResponseBodyTasks,
+    ListSiteFunctionsResponseBodyConfigsCacheReserve,
+    ListSiteFunctionsResponseBodyConfigsCacheRules,
+    ListSiteFunctionsResponseBodyConfigsCacheTags,
+    ListSiteFunctionsResponseBodyConfigsCnameFlattening,
+    ListSiteFunctionsResponseBodyConfigsCompressionRules,
+    ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization,
+    ListSiteFunctionsResponseBodyConfigsCustomResponseCode,
+    ListSiteFunctionsResponseBodyConfigsDevelopmentMode,
+    ListSiteFunctionsResponseBodyConfigsErrorPagesRedirectsErrorPagesRedirect,
+    ListSiteFunctionsResponseBodyConfigsErrorPagesRedirects,
+    ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRulesRequestHeaderModification,
+    ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRules,
+    ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationRulesResponseHeaderModification,
+    ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationRules,
+    ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification,
+    ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules,
+    ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification,
+    ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules,
+    ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration,
+    ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration,
+    ListSiteFunctionsResponseBodyConfigsImageTransform,
+    ListSiteFunctionsResponseBodyConfigsIpv6,
+    ListSiteFunctionsResponseBodyConfigsManagedTransforms,
+    ListSiteFunctionsResponseBodyConfigsNetworkOptimization,
+    ListSiteFunctionsResponseBodyConfigsOriginRules,
+    ListSiteFunctionsResponseBodyConfigsRedirectRules,
+    ListSiteFunctionsResponseBodyConfigsRewriteUrlRules,
+    ListSiteFunctionsResponseBodyConfigsSeoBypass,
+    ListSiteFunctionsResponseBodyConfigsSiteNameExclusive,
+    ListSiteFunctionsResponseBodyConfigsSitePause,
+    ListSiteFunctionsResponseBodyConfigsTieredCache,
+    ListSiteFunctionsResponseBodyConfigsVideoProcessing,
+    ListSiteFunctionsResponseBodyConfigs,
     ListSiteOriginClientCertificatesResponseBodyResult,
     ListSiteRoutesResponseBodyConfigs,
     ListSitesRequestTagFilter,
@@ -3370,6 +3625,7 @@ __all__ = [
     ListUserRoutinesResponseBodyRoutines,
     ListUserWafRulesetsRequestQueryArgs,
     ListUserWafRulesetsResponseBodyRulesets,
+    ListVersionsResponseBodySiteVersionList,
     ListVideoProcessingsResponseBodyConfigs,
     ListWafManagedRulesRequestManagedRulesetManagedRules,
     ListWafManagedRulesRequestManagedRuleset,

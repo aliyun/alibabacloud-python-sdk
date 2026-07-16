@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateEdgeContainerAppResponseBody(DaraModel):
+class ExportRecordCnamesResponseBody(DaraModel):
     def __init__(
         self,
-        app_id: str = None,
+        content: str = None,
         request_id: str = None,
     ):
-        # The ID of the created application.
-        self.app_id = app_id
+        # The exported CNAME content.
+        self.content = content
         # The request ID.
         self.request_id = request_id
 
@@ -23,8 +23,8 @@ class CreateEdgeContainerAppResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
+        if self.content is not None:
+            result['Content'] = self.content
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +33,8 @@ class CreateEdgeContainerAppResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
