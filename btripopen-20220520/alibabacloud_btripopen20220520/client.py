@@ -16389,6 +16389,136 @@ class Client(OpenApiClient):
         headers = main_models.IntlFlightReShopConsultHeaders()
         return await self.intl_flight_re_shop_consult_with_options_async(request, headers, runtime)
 
+    def intl_flight_re_shop_create_with_options(
+        self,
+        tmp_req: main_models.IntlFlightReShopCreateRequest,
+        headers: main_models.IntlFlightReShopCreateHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntlFlightReShopCreateResponse:
+        tmp_req.validate()
+        request = main_models.IntlFlightReShopCreateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.async_apply_key):
+            body['async_apply_key'] = request.async_apply_key
+        if not DaraCore.is_null(request.async_apply_mode):
+            body['async_apply_mode'] = request.async_apply_mode
+        if not DaraCore.is_null(request.order_id):
+            body['order_id'] = request.order_id
+        if not DaraCore.is_null(request.ota_item_id):
+            body['ota_item_id'] = request.ota_item_id
+        if not DaraCore.is_null(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not DaraCore.is_null(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not DaraCore.is_null(request.passenger_journey_group_key):
+            body['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not DaraCore.is_null(request.re_shop_reason_code):
+            body['re_shop_reason_code'] = request.re_shop_reason_code
+        if not DaraCore.is_null(request.selected_passengers_shrink):
+            body['selected_passengers'] = request.selected_passengers_shrink
+        if not DaraCore.is_null(request.total_re_shop_fee):
+            body['total_re_shop_fee'] = request.total_re_shop_fee
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntlFlightReShopCreate',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/intl-flight/v1/flights/action/reshop/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntlFlightReShopCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_create_with_options_async(
+        self,
+        tmp_req: main_models.IntlFlightReShopCreateRequest,
+        headers: main_models.IntlFlightReShopCreateHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntlFlightReShopCreateResponse:
+        tmp_req.validate()
+        request = main_models.IntlFlightReShopCreateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.async_apply_key):
+            body['async_apply_key'] = request.async_apply_key
+        if not DaraCore.is_null(request.async_apply_mode):
+            body['async_apply_mode'] = request.async_apply_mode
+        if not DaraCore.is_null(request.order_id):
+            body['order_id'] = request.order_id
+        if not DaraCore.is_null(request.ota_item_id):
+            body['ota_item_id'] = request.ota_item_id
+        if not DaraCore.is_null(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not DaraCore.is_null(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not DaraCore.is_null(request.passenger_journey_group_key):
+            body['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not DaraCore.is_null(request.re_shop_reason_code):
+            body['re_shop_reason_code'] = request.re_shop_reason_code
+        if not DaraCore.is_null(request.selected_passengers_shrink):
+            body['selected_passengers'] = request.selected_passengers_shrink
+        if not DaraCore.is_null(request.total_re_shop_fee):
+            body['total_re_shop_fee'] = request.total_re_shop_fee
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntlFlightReShopCreate',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/intl-flight/v1/flights/action/reshop/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntlFlightReShopCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_create(
+        self,
+        request: main_models.IntlFlightReShopCreateRequest,
+    ) -> main_models.IntlFlightReShopCreateResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.IntlFlightReShopCreateHeaders()
+        return self.intl_flight_re_shop_create_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_create_async(
+        self,
+        request: main_models.IntlFlightReShopCreateRequest,
+    ) -> main_models.IntlFlightReShopCreateResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.IntlFlightReShopCreateHeaders()
+        return await self.intl_flight_re_shop_create_with_options_async(request, headers, runtime)
+
     def intl_flight_re_shop_detail_with_options(
         self,
         request: main_models.IntlFlightReShopDetailRequest,
@@ -16486,6 +16616,258 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.IntlFlightReShopDetailHeaders()
         return await self.intl_flight_re_shop_detail_with_options_async(request, headers, runtime)
+
+    def intl_flight_re_shop_list_search_with_options(
+        self,
+        tmp_req: main_models.IntlFlightReShopListSearchRequest,
+        headers: main_models.IntlFlightReShopListSearchHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntlFlightReShopListSearchResponse:
+        tmp_req.validate()
+        request = main_models.IntlFlightReShopListSearchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.search_journeys):
+            request.search_journeys_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not DaraCore.is_null(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['order_id'] = request.order_id
+        if not DaraCore.is_null(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not DaraCore.is_null(request.out_wheel_search):
+            query['out_wheel_search'] = request.out_wheel_search
+        if not DaraCore.is_null(request.passenger_journey_group_key):
+            query['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not DaraCore.is_null(request.re_shop_reason_code):
+            query['re_shop_reason_code'] = request.re_shop_reason_code
+        if not DaraCore.is_null(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not DaraCore.is_null(request.selected_passengers_shrink):
+            query['selected_passengers'] = request.selected_passengers_shrink
+        if not DaraCore.is_null(request.token):
+            query['token'] = request.token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntlFlightReShopListSearch',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/intl-flight/v1/flights/action/reshop/listSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntlFlightReShopListSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_list_search_with_options_async(
+        self,
+        tmp_req: main_models.IntlFlightReShopListSearchRequest,
+        headers: main_models.IntlFlightReShopListSearchHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntlFlightReShopListSearchResponse:
+        tmp_req.validate()
+        request = main_models.IntlFlightReShopListSearchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.search_journeys):
+            request.search_journeys_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not DaraCore.is_null(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['order_id'] = request.order_id
+        if not DaraCore.is_null(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not DaraCore.is_null(request.out_wheel_search):
+            query['out_wheel_search'] = request.out_wheel_search
+        if not DaraCore.is_null(request.passenger_journey_group_key):
+            query['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not DaraCore.is_null(request.re_shop_reason_code):
+            query['re_shop_reason_code'] = request.re_shop_reason_code
+        if not DaraCore.is_null(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not DaraCore.is_null(request.selected_passengers_shrink):
+            query['selected_passengers'] = request.selected_passengers_shrink
+        if not DaraCore.is_null(request.token):
+            query['token'] = request.token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntlFlightReShopListSearch',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/intl-flight/v1/flights/action/reshop/listSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntlFlightReShopListSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_list_search(
+        self,
+        request: main_models.IntlFlightReShopListSearchRequest,
+    ) -> main_models.IntlFlightReShopListSearchResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.IntlFlightReShopListSearchHeaders()
+        return self.intl_flight_re_shop_list_search_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_list_search_async(
+        self,
+        request: main_models.IntlFlightReShopListSearchRequest,
+    ) -> main_models.IntlFlightReShopListSearchResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.IntlFlightReShopListSearchHeaders()
+        return await self.intl_flight_re_shop_list_search_with_options_async(request, headers, runtime)
+
+    def intl_flight_re_shop_ota_search_with_options(
+        self,
+        tmp_req: main_models.IntlFlightReShopOtaSearchRequest,
+        headers: main_models.IntlFlightReShopOtaSearchHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntlFlightReShopOtaSearchResponse:
+        tmp_req.validate()
+        request = main_models.IntlFlightReShopOtaSearchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.search_journeys):
+            request.search_journeys_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not DaraCore.is_null(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['order_id'] = request.order_id
+        if not DaraCore.is_null(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not DaraCore.is_null(request.out_wheel_search):
+            query['out_wheel_search'] = request.out_wheel_search
+        if not DaraCore.is_null(request.passenger_journey_group_key):
+            query['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not DaraCore.is_null(request.re_shop_reason_code):
+            query['re_shop_reason_code'] = request.re_shop_reason_code
+        if not DaraCore.is_null(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not DaraCore.is_null(request.selected_passengers_shrink):
+            query['selected_passengers'] = request.selected_passengers_shrink
+        if not DaraCore.is_null(request.token):
+            query['token'] = request.token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntlFlightReShopOtaSearch',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/intl-flight/v1/flights/action/reshop/otaSerach',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntlFlightReShopOtaSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_ota_search_with_options_async(
+        self,
+        tmp_req: main_models.IntlFlightReShopOtaSearchRequest,
+        headers: main_models.IntlFlightReShopOtaSearchHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntlFlightReShopOtaSearchResponse:
+        tmp_req.validate()
+        request = main_models.IntlFlightReShopOtaSearchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.search_journeys):
+            request.search_journeys_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not DaraCore.is_null(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['order_id'] = request.order_id
+        if not DaraCore.is_null(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not DaraCore.is_null(request.out_wheel_search):
+            query['out_wheel_search'] = request.out_wheel_search
+        if not DaraCore.is_null(request.passenger_journey_group_key):
+            query['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not DaraCore.is_null(request.re_shop_reason_code):
+            query['re_shop_reason_code'] = request.re_shop_reason_code
+        if not DaraCore.is_null(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not DaraCore.is_null(request.selected_passengers_shrink):
+            query['selected_passengers'] = request.selected_passengers_shrink
+        if not DaraCore.is_null(request.token):
+            query['token'] = request.token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntlFlightReShopOtaSearch',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/intl-flight/v1/flights/action/reshop/otaSerach',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntlFlightReShopOtaSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_ota_search(
+        self,
+        request: main_models.IntlFlightReShopOtaSearchRequest,
+    ) -> main_models.IntlFlightReShopOtaSearchResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.IntlFlightReShopOtaSearchHeaders()
+        return self.intl_flight_re_shop_ota_search_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_ota_search_async(
+        self,
+        request: main_models.IntlFlightReShopOtaSearchRequest,
+    ) -> main_models.IntlFlightReShopOtaSearchResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.IntlFlightReShopOtaSearchHeaders()
+        return await self.intl_flight_re_shop_ota_search_with_options_async(request, headers, runtime)
 
     def intl_flight_re_shop_pay_with_options(
         self,

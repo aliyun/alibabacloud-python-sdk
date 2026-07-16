@@ -2,43 +2,29 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_btripopen20220520 import models as main_models
 from darabonba.model import DaraModel
 
-class CarSceneQueryResponseBody(DaraModel):
+class IntlFlightReShopCreateResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
-        module: List[main_models.CarSceneQueryResponseBodyModule] = None,
+        module: main_models.IntlFlightReShopCreateResponseBodyModule = None,
         request_id: str = None,
         success: bool = None,
         trace_id: str = None,
     ):
-        # The operation status.
         self.code = code
-        # The error details.
         self.message = message
-        # The list of car service scenario templates. An empty array [] is returned if no data exists.
         self.module = module
-        # The unique identifier of the request.
         self.request_id = request_id
-        # Indicates whether the query was successful.
-        # 
-        # - true: Successful.
-        # 
-        # - false: Failed.
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
         if self.module:
-            for v1 in self.module:
-                 if v1:
-                    v1.validate()
+            self.module.validate()
 
     def to_map(self):
         result = dict()
@@ -51,10 +37,8 @@ class CarSceneQueryResponseBody(DaraModel):
         if self.message is not None:
             result['message'] = self.message
 
-        result['module'] = []
         if self.module is not None:
-            for k1 in self.module:
-                result['module'].append(k1.to_map() if k1 else None)
+            result['module'] = self.module.to_map()
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -75,11 +59,9 @@ class CarSceneQueryResponseBody(DaraModel):
         if m.get('message') is not None:
             self.message = m.get('message')
 
-        self.module = []
         if m.get('module') is not None:
-            for k1 in m.get('module'):
-                temp_model = main_models.CarSceneQueryResponseBodyModule()
-                self.module.append(temp_model.from_map(k1))
+            temp_model = main_models.IntlFlightReShopCreateResponseBodyModule()
+            self.module = temp_model.from_map(m.get('module'))
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
@@ -92,19 +74,20 @@ class CarSceneQueryResponseBody(DaraModel):
 
         return self
 
-class CarSceneQueryResponseBodyModule(DaraModel):
+class IntlFlightReShopCreateResponseBodyModule(DaraModel):
     def __init__(
         self,
-        scenario_template_id: str = None,
-        scenario_template_name: str = None,
-        state: str = None,
+        async_apply_key: str = None,
+        need_retry: bool = None,
+        next_retry_interval: int = None,
+        out_re_shop_apply_id: str = None,
+        re_shop_apply_id: str = None,
     ):
-        # The scenario template ID.
-        self.scenario_template_id = scenario_template_id
-        # The scenario template name.
-        self.scenario_template_name = scenario_template_name
-        # The scenario status.
-        self.state = state
+        self.async_apply_key = async_apply_key
+        self.need_retry = need_retry
+        self.next_retry_interval = next_retry_interval
+        self.out_re_shop_apply_id = out_re_shop_apply_id
+        self.re_shop_apply_id = re_shop_apply_id
 
     def validate(self):
         pass
@@ -114,27 +97,39 @@ class CarSceneQueryResponseBodyModule(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.scenario_template_id is not None:
-            result['scenarioTemplateId'] = self.scenario_template_id
+        if self.async_apply_key is not None:
+            result['async_apply_key'] = self.async_apply_key
 
-        if self.scenario_template_name is not None:
-            result['scenarioTemplateName'] = self.scenario_template_name
+        if self.need_retry is not None:
+            result['need_retry'] = self.need_retry
 
-        if self.state is not None:
-            result['state'] = self.state
+        if self.next_retry_interval is not None:
+            result['next_retry_interval'] = self.next_retry_interval
+
+        if self.out_re_shop_apply_id is not None:
+            result['out_re_shop_apply_id'] = self.out_re_shop_apply_id
+
+        if self.re_shop_apply_id is not None:
+            result['re_shop_apply_id'] = self.re_shop_apply_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('scenarioTemplateId') is not None:
-            self.scenario_template_id = m.get('scenarioTemplateId')
+        if m.get('async_apply_key') is not None:
+            self.async_apply_key = m.get('async_apply_key')
 
-        if m.get('scenarioTemplateName') is not None:
-            self.scenario_template_name = m.get('scenarioTemplateName')
+        if m.get('need_retry') is not None:
+            self.need_retry = m.get('need_retry')
 
-        if m.get('state') is not None:
-            self.state = m.get('state')
+        if m.get('next_retry_interval') is not None:
+            self.next_retry_interval = m.get('next_retry_interval')
+
+        if m.get('out_re_shop_apply_id') is not None:
+            self.out_re_shop_apply_id = m.get('out_re_shop_apply_id')
+
+        if m.get('re_shop_apply_id') is not None:
+            self.re_shop_apply_id = m.get('re_shop_apply_id')
 
         return self
 
